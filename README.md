@@ -25,13 +25,13 @@ python3 -m yast3
 Install the app for the current user and register the desktop launcher:
 
 ```bash
-./scripts/install.sh
+make install
 ```
 
 Install it system-wide instead:
 
 ```bash
-sudo ./scripts/install.sh --system
+sudo make install-system
 ```
 
 After installation, you can start the app from the application menu or by running:
@@ -45,7 +45,7 @@ yast3
 Build standard Python distribution artifacts for Linux packaging workflows:
 
 ```bash
-./scripts/package.sh
+make dist
 ```
 
 This creates source and wheel packages in `dist/`.
