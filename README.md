@@ -16,7 +16,7 @@ Selecting a module opens a separate placeholder window for future implementation
 ## Run
 
 ```bash
-python3 -m pip install -r requirements.txt
+sudo zypper install python3-pyside6
 python3 -m yast3
 ```
 
