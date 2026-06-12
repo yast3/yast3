@@ -1,2 +1,3 @@
 # YaST3
-Save YaST ♥️
+
+Save YaST ♥️ with Python 3 & Qt6 Widgets
