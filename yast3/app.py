@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Iterable
+from weakref import WeakSet
 
 from PySide6.QtCore import QSize, Qt
 from PySide6.QtGui import QIcon
@@ -89,7 +90,7 @@ class MainWindow(QMainWindow):
     def __init__(self, modules: Iterable[SettingsModule] = MODULES) -> None:
         super().__init__()
         self.modules = tuple(modules)
-        self.open_windows: list[ModuleWindow] = []
+        self.open_windows: WeakSet[ModuleWindow] = WeakSet()
 
         self.setWindowTitle("YaST3")
         self.resize(960, 640)
@@ -151,7 +152,7 @@ class MainWindow(QMainWindow):
         window = ModuleWindow(module, icon)
         window.show()
         window.activateWindow()
-        self.open_windows.append(window)
+        self.open_windows.add(window)
 
 
 def main() -> int:
