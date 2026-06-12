@@ -1,4 +1,6 @@
 from __future__ import annotations
+from .module import Module
+from .modules import *
 
 from dataclasses import dataclass
 from typing import Iterable
@@ -20,25 +22,8 @@ from PySide6.QtWidgets import (
 )
 
 
-@dataclass(frozen=True)
-class SettingsModule:
-    name: str
-    icon_names: tuple[str, ...]
-
-
-MODULES: tuple[SettingsModule, ...] = (
-    SettingsModule("System", ("preferences-system", "computer")),
-    SettingsModule("Display", ("preferences-desktop-display", "video-display")),
-    SettingsModule("Network", ("network-workgroup", "network-wired")),
-    SettingsModule("Bluetooth", ("preferences-system-bluetooth", "bluetooth")),
-    SettingsModule("Sound", ("multimedia-volume-control", "audio-card")),
-    SettingsModule("Power", ("preferences-system-power", "battery")),
-    SettingsModule("Users", ("system-users", "user-identity")),
-    SettingsModule("Date & Time", ("preferences-system-time", "clock")),
-    SettingsModule("Keyboard", ("input-keyboard", "preferences-desktop-keyboard")),
-    SettingsModule("Mouse", ("input-mouse", "preferences-desktop-peripherals")),
-    SettingsModule("Storage", ("drive-harddisk", "folder")),
-    SettingsModule("Security", ("security-high", "preferences-desktop-lock")),
+MODULES: tuple[Module, ...] = (
+    PackagesModule(),
 )
 
 FALLBACK_ICONS: tuple[QStyle.StandardPixmap, ...] = (
@@ -58,7 +43,7 @@ FALLBACK_ICONS: tuple[QStyle.StandardPixmap, ...] = (
 
 
 class ModuleWindow(QMainWindow):
-    def __init__(self, module: SettingsModule, icon: QIcon) -> None:
+    def __init__(self, module: Module, icon: QIcon) -> None:
         super().__init__()
         self.setWindowTitle(module.name)
         self.setWindowIcon(icon)
@@ -87,7 +72,7 @@ class ModuleWindow(QMainWindow):
 
 
 class MainWindow(QMainWindow):
-    def __init__(self, modules: Iterable[SettingsModule] = MODULES) -> None:
+    def __init__(self, modules: Iterable[Module] = MODULES) -> None:
         super().__init__()
         self.modules = tuple(modules)
         self.open_windows: WeakSet[ModuleWindow] = WeakSet()
@@ -113,7 +98,7 @@ class MainWindow(QMainWindow):
         scroll_area.setWidget(container)
         self.setCentralWidget(scroll_area)
 
-    def _build_module_button(self, module: SettingsModule, index: int) -> QToolButton:
+    def _build_module_button(self, module: Module, index: int) -> QToolButton:
         icon = self._resolve_icon(module.icon_names, FALLBACK_ICONS[index % len(FALLBACK_ICONS)])
 
         button = QToolButton()
@@ -148,7 +133,7 @@ class MainWindow(QMainWindow):
 
         return self.style().standardIcon(fallback)
 
-    def open_module_window(self, module: SettingsModule, icon: QIcon) -> None:
+    def open_module_window(self, module: Module, icon: QIcon) -> None:
         window = ModuleWindow(module, icon)
         window.show()
         window.activateWindow()

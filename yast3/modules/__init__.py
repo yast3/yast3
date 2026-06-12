@@ -1,16 +1,7 @@
 """Module packages for YaST3 settings sections."""
 
+from .packages import PackagesModule
+
 __all__ = [
-	"system",
-	"display",
-	"network",
-	"bluetooth",
-	"sound",
-	"power",
-	"users",
-	"date_time",
-	"keyboard",
-	"mouse",
-	"storage",
-	"security",
+	'PackagesModule',
 ]
