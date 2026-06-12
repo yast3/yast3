@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=78.1.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yast3"
+version = "0.1.0"
+description = "YaST3 desktop settings shell built with Python 3 and Qt6 Widgets."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+dependencies = [
+    "PySide6==6.11.1",
+]
+classifiers = [
+    "Environment :: X11 Applications :: Qt",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.gui-scripts]
+yast3 = "yast3.app:main"
+
+[tool.setuptools]
+packages = ["yast3"]
+include-package-data = true
+
+[tool.setuptools.data-files]
+"share/applications" = ["packaging/yast3.desktop"]
