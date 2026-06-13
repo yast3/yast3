@@ -1,16 +1,40 @@
+"""Internationalization support using gettext."""
+
 import gettext
 import os
 
 APP_NAME = "yast3"
-LOCALE_DIR = os.path.join(os.path.dirname(__file__), "..", "locale")
+
+# Locale search paths in priority order
+LOCALE_DIRS = [
+    # Development path (relative to package)
+    os.path.join(os.path.dirname(__file__), "..", "locale"),
+    # User local installation
+    os.path.expanduser("~/.local/share/locale"),
+    # System installation paths
+    "/usr/local/share/locale",
+    "/usr/share/locale",
+]
+
+
+def _find_locale_dir() -> str | None:
+    """Find the first locale directory that exists."""
+    for localedir in LOCALE_DIRS:
+        if os.path.isdir(localedir):
+            return localedir
+    return None
+
 
 def init_i18n() -> None:
-    try:
-        translation = gettext.translation(
-            APP_NAME,
-            localedir=LOCALE_DIR,
-        )
-    except FileNotFoundError:
-        translation = gettext.NullTranslations()
+    """Initialize gettext translations."""
+    localedir = _find_locale_dir()
 
-    translation.install()
+    if localedir is None:
+        gettext.NullTranslations().install()
+        return
+
+    try:
+        translation = gettext.translation(APP_NAME, localedir=localedir)
+        translation.install()
+    except FileNotFoundError:
+        gettext.NullTranslations().install()

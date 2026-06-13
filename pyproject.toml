@@ -33,6 +33,5 @@ include-package-data = true
 
 [tool.setuptools.data-files]
 "share/applications" = ["packaging/yast3.desktop"]
-
-[tool.setuptools.package-data]
-yast3 = ["locale/**/*.mo"]
+"share/locale/zh_CN/LC_MESSAGES" = ["locale/zh_CN/LC_MESSAGES/yast3.mo"]
+"share/locale/en_US/LC_MESSAGES" = ["locale/en_US/LC_MESSAGES/yast3.mo"]
