@@ -13,6 +13,7 @@ license-files = ["LICENSE"]
 dependencies = [
     "PySide6==6.11.1",
 ]
+
 [project.optional-dependencies]
 i18n = [
     "Babel>=2.13.0",
