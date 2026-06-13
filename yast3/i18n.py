@@ -33,6 +33,7 @@ def init_i18n(language: str | None = None) -> None:
         translation = gettext.NullTranslations()
 
     _translations[language] = translation
+    translation.install()
 
 
 def gettext_func(domain: str = APP_NAME) -> gettext.GNUTranslations | gettext.NullTranslations:
