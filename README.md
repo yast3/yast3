@@ -16,7 +16,7 @@ Selecting a module opens a separate placeholder window for future implementation
 ## Run
 
 ```bash
-sudo zypper install python3-pyside6
+sudo zypper install python3-pyside6 python3-Babel
 python3 -m yast3
 ```
 

@@ -27,6 +27,7 @@ PYTHON_DIRS = yast3
 PYTHON_DIRS += tests
 
 .PHONY: install install-desktop-files install-system dist clean
+.PHONY: i18n-update i18n-compile
 
 install:: all install-desktop-files
 	$(PIP) install $(install_args) .
@@ -48,5 +49,10 @@ dist:: clean
 
 clean::
 	$(FIND) $(PYTHON_DIRS) -name '*.py[cod]' -print0 | $(XARGS) -0 $(RM)
-	$(FIND) $(PYTHON_DIRS) -name __pycache__ -print0 | $(XARGS) -0 $(RM_R)
-	$(RM_R) build dist *.egg-info
+
+i18n-update::
+	pybabel extract -o locale/yast3.pot yast3/
+	pybabel update -d locale -D yast3
+
+i18n-compile::
+	pybabel compile -d locale -D yast3

@@ -58,7 +58,7 @@ class ModuleWindow(QMainWindow):
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         title.setStyleSheet("font-size: 24px; font-weight: 600;")
 
-        description = QLabel("This settings page is not implemented yet.", content)
+        description = QLabel(_("This settings page is not implemented yet."), content)
         description.setAlignment(Qt.AlignmentFlag.AlignCenter)
         description.setWordWrap(True)
         description.setStyleSheet("color: palette(mid); font-size: 14px;")
@@ -77,7 +77,7 @@ class MainWindow(QMainWindow):
         self.modules = tuple(modules)
         self.open_windows: WeakSet[ModuleWindow] = WeakSet()
 
-        self.setWindowTitle("YaST3")
+        self.setWindowTitle("YaST3") # DO NOT TRANSLATE
         self.resize(960, 640)
 
         scroll_area = QScrollArea(self)
