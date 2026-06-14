@@ -32,7 +32,7 @@ class KeyPair:
         self.public_path = os.path.join(SSH_CONFIG_DIR, name + '.pub')
         self.has_private = os.path.exists(self.private_path)
         self.has_public = os.path.exists(self.public_path)
-        self.key_type = self._detect_type()
+        self.algorithm = self._detect_type()
         self.size = self._get_size()
         self.permissions = self._get_permissions()
         self.comment = self._get_comment()
@@ -42,13 +42,13 @@ class KeyPair:
         """Detect key type from public or private key file."""
         # Try public key first
         if self.has_public:
-            return self._detect_key_type(self.public_path)
+            return self._detect_algorithm(self.public_path)
         # Fall back to private key
         if self.has_private:
-            return self._detect_key_type(self.private_path)
+            return self._detect_algorithm(self.private_path)
         return 'Unknown'
 
-    def _detect_key_type(self, filepath: str) -> str:
+    def _detect_algorithm(self, filepath: str) -> str:
         """Detect SSH key type from file content."""
         try:
             with open(filepath, 'r') as f:
@@ -182,21 +182,25 @@ class KeysTab(QWidget):
 
         # Keys table
         self.table = QTableWidget()
-        self.table.setColumnCount(5)
+        self.table.setColumnCount(7)
         self.table.setHorizontalHeaderLabels([
-            _("Name"), _("Type"), _("Size"), _("Comment"), _("Passphrase")
+            _("Name"), _("Algorithm"), _("Size"), _("Comment"), _("Passphrase"), _("Public"), _("Private")
         ])
         
         # Column widths
         self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(0, 180)
+        self.table.setColumnWidth(0, 160)
         self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(1, 100)
+        self.table.setColumnWidth(1, 90)
         self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(2, 100)
+        self.table.setColumnWidth(2, 90)
         self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
         self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(4, 100)
+        self.table.setColumnWidth(4, 80)
+        self.table.horizontalHeader().setSectionResizeMode(5, QHeaderView.ResizeMode.Fixed)
+        self.table.setColumnWidth(5, 70)
+        self.table.horizontalHeader().setSectionResizeMode(6, QHeaderView.ResizeMode.Fixed)
+        self.table.setColumnWidth(6, 70)
         
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
@@ -258,10 +262,12 @@ class KeysTab(QWidget):
         self.table.setRowCount(len(self.key_pairs))
         for row, key_pair in enumerate(self.key_pairs):
             self.table.setItem(row, 0, QTableWidgetItem(key_pair.name))
-            self.table.setItem(row, 1, QTableWidgetItem(key_pair.key_type))
+            self.table.setItem(row, 1, QTableWidgetItem(key_pair.algorithm))
             self.table.setItem(row, 2, QTableWidgetItem(key_pair.size))
             self.table.setItem(row, 3, QTableWidgetItem(key_pair.comment or "-"))
             self.table.setItem(row, 4, QTableWidgetItem(_("Yes") if key_pair.has_passphrase else _("No")))
+            self.table.setItem(row, 5, QTableWidgetItem(_("Yes") if key_pair.has_public else _("No")))
+            self.table.setItem(row, 6, QTableWidgetItem(_("Yes") if key_pair.has_private else _("No")))
 
     def _on_selection_changed(self) -> None:
         """Handle table selection change."""
