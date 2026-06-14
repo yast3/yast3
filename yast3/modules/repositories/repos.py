@@ -27,6 +27,7 @@ class RepoEntry:
     gpgkey: str = ""
     priority: int = 99
     keep_packages: bool = False
+    path: str = ""
     other_options: dict = field(default_factory=dict)
 
     @property
@@ -73,6 +74,8 @@ def parse_repo_file(filepath: str) -> list[RepoEntry]:
                         pass
                 elif key_lower == 'keep_packages':
                     entry.keep_packages = value.lower() in ('1', 'true', 'yes', 'on')
+                elif key_lower == 'path':
+                    entry.path = value
                 else:
                     entry.other_options[key] = value
             
@@ -137,6 +140,8 @@ def save_repo_entry(entry: RepoEntry, use_pkexec: bool = True) -> Literal["ok", 
         config[entry.id]['gpgkey'] = entry.gpgkey
     config[entry.id]['priority'] = str(entry.priority)
     config[entry.id]['keep_packages'] = '1' if entry.keep_packages else '0'
+    if entry.path:
+        config[entry.id]['path'] = entry.path
     
     # Add other options
     for key, value in entry.other_options.items():

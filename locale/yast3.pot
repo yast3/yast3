@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-06-14 09:36+0000\n"
+"POT-Creation-Date: 2026-06-14 09:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,11 +90,11 @@ msgstr ""
 #: yast3/modules/hosts/window.py:234 yast3/modules/repositories/window.py:86
 #: yast3/modules/repositories/window.py:134
 #: yast3/modules/repositories/window.py:137
-#: yast3/modules/repositories/window.py:178
-#: yast3/modules/repositories/window.py:181
-#: yast3/modules/repositories/window.py:239
+#: yast3/modules/repositories/window.py:179
+#: yast3/modules/repositories/window.py:182
 #: yast3/modules/repositories/window.py:241
 #: yast3/modules/repositories/window.py:243
+#: yast3/modules/repositories/window.py:245
 msgid "Error"
 msgstr ""
 
@@ -113,8 +113,8 @@ msgid "IP address and hostname are required."
 msgstr ""
 
 #: yast3/modules/hosts/window.py:164 yast3/modules/hosts/window.py:191
-#: yast3/modules/repositories/window.py:167
-#: yast3/modules/repositories/window.py:207
+#: yast3/modules/repositories/window.py:168
+#: yast3/modules/repositories/window.py:209
 msgid "Information"
 msgstr ""
 
@@ -126,7 +126,7 @@ msgstr ""
 msgid "Please select a host entry to delete."
 msgstr ""
 
-#: yast3/modules/hosts/window.py:194 yast3/modules/repositories/window.py:211
+#: yast3/modules/hosts/window.py:194 yast3/modules/repositories/window.py:213
 msgid "Confirm"
 msgstr ""
 
@@ -151,7 +151,7 @@ msgstr ""
 msgid "Cannot write to {0}. Root permission required."
 msgstr ""
 
-#: yast3/modules/hosts/window.py:232 yast3/modules/repositories/window.py:241
+#: yast3/modules/hosts/window.py:232 yast3/modules/repositories/window.py:243
 msgid "Authentication failed or pkexec not available."
 msgstr ""
 
@@ -196,7 +196,7 @@ msgid "Auto Refresh"
 msgstr ""
 
 #: yast3/modules/repositories/dialogs.py:47
-msgid "URL Type:"
+msgid "URL Type"
 msgstr ""
 
 #: yast3/modules/repositories/dialogs.py:49
@@ -213,23 +213,27 @@ msgid "URL"
 msgstr ""
 
 #: yast3/modules/repositories/dialogs.py:62
-msgid "Type:"
+msgid "Path"
 msgstr ""
 
-#: yast3/modules/repositories/dialogs.py:70
+#: yast3/modules/repositories/dialogs.py:69
+msgid "Type"
+msgstr ""
+
+#: yast3/modules/repositories/dialogs.py:77
 msgid "Check GPG signature"
 msgstr ""
 
-#: yast3/modules/repositories/dialogs.py:76
-msgid "GPG Key URL:"
+#: yast3/modules/repositories/dialogs.py:83
+msgid "GPG Key URL"
 msgstr ""
 
-#: yast3/modules/repositories/dialogs.py:83
+#: yast3/modules/repositories/dialogs.py:90
 #: yast3/modules/repositories/window.py:57
 msgid "Priority"
 msgstr ""
 
-#: yast3/modules/repositories/dialogs.py:91
+#: yast3/modules/repositories/dialogs.py:98
 msgid "Keep packages"
 msgstr ""
 
@@ -238,33 +242,33 @@ msgid "Cannot read repository directory. Root permission required."
 msgstr ""
 
 #: yast3/modules/repositories/window.py:134
-#: yast3/modules/repositories/window.py:178
+#: yast3/modules/repositories/window.py:179
 msgid "Repository ID is required."
 msgstr ""
 
 #: yast3/modules/repositories/window.py:137
-#: yast3/modules/repositories/window.py:181
+#: yast3/modules/repositories/window.py:182
 msgid "URL is required."
 msgstr ""
 
-#: yast3/modules/repositories/window.py:167
+#: yast3/modules/repositories/window.py:168
 msgid "Please select a repository to edit."
 msgstr ""
 
-#: yast3/modules/repositories/window.py:207
+#: yast3/modules/repositories/window.py:209
 msgid "Please select a repository to delete."
 msgstr ""
 
-#: yast3/modules/repositories/window.py:211
+#: yast3/modules/repositories/window.py:213
 #, python-brace-format
 msgid "Are you sure you want to delete repository '{}'?"
 msgstr ""
 
-#: yast3/modules/repositories/window.py:239
+#: yast3/modules/repositories/window.py:241
 msgid "Cannot write to repository directory. Root permission required."
 msgstr ""
 
-#: yast3/modules/repositories/window.py:243
+#: yast3/modules/repositories/window.py:245
 msgid "Failed to save repository configuration."
 msgstr ""
 

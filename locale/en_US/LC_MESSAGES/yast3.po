@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  yast3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-14 09:36+0000\n"
+"POT-Creation-Date: 2026-06-14 09:51+0000\n"
 "PO-Revision-Date: 2024-01-01 00:00+0000\n"
 "Last-Translator: \n"
 "Language: en_US\n"
@@ -90,11 +90,11 @@ msgstr "Comment"
 #: yast3/modules/hosts/window.py:234 yast3/modules/repositories/window.py:86
 #: yast3/modules/repositories/window.py:134
 #: yast3/modules/repositories/window.py:137
-#: yast3/modules/repositories/window.py:178
-#: yast3/modules/repositories/window.py:181
-#: yast3/modules/repositories/window.py:239
+#: yast3/modules/repositories/window.py:179
+#: yast3/modules/repositories/window.py:182
 #: yast3/modules/repositories/window.py:241
 #: yast3/modules/repositories/window.py:243
+#: yast3/modules/repositories/window.py:245
 msgid "Error"
 msgstr "Error"
 
@@ -113,8 +113,8 @@ msgid "IP address and hostname are required."
 msgstr "IP address and hostname are required."
 
 #: yast3/modules/hosts/window.py:164 yast3/modules/hosts/window.py:191
-#: yast3/modules/repositories/window.py:167
-#: yast3/modules/repositories/window.py:207
+#: yast3/modules/repositories/window.py:168
+#: yast3/modules/repositories/window.py:209
 msgid "Information"
 msgstr "Information"
 
@@ -126,7 +126,7 @@ msgstr "Please select a host entry to edit."
 msgid "Please select a host entry to delete."
 msgstr "Please select a host entry to delete."
 
-#: yast3/modules/hosts/window.py:194 yast3/modules/repositories/window.py:211
+#: yast3/modules/hosts/window.py:194 yast3/modules/repositories/window.py:213
 msgid "Confirm"
 msgstr "Confirm"
 
@@ -151,7 +151,7 @@ msgstr "Saved successfully"
 msgid "Cannot write to {0}. Root permission required."
 msgstr "Cannot write to {0}. Root permission required."
 
-#: yast3/modules/hosts/window.py:232 yast3/modules/repositories/window.py:241
+#: yast3/modules/hosts/window.py:232 yast3/modules/repositories/window.py:243
 msgid "Authentication failed or pkexec not available."
 msgstr "Authentication failed or pkexec not available."
 
@@ -197,7 +197,7 @@ msgid "Auto Refresh"
 msgstr ""
 
 #: yast3/modules/repositories/dialogs.py:47
-msgid "URL Type:"
+msgid "URL Type"
 msgstr ""
 
 #: yast3/modules/repositories/dialogs.py:49
@@ -214,23 +214,27 @@ msgid "URL"
 msgstr ""
 
 #: yast3/modules/repositories/dialogs.py:62
-msgid "Type:"
+msgid "Path"
 msgstr ""
 
-#: yast3/modules/repositories/dialogs.py:70
+#: yast3/modules/repositories/dialogs.py:69
+msgid "Type"
+msgstr ""
+
+#: yast3/modules/repositories/dialogs.py:77
 msgid "Check GPG signature"
 msgstr ""
 
-#: yast3/modules/repositories/dialogs.py:76
-msgid "GPG Key URL:"
+#: yast3/modules/repositories/dialogs.py:83
+msgid "GPG Key URL"
 msgstr ""
 
-#: yast3/modules/repositories/dialogs.py:83
+#: yast3/modules/repositories/dialogs.py:90
 #: yast3/modules/repositories/window.py:57
 msgid "Priority"
 msgstr ""
 
-#: yast3/modules/repositories/dialogs.py:91
+#: yast3/modules/repositories/dialogs.py:98
 #, fuzzy
 msgid "Keep packages"
 msgstr "Packages"
@@ -241,37 +245,37 @@ msgid "Cannot read repository directory. Root permission required."
 msgstr "Cannot read {0}. Root permission required."
 
 #: yast3/modules/repositories/window.py:134
-#: yast3/modules/repositories/window.py:178
+#: yast3/modules/repositories/window.py:179
 #, fuzzy
 msgid "Repository ID is required."
 msgstr "IP address and hostname are required."
 
 #: yast3/modules/repositories/window.py:137
-#: yast3/modules/repositories/window.py:181
+#: yast3/modules/repositories/window.py:182
 msgid "URL is required."
 msgstr ""
 
-#: yast3/modules/repositories/window.py:167
+#: yast3/modules/repositories/window.py:168
 #, fuzzy
 msgid "Please select a repository to edit."
 msgstr "Please select a host entry to edit."
 
-#: yast3/modules/repositories/window.py:207
+#: yast3/modules/repositories/window.py:209
 #, fuzzy
 msgid "Please select a repository to delete."
 msgstr "Please select a host entry to delete."
 
-#: yast3/modules/repositories/window.py:211
+#: yast3/modules/repositories/window.py:213
 #, fuzzy, python-brace-format
 msgid "Are you sure you want to delete repository '{}'?"
 msgstr "Are you sure you want to delete this entry?"
 
-#: yast3/modules/repositories/window.py:239
+#: yast3/modules/repositories/window.py:241
 #, fuzzy
 msgid "Cannot write to repository directory. Root permission required."
 msgstr "Cannot write to {0}. Root permission required."
 
-#: yast3/modules/repositories/window.py:243
+#: yast3/modules/repositories/window.py:245
 #, fuzzy
 msgid "Failed to save repository configuration."
 msgstr "Failed to save hosts file."
@@ -314,4 +318,13 @@ msgstr "Failed to save hosts file."
 
 #~ msgid "Keep Packages"
 #~ msgstr "Packages"
+
+#~ msgid "URL Type:"
+#~ msgstr ""
+
+#~ msgid "Type:"
+#~ msgstr ""
+
+#~ msgid "GPG Key URL:"
+#~ msgstr ""
 

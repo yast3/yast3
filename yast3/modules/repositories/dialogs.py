@@ -44,7 +44,7 @@ class RepoEditDialog(QDialog):
 
         # URL Type
         url_type_layout = QHBoxLayout()
-        url_type_layout.addWidget(QLabel(_("URL Type:")))
+        url_type_layout.addWidget(QLabel(_("URL Type")))
         self.url_type_combo = QComboBox()
         self.url_type_combo.addItems([_("Base URL"), _("Mirror List")])
         url_type_layout.addWidget(self.url_type_combo)
@@ -57,9 +57,16 @@ class RepoEditDialog(QDialog):
         url_layout.addWidget(self.url_edit)
         layout.addLayout(url_layout)
 
+        # Path
+        path_layout = QHBoxLayout()
+        path_layout.addWidget(QLabel(_("Path")))
+        self.path_edit = QLineEdit(entry.path if entry else "")
+        path_layout.addWidget(self.path_edit)
+        layout.addLayout(path_layout)
+
         # Type
         type_layout = QHBoxLayout()
-        type_layout.addWidget(QLabel(_("Type:")))
+        type_layout.addWidget(QLabel(_("Type")))
         self.type_combo = QComboBox()
         self.type_combo.addItems(["rpm-md", "rpm-dir", "plaindir", "yum", "yast2", "obsolete"])
         self.type_combo.setCurrentText(entry.type if entry else "rpm-md")
@@ -73,7 +80,7 @@ class RepoEditDialog(QDialog):
 
         # GPG Key URL
         gpgkey_layout = QHBoxLayout()
-        gpgkey_layout.addWidget(QLabel(_("GPG Key URL:")))
+        gpgkey_layout.addWidget(QLabel(_("GPG Key URL")))
         self.gpgkey_edit = QLineEdit(entry.gpgkey if entry else "")
         gpgkey_layout.addWidget(self.gpgkey_edit)
         layout.addLayout(gpgkey_layout)
@@ -107,6 +114,7 @@ class RepoEditDialog(QDialog):
             "autorefresh": self.autorefresh_check.isChecked(),
             "baseurl": self.url_edit.text().strip() if url_type == 0 else "",
             "mirrorlist": self.url_edit.text().strip() if url_type == 1 else "",
+            "path": self.path_edit.text().strip(),
             "type": self.type_combo.currentText(),
             "gpgcheck": self.gpgcheck_check.isChecked(),
             "gpgkey": self.gpgkey_edit.text().strip(),
