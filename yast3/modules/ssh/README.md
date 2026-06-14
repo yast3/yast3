@@ -2,6 +2,12 @@
 
 - Auto-detect and fix SSH key permission security issues
 
+## SSH Hosts Management
+
+- Add SSH hosts to the agent
+- Remove SSH hosts from the agent
+- List SSH hosts in the agent
+
 ## SSH Keys Management
 
 - Generate SSH keys
