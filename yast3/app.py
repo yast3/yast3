@@ -27,20 +27,6 @@ MODULES: tuple[Module, ...] = (
     PackagesModule(),
 )
 
-FALLBACK_ICONS: tuple[QStyle.StandardPixmap, ...] = (
-    QStyle.SP_ComputerIcon,
-    QStyle.SP_DesktopIcon,
-    QStyle.SP_DriveNetIcon,
-    QStyle.SP_BrowserReload,
-    QStyle.SP_MediaVolume,
-    QStyle.SP_DialogResetButton,
-    QStyle.SP_DirHomeIcon,
-    QStyle.SP_FileDialogDetailedView,
-    QStyle.SP_ArrowUp,
-    QStyle.SP_ArrowForward,
-    QStyle.SP_DriveHDIcon,
-    QStyle.SP_MessageBoxWarning,
-)
 
 
 class ModuleWindow(QMainWindow):
@@ -100,11 +86,12 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(scroll_area)
 
     def _build_module_button(self, module: Module, index: int) -> QToolButton:
-        icon = self._resolve_icon(module.icon_names, FALLBACK_ICONS[index % len(FALLBACK_ICONS)])
+        icon = self._resolve_icon(module.icon_names)
 
         button = QToolButton()
         button.setText(module.name)
-        button.setIcon(icon)
+        if icon is not None:
+            button.setIcon(icon)
         button.setIconSize(QSize(48, 48))
         button.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextUnderIcon)
         button.setMinimumSize(180, 130)
@@ -126,14 +113,11 @@ class MainWindow(QMainWindow):
         button.clicked.connect(module.launch)
         return button
 
-    def _resolve_icon(self, icon_names: tuple[str, ...], fallback: QStyle.StandardPixmap) -> QIcon:
+    def _resolve_icon(self, icon_names: tuple[str, ...]) -> QIcon | None:
         for name in icon_names:
             icon = QIcon.fromTheme(name)
             if not icon.isNull():
                 return icon
-
-        return self.style().standardIcon(fallback)
-
 
 def main() -> int:
     app = QApplication.instance() or QApplication([])
