@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from PySide6.QtWidgets import QPushButton, QMainWindow, QVBoxLayout, QWidget
 
+from yast3.i18n import _
+
 
 class PackagesWindow(QMainWindow):
     def __init__(self):

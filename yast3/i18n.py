@@ -16,6 +16,9 @@ LOCALE_DIRS = [
     "/usr/share/locale",
 ]
 
+# Global translation function
+_ = gettext.gettext
+
 
 def _find_locale_dir() -> str | None:
     """Find the first locale directory that exists."""
@@ -27,14 +30,17 @@ def _find_locale_dir() -> str | None:
 
 def init_i18n() -> None:
     """Initialize gettext translations."""
+    global _
     localedir = _find_locale_dir()
 
     if localedir is None:
-        gettext.NullTranslations().install()
+        translation = gettext.NullTranslations()
+        _ = translation.gettext
         return
 
     try:
         translation = gettext.translation(APP_NAME, localedir=localedir)
-        translation.install()
+        _ = translation.gettext
     except FileNotFoundError:
-        gettext.NullTranslations().install()
+        translation = gettext.NullTranslations()
+        _ = translation.gettext

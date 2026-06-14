@@ -7,6 +7,8 @@ from PySide6.QtWidgets import (
     QWidget
 )
 
+from yast3.i18n import _
+
 
 class HostsEditDialog(QDialog):
     """Dialog for adding or editing a host entry."""

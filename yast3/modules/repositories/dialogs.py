@@ -5,6 +5,7 @@ from PySide6.QtWidgets import (
     QWidget, QCheckBox, QComboBox, QSpinBox
 )
 
+from yast3.i18n import _
 from .repos import RepoEntry
 
 

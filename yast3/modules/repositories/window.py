@@ -16,6 +16,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from yast3.i18n import _
 from yast3.modules.repositories.dialogs import RepoEditDialog
 from yast3.modules.repositories.repos import RepoEntry, load_repos, save_repo_entry, delete_repo_entry
 

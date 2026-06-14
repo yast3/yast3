@@ -16,6 +16,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from yast3.i18n import _
 from yast3.modules.hosts.dialogs import HostsEditDialog
 from yast3.modules.hosts.hosts import HostEntry, load_hosts, save_hosts
 
