@@ -29,12 +29,8 @@ PYTHON_DIRS += tests
 .PHONY: install install-desktop-files install-system dist clean
 .PHONY: i18n-update i18n-compile
 
-install:: all install-desktop-files
+install:: all
 	$(PIP) install $(install_args) .
-
-install-desktop-files::
-	$(MKDIR_P) "$(DESTDIR)$(appdir)"
-	$(INSTALL) -m 644 packaging/yast3.desktop "$(DESTDIR)$(appdir)"
 
 install-system::
 	@if [ "$$(id -u)" -ne 0 ]; then \

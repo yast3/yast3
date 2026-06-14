@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>Red Panda</title>
+  <desc>A cute red panda icon following KDE HID design guidelines</desc>
+
+  <!-- Face base - reddish orange -->
+  <ellipse cx="32" cy="34" rx="20" ry="18" fill="#E85D04"/>
+
+  <!-- Ears -->
+  <ellipse cx="16" cy="18" rx="7" ry="8" fill="#E85D04"/>
+  <ellipse cx="48" cy="18" rx="7" ry="8" fill="#E85D04"/>
+  <ellipse cx="16" cy="18" rx="4" ry="5" fill="#370617"/>
+  <ellipse cx="48" cy="18" rx="4" ry="5" fill="#370617"/>
+
+  <!-- Face markings - white/cream -->
+  <ellipse cx="32" cy="38" rx="14" ry="12" fill="#FFFCF2"/>
+
+  <!-- Eye patches - dark brown -->
+  <ellipse cx="24" cy="30" rx="5" ry="4" fill="#370617"/>
+  <ellipse cx="40" cy="30" rx="5" ry="4" fill="#370617"/>
+
+  <!-- Eyes - white -->
+  <ellipse cx="24" cy="30" rx="3" ry="3" fill="#FFFCF2"/>
+  <ellipse cx="40" cy="30" rx="3" ry="3" fill="#FFFCF2"/>
+
+  <!-- Pupils -->
+  <circle cx="25" cy="30" r="1.5" fill="#1A1A1A"/>
+  <circle cx="41" cy="30" r="1.5" fill="#1A1A1A"/>
+
+  <!-- Eye highlights -->
+  <circle cx="25.5" cy="29" r="0.6" fill="#FFFFFF"/>
+  <circle cx="41.5" cy="29" r="0.6" fill="#FFFFFF"/>
+
+  <!-- Nose -->
+  <ellipse cx="32" cy="36" rx="2.5" ry="1.8" fill="#370617"/>
+
+  <!-- Mouth - cute smile -->
+  <path d="M29 40 Q32 43 35 40" stroke="#370617" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+  <!-- Cheek patches - faint red -->
+  <ellipse cx="18" cy="36" rx="4" ry="2.5" fill="#DC2F02" opacity="0.4"/>
+  <ellipse cx="46" cy="36" rx="4" ry="2.5" fill="#DC2F02" opacity="0.4"/>
+
+  <!-- Tail - visible at bottom -->
+  <ellipse cx="32" cy="56" rx="12" ry="6" fill="#E85D04"/>
+  <ellipse cx="26" cy="56" rx="4" ry="4" fill="#370617"/>
+  <ellipse cx="38" cy="56" rx="4" ry="4" fill="#370617"/>
+</svg>

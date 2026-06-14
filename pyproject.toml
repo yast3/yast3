@@ -34,5 +34,6 @@ include-package-data = true
 
 [tool.setuptools.data-files]
 "share/applications" = ["packaging/yast3.desktop"]
+"share/icons/hicolor/64x64/apps" = ["packaging/icons/yast3.svg"]
 "share/locale/zh_CN/LC_MESSAGES" = ["locale/zh_CN/LC_MESSAGES/yast3.mo"]
 "share/locale/en_US/LC_MESSAGES" = ["locale/en_US/LC_MESSAGES/yast3.mo"]
