@@ -2,75 +2,30 @@
 
 from __future__ import annotations
 
-from PySide6.QtCore import Qt, QRegularExpression
-from PySide6.QtGui import QRegularExpressionValidator
+from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import (
     QCheckBox,
-    QDialog,
-    QDialogButtonBox,
-    QHBoxLayout,
     QHeaderView,
-    QLabel,
-    QLineEdit,
     QMainWindow,
     QMessageBox,
     QPushButton,
     QTableWidget,
     QTableWidgetItem,
+    QHBoxLayout,
     QVBoxLayout,
     QWidget,
 )
 
+from yast3.modules.hosts.dialogs import HostsEditDialog
 from yast3.modules.hosts.hosts import HostEntry, load_hosts, save_hosts
 
 
 HOSTS_FILE = "/etc/hosts"
 
 
-class AddEditHostDialog(QDialog):
-    """Dialog for adding or editing a host entry."""
-
-    def __init__(self, parent: QWidget | None = None, ip: str = "", hostname: str = "", comment: str = ""):
-        super().__init__(parent)
-        self.setWindowTitle(_("Add/Edit Host Entry"))
-        self.setMinimumWidth(400)
-
-        layout = QVBoxLayout(self)
-
-        # IP address
-        ip_layout = QHBoxLayout()
-        ip_layout.addWidget(QLabel(_("IP Address:")))
-        self.ip_edit = QLineEdit(ip)
-        ip_validator = QRegularExpressionValidator(QRegularExpression(r"^[\w.:]+$"))
-        self.ip_edit.setValidator(ip_validator)
-        ip_layout.addWidget(self.ip_edit)
-        layout.addLayout(ip_layout)
-
-        # Hostname
-        hostname_layout = QHBoxLayout()
-        hostname_layout.addWidget(QLabel(_("Hostname:")))
-        self.hostname_edit = QLineEdit(hostname)
-        hostname_layout.addWidget(self.hostname_edit)
-        layout.addLayout(hostname_layout)
-
-        # Comment
-        comment_layout = QHBoxLayout()
-        comment_layout.addWidget(QLabel(_("Comment:")))
-        self.comment_edit = QLineEdit(comment)
-        comment_layout.addWidget(self.comment_edit)
-        layout.addLayout(comment_layout)
-
-        # Buttons
-        self.buttons = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
-        self.buttons.accepted.connect(self.accept)
-        self.buttons.rejected.connect(self.reject)
-        layout.addWidget(self.buttons)
-
-    def get_values(self) -> tuple[str, str, str]:
-        return self.ip_edit.text().strip(), self.hostname_edit.text().strip(), self.comment_edit.text().strip()
-
-
 class HostsWindow(QMainWindow):
+    closed = Signal()  # Signal emitted when window is closed
+
     def __init__(self):
         super().__init__()
         self.resize(800, 600)
@@ -85,7 +40,6 @@ class HostsWindow(QMainWindow):
         # Button bar
         button_layout = QHBoxLayout()
         self.add_btn = QPushButton(_("Add"))
-        self.add_btn.clicked.connect(self.add_host)
         button_layout.addWidget(self.add_btn)
 
         self.edit_btn = QPushButton(_("Edit"))
@@ -142,6 +96,11 @@ class HostsWindow(QMainWindow):
 
         self.populate_table()
 
+    def closeEvent(self, event) -> None:
+        """Handle window close event to destroy the window."""
+        self.closed.emit()
+        self.deleteLater()
+
     def populate_table(self) -> None:
         """Populate the table with host entries."""
         self.table.setRowCount(len(self.hosts_entries))
@@ -177,7 +136,7 @@ class HostsWindow(QMainWindow):
 
     def add_host(self) -> None:
         """Add a new host entry."""
-        dialog = AddEditHostDialog(self)
+        dialog = HostsEditDialog(self)
         if dialog.exec():
             ip, hostname_str, comment = dialog.get_values()
             hostnames = hostname_str.split() if hostname_str else []
@@ -206,7 +165,7 @@ class HostsWindow(QMainWindow):
             return
 
         entry = self.hosts_entries[current_row]
-        dialog = AddEditHostDialog(self, entry.ip, " ".join(entry.hostnames), entry.comment)
+        dialog = HostsEditDialog(self, entry.ip, " ".join(entry.hostnames), entry.comment)
         if dialog.exec():
             new_ip, new_hostname_str, new_comment = dialog.get_values()
             new_hostnames = new_hostname_str.split() if new_hostname_str else []
