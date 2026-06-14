@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  yast3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-14 14:36+0000\n"
+"POT-Creation-Date: 2026-06-14 15:11+0000\n"
 "PO-Revision-Date: 2026-06-14 05:40+0000\n"
 "Last-Translator: \n"
 "Language: zh_CN\n"
@@ -42,7 +42,7 @@ msgstr "IP地址："
 msgid "Hostname:"
 msgstr "主机名："
 
-#: yast3/modules/hosts/dialogs.py:41
+#: yast3/modules/hosts/dialogs.py:41 yast3/modules/ssh/generate_dialog.py:112
 msgid "Comment:"
 msgstr "注释："
 
@@ -58,6 +58,7 @@ msgstr "文件"
 
 #: yast3/modules/hosts/window.py:43 yast3/modules/repositories/window.py:38
 #: yast3/modules/ssh/dialogs.py:51 yast3/modules/ssh/hosts_tab.py:37
+#: yast3/modules/ssh/keys_tab.py:133
 msgid "Add"
 msgstr "添加"
 
@@ -67,7 +68,7 @@ msgid "Edit"
 msgstr "编辑"
 
 #: yast3/modules/hosts/window.py:50 yast3/modules/repositories/window.py:46
-#: yast3/modules/ssh/hosts_tab.py:45
+#: yast3/modules/ssh/hosts_tab.py:45 yast3/modules/ssh/keys_tab.py:142
 msgid "Delete"
 msgstr "删除"
 
@@ -99,11 +100,15 @@ msgstr "注释"
 #: yast3/modules/repositories/window.py:244
 #: yast3/modules/repositories/window.py:246 yast3/modules/ssh/__init__.py:70
 #: yast3/modules/ssh/dialogs.py:77 yast3/modules/ssh/dialogs.py:83
-#: yast3/modules/ssh/hosts_tab.py:87 yast3/modules/ssh/hosts_tab.py:90
-#: yast3/modules/ssh/hosts_tab.py:145 yast3/modules/ssh/hosts_tab.py:167
-#: yast3/modules/ssh/hosts_tab.py:178 yast3/modules/ssh/hosts_tab.py:222
-#: yast3/modules/ssh/hosts_tab.py:224 yast3/modules/ssh/keys_tab.py:167
-#: yast3/modules/ssh/keys_tab.py:170 yast3/modules/ssh/keys_tab.py:246
+#: yast3/modules/ssh/generate_dialog.py:168
+#: yast3/modules/ssh/generate_dialog.py:184
+#: yast3/modules/ssh/generate_dialog.py:220
+#: yast3/modules/ssh/generate_dialog.py:223 yast3/modules/ssh/hosts_tab.py:87
+#: yast3/modules/ssh/hosts_tab.py:90 yast3/modules/ssh/hosts_tab.py:145
+#: yast3/modules/ssh/hosts_tab.py:167 yast3/modules/ssh/hosts_tab.py:178
+#: yast3/modules/ssh/hosts_tab.py:222 yast3/modules/ssh/hosts_tab.py:224
+#: yast3/modules/ssh/keys_tab.py:190 yast3/modules/ssh/keys_tab.py:193
+#: yast3/modules/ssh/keys_tab.py:271 yast3/modules/ssh/keys_tab.py:322
 msgid "Error"
 msgstr "错误"
 
@@ -137,7 +142,7 @@ msgid "Please select a host entry to delete."
 msgstr "请选择要删除的主机条目。"
 
 #: yast3/modules/hosts/window.py:195 yast3/modules/repositories/window.py:214
-#: yast3/modules/ssh/hosts_tab.py:181
+#: yast3/modules/ssh/generate_dialog.py:174 yast3/modules/ssh/hosts_tab.py:181
 msgid "Confirm"
 msgstr "确认"
 
@@ -146,7 +151,8 @@ msgid "Are you sure you want to delete this entry?"
 msgstr "确定要删除此条目吗？"
 
 #: yast3/modules/hosts/window.py:228 yast3/modules/ssh/__init__.py:79
-#: yast3/modules/ssh/hosts_tab.py:220 yast3/modules/ssh/keys_tab.py:244
+#: yast3/modules/ssh/generate_dialog.py:217 yast3/modules/ssh/hosts_tab.py:220
+#: yast3/modules/ssh/keys_tab.py:269 yast3/modules/ssh/keys_tab.py:326
 msgid "Success"
 msgstr "成功"
 
@@ -193,7 +199,7 @@ msgid "ID"
 msgstr "标识"
 
 #: yast3/modules/repositories/dialogs.py:31
-#: yast3/modules/repositories/window.py:56 yast3/modules/ssh/keys_tab.py:142
+#: yast3/modules/repositories/window.py:56 yast3/modules/ssh/keys_tab.py:157
 msgid "Name"
 msgstr "名称"
 
@@ -228,7 +234,7 @@ msgstr "URL"
 msgid "Path"
 msgstr "路径"
 
-#: yast3/modules/repositories/dialogs.py:70 yast3/modules/ssh/keys_tab.py:142
+#: yast3/modules/repositories/dialogs.py:70 yast3/modules/ssh/keys_tab.py:157
 msgid "Type"
 msgstr "类型"
 
@@ -363,6 +369,73 @@ msgstr "选项：{0}"
 msgid "No options set"
 msgstr "未设置选项"
 
+#: yast3/modules/ssh/generate_dialog.py:69
+msgid "Generate SSH Key"
+msgstr "生成 SSH 密钥"
+
+#: yast3/modules/ssh/generate_dialog.py:79
+msgid "Key Name:"
+msgstr "密钥名称："
+
+#: yast3/modules/ssh/generate_dialog.py:81
+msgid "e.g., id_ed25519"
+msgstr "例如：id_ed25519"
+
+#: yast3/modules/ssh/generate_dialog.py:87
+msgid "Key Type:"
+msgstr "密钥类型："
+
+#: yast3/modules/ssh/generate_dialog.py:99
+msgid "Key Size:"
+msgstr "密钥长度："
+
+#: yast3/modules/ssh/generate_dialog.py:114
+msgid "e.g., user@hostname"
+msgstr "例如：user@hostname"
+
+#: yast3/modules/ssh/generate_dialog.py:120
+msgid "Passphrase:"
+msgstr "密码短语："
+
+#: yast3/modules/ssh/generate_dialog.py:128
+#, python-brace-format
+msgid "The key will be saved to {0}"
+msgstr "密钥将保存到 {0}"
+
+#: yast3/modules/ssh/generate_dialog.py:134
+msgid "Public Key:"
+msgstr "公钥："
+
+#: yast3/modules/ssh/generate_dialog.py:150
+msgid "Generate"
+msgstr "生成"
+
+#: yast3/modules/ssh/generate_dialog.py:168
+msgid "Key name is required."
+msgstr "密钥名称是必需的。"
+
+#: yast3/modules/ssh/generate_dialog.py:175
+msgid "Key names starting with 'id_' are recommended. Continue anyway?"
+msgstr "建议使用以 'id_' 开头的密钥名称。是否继续？"
+
+#: yast3/modules/ssh/generate_dialog.py:184
+msgid "A key with this name already exists."
+msgstr "已存在同名密钥。"
+
+#: yast3/modules/ssh/generate_dialog.py:217
+msgid "SSH key generated successfully."
+msgstr "SSH 密钥生成成功。"
+
+#: yast3/modules/ssh/generate_dialog.py:220
+#, python-brace-format
+msgid "Failed to read public key: {0}"
+msgstr "无法读取公钥：{0}"
+
+#: yast3/modules/ssh/generate_dialog.py:223
+#, python-brace-format
+msgid "Failed to generate SSH key: {0}"
+msgstr "生成 SSH 密钥失败：{0}"
+
 #: yast3/modules/ssh/hosts_tab.py:60
 msgid "Host Pattern"
 msgstr "主机模式"
@@ -405,43 +478,69 @@ msgstr "无法写入 SSH 配置。请检查权限。"
 msgid "Failed to save SSH config."
 msgstr "保存 SSH 配置失败。"
 
-#: yast3/modules/ssh/keys_tab.py:132
+#: yast3/modules/ssh/keys_tab.py:137
+msgid "Copy Public Key"
+msgstr "复制公钥"
+
+#: yast3/modules/ssh/keys_tab.py:147
 msgid "Refresh"
 msgstr "刷新"
 
-#: yast3/modules/ssh/keys_tab.py:142
+#: yast3/modules/ssh/keys_tab.py:157
 msgid "Size"
 msgstr "大小"
 
-#: yast3/modules/ssh/keys_tab.py:142
+#: yast3/modules/ssh/keys_tab.py:157
 msgid "Permissions"
 msgstr "权限"
 
-#: yast3/modules/ssh/keys_tab.py:142
-msgid "Actions"
-msgstr "操作"
-
-#: yast3/modules/ssh/keys_tab.py:167
+#: yast3/modules/ssh/keys_tab.py:190
 #, python-brace-format
 msgid "{0} directory not found."
 msgstr "{0} 目录未找到。"
 
-#: yast3/modules/ssh/keys_tab.py:170
+#: yast3/modules/ssh/keys_tab.py:193
 #, python-brace-format
 msgid "Cannot read {0} directory."
 msgstr "无法读取 {0} 目录。"
 
-#: yast3/modules/ssh/keys_tab.py:224
-msgid "Copy Public Key"
-msgstr "复制公钥"
-
-#: yast3/modules/ssh/keys_tab.py:244
+#: yast3/modules/ssh/keys_tab.py:269
 msgid "Public key copied to clipboard."
 msgstr "公钥已复制到剪贴板。"
 
-#: yast3/modules/ssh/keys_tab.py:246
+#: yast3/modules/ssh/keys_tab.py:271
 msgid "Cannot read public key file."
 msgstr "无法读取公钥文件。"
+
+#: yast3/modules/ssh/keys_tab.py:294
+msgid "Confirm Delete"
+msgstr "确认删除"
+
+#: yast3/modules/ssh/keys_tab.py:295
+#, python-brace-format
+msgid ""
+"Are you sure you want to delete the following keys?\n"
+"\n"
+"{0}"
+msgstr ""
+"确定要删除以下密钥吗？\n"
+"\n"
+"{0}"
+
+#: yast3/modules/ssh/keys_tab.py:323
+#, python-brace-format
+msgid ""
+"Failed to delete some files:\n"
+"\n"
+"{0}"
+msgstr ""
+"无法删除部分文件：\n"
+"\n"
+"{0}"
+
+#: yast3/modules/ssh/keys_tab.py:326
+msgid "Key deleted successfully."
+msgstr "密钥删除成功。"
 
 #: yast3/modules/ssh/window.py:42
 msgid "Keys"

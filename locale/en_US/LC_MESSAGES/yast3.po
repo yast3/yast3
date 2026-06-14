@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  yast3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-14 14:36+0000\n"
+"POT-Creation-Date: 2026-06-14 15:11+0000\n"
 "PO-Revision-Date: 2024-01-01 00:00+0000\n"
 "Last-Translator: \n"
 "Language: en_US\n"
@@ -42,7 +42,7 @@ msgstr "IP Address:"
 msgid "Hostname:"
 msgstr "Hostname:"
 
-#: yast3/modules/hosts/dialogs.py:41
+#: yast3/modules/hosts/dialogs.py:41 yast3/modules/ssh/generate_dialog.py:112
 msgid "Comment:"
 msgstr "Comment:"
 
@@ -58,6 +58,7 @@ msgstr "File"
 
 #: yast3/modules/hosts/window.py:43 yast3/modules/repositories/window.py:38
 #: yast3/modules/ssh/dialogs.py:51 yast3/modules/ssh/hosts_tab.py:37
+#: yast3/modules/ssh/keys_tab.py:133
 msgid "Add"
 msgstr "Add"
 
@@ -67,7 +68,7 @@ msgid "Edit"
 msgstr "Edit"
 
 #: yast3/modules/hosts/window.py:50 yast3/modules/repositories/window.py:46
-#: yast3/modules/ssh/hosts_tab.py:45
+#: yast3/modules/ssh/hosts_tab.py:45 yast3/modules/ssh/keys_tab.py:142
 msgid "Delete"
 msgstr "Delete"
 
@@ -99,11 +100,15 @@ msgstr "Comment"
 #: yast3/modules/repositories/window.py:244
 #: yast3/modules/repositories/window.py:246 yast3/modules/ssh/__init__.py:70
 #: yast3/modules/ssh/dialogs.py:77 yast3/modules/ssh/dialogs.py:83
-#: yast3/modules/ssh/hosts_tab.py:87 yast3/modules/ssh/hosts_tab.py:90
-#: yast3/modules/ssh/hosts_tab.py:145 yast3/modules/ssh/hosts_tab.py:167
-#: yast3/modules/ssh/hosts_tab.py:178 yast3/modules/ssh/hosts_tab.py:222
-#: yast3/modules/ssh/hosts_tab.py:224 yast3/modules/ssh/keys_tab.py:167
-#: yast3/modules/ssh/keys_tab.py:170 yast3/modules/ssh/keys_tab.py:246
+#: yast3/modules/ssh/generate_dialog.py:168
+#: yast3/modules/ssh/generate_dialog.py:184
+#: yast3/modules/ssh/generate_dialog.py:220
+#: yast3/modules/ssh/generate_dialog.py:223 yast3/modules/ssh/hosts_tab.py:87
+#: yast3/modules/ssh/hosts_tab.py:90 yast3/modules/ssh/hosts_tab.py:145
+#: yast3/modules/ssh/hosts_tab.py:167 yast3/modules/ssh/hosts_tab.py:178
+#: yast3/modules/ssh/hosts_tab.py:222 yast3/modules/ssh/hosts_tab.py:224
+#: yast3/modules/ssh/keys_tab.py:190 yast3/modules/ssh/keys_tab.py:193
+#: yast3/modules/ssh/keys_tab.py:271 yast3/modules/ssh/keys_tab.py:322
 msgid "Error"
 msgstr "Error"
 
@@ -137,7 +142,7 @@ msgid "Please select a host entry to delete."
 msgstr "Please select a host entry to delete."
 
 #: yast3/modules/hosts/window.py:195 yast3/modules/repositories/window.py:214
-#: yast3/modules/ssh/hosts_tab.py:181
+#: yast3/modules/ssh/generate_dialog.py:174 yast3/modules/ssh/hosts_tab.py:181
 msgid "Confirm"
 msgstr "Confirm"
 
@@ -146,7 +151,8 @@ msgid "Are you sure you want to delete this entry?"
 msgstr "Are you sure you want to delete this entry?"
 
 #: yast3/modules/hosts/window.py:228 yast3/modules/ssh/__init__.py:79
-#: yast3/modules/ssh/hosts_tab.py:220 yast3/modules/ssh/keys_tab.py:244
+#: yast3/modules/ssh/generate_dialog.py:217 yast3/modules/ssh/hosts_tab.py:220
+#: yast3/modules/ssh/keys_tab.py:269 yast3/modules/ssh/keys_tab.py:326
 msgid "Success"
 msgstr "Success"
 
@@ -193,7 +199,7 @@ msgid "ID"
 msgstr ""
 
 #: yast3/modules/repositories/dialogs.py:31
-#: yast3/modules/repositories/window.py:56 yast3/modules/ssh/keys_tab.py:142
+#: yast3/modules/repositories/window.py:56 yast3/modules/ssh/keys_tab.py:157
 #, fuzzy
 msgid "Name"
 msgstr "Hostname"
@@ -229,7 +235,7 @@ msgstr ""
 msgid "Path"
 msgstr ""
 
-#: yast3/modules/repositories/dialogs.py:70 yast3/modules/ssh/keys_tab.py:142
+#: yast3/modules/repositories/dialogs.py:70 yast3/modules/ssh/keys_tab.py:157
 msgid "Type"
 msgstr ""
 
@@ -366,6 +372,76 @@ msgstr ""
 msgid "No options set"
 msgstr ""
 
+#: yast3/modules/ssh/generate_dialog.py:69
+msgid "Generate SSH Key"
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:79
+#, fuzzy
+msgid "Key Name:"
+msgstr "Hostname"
+
+#: yast3/modules/ssh/generate_dialog.py:81
+msgid "e.g., id_ed25519"
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:87
+msgid "Key Type:"
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:99
+msgid "Key Size:"
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:114
+msgid "e.g., user@hostname"
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:120
+msgid "Passphrase:"
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:128
+#, python-brace-format
+msgid "The key will be saved to {0}"
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:134
+msgid "Public Key:"
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:150
+msgid "Generate"
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:168
+#, fuzzy
+msgid "Key name is required."
+msgstr "IP address and hostname are required."
+
+#: yast3/modules/ssh/generate_dialog.py:175
+msgid "Key names starting with 'id_' are recommended. Continue anyway?"
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:184
+msgid "A key with this name already exists."
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:217
+#, fuzzy
+msgid "SSH key generated successfully."
+msgstr "Hosts file saved successfully."
+
+#: yast3/modules/ssh/generate_dialog.py:220
+#, python-brace-format
+msgid "Failed to read public key: {0}"
+msgstr ""
+
+#: yast3/modules/ssh/generate_dialog.py:223
+#, python-brace-format
+msgid "Failed to generate SSH key: {0}"
+msgstr ""
+
 #: yast3/modules/ssh/hosts_tab.py:60
 msgid "Host Pattern"
 msgstr ""
@@ -413,43 +489,65 @@ msgstr "Cannot write to {0}. Root permission required."
 msgid "Failed to save SSH config."
 msgstr "Failed to save hosts file."
 
-#: yast3/modules/ssh/keys_tab.py:132
+#: yast3/modules/ssh/keys_tab.py:137
+msgid "Copy Public Key"
+msgstr ""
+
+#: yast3/modules/ssh/keys_tab.py:147
 msgid "Refresh"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:142
+#: yast3/modules/ssh/keys_tab.py:157
 msgid "Size"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:142
+#: yast3/modules/ssh/keys_tab.py:157
 msgid "Permissions"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:142
-msgid "Actions"
-msgstr ""
-
-#: yast3/modules/ssh/keys_tab.py:167
+#: yast3/modules/ssh/keys_tab.py:190
 #, fuzzy, python-brace-format
 msgid "{0} directory not found."
 msgstr "{0} not found."
 
-#: yast3/modules/ssh/keys_tab.py:170
+#: yast3/modules/ssh/keys_tab.py:193
 #, python-brace-format
 msgid "Cannot read {0} directory."
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:224
-msgid "Copy Public Key"
-msgstr ""
-
-#: yast3/modules/ssh/keys_tab.py:244
+#: yast3/modules/ssh/keys_tab.py:269
 msgid "Public key copied to clipboard."
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:246
+#: yast3/modules/ssh/keys_tab.py:271
 msgid "Cannot read public key file."
 msgstr ""
+
+#: yast3/modules/ssh/keys_tab.py:294
+#, fuzzy
+msgid "Confirm Delete"
+msgstr "Confirm"
+
+#: yast3/modules/ssh/keys_tab.py:295
+#, fuzzy, python-brace-format
+msgid ""
+"Are you sure you want to delete the following keys?\n"
+"\n"
+"{0}"
+msgstr "Are you sure you want to delete this entry?"
+
+#: yast3/modules/ssh/keys_tab.py:323
+#, fuzzy, python-brace-format
+msgid ""
+"Failed to delete some files:\n"
+"\n"
+"{0}"
+msgstr "Failed to save hosts file."
+
+#: yast3/modules/ssh/keys_tab.py:326
+#, fuzzy
+msgid "Key deleted successfully."
+msgstr "Saved successfully"
 
 #: yast3/modules/ssh/window.py:42
 msgid "Keys"

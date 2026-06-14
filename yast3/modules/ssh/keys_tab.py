@@ -20,6 +20,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.i18n import _
+from yast3.modules.ssh.generate_dialog import GenerateKeyDialog
 from yast3.modules.ssh.ssh import SSH_CONFIG_DIR
 
 
@@ -129,6 +130,20 @@ class KeysTab(QWidget):
 
         # Button bar
         button_layout = QHBoxLayout()
+        self.new_key_btn = QPushButton(_("Add"))
+        self.new_key_btn.clicked.connect(self._generate_new_key)
+        button_layout.addWidget(self.new_key_btn)
+
+        self.copy_key_btn = QPushButton(_("Copy Public Key"))
+        self.copy_key_btn.clicked.connect(self.copy_selected_key)
+        self.copy_key_btn.setEnabled(False)
+        button_layout.addWidget(self.copy_key_btn)
+
+        self.delete_key_btn = QPushButton(_("Delete"))
+        self.delete_key_btn.clicked.connect(self.delete_selected_key)
+        self.delete_key_btn.setEnabled(False)
+        button_layout.addWidget(self.delete_key_btn)
+
         self.refresh_btn = QPushButton(_("Refresh"))
         self.refresh_btn.clicked.connect(self.load_keys)
         button_layout.addWidget(self.refresh_btn)
@@ -137,25 +152,33 @@ class KeysTab(QWidget):
 
         # Keys table
         self.table = QTableWidget()
-        self.table.setColumnCount(5)
+        self.table.setColumnCount(4)
         self.table.setHorizontalHeaderLabels([
-            _("Name"), _("Type"), _("Size"), _("Permissions"), _("Actions")
+            _("Name"), _("Type"), _("Size"), _("Permissions")
         ])
         
         # Column widths
         self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(0, 180)
+        self.table.setColumnWidth(0, 200)
         self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(1, 100)
+        self.table.setColumnWidth(1, 120)
         self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Fixed)
         self.table.setColumnWidth(2, 100)
-        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(3, 120)
-        self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.Stretch)
+        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
         
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
+        self.table.itemSelectionChanged.connect(self._on_selection_changed)
         layout.addWidget(self.table)
+        
+        # Store key pairs for easy access when copying/deleting
+        self.key_pairs: list[KeyPair] = []
+
+    def _generate_new_key(self) -> None:
+        """Open dialog to generate a new SSH key."""
+        dialog = GenerateKeyDialog(self)
+        if dialog.exec():
+            self.load_keys()
 
     def load_keys(self) -> None:
         """Load SSH keys from ~/.ssh/ directory."""
@@ -197,11 +220,11 @@ class KeysTab(QWidget):
 
         # Combine and create key pairs
         all_keys = sorted(private_keys.union(public_keys))
-        key_pairs = [KeyPair(name) for name in all_keys]
+        self.key_pairs = [KeyPair(name) for name in all_keys]
 
         # Populate table
-        self.table.setRowCount(len(key_pairs))
-        for row, key_pair in enumerate(key_pairs):
+        self.table.setRowCount(len(self.key_pairs))
+        for row, key_pair in enumerate(self.key_pairs):
             # Name with status icons
             status_text = key_pair.name
             if key_pair.has_private and key_pair.has_public:
@@ -216,31 +239,89 @@ class KeysTab(QWidget):
             self.table.setItem(row, 2, QTableWidgetItem(key_pair.size))
             self.table.setItem(row, 3, QTableWidgetItem(key_pair.permissions))
 
-            # Actions - copy public key button
-            action_widget = QWidget()
-            action_layout = QHBoxLayout(action_widget)
-            action_layout.setContentsMargins(0, 0, 0, 0)
-            
-            copy_btn = QPushButton(_("Copy Public Key"))
-            copy_btn.setStyleSheet("""
-                QPushButton {
-                    padding: 4px 12px;
-                    font-size: 12px;
-                }
-            """)
-            copy_btn.clicked.connect(lambda checked, kp=key_pair: self.copy_public_key(kp))
-            copy_btn.setEnabled(key_pair.has_public)
-            action_layout.addWidget(copy_btn)
-            action_layout.setAlignment(Qt.AlignmentFlag.AlignLeft)
-            
-            self.table.setCellWidget(row, 4, action_widget)
+    def _on_selection_changed(self) -> None:
+        """Handle table selection change."""
+        selected_indexes = self.table.selectedIndexes()
+        if selected_indexes:
+            row = selected_indexes[0].row()
+            if 0 <= row < len(self.key_pairs):
+                key_pair = self.key_pairs[row]
+                self.copy_key_btn.setEnabled(key_pair.has_public)
+                self.delete_key_btn.setEnabled(True)
+                return
+        
+        self.copy_key_btn.setEnabled(False)
+        self.delete_key_btn.setEnabled(False)
 
-    def copy_public_key(self, key_pair: KeyPair) -> None:
-        """Copy public key content to clipboard."""
-        content = key_pair.get_public_key_content()
-        if content:
-            clipboard = QApplication.clipboard()
-            clipboard.setText(content)
-            QMessageBox.information(self, _("Success"), _("Public key copied to clipboard."))
+    def copy_selected_key(self) -> None:
+        """Copy the public key of the selected key pair."""
+        selected_indexes = self.table.selectedIndexes()
+        if not selected_indexes:
+            return
+        
+        row = selected_indexes[0].row()
+        if 0 <= row < len(self.key_pairs):
+            key_pair = self.key_pairs[row]
+            content = key_pair.get_public_key_content()
+            if content:
+                clipboard = QApplication.clipboard()
+                clipboard.setText(content)
+                QMessageBox.information(self, _("Success"), _("Public key copied to clipboard."))
+            else:
+                QMessageBox.warning(self, _("Error"), _("Cannot read public key file."))
+
+    def delete_selected_key(self) -> None:
+        """Delete the selected key pair."""
+        selected_indexes = self.table.selectedIndexes()
+        if not selected_indexes:
+            return
+        
+        row = selected_indexes[0].row()
+        if not (0 <= row < len(self.key_pairs)):
+            return
+        
+        key_pair = self.key_pairs[row]
+        
+        # Build message with what will be deleted
+        files_to_delete = []
+        if key_pair.has_private:
+            files_to_delete.append(os.path.basename(key_pair.private_path))
+        if key_pair.has_public:
+            files_to_delete.append(os.path.basename(key_pair.public_path))
+        
+        reply = QMessageBox.question(
+            self,
+            _("Confirm Delete"),
+            _("Are you sure you want to delete the following keys?\n\n{0}").format(
+                "\n".join(files_to_delete)
+            ),
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+            QMessageBox.StandardButton.No,
+        )
+        
+        if reply != QMessageBox.StandardButton.Yes:
+            return
+        
+        # Delete files
+        errors = []
+        if key_pair.has_private:
+            try:
+                os.remove(key_pair.private_path)
+            except Exception as e:
+                errors.append(f"{key_pair.name}: {str(e)}")
+        
+        if key_pair.has_public:
+            try:
+                os.remove(key_pair.public_path)
+            except Exception as e:
+                errors.append(f"{key_pair.name}.pub: {str(e)}")
+        
+        if errors:
+            QMessageBox.warning(
+                self,
+                _("Error"),
+                _("Failed to delete some files:\n\n{0}").format("\n".join(errors)),
+            )
         else:
-            QMessageBox.warning(self, _("Error"), _("Cannot read public key file."))
+            QMessageBox.information(self, _("Success"), _("Key deleted successfully."))
+            self.load_keys()
