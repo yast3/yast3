@@ -45,7 +45,7 @@ class ModuleWindow(QMainWindow):
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         title.setStyleSheet("font-size: 24px; font-weight: 600;")
 
-        description = QLabel(_("This settings page is not implemented yet."), content)
+        description = QLabel(_("This settings module is not implemented yet."), content)
         description.setAlignment(Qt.AlignmentFlag.AlignCenter)
         description.setWordWrap(True)
         description.setStyleSheet("color: palette(mid); font-size: 14px;")

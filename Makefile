@@ -1,6 +1,6 @@
 # The default target of this Makefile is...
 .PHONY: all
-all::
+all:: mo
 
 INSTALL = install
 FIND = find
@@ -50,9 +50,9 @@ dist:: clean
 clean::
 	$(FIND) $(PYTHON_DIRS) -name '*.py[cod]' -print0 | $(XARGS) -0 $(RM)
 
-i18n-update::
+po::
 	pybabel extract -F babel.cfg -o locale/yast3.pot yast3/
 	pybabel update -i locale/yast3.pot -d locale -D yast3
 
-i18n-compile::
+mo:: po
 	pybabel compile -d locale -D yast3

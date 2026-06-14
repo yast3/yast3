@@ -1,5 +1,5 @@
 # Translations template for PROJECT.
-# Copyright (C) 2026 YaST3
+# Copyright (C) 2026 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: admin@example.com\n"
-"POT-Creation-Date: 2026-06-14 05:01+0000\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-06-14 05:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 #: yast3/app.py:48
-msgid "This settings page is not implemented yet."
+msgid "This settings module is not implemented yet."
 msgstr ""
 
 #: yast3/modules/hosts/__init__.py:12
