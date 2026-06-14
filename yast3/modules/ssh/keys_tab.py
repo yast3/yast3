@@ -257,16 +257,7 @@ class KeysTab(QWidget):
         # Populate table
         self.table.setRowCount(len(self.key_pairs))
         for row, key_pair in enumerate(self.key_pairs):
-            # Name with status icons
-            status_text = key_pair.name
-            if key_pair.has_private and key_pair.has_public:
-                status_text += " ✓✓"
-            elif key_pair.has_private:
-                status_text += " (priv)"
-            elif key_pair.has_public:
-                status_text += " (pub)"
-            
-            self.table.setItem(row, 0, QTableWidgetItem(status_text))
+            self.table.setItem(row, 0, QTableWidgetItem(key_pair.name))
             self.table.setItem(row, 1, QTableWidgetItem(key_pair.key_type))
             self.table.setItem(row, 2, QTableWidgetItem(key_pair.size))
             self.table.setItem(row, 3, QTableWidgetItem(key_pair.comment or "-"))
@@ -282,7 +273,7 @@ class KeysTab(QWidget):
                 self.copy_key_btn.setEnabled(key_pair.has_public)
                 self.delete_key_btn.setEnabled(True)
                 return
-        
+
         self.copy_key_btn.setEnabled(False)
         self.delete_key_btn.setEnabled(False)
 
