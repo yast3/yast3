@@ -2,8 +2,10 @@
 
 from .hosts import HostsModule
 from .packages import PackagesModule
+from .repositories import RepositoriesModule
 
 __all__ = [
 	'HostsModule',
 	'PackagesModule',
+	'RepositoriesModule',
 ]
