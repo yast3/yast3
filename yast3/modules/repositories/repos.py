@@ -117,8 +117,8 @@ def load_repos() -> list[RepoEntry]:
     except PermissionError:
         raise PermissionError("Cannot read repository directory")
     
-    # Sort by name
-    entries.sort(key=lambda e: e.name)
+    # Sort by priority (ascending, lower number = higher priority)
+    entries.sort(key=lambda e: e.priority)
     return entries
 
 
