@@ -20,14 +20,14 @@ class RepoEditDialog(QDialog):
 
         # Repository ID
         id_layout = QHBoxLayout()
-        id_layout.addWidget(QLabel(_("Repository ID:")))
+        id_layout.addWidget(QLabel(_("ID")))
         self.id_edit = QLineEdit(entry.id if entry else "")
         id_layout.addWidget(self.id_edit)
         layout.addLayout(id_layout)
 
         # Repository Name
         name_layout = QHBoxLayout()
-        name_layout.addWidget(QLabel(_("Repository Name:")))
+        name_layout.addWidget(QLabel(_("Name")))
         self.name_edit = QLineEdit(entry.name if entry else "")
         name_layout.addWidget(self.name_edit)
         layout.addLayout(name_layout)
@@ -38,7 +38,7 @@ class RepoEditDialog(QDialog):
         layout.addWidget(self.enabled_check)
 
         # Autorefresh
-        self.autorefresh_check = QCheckBox(_("Auto-refresh"))
+        self.autorefresh_check = QCheckBox(_("Auto Refresh"))
         self.autorefresh_check.setChecked(entry.autorefresh if entry else True)
         layout.addWidget(self.autorefresh_check)
 
@@ -52,7 +52,7 @@ class RepoEditDialog(QDialog):
 
         # URL
         url_layout = QHBoxLayout()
-        url_layout.addWidget(QLabel(_("URL:")))
+        url_layout.addWidget(QLabel(_("URL")))
         self.url_edit = QLineEdit(entry.baseurl if entry and entry.baseurl else (entry.mirrorlist if entry else ""))
         url_layout.addWidget(self.url_edit)
         layout.addLayout(url_layout)
@@ -80,7 +80,7 @@ class RepoEditDialog(QDialog):
 
         # Priority
         priority_layout = QHBoxLayout()
-        priority_layout.addWidget(QLabel(_("Priority:")))
+        priority_layout.addWidget(QLabel(_("Priority")))
         self.priority_spin = QSpinBox()
         self.priority_spin.setRange(1, 99)
         self.priority_spin.setValue(entry.priority if entry else 99)
