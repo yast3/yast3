@@ -15,8 +15,9 @@ REPOS_DIR = "/etc/zypp/repos.d"
 @dataclass
 class RepoEntry:
     """Represents a single repository entry."""
-    name: str
+    id: str
     filename: str
+    name: str = ""
     enabled: bool = True
     autorefresh: bool = True
     baseurl: str = ""
@@ -51,15 +52,15 @@ def parse_repo_file(filepath: str) -> list[RepoEntry]:
         if not section.strip():
             continue
         
-        # Find section name (first line before newline)
+        # Find section id (first line before newline)
         lines = section.split('\n', 1)
-        name = lines[0].strip().strip('[]')
+        repo_id = lines[0].strip().strip('[]')
         body = lines[1] if len(lines) > 1 else ''
         
-        if not name:
+        if not repo_id:
             continue
         
-        entry = RepoEntry(name=name, filename=os.path.basename(filepath))
+        entry = RepoEntry(id=repo_id, filename=os.path.basename(filepath))
         
         # Parse key=value pairs
         for line in body.split('\n'):
@@ -72,7 +73,9 @@ def parse_repo_file(filepath: str) -> list[RepoEntry]:
                 key = key.strip().lower()
                 value = value.strip()
                 
-                if key == 'enabled':
+                if key == 'name':
+                    entry.name = value
+                elif key == 'enabled':
                     entry.enabled = value.lower() in ('1', 'true', 'yes')
                 elif key == 'autorefresh':
                     entry.autorefresh = value.lower() in ('1', 'true', 'yes')
@@ -134,7 +137,7 @@ def save_repo_entry(entry: RepoEntry, use_pkexec: bool = True) -> Literal["ok", 
     # Replace or add this entry
     found = False
     for i, e in enumerate(existing_entries):
-        if e.name == entry.name:
+        if e.id == entry.id:
             existing_entries[i] = entry
             found = True
             break
@@ -145,7 +148,7 @@ def save_repo_entry(entry: RepoEntry, use_pkexec: bool = True) -> Literal["ok", 
     # Generate content
     lines = []
     for e in existing_entries:
-        lines.append(f"[{e.name}]")
+        lines.append(f"[{e.id}]")
         lines.append(f"name={e.name}")
         lines.append(f"enabled={'1' if e.enabled else '0'}")
         lines.append(f"autorefresh={'1' if e.autorefresh else '0'}")
@@ -206,7 +209,7 @@ def delete_repo_entry(entry: RepoEntry, use_pkexec: bool = True) -> Literal["ok"
         return "ok"
     
     existing_entries = parse_repo_file(filepath)
-    remaining_entries = [e for e in existing_entries if e.name != entry.name]
+    remaining_entries = [e for e in existing_entries if e.id != entry.id]
     
     # If no entries remain, delete the file
     if not remaining_entries:

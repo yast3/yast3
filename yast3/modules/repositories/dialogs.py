@@ -18,6 +18,13 @@ class RepoEditDialog(QDialog):
 
         layout = QVBoxLayout(self)
 
+        # Repository ID
+        id_layout = QHBoxLayout()
+        id_layout.addWidget(QLabel(_("Repository ID:")))
+        self.id_edit = QLineEdit(entry.id if entry else "")
+        id_layout.addWidget(self.id_edit)
+        layout.addLayout(id_layout)
+
         # Repository Name
         name_layout = QHBoxLayout()
         name_layout.addWidget(QLabel(_("Repository Name:")))
@@ -94,6 +101,7 @@ class RepoEditDialog(QDialog):
     def get_values(self) -> dict:
         url_type = self.url_type_combo.currentIndex()
         return {
+            "id": self.id_edit.text().strip(),
             "name": self.name_edit.text().strip(),
             "enabled": self.enabled_check.isChecked(),
             "autorefresh": self.autorefresh_check.isChecked(),
