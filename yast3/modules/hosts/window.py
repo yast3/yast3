@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import subprocess
+import tempfile
+
 from PySide6.QtCore import Qt, QRegularExpression
 from PySide6.QtGui import QRegularExpressionValidator
 from PySide6.QtWidgets import (
@@ -120,8 +123,9 @@ class HostsWindow(QMainWindow):
         layout.addWidget(self.table)
 
         # Load hosts
-        # Tuple: (enabled, ip, hostnames: list[str], comment, editable)
-        self.hosts_entries: list[tuple[bool, str, list[str], str, bool]] = []
+        # Tuple: (enabled, ip, hostnames: list[str], comment_sep, comment, editable)
+        # comment_sep is the separator before comment (e.g., "\t# " or " # ")
+        self.hosts_entries: list[tuple[bool, str, list[str], str, str, bool]] = []
         self.load_hosts()
 
     def _looks_like_ip(self, string: str) -> bool:
@@ -179,21 +183,21 @@ class HostsWindow(QMainWindow):
 
             # Full comment line (no IP/hostname, just a comment)
             if stripped.startswith("#"):
-                content = stripped.lstrip("#").strip()
+                content = stripped.lstrip("#")
                 # Check if this looks like a valid hosts entry (has IP as first part)
-                parts = content.split(None, 1)
+                parts = content.strip().split(None, 1)
                 # If no parts or first part doesn't look like an IP address, treat as pure comment
                 if not parts or not self._looks_like_ip(parts[0]):
-                    # (enabled, ip, hostnames, comment, editable=False)
-                    self.hosts_entries.append((True, "", [], content, False))
+                    # (enabled, ip, hostnames, comment_sep, comment, editable=False)
+                    self.hosts_entries.append((True, "", [], "#", content.strip(), False))
                     continue
                 
                 # This is a disabled entry (commented-out hosts entry)
                 ip = parts[0]
                 rest = parts[1] if len(parts) > 1 else ""
-                hostnames, comment = self._parse_hostnames_and_comment(rest)
-                # (enabled, ip, hostnames, comment, editable=True if has hostnames)
-                self.hosts_entries.append((False, ip, hostnames, comment, len(hostnames) > 0))
+                hostnames, comment_sep, comment = self._parse_hostnames_and_comment(rest)
+                # (enabled, ip, hostnames, comment_sep, comment, editable=True if has hostnames)
+                self.hosts_entries.append((False, ip, hostnames, comment_sep, comment, len(hostnames) > 0))
                 continue
 
             # Normal entry
@@ -201,35 +205,62 @@ class HostsWindow(QMainWindow):
             if parts and parts[0]:
                 ip = parts[0]
                 rest = parts[1] if len(parts) > 1 else ""
-                hostnames, comment = self._parse_hostnames_and_comment(rest)
-                # (enabled, ip, hostnames, comment, editable=True if has hostnames)
-                self.hosts_entries.append((True, ip, hostnames, comment, len(hostnames) > 0))
+                hostnames, comment_sep, comment = self._parse_hostnames_and_comment(rest)
+                # (enabled, ip, hostnames, comment_sep, comment, editable=True if has hostnames)
+                self.hosts_entries.append((True, ip, hostnames, comment_sep, comment, len(hostnames) > 0))
 
         self.populate_table()
 
-    def _parse_hostnames_and_comment(self, rest: str) -> tuple[list[str], str]:
-        """Parse hostname string into hostnames list and comment."""
+    def _parse_hostnames_and_comment(self, rest: str) -> tuple[list[str], str, str]:
+        """Parse hostname string into hostnames list, comment separator, and comment.
+        
+        Returns:
+            (hostnames, comment_sep, comment)
+            - hostnames: list of hostname strings
+            - comment_sep: separator before comment (e.g., "\t#" or " #")
+            - comment: comment content with leading spaces preserved
+        """
         if not rest:
-            return [], ""
+            return [], "", ""
         
-        parts = rest.split()
-        hostnames = []
-        comment = ""
+        # Find the first # in the original string to preserve leading spaces/tabs
+        comment_pos = rest.find("#")
         
-        for i, part in enumerate(parts):
-            if part.startswith("#"):
-                # This and remaining parts are comment
-                comment = " ".join(parts[i:]).lstrip("#").strip()
-                break
-            hostnames.append(part)
+        if comment_pos == -1:
+            # No comment, all are hostnames
+            return rest.split(), "", ""
         
-        return hostnames, comment
+        # Extract hostnames part (before #)
+        hostnames_str = rest[:comment_pos]
+        # Get hostnames (split by whitespace)
+        hostnames = hostnames_str.split() if hostnames_str.strip() else []
+        
+        # Calculate the separator: everything after last hostname up to #
+        # This preserves the exact whitespace before #
+        if hostnames:
+            # Find where the last hostname ends
+            last_hostname = hostnames[-1]
+            last_pos = hostnames_str.rfind(last_hostname)
+            if last_pos != -1:
+                # Separator is from end of last hostname to #
+                after_last = hostnames_str[last_pos + len(last_hostname):]
+                comment_sep = after_last + "#"
+            else:
+                comment_sep = "#"
+        else:
+            # No hostnames, separator is everything before # plus #
+            comment_sep = hostnames_str + "#"
+        
+        # Extract comment (after #, preserving leading spaces/tabs)
+        comment = rest[comment_pos + 1:]  # Remove # but keep everything after
+        
+        return hostnames, comment_sep, comment
 
     def populate_table(self) -> None:
         """Populate the table with host entries."""
         self.table.setRowCount(len(self.hosts_entries))
 
-        for row, (enabled, ip, hostnames, comment, editable) in enumerate(self.hosts_entries):
+        for row, (enabled, ip, hostnames, comment_sep, comment, editable) in enumerate(self.hosts_entries):
             # Enabled checkbox (only for editable entries)
             if editable:
                 enabled_widget = QWidget()
@@ -255,8 +286,8 @@ class HostsWindow(QMainWindow):
     def toggle_enabled(self, row: int, state: int) -> None:
         """Toggle the enabled state of a host entry."""
         if 0 <= row < len(self.hosts_entries):
-            _enabled, ip, hostnames, comment, editable = self.hosts_entries[row]
-            self.hosts_entries[row] = (state == Qt.CheckState.Checked.value, ip, hostnames, comment, editable)
+            _enabled, ip, hostnames, comment_sep, comment, editable = self.hosts_entries[row]
+            self.hosts_entries[row] = (state == Qt.CheckState.Checked.value, ip, hostnames, comment_sep, comment, editable)
 
     def add_host(self) -> None:
         """Add a new host entry."""
@@ -265,8 +296,10 @@ class HostsWindow(QMainWindow):
             ip, hostname_str, comment = dialog.get_values()
             hostnames = hostname_str.split() if hostname_str else []
             if ip and hostnames:
-                # (enabled, ip, hostnames, comment, editable=True)
-                self.hosts_entries.append((True, ip, hostnames, comment, True))
+                # (enabled, ip, hostnames, comment_sep, comment, editable=True)
+                # Default comment separator for new entries
+                comment_sep = "\t# " if comment else ""
+                self.hosts_entries.append((True, ip, hostnames, comment_sep, comment, True))
                 row = self.table.rowCount()
                 self.table.insertRow(row)
                 self.populate_row(row)
@@ -280,13 +313,15 @@ class HostsWindow(QMainWindow):
             QMessageBox.information(self, _("Information"), _("Please select a host entry to edit."))
             return
 
-        enabled, ip, hostnames, comment, editable = self.hosts_entries[current_row]
+        enabled, ip, hostnames, comment_sep, comment, editable = self.hosts_entries[current_row]
         dialog = AddEditHostDialog(self, ip, " ".join(hostnames), comment)
         if dialog.exec():
             new_ip, new_hostname_str, new_comment = dialog.get_values()
             new_hostnames = new_hostname_str.split() if new_hostname_str else []
             if new_ip and new_hostnames:
-                self.hosts_entries[current_row] = (enabled, new_ip, new_hostnames, new_comment, editable)
+                # Keep original comment_sep, or use default if comment changed
+                new_comment_sep = comment_sep if comment_sep else ("\t# " if new_comment else "")
+                self.hosts_entries[current_row] = (enabled, new_ip, new_hostnames, new_comment_sep, new_comment, editable)
                 self.populate_row(current_row)
             else:
                 QMessageBox.warning(self, _("Error"), _("IP address and hostname are required."))
@@ -305,7 +340,7 @@ class HostsWindow(QMainWindow):
 
     def populate_row(self, row: int) -> None:
         """Populate a single table row."""
-        enabled, ip, hostnames, comment, editable = self.hosts_entries[row]
+        enabled, ip, hostnames, comment_sep, comment, editable = self.hosts_entries[row]
 
         # Clear cell widget first
         self.table.setCellWidget(row, 0, None)
@@ -329,10 +364,10 @@ class HostsWindow(QMainWindow):
     def save_hosts(self) -> None:
         """Save hosts to /etc/hosts file."""
         lines = []
-        for enabled, ip, hostnames, comment, editable in self.hosts_entries:
+        for enabled, ip, hostnames, comment_sep, comment, editable in self.hosts_entries:
             if not editable:
-                # Pure comment line - just write the comment
-                lines.append("# " + comment)
+                # Pure comment line - just write the comment with original separator
+                lines.append(comment_sep + comment)
                 continue
             
             line = ""
@@ -340,18 +375,52 @@ class HostsWindow(QMainWindow):
                 line += "# "
             line += ip + "\t" + " ".join(hostnames)
             if comment:
-                line += "\t# " + comment
+                # Use original comment separator to preserve formatting
+                line += comment_sep + comment
             lines.append(line)
 
         # Add trailing newline
         content = "\n".join(lines) + "\n"
 
+        # Try direct write first
         try:
             with open(HOSTS_FILE, "w") as f:
                 f.write(content)
             QMessageBox.information(self, _("Success"), _("Hosts file saved successfully."))
             self.statusBar().showMessage(_("Saved successfully"), 3000)
+            return
         except PermissionError:
-            QMessageBox.critical(self, _("Error"), _("Cannot write to {0}. Root permission required.").format(HOSTS_FILE))
+            # Need root permission - use pkexec
+            pass
+        except Exception as e:
+            QMessageBox.critical(self, _("Error"), _("Failed to save hosts file: {0}").format(str(e)))
+            return
+
+        # Use pkexec to get root permission
+        try:
+            # Write to a temporary file first
+            with tempfile.NamedTemporaryFile(mode="w", suffix=".hosts", delete=False) as tmp:
+                tmp.write(content)
+                tmp_path = tmp.name
+
+            # Use pkexec to copy the file to /etc/hosts
+            result = subprocess.run(
+                ["pkexec", "cp", tmp_path, HOSTS_FILE],
+                capture_output=True,
+                text=True,
+            )
+
+            # Clean up temp file
+            subprocess.run(["rm", "-f", tmp_path], capture_output=True)
+
+            if result.returncode == 0:
+                QMessageBox.information(self, _("Success"), _("Hosts file saved successfully."))
+                self.statusBar().showMessage(_("Saved successfully"), 3000)
+            else:
+                # pkexec failed (user cancelled or error)
+                if result.returncode == 127:
+                    QMessageBox.critical(self, _("Error"), _("Authentication failed or pkexec not available."))
+                else:
+                    QMessageBox.critical(self, _("Error"), _("Failed to save: {0}").format(result.stderr or "Unknown error"))
         except Exception as e:
             QMessageBox.critical(self, _("Error"), _("Failed to save hosts file: {0}").format(str(e)))
