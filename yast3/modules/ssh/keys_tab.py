@@ -35,6 +35,8 @@ class KeyPair:
         self.key_type = self._detect_type()
         self.size = self._get_size()
         self.permissions = self._get_permissions()
+        self.comment = self._get_comment()
+        self.has_passphrase = self._has_passphrase()
 
     def _detect_type(self) -> str:
         """Detect key type from public or private key file."""
@@ -67,7 +69,7 @@ class KeyPair:
             elif first_line.startswith('ecdsa-sha2-'):
                 return 'EC'
             elif first_line.startswith('ssh-ed25519 '):
-                return 'Ed25519'
+                return 'ED25519'
             else:
                 return 'Unknown'
         except Exception:
@@ -75,12 +77,7 @@ class KeyPair:
 
     def _get_size(self) -> str:
         """Get key size information."""
-        if self.has_public:
-            try:
-                file_stat = os.stat(self.public_path)
-                return f"{file_stat.st_size} bytes"
-            except Exception:
-                pass
+
         if self.has_private:
             try:
                 file_stat = os.stat(self.private_path)
@@ -104,6 +101,39 @@ class KeyPair:
             except Exception:
                 pass
         return "???"
+
+    def _get_comment(self) -> str:
+        """Get the comment from the public key file."""
+        if self.has_public:
+            try:
+                with open(self.public_path, 'r') as f:
+                    content = f.read().strip()
+                    parts = content.split()
+                    if len(parts) >= 3:
+                        return ' '.join(parts[2:])
+            except Exception:
+                pass
+        return ""
+
+    def _has_passphrase(self) -> bool:
+        """Check if the private key is encrypted (has passphrase)."""
+        if self.has_private:
+            try:
+                with open(self.private_path, 'r') as f:
+                    first_line = f.readline().strip()
+                    # Check for encrypted private key markers
+                    if first_line.startswith('-----BEGIN') and 'ENCRYPTED' in first_line:
+                        return True
+                    # OpenSSH format
+                    if first_line.startswith('-----BEGIN OPENSSH PRIVATE KEY-----'):
+                        # Read second line for encryption info
+                        lines = f.readlines()
+                        for line in lines[:5]:  # Check first few lines
+                            if line.startswith('Proc-Type: 4,ENCRYPTED'):
+                                return True
+            except Exception:
+                pass
+        return False
 
     def get_public_key_content(self) -> str | None:
         """Get the content of the public key file."""
@@ -152,19 +182,21 @@ class KeysTab(QWidget):
 
         # Keys table
         self.table = QTableWidget()
-        self.table.setColumnCount(4)
+        self.table.setColumnCount(5)
         self.table.setHorizontalHeaderLabels([
-            _("Name"), _("Type"), _("Size"), _("Permissions")
+            _("Name"), _("Type"), _("Size"), _("Comment"), _("Passphrase")
         ])
         
         # Column widths
         self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(0, 200)
+        self.table.setColumnWidth(0, 180)
         self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(1, 120)
+        self.table.setColumnWidth(1, 100)
         self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Fixed)
         self.table.setColumnWidth(2, 100)
         self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
+        self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.Fixed)
+        self.table.setColumnWidth(4, 100)
         
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
@@ -237,7 +269,8 @@ class KeysTab(QWidget):
             self.table.setItem(row, 0, QTableWidgetItem(status_text))
             self.table.setItem(row, 1, QTableWidgetItem(key_pair.key_type))
             self.table.setItem(row, 2, QTableWidgetItem(key_pair.size))
-            self.table.setItem(row, 3, QTableWidgetItem(key_pair.permissions))
+            self.table.setItem(row, 3, QTableWidgetItem(key_pair.comment or "-"))
+            self.table.setItem(row, 4, QTableWidgetItem(_("Yes") if key_pair.has_passphrase else _("No")))
 
     def _on_selection_changed(self) -> None:
         """Handle table selection change."""

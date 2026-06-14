@@ -86,7 +86,7 @@ class GenerateKeyDialog(QDialog):
         type_layout = QHBoxLayout()
         type_layout.addWidget(QLabel(_("Key Type:")))
         self.type_combo = QComboBox()
-        self.type_combo.addItems(["Ed25519 (Recommended)", "RSA", "ECDSA"])
+        self.type_combo.addItems(["ED25519", "RSA", "ECDSA"])
         self.type_combo.setItemData(0, "ed25519")
         self.type_combo.setItemData(1, "rsa")
         self.type_combo.setItemData(2, "ecdsa")
