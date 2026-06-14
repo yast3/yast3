@@ -50,36 +50,27 @@ class RepositoriesWindow(QMainWindow):
         layout.addLayout(button_layout)
 
         self.table = QTableWidget()
-        self.table.setColumnCount(9)
+        self.table.setColumnCount(6)
         self.table.setHorizontalHeaderLabels([
-            _("Enabled"),
             _("ID"),
             _("Name"),
             _("URL"),
-            _("Type"),
             _("Priority"),
-            _("GPG Check"),
-            _("Auto Refresh"),
-            _("Keep Packages")
+            _("Enabled"),
+            _("Auto Refresh")
         ])
 
         self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(0, 60)
+        self.table.setColumnWidth(0, self.table.fontMetrics().horizontalAdvance("M") * 20)
         self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Fixed)
         self.table.setColumnWidth(1, self.table.fontMetrics().horizontalAdvance("M") * 20)
-        self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(2, self.table.fontMetrics().horizontalAdvance("M") * 20)
-        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
+        self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
+        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Fixed)
+        self.table.setColumnWidth(3, 60)
         self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(4, 70)
+        self.table.setColumnWidth(4, 60)
         self.table.horizontalHeader().setSectionResizeMode(5, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(5, 60)
-        self.table.horizontalHeader().setSectionResizeMode(6, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(6, 70)
-        self.table.horizontalHeader().setSectionResizeMode(7, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(7, 80)
-        self.table.horizontalHeader().setSectionResizeMode(8, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(8, 90)
+        self.table.setColumnWidth(5, 80)
 
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
@@ -108,15 +99,12 @@ class RepositoriesWindow(QMainWindow):
         self.table.setRowCount(len(self.repo_entries))
 
         for row, entry in enumerate(self.repo_entries):
-            self._set_checkbox_cell(row, 0, entry.enabled, self.toggle_enabled)
-            self.table.setItem(row, 1, QTableWidgetItem(entry.id))
-            self.table.setItem(row, 2, QTableWidgetItem(entry.name))
-            self.table.setItem(row, 3, QTableWidgetItem(entry.url))
-            self.table.setItem(row, 4, QTableWidgetItem(entry.type))
-            self.table.setItem(row, 5, QTableWidgetItem(str(entry.priority)))
-            self._set_checkbox_cell(row, 6, entry.gpgcheck, self.toggle_gpgcheck)
-            self._set_checkbox_cell(row, 7, entry.autorefresh, self.toggle_autorefresh)
-            self._set_checkbox_cell(row, 8, entry.keep_packages, self.toggle_keep_packages)
+            self.table.setItem(row, 0, QTableWidgetItem(entry.id))
+            self.table.setItem(row, 1, QTableWidgetItem(entry.name))
+            self.table.setItem(row, 2, QTableWidgetItem(entry.url))
+            self.table.setItem(row, 3, QTableWidgetItem(str(entry.priority)))
+            self._set_checkbox_cell(row, 4, entry.enabled, self.toggle_enabled)
+            self._set_checkbox_cell(row, 5, entry.autorefresh, self.toggle_autorefresh)
 
     def _set_checkbox_cell(self, row: int, col: int, checked: bool, callback) -> None:
         widget = QWidget()
@@ -134,19 +122,9 @@ class RepositoriesWindow(QMainWindow):
             self.repo_entries[row].enabled = state == Qt.CheckState.Checked.value
             self.save_single_entry(row)
 
-    def toggle_gpgcheck(self, row: int, state: int) -> None:
-        if 0 <= row < len(self.repo_entries):
-            self.repo_entries[row].gpgcheck = state == Qt.CheckState.Checked.value
-            self.save_single_entry(row)
-
     def toggle_autorefresh(self, row: int, state: int) -> None:
         if 0 <= row < len(self.repo_entries):
             self.repo_entries[row].autorefresh = state == Qt.CheckState.Checked.value
-            self.save_single_entry(row)
-
-    def toggle_keep_packages(self, row: int, state: int) -> None:
-        if 0 <= row < len(self.repo_entries):
-            self.repo_entries[row].keep_packages = state == Qt.CheckState.Checked.value
             self.save_single_entry(row)
 
     def add_repo(self) -> None:
@@ -246,26 +224,12 @@ class RepositoriesWindow(QMainWindow):
     def populate_row(self, row: int) -> None:
         entry = self.repo_entries[row]
 
-        self.table.setCellWidget(row, 0, None)
-        
-        enabled_widget = QWidget()
-        enabled_layout = QHBoxLayout(enabled_widget)
-        enabled_layout.setContentsMargins(0, 0, 0, 0)
-        enabled_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        checkbox = QCheckBox()
-        checkbox.setChecked(entry.enabled)
-        checkbox.stateChanged.connect(lambda s, r=row: self.toggle_enabled(r, s))
-        enabled_layout.addWidget(checkbox)
-        self.table.setCellWidget(row, 0, enabled_widget)
-
-        self.table.setItem(row, 1, QTableWidgetItem(entry.id))
-        self.table.setItem(row, 2, QTableWidgetItem(entry.name))
-        self.table.setItem(row, 3, QTableWidgetItem(entry.url))
-        self.table.setItem(row, 4, QTableWidgetItem(entry.type))
-        self.table.setItem(row, 5, QTableWidgetItem(str(entry.priority)))
-        self._set_checkbox_cell(row, 6, entry.gpgcheck, self.toggle_gpgcheck)
-        self._set_checkbox_cell(row, 7, entry.autorefresh, self.toggle_autorefresh)
-        self._set_checkbox_cell(row, 8, entry.keep_packages, self.toggle_keep_packages)
+        self.table.setItem(row, 0, QTableWidgetItem(entry.id))
+        self.table.setItem(row, 1, QTableWidgetItem(entry.name))
+        self.table.setItem(row, 2, QTableWidgetItem(entry.url))
+        self.table.setItem(row, 3, QTableWidgetItem(str(entry.priority)))
+        self._set_checkbox_cell(row, 4, entry.enabled, self.toggle_enabled)
+        self._set_checkbox_cell(row, 5, entry.autorefresh, self.toggle_autorefresh)
 
     def save_single_entry(self, row: int) -> None:
         entry = self.repo_entries[row]
