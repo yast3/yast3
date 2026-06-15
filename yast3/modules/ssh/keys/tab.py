@@ -1,12 +1,7 @@
-"""Keys tab component for the SSH module."""
+"""Keys tab UI component for the SSH module."""
 
 from __future__ import annotations
 
-import os
-import stat
-import subprocess
-
-from PySide6.QtCore import Qt
 from PySide6.QtGui import QClipboard
 from PySide6.QtWidgets import (
     QHeaderView,
@@ -22,146 +17,7 @@ from PySide6.QtWidgets import (
 
 from yast3.i18n import _
 from yast3.modules.ssh.keys.generate_dialog import GenerateKeyDialog
-from yast3.modules.ssh.ssh import SSH_CONFIG_DIR
-
-
-class KeyPair:
-    """Represents an SSH key pair (private + public key)."""
-    def __init__(self, name: str):
-        self.name = name
-        self.private_path = os.path.join(SSH_CONFIG_DIR, name)
-        self.public_path = os.path.join(SSH_CONFIG_DIR, name + '.pub')
-        self.has_private = os.path.exists(self.private_path)
-        self.has_public = os.path.exists(self.public_path)
-        # Get key info using ssh-keygen command
-        self.size, self.algorithm, self.fingerprint, self.comment = self._get_key_info()
-        self.permissions = self._get_permissions()
-        self.has_passphrase = self._has_passphrase()
-
-    def _get_key_info(self) -> tuple[str, str, str, str]:
-        """Get key size, algorithm, fingerprint and comment using ssh-keygen."""
-        size = "N/A"
-        algorithm = "Unknown"
-        fingerprint = ""
-        comment = ""
-        
-        # Use public key file if available
-        filepath = self.public_path if self.has_public else self.private_path
-        
-        if os.path.exists(filepath):
-            try:
-                result = subprocess.run(
-                    ['ssh-keygen', '-l', '-f', filepath],
-                    capture_output=True,
-                    text=True,
-                    check=True
-                )
-                output = result.stdout.strip()
-                if output:
-                    # Output format: "256 SHA256:xxx user@hostname (ED25519)"
-                    parts = output.split()
-                    if len(parts) >= 3:
-                        size = parts[0]
-                        fingerprint = parts[1]
-                        # Algorithm is in parentheses at the end
-                        if len(parts) > 3:
-                            last_part = parts[-1]
-                            if last_part.startswith('(') and last_part.endswith(')'):
-                                algorithm = last_part[1:-1]
-                            # Comment is everything between fingerprint and algorithm
-                            comment = ' '.join(parts[2:-1])
-            except Exception:
-                # Fallback to file-based detection if ssh-keygen fails
-                size, algorithm, comment = self._fallback_key_info()
-        
-        return (size, algorithm, fingerprint, comment)
-
-    def _fallback_key_info(self) -> tuple[str, str, str]:
-        """Fallback key detection using file content."""
-        size = "N/A"
-        algorithm = "Unknown"
-        comment = ""
-        
-        filepath = self.public_path if self.has_public else self.private_path
-        
-        try:
-            with open(filepath, 'r') as f:
-                first_line = f.readline().strip()
-            
-            if first_line.startswith('-----BEGIN RSA PRIVATE KEY-----'):
-                algorithm = 'RSA'
-            elif first_line.startswith('-----BEGIN DSA PRIVATE KEY-----'):
-                algorithm = 'DSA'
-            elif first_line.startswith('-----BEGIN EC PRIVATE KEY-----'):
-                algorithm = 'EC'
-            elif first_line.startswith('-----BEGIN OPENSSH PRIVATE KEY-----'):
-                algorithm = 'OpenSSH'
-            elif first_line.startswith('ssh-rsa '):
-                algorithm = 'RSA'
-            elif first_line.startswith('ssh-dss '):
-                algorithm = 'DSA'
-            elif first_line.startswith('ecdsa-sha2-'):
-                algorithm = 'EC'
-            elif first_line.startswith('ssh-ed25519 '):
-                algorithm = 'ED25519'
-            
-            # Get comment from public key
-            if self.has_public:
-                with open(self.public_path, 'r') as f:
-                    content = f.read().strip()
-                    parts = content.split()
-                    if len(parts) >= 3:
-                        comment = ' '.join(parts[2:])
-        except Exception:
-            pass
-        
-        return (size, algorithm, comment)
-
-    def _get_permissions(self) -> str:
-        """Get file permissions."""
-        if self.has_private:
-            try:
-                file_stat = os.stat(self.private_path)
-                return stat.filemode(file_stat.st_mode)
-            except Exception:
-                pass
-        if self.has_public:
-            try:
-                file_stat = os.stat(self.public_path)
-                return stat.filemode(file_stat.st_mode)
-            except Exception:
-                pass
-        return "???"
-
-    def _has_passphrase(self) -> bool:
-        """Check if the private key is encrypted (has passphrase)."""
-        if self.has_private:
-            try:
-                with open(self.private_path, 'r') as f:
-                    first_line = f.readline().strip()
-                    # Check for encrypted private key markers
-                    if first_line.startswith('-----BEGIN') and 'ENCRYPTED' in first_line:
-                        return True
-                    # OpenSSH format
-                    if first_line.startswith('-----BEGIN OPENSSH PRIVATE KEY-----'):
-                        # Read second line for encryption info
-                        lines = f.readlines()
-                        for line in lines[:5]:  # Check first few lines
-                            if line.startswith('Proc-Type: 4,ENCRYPTED'):
-                                return True
-            except Exception:
-                pass
-        return False
-
-    def get_public_key_content(self) -> str | None:
-        """Get the content of the public key file."""
-        if self.has_public:
-            try:
-                with open(self.public_path, 'r') as f:
-                    return f.read().strip()
-            except Exception:
-                return None
-        return None
+from yast3.modules.ssh.keys.manager import KeyManager, KeyInfo
 
 
 class KeysTab(QWidget):
@@ -227,8 +83,8 @@ class KeysTab(QWidget):
         self.table.itemSelectionChanged.connect(self._on_selection_changed)
         layout.addWidget(self.table)
         
-        # Store key pairs for easy access when copying/deleting
-        self.key_pairs: list[KeyPair] = []
+        # Store key info for easy access when copying/deleting
+        self.key_list: list[KeyInfo] = []
 
     def _generate_new_key(self) -> None:
         """Open dialog to generate a new SSH key."""
@@ -239,65 +95,30 @@ class KeysTab(QWidget):
     def load_keys(self) -> None:
         """Load SSH keys from ~/.ssh/ directory."""
         self.table.setRowCount(0)
-
-        try:
-            files = os.listdir(SSH_CONFIG_DIR)
-        except FileNotFoundError:
-            QMessageBox.warning(self, _("Error"), _("{0} directory not found.").format(SSH_CONFIG_DIR))
-            return
-        except PermissionError:
-            QMessageBox.warning(self, _("Error"), _("Cannot read {0} directory.").format(SSH_CONFIG_DIR))
-            return
-
-        # Find private key files (without .pub extension)
-        private_keys = set()
-        for filename in files:
-            filepath = os.path.join(SSH_CONFIG_DIR, filename)
-            if os.path.isdir(filepath) or filename in ('known_hosts', 'config', 'authorized_keys'):
-                continue
-            
-            # Skip public key files - we'll match them with their private keys
-            if filename.endswith('.pub'):
-                continue
-            
-            # Check if it looks like a key file
-            if filename.endswith(('_rsa', '_dsa', '_ecdsa', '_ed25519')) or \
-               filename.startswith('id_'):
-                private_keys.add(filename)
-
-        # Also check for .pub files that might not have corresponding private keys
-        public_keys = set()
-        for filename in files:
-            if filename.endswith('.pub'):
-                base_name = filename[:-4]  # Remove .pub
-                filepath = os.path.join(SSH_CONFIG_DIR, filename)
-                if os.path.isfile(filepath) and base_name not in private_keys:
-                    public_keys.add(base_name)
-
-        # Combine and create key pairs
-        all_keys = sorted(private_keys.union(public_keys))
-        self.key_pairs = [KeyPair(name) for name in all_keys]
+        
+        # Use KeyManager to get key list
+        self.key_list = KeyManager.list_keys()
 
         # Populate table
-        self.table.setRowCount(len(self.key_pairs))
-        for row, key_pair in enumerate(self.key_pairs):
-            self.table.setItem(row, 0, QTableWidgetItem(key_pair.name))
-            self.table.setItem(row, 1, QTableWidgetItem(key_pair.algorithm))
-            self.table.setItem(row, 2, QTableWidgetItem(key_pair.size))
-            self.table.setItem(row, 3, QTableWidgetItem(key_pair.fingerprint or "-"))
-            self.table.setItem(row, 4, QTableWidgetItem(key_pair.comment or "-"))
-            self.table.setItem(row, 5, QTableWidgetItem(_("Yes") if key_pair.has_passphrase else _("No")))
-            self.table.setItem(row, 6, QTableWidgetItem(_("Yes") if key_pair.has_public else _("No")))
-            self.table.setItem(row, 7, QTableWidgetItem(_("Yes") if key_pair.has_private else _("No")))
+        self.table.setRowCount(len(self.key_list))
+        for row, key_info in enumerate(self.key_list):
+            self.table.setItem(row, 0, QTableWidgetItem(key_info.name))
+            self.table.setItem(row, 1, QTableWidgetItem(key_info.algorithm))
+            self.table.setItem(row, 2, QTableWidgetItem(key_info.size))
+            self.table.setItem(row, 3, QTableWidgetItem(key_info.fingerprint or "-"))
+            self.table.setItem(row, 4, QTableWidgetItem(key_info.comment or "-"))
+            self.table.setItem(row, 5, QTableWidgetItem(_("Yes") if key_info.has_passphrase else _("No")))
+            self.table.setItem(row, 6, QTableWidgetItem(_("Yes") if key_info.has_public else _("No")))
+            self.table.setItem(row, 7, QTableWidgetItem(_("Yes") if key_info.has_private else _("No")))
 
     def _on_selection_changed(self) -> None:
         """Handle table selection change."""
         selected_indexes = self.table.selectedIndexes()
         if selected_indexes:
             row = selected_indexes[0].row()
-            if 0 <= row < len(self.key_pairs):
-                key_pair = self.key_pairs[row]
-                self.copy_key_btn.setEnabled(key_pair.has_public)
+            if 0 <= row < len(self.key_list):
+                key_info = self.key_list[row]
+                self.copy_key_btn.setEnabled(key_info.has_public)
                 self.delete_key_btn.setEnabled(True)
                 return
 
@@ -305,15 +126,15 @@ class KeysTab(QWidget):
         self.delete_key_btn.setEnabled(False)
 
     def copy_selected_key(self) -> None:
-        """Copy the public key of the selected key pair."""
+        """Copy the public key of the selected key."""
         selected_indexes = self.table.selectedIndexes()
         if not selected_indexes:
             return
         
         row = selected_indexes[0].row()
-        if 0 <= row < len(self.key_pairs):
-            key_pair = self.key_pairs[row]
-            content = key_pair.get_public_key_content()
+        if 0 <= row < len(self.key_list):
+            key_info = self.key_list[row]
+            content = KeyManager.get_public_key(key_info)
             if content:
                 clipboard = QApplication.clipboard()
                 clipboard.setText(content)
@@ -328,17 +149,17 @@ class KeysTab(QWidget):
             return
         
         row = selected_indexes[0].row()
-        if not (0 <= row < len(self.key_pairs)):
+        if not (0 <= row < len(self.key_list)):
             return
         
-        key_pair = self.key_pairs[row]
+        key_info = self.key_list[row]
         
         # Build message with what will be deleted
         files_to_delete = []
-        if key_pair.has_private:
-            files_to_delete.append(os.path.basename(key_pair.private_path))
-        if key_pair.has_public:
-            files_to_delete.append(os.path.basename(key_pair.public_path))
+        if key_info.has_private:
+            files_to_delete.append(key_info.name)
+        if key_info.has_public:
+            files_to_delete.append(key_info.name + '.pub')
         
         reply = QMessageBox.question(
             self,
@@ -353,19 +174,8 @@ class KeysTab(QWidget):
         if reply != QMessageBox.StandardButton.Yes:
             return
         
-        # Delete files
-        errors = []
-        if key_pair.has_private:
-            try:
-                os.remove(key_pair.private_path)
-            except Exception as e:
-                errors.append(f"{key_pair.name}: {str(e)}")
-        
-        if key_pair.has_public:
-            try:
-                os.remove(key_pair.public_path)
-            except Exception as e:
-                errors.append(f"{key_pair.name}.pub: {str(e)}")
+        # Use KeyManager to delete the key
+        success, errors = KeyManager.delete_key(key_info)
         
         if errors:
             QMessageBox.warning(
