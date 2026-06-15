@@ -30,8 +30,8 @@ class HostsWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.resize(800, 600)
-        self.statusBar().showMessage(_("System ready"))
-        self.menuBar().addMenu(_("File"))
+        
+        
 
         # Central widget with table
         central_widget = QWidget()

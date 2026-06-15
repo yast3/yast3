@@ -21,8 +21,8 @@ class SSHWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.resize(960, 640)
-        self.statusBar().showMessage(_("System ready"))
-        self.menuBar().addMenu(_("File"))
+        
+        
 
         # Central widget with tabs
         central_widget = QWidget()

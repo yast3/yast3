@@ -27,8 +27,8 @@ class RepositoriesWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.resize(1200, 600)
-        self.statusBar().showMessage(_("System ready"))
-        self.menuBar().addMenu(_("File"))
+        
+        
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)

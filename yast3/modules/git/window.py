@@ -27,7 +27,7 @@ class GitWindow(QMainWindow):
         super().__init__()
         self.resize(600, 500)
         self.setWindowTitle(_("Git Configuration — YaST3"))
-        self.statusBar().showMessage(_("System ready"))
+        
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)

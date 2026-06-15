@@ -27,8 +27,8 @@ class HostnameWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.resize(500, 200)
-        self.statusBar().showMessage(_("System ready"))
-        self.menuBar().addMenu(_("File"))
+        
+        
 
         # Central widget
         central_widget = QWidget()
@@ -37,34 +37,13 @@ class HostnameWindow(QMainWindow):
         layout.setSpacing(16)
         layout.setContentsMargins(32, 32, 32, 32)
 
-        # Title
-        title = QLabel(_("Hostname"))
-        title.setStyleSheet("font-size: 20px; font-weight: 600;")
-        layout.addWidget(title)
-
-        # Description
-        description = QLabel(_("Manage the system hostname. The hostname will be updated in /etc/hostname and /etc/hosts."))
-        description.setWordWrap(True)
-        description.setStyleSheet("color: palette(mid);")
-        layout.addWidget(description)
-
-        # Current hostname display
-        current_layout = QHBoxLayout()
-        current_label = QLabel(_("Current hostname:"))
-        current_layout.addWidget(current_label)
-        
-        self.current_hostname_label = QLabel()
-        current_layout.addWidget(self.current_hostname_label)
-        current_layout.addStretch()
-        layout.addLayout(current_layout)
-
-        # New hostname input
+        # Hostname input
         input_layout = QHBoxLayout()
-        new_label = QLabel(_("New hostname:"))
+        new_label = QLabel(_("Hostname"))
         input_layout.addWidget(new_label)
         
         self.hostname_input = QLineEdit()
-        self.hostname_input.setPlaceholderText(_("Enter new hostname"))
+        self.hostname_input.setPlaceholderText(_("Enter hostname"))
         input_layout.addWidget(self.hostname_input)
         layout.addLayout(input_layout)
 
@@ -86,17 +65,13 @@ class HostnameWindow(QMainWindow):
         """Load the current system hostname."""
         try:
             current = get_current_hostname()
-            self.current_hostname_label.setText(current)
             self.hostname_input.setText(current)
         except FileNotFoundError:
             QMessageBox.warning(self, _("Error"), _("/etc/hostname not found."))
-            self.current_hostname_label.setText(_("Unknown"))
         except PermissionError:
             QMessageBox.warning(self, _("Error"), _("Cannot read /etc/hostname. Root permission required."))
-            self.current_hostname_label.setText(_("Unknown"))
         except Exception as e:
             QMessageBox.warning(self, _("Error"), _("Failed to load hostname: {0}").format(str(e)))
-            self.current_hostname_label.setText(_("Unknown"))
 
     def apply_hostname(self) -> None:
         """Apply the new hostname."""
@@ -118,7 +93,10 @@ class HostnameWindow(QMainWindow):
             return
         
         # Confirm with user
-        current = self.current_hostname_label.text()
+        try:
+            current = get_current_hostname()
+        except Exception:
+            current = self.hostname_input.text()
         if current != new_hostname:
             reply = QMessageBox.question(
                 self,
@@ -134,7 +112,6 @@ class HostnameWindow(QMainWindow):
         
         if status == "ok":
             QMessageBox.information(self, _("Success"), _("Hostname changed successfully to '{0}'.").format(new_hostname))
-            self.current_hostname_label.setText(new_hostname)
             self.statusBar().showMessage(_("Hostname updated"), 3000)
         elif status == "permission_denied":
             QMessageBox.critical(self, _("Error"), _("Permission denied. Root permission required."))

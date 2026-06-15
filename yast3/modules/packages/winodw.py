@@ -11,8 +11,8 @@ class PackagesWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle(_("Packages"))
-        self.statusBar().showMessage(_("System ready"))
-        self.menuBar().addMenu(_("File"))
+        
+        
         
         # 2. 必须创建一个 核心Widget 填充中央区域
         central_widget = QWidget()
