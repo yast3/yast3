@@ -7,13 +7,13 @@ Save YaST ♥️ with Python 3 & Qt6 Widgets.
 Available:
 
 - Git: manage Git global config
+- Hostname: manage system hostname
 - Hosts: manage `/etc/hosts`
 - Repositories: manage software repositories (rpm)
 - SSH Client: manage SSH client settings, keys and hosts (user)
 
 Planned:
 
-- Hostname: manage system hostname
 - Packages: manage installed software packages (rpm)
 - SSH Server: manage SSH server settings (system)
 

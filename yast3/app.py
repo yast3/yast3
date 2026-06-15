@@ -23,6 +23,7 @@ from PySide6.QtWidgets import (
 
 MODULES: tuple[Module, ...] = (
     GitModule(),
+    HostnameModule(),
     HostsModule(),
     RepositoriesModule(),
     SSHClientModule(),
