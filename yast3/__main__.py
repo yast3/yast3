@@ -1,12 +1,12 @@
-from .app import MainWindow
-from .i18n import init_i18n
+from PySide6.QtWidgets import QApplication
+
+from yast3.main_window import MainWindow
+from yast3.i18n import init_i18n
 
 
 def main() -> int:
     # Initialize internationalization
     init_i18n()
-
-    from PySide6.QtWidgets import QApplication
 
     app = QApplication.instance() or QApplication([])
     app.setApplicationName("YaST3")
