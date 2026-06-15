@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-06-14 16:36+0000\n"
+"POT-Creation-Date: 2026-06-15 09:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: yast3/modules/hosts/window.py:43 yast3/modules/repositories/window.py:38
 #: yast3/modules/ssh/dialogs.py:51 yast3/modules/ssh/hosts_tab.py:37
-#: yast3/modules/ssh/keys_tab.py:163
+#: yast3/modules/ssh/keys_tab.py:181
 msgid "Add"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgid "Edit"
 msgstr ""
 
 #: yast3/modules/hosts/window.py:50 yast3/modules/repositories/window.py:46
-#: yast3/modules/ssh/hosts_tab.py:45 yast3/modules/ssh/keys_tab.py:172
+#: yast3/modules/ssh/hosts_tab.py:45 yast3/modules/ssh/keys_tab.py:190
 msgid "Delete"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Hostname"
 msgstr ""
 
-#: yast3/modules/hosts/window.py:65 yast3/modules/ssh/keys_tab.py:187
+#: yast3/modules/hosts/window.py:65 yast3/modules/ssh/keys_tab.py:205
 msgid "Comment"
 msgstr ""
 
@@ -107,8 +107,8 @@ msgstr ""
 #: yast3/modules/ssh/hosts_tab.py:90 yast3/modules/ssh/hosts_tab.py:145
 #: yast3/modules/ssh/hosts_tab.py:167 yast3/modules/ssh/hosts_tab.py:178
 #: yast3/modules/ssh/hosts_tab.py:222 yast3/modules/ssh/hosts_tab.py:224
-#: yast3/modules/ssh/keys_tab.py:226 yast3/modules/ssh/keys_tab.py:229
-#: yast3/modules/ssh/keys_tab.py:301 yast3/modules/ssh/keys_tab.py:352
+#: yast3/modules/ssh/keys_tab.py:246 yast3/modules/ssh/keys_tab.py:249
+#: yast3/modules/ssh/keys_tab.py:322 yast3/modules/ssh/keys_tab.py:373
 msgid "Error"
 msgstr ""
 
@@ -152,7 +152,7 @@ msgstr ""
 
 #: yast3/modules/hosts/window.py:228 yast3/modules/ssh/__init__.py:79
 #: yast3/modules/ssh/generate_dialog.py:217 yast3/modules/ssh/hosts_tab.py:220
-#: yast3/modules/ssh/keys_tab.py:299 yast3/modules/ssh/keys_tab.py:356
+#: yast3/modules/ssh/keys_tab.py:320 yast3/modules/ssh/keys_tab.py:377
 msgid "Success"
 msgstr ""
 
@@ -199,7 +199,7 @@ msgid "ID"
 msgstr ""
 
 #: yast3/modules/repositories/dialogs.py:31
-#: yast3/modules/repositories/window.py:56 yast3/modules/ssh/keys_tab.py:187
+#: yast3/modules/repositories/window.py:56 yast3/modules/ssh/keys_tab.py:205
 msgid "Name"
 msgstr ""
 
@@ -470,67 +470,71 @@ msgstr ""
 msgid "Failed to save SSH config."
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:167
+#: yast3/modules/ssh/keys_tab.py:185
 msgid "Copy Public Key"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:177
+#: yast3/modules/ssh/keys_tab.py:195
 msgid "Refresh"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:187
+#: yast3/modules/ssh/keys_tab.py:205
 msgid "Algorithm"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:187
+#: yast3/modules/ssh/keys_tab.py:205
 msgid "Size"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:187
+#: yast3/modules/ssh/keys_tab.py:205
+msgid "Fingerprint"
+msgstr ""
+
+#: yast3/modules/ssh/keys_tab.py:205
 msgid "Passphrase"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:187
+#: yast3/modules/ssh/keys_tab.py:205
 msgid "Public"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:187
+#: yast3/modules/ssh/keys_tab.py:205
 msgid "Private"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:226
+#: yast3/modules/ssh/keys_tab.py:246
 #, python-brace-format
 msgid "{0} directory not found."
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:229
+#: yast3/modules/ssh/keys_tab.py:249
 #, python-brace-format
 msgid "Cannot read {0} directory."
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:268 yast3/modules/ssh/keys_tab.py:269
-#: yast3/modules/ssh/keys_tab.py:270
+#: yast3/modules/ssh/keys_tab.py:289 yast3/modules/ssh/keys_tab.py:290
+#: yast3/modules/ssh/keys_tab.py:291
 msgid "Yes"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:268 yast3/modules/ssh/keys_tab.py:269
-#: yast3/modules/ssh/keys_tab.py:270
+#: yast3/modules/ssh/keys_tab.py:289 yast3/modules/ssh/keys_tab.py:290
+#: yast3/modules/ssh/keys_tab.py:291
 msgid "No"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:299
+#: yast3/modules/ssh/keys_tab.py:320
 msgid "Public key copied to clipboard."
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:301
+#: yast3/modules/ssh/keys_tab.py:322
 msgid "Cannot read public key file."
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:324
+#: yast3/modules/ssh/keys_tab.py:345
 msgid "Confirm Delete"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:325
+#: yast3/modules/ssh/keys_tab.py:346
 #, python-brace-format
 msgid ""
 "Are you sure you want to delete the following keys?\n"
@@ -538,7 +542,7 @@ msgid ""
 "{0}"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:353
+#: yast3/modules/ssh/keys_tab.py:374
 #, python-brace-format
 msgid ""
 "Failed to delete some files:\n"
@@ -546,7 +550,7 @@ msgid ""
 "{0}"
 msgstr ""
 
-#: yast3/modules/ssh/keys_tab.py:356
+#: yast3/modules/ssh/keys_tab.py:377
 msgid "Key deleted successfully."
 msgstr ""
 

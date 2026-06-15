@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 import stat
+import subprocess
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QClipboard
@@ -32,59 +33,89 @@ class KeyPair:
         self.public_path = os.path.join(SSH_CONFIG_DIR, name + '.pub')
         self.has_private = os.path.exists(self.private_path)
         self.has_public = os.path.exists(self.public_path)
-        self.algorithm = self._detect_type()
-        self.size = self._get_size()
+        # Get key info using ssh-keygen command
+        self.size, self.algorithm, self.fingerprint, self.comment = self._get_key_info()
         self.permissions = self._get_permissions()
-        self.comment = self._get_comment()
         self.has_passphrase = self._has_passphrase()
 
-    def _detect_type(self) -> str:
-        """Detect key type from public or private key file."""
-        # Try public key first
-        if self.has_public:
-            return self._detect_algorithm(self.public_path)
-        # Fall back to private key
-        if self.has_private:
-            return self._detect_algorithm(self.private_path)
-        return 'Unknown'
+    def _get_key_info(self) -> tuple[str, str, str, str]:
+        """Get key size, algorithm, fingerprint and comment using ssh-keygen."""
+        size = "N/A"
+        algorithm = "Unknown"
+        fingerprint = ""
+        comment = ""
+        
+        # Use public key file if available
+        filepath = self.public_path if self.has_public else self.private_path
+        
+        if os.path.exists(filepath):
+            try:
+                result = subprocess.run(
+                    ['ssh-keygen', '-l', '-f', filepath],
+                    capture_output=True,
+                    text=True,
+                    check=True
+                )
+                output = result.stdout.strip()
+                if output:
+                    # Output format: "256 SHA256:xxx user@hostname (ED25519)"
+                    parts = output.split()
+                    if len(parts) >= 3:
+                        size = parts[0]
+                        fingerprint = parts[1]
+                        # Algorithm is in parentheses at the end
+                        if len(parts) > 3:
+                            last_part = parts[-1]
+                            if last_part.startswith('(') and last_part.endswith(')'):
+                                algorithm = last_part[1:-1]
+                            # Comment is everything between fingerprint and algorithm
+                            comment = ' '.join(parts[2:-1])
+            except Exception:
+                # Fallback to file-based detection if ssh-keygen fails
+                size, algorithm, comment = self._fallback_key_info()
+        
+        return (size, algorithm, fingerprint, comment)
 
-    def _detect_algorithm(self, filepath: str) -> str:
-        """Detect SSH key type from file content."""
+    def _fallback_key_info(self) -> tuple[str, str, str]:
+        """Fallback key detection using file content."""
+        size = "N/A"
+        algorithm = "Unknown"
+        comment = ""
+        
+        filepath = self.public_path if self.has_public else self.private_path
+        
         try:
             with open(filepath, 'r') as f:
                 first_line = f.readline().strip()
             
             if first_line.startswith('-----BEGIN RSA PRIVATE KEY-----'):
-                return 'RSA'
+                algorithm = 'RSA'
             elif first_line.startswith('-----BEGIN DSA PRIVATE KEY-----'):
-                return 'DSA'
+                algorithm = 'DSA'
             elif first_line.startswith('-----BEGIN EC PRIVATE KEY-----'):
-                return 'EC'
+                algorithm = 'EC'
             elif first_line.startswith('-----BEGIN OPENSSH PRIVATE KEY-----'):
-                return 'OpenSSH'
+                algorithm = 'OpenSSH'
             elif first_line.startswith('ssh-rsa '):
-                return 'RSA'
+                algorithm = 'RSA'
             elif first_line.startswith('ssh-dss '):
-                return 'DSA'
+                algorithm = 'DSA'
             elif first_line.startswith('ecdsa-sha2-'):
-                return 'EC'
+                algorithm = 'EC'
             elif first_line.startswith('ssh-ed25519 '):
-                return 'ED25519'
-            else:
-                return 'Unknown'
+                algorithm = 'ED25519'
+            
+            # Get comment from public key
+            if self.has_public:
+                with open(self.public_path, 'r') as f:
+                    content = f.read().strip()
+                    parts = content.split()
+                    if len(parts) >= 3:
+                        comment = ' '.join(parts[2:])
         except Exception:
-            return 'Unknown'
-
-    def _get_size(self) -> str:
-        """Get key size information."""
-
-        if self.has_private:
-            try:
-                file_stat = os.stat(self.private_path)
-                return f"{file_stat.st_size} bytes"
-            except Exception:
-                pass
-        return "N/A"
+            pass
+        
+        return (size, algorithm, comment)
 
     def _get_permissions(self) -> str:
         """Get file permissions."""
@@ -101,19 +132,6 @@ class KeyPair:
             except Exception:
                 pass
         return "???"
-
-    def _get_comment(self) -> str:
-        """Get the comment from the public key file."""
-        if self.has_public:
-            try:
-                with open(self.public_path, 'r') as f:
-                    content = f.read().strip()
-                    parts = content.split()
-                    if len(parts) >= 3:
-                        return ' '.join(parts[2:])
-            except Exception:
-                pass
-        return ""
 
     def _has_passphrase(self) -> bool:
         """Check if the private key is encrypted (has passphrase)."""
@@ -182,9 +200,9 @@ class KeysTab(QWidget):
 
         # Keys table
         self.table = QTableWidget()
-        self.table.setColumnCount(7)
+        self.table.setColumnCount(8)
         self.table.setHorizontalHeaderLabels([
-            _("Name"), _("Algorithm"), _("Size"), _("Comment"), _("Passphrase"), _("Public"), _("Private")
+            _("Name"), _("Algorithm"), _("Size"), _("Fingerprint"), _("Comment"), _("Passphrase"), _("Public"), _("Private")
         ])
         
         # Column widths
@@ -193,14 +211,16 @@ class KeysTab(QWidget):
         self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Fixed)
         self.table.setColumnWidth(1, 90)
         self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(2, 90)
-        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
-        self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(4, 80)
+        self.table.setColumnWidth(2, 60)
+        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Fixed)
+        self.table.setColumnWidth(3, 220)
+        self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.Stretch)
         self.table.horizontalHeader().setSectionResizeMode(5, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(5, 70)
+        self.table.setColumnWidth(5, 80)
         self.table.horizontalHeader().setSectionResizeMode(6, QHeaderView.ResizeMode.Fixed)
         self.table.setColumnWidth(6, 70)
+        self.table.horizontalHeader().setSectionResizeMode(7, QHeaderView.ResizeMode.Fixed)
+        self.table.setColumnWidth(7, 70)
         
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
@@ -264,10 +284,11 @@ class KeysTab(QWidget):
             self.table.setItem(row, 0, QTableWidgetItem(key_pair.name))
             self.table.setItem(row, 1, QTableWidgetItem(key_pair.algorithm))
             self.table.setItem(row, 2, QTableWidgetItem(key_pair.size))
-            self.table.setItem(row, 3, QTableWidgetItem(key_pair.comment or "-"))
-            self.table.setItem(row, 4, QTableWidgetItem(_("Yes") if key_pair.has_passphrase else _("No")))
-            self.table.setItem(row, 5, QTableWidgetItem(_("Yes") if key_pair.has_public else _("No")))
-            self.table.setItem(row, 6, QTableWidgetItem(_("Yes") if key_pair.has_private else _("No")))
+            self.table.setItem(row, 3, QTableWidgetItem(key_pair.fingerprint or "-"))
+            self.table.setItem(row, 4, QTableWidgetItem(key_pair.comment or "-"))
+            self.table.setItem(row, 5, QTableWidgetItem(_("Yes") if key_pair.has_passphrase else _("No")))
+            self.table.setItem(row, 6, QTableWidgetItem(_("Yes") if key_pair.has_public else _("No")))
+            self.table.setItem(row, 7, QTableWidgetItem(_("Yes") if key_pair.has_private else _("No")))
 
     def _on_selection_changed(self) -> None:
         """Handle table selection change."""
