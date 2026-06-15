@@ -2,18 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Iterable
-
 from PySide6.QtCore import QSize, Qt
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (
     QFrame,
     QGridLayout,
-    QLabel,
     QMainWindow,
     QScrollArea,
     QToolButton,
-    QVBoxLayout,
     QWidget,
 )
 
