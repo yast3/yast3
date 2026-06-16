@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 import subprocess
-import tempfile
+import sys
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Literal
 
 HOSTNAME_FILE = "/etc/hostname"
@@ -160,161 +161,6 @@ def update_hosts_with_hostname(
     return updated_lines
 
 
-def save_hostname_file(
-    hostname: str, use_pkexec: bool = True
-) -> Literal["ok", "permission_denied", "pkexec_failed", "error"]:
-    """Save hostname to /etc/hostname file.
-
-    Args:
-        hostname: The hostname to save.
-        use_pkexec: If True, use pkexec for privilege escalation on permission error.
-
-    Returns:
-        "ok" on success,
-        "permission_denied" if direct write fails and use_pkexec is False,
-        "pkexec_failed" if pkexec authentication fails,
-        "error" for other errors.
-    """
-    content = hostname + "\n"
-
-    # Try direct write first
-    try:
-        with open(HOSTNAME_FILE, "w") as f:
-            f.write(content)
-        return "ok"
-    except PermissionError:
-        if not use_pkexec:
-            return "permission_denied"
-    except Exception:
-        return "error"
-
-    # Use pkexec to get root permission
-    try:
-        # Write to a temporary file first
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".hostname", delete=False
-        ) as tmp:
-            tmp.write(content)
-            tmp_path = tmp.name
-
-        # Use pkexec to copy the file to /etc/hostname
-        result = subprocess.run(
-            ["pkexec", "cp", tmp_path, HOSTNAME_FILE],
-            capture_output=True,
-            text=True,
-        )
-
-        # Clean up temp file
-        subprocess.run(["rm", "-f", tmp_path], capture_output=True)
-
-        if result.returncode == 0:
-            return "ok"
-        else:
-            return "pkexec_failed"
-    except Exception:
-        return "error"
-
-
-def save_hosts_file(
-    lines: list[str], use_pkexec: bool = True
-) -> Literal["ok", "permission_denied", "pkexec_failed", "error"]:
-    """Save hosts file lines to /etc/hosts file.
-
-    Args:
-        lines: List of lines to save.
-        use_pkexec: If True, use pkexec for privilege escalation on permission error.
-
-    Returns:
-        "ok" on success,
-        "permission_denied" if direct write fails and use_pkexec is False,
-        "pkexec_failed" if pkexec authentication fails,
-        "error" for other errors.
-    """
-    content = "".join(lines)
-
-    # Try direct write first
-    try:
-        with open(HOSTS_FILE, "w") as f:
-            f.write(content)
-        return "ok"
-    except PermissionError:
-        if not use_pkexec:
-            return "permission_denied"
-    except Exception:
-        return "error"
-
-    # Use pkexec to get root permission
-    try:
-        # Write to a temporary file first
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".hosts", delete=False
-        ) as tmp:
-            tmp.write(content)
-            tmp_path = tmp.name
-
-        # Use pkexec to copy the file to /etc/hosts
-        result = subprocess.run(
-            ["pkexec", "cp", tmp_path, HOSTS_FILE],
-            capture_output=True,
-            text=True,
-        )
-
-        # Clean up temp file
-        subprocess.run(["rm", "-f", tmp_path], capture_output=True)
-
-        if result.returncode == 0:
-            return "ok"
-        else:
-            return "pkexec_failed"
-    except Exception:
-        return "error"
-
-
-def set_system_hostname(
-    hostname: str, use_pkexec: bool = True
-) -> Literal["ok", "permission_denied", "pkexec_failed", "error"]:
-    """Set the system hostname using hostnamectl.
-
-    Args:
-        hostname: The hostname to set.
-        use_pkexec: If True, use pkexec for privilege escalation.
-
-    Returns:
-        "ok" on success,
-        "permission_denied" if command fails and use_pkexec is False,
-        "pkexec_failed" if pkexec authentication fails,
-        "error" for other errors.
-    """
-    try:
-        result = subprocess.run(
-            ["hostnamectl", "set-hostname", hostname],
-            capture_output=True,
-            text=True,
-        )
-
-        if result.returncode == 0:
-            return "ok"
-        elif result.returncode == 1 or "Permission denied" in result.stderr:
-            if not use_pkexec:
-                return "permission_denied"
-
-            # Try with pkexec
-            result = subprocess.run(
-                ["pkexec", "hostnamectl", "set-hostname", hostname],
-                capture_output=True,
-                text=True,
-            )
-
-            if result.returncode == 0:
-                return "ok"
-            else:
-                return "pkexec_failed"
-        else:
-            return "error"
-    except Exception:
-        return "error"
-
-
 def set_hostname(
     new_hostname: str, use_pkexec: bool = True
 ) -> tuple[Literal["ok", "permission_denied", "pkexec_failed", "error"], str]:
@@ -328,38 +174,32 @@ def set_hostname(
         Tuple of (status, message).
         status can be "ok", "permission_denied", "pkexec_failed", or "error".
     """
-    try:
-        # Get current hostname
-        current_hostname = get_current_hostname()
+    script_path = Path(__file__).parent / "set_hostname.py"
 
-        # Load hosts file
-        hosts_lines = load_hosts_file()
-
-        # Update hosts file with new hostname
-        updated_hosts_lines = update_hosts_with_hostname(
-            hosts_lines, new_hostname, current_hostname
+    if not use_pkexec:
+        result = subprocess.run(
+            [sys.executable, str(script_path), new_hostname],
+            capture_output=True,
+            text=True,
         )
+        if result.returncode == 0 and result.stdout.strip() == "OK":
+            return ("ok", "Hostname updated successfully")
+        elif result.returncode == 6 or result.returncode == 7:
+            return ("permission_denied", "Permission denied")
+        else:
+            return ("error", result.stderr.strip() or "Failed to set hostname")
 
-        # Save hostname file
-        hostname_result = save_hostname_file(new_hostname, use_pkexec)
-        if hostname_result != "ok":
-            return (hostname_result, f"Failed to save {HOSTNAME_FILE}")
+    result = subprocess.run(
+        ["pkexec", sys.executable, str(script_path), new_hostname],
+        capture_output=True,
+        text=True,
+    )
 
-        # Save hosts file
-        hosts_result = save_hosts_file(updated_hosts_lines, use_pkexec)
-        if hosts_result != "ok":
-            return (hosts_result, f"Failed to save {HOSTS_FILE}")
-
-        # Set system hostname
-        system_result = set_system_hostname(new_hostname, use_pkexec)
-        if system_result != "ok":
-            return (system_result, "Failed to set system hostname")
-
+    if result.returncode == 0 and result.stdout.strip() == "OK":
         return ("ok", "Hostname updated successfully")
-
-    except FileNotFoundError as e:
-        return ("error", f"File not found: {e}")
-    except PermissionError:
+    elif result.returncode == 126 or result.returncode == 127:
+        return ("pkexec_failed", "Authentication failed")
+    elif result.returncode == 6 or result.returncode == 7:
         return ("permission_denied", "Permission denied")
-    except Exception as e:
-        return ("error", f"Error: {e}")
+    else:
+        return ("error", result.stderr.strip() or "Failed to set hostname")
