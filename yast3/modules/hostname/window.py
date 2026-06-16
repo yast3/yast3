@@ -126,7 +126,6 @@ class HostnameWindow(QMainWindow):
                 _("Success"),
                 _("Hostname changed successfully to '{0}'.").format(new_hostname),
             )
-            self.statusBar().showMessage(_("Hostname updated"), 3000)
             self.close()
         elif status == "permission_denied":
             QMessageBox.critical(
