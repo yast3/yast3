@@ -49,9 +49,9 @@ class HostnameWindow(QMainWindow):
         button_layout = QHBoxLayout()
         button_layout.addStretch()
 
-        self.apply_btn = QPushButton(_("Apply"))
-        self.apply_btn.clicked.connect(self.apply_hostname)
-        button_layout.addWidget(self.apply_btn)
+        self.save_btn = QPushButton(_("Save"))
+        self.save_btn.clicked.connect(self.save_hostname)
+        button_layout.addWidget(self.save_btn)
 
         layout.addLayout(button_layout)
         layout.addStretch()
@@ -77,8 +77,8 @@ class HostnameWindow(QMainWindow):
                 self, _("Error"), _("Failed to load hostname: {0}").format(str(e))
             )
 
-    def apply_hostname(self) -> None:
-        """Apply the new hostname."""
+    def save_hostname(self) -> None:
+        """Save the new hostname."""
         new_hostname = self.hostname_input.text().strip()
 
         if not new_hostname:
@@ -117,7 +117,7 @@ class HostnameWindow(QMainWindow):
             if reply != QMessageBox.StandardButton.Yes:
                 return
 
-        # Apply the hostname change
+        # Save the hostname change
         status, message = set_hostname(new_hostname)
 
         if status == "ok":
@@ -127,6 +127,7 @@ class HostnameWindow(QMainWindow):
                 _("Hostname changed successfully to '{0}'.").format(new_hostname),
             )
             self.statusBar().showMessage(_("Hostname updated"), 3000)
+            self.close()
         elif status == "permission_denied":
             QMessageBox.critical(
                 self, _("Error"), _("Permission denied. Root permission required.")
@@ -140,7 +141,7 @@ class HostnameWindow(QMainWindow):
                 self, _("Error"), _("Failed to set hostname: {0}").format(message)
             )
 
-    def closeEvent(self, event) -> None:
+    def closeEvent(self, _event) -> None:
         """Handle window close event to destroy the window."""
         self.closed.emit()
         self.deleteLater()
