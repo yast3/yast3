@@ -53,14 +53,8 @@ def update_hosts_with_hostname(
             parts = line.strip().split()
             if len(parts) > 1 and old_hostname in parts[1:]:
                 new_parts = [parts[0]] + [h for h in parts[1:] if h != old_hostname]
-                if "\t" in line:
-                    sep = "\t"
-                else:
-                    sep = " "
-                updated_lines[i] = (
-                    sep.join(new_parts) + "\n"
-                    if line.endswith("\n")
-                    else sep.join(new_parts)
+                updated_lines[i] = " ".join(new_parts) + (
+                    "\n" if line.endswith("\n") else ""
                 )
 
     ipv4_line, ipv6_line = find_localhost_lines(updated_lines)
@@ -71,12 +65,8 @@ def update_hosts_with_hostname(
         if len(parts) > 1 and new_hostname not in parts[1:]:
             localhost_idx = parts.index("localhost")
             parts.insert(localhost_idx + 1, new_hostname)
-            if "\t" in line:
-                sep = "\t"
-            else:
-                sep = " "
-            updated_lines[ipv4_line] = (
-                sep.join(parts) + "\n" if line.endswith("\n") else sep.join(parts)
+            updated_lines[ipv4_line] = " ".join(parts) + (
+                "\n" if line.endswith("\n") else ""
             )
 
     if ipv6_line is not None:
@@ -85,12 +75,8 @@ def update_hosts_with_hostname(
         if len(parts) > 1 and new_hostname not in parts[1:]:
             localhost_idx = parts.index("localhost")
             parts.insert(localhost_idx + 1, new_hostname)
-            if "\t" in line:
-                sep = "\t"
-            else:
-                sep = " "
-            updated_lines[ipv6_line] = (
-                sep.join(parts) + "\n" if line.endswith("\n") else sep.join(parts)
+            updated_lines[ipv6_line] = " ".join(parts) + (
+                "\n" if line.endswith("\n") else ""
             )
 
     return updated_lines

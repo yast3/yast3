@@ -106,15 +106,8 @@ def update_hosts_with_hostname(
             if len(parts) > 1 and old_hostname in parts[1:]:
                 # Keep the IP and other hostnames, remove old_hostname
                 new_parts = [parts[0]] + [h for h in parts[1:] if h != old_hostname]
-                # Preserve original line formatting (tabs/spaces)
-                if "\t" in line:
-                    sep = "\t"
-                else:
-                    sep = " "
-                updated_lines[i] = (
-                    sep.join(new_parts) + "\n"
-                    if line.endswith("\n")
-                    else sep.join(new_parts)
+                updated_lines[i] = " ".join(new_parts) + (
+                    "\n" if line.endswith("\n") else ""
                 )
 
     # Find and update localhost lines
@@ -130,13 +123,8 @@ def update_hosts_with_hostname(
                 # Add hostname after localhost
                 localhost_idx = parts.index("localhost")
                 parts.insert(localhost_idx + 1, new_hostname)
-                # Preserve original line formatting
-                if "\t" in line:
-                    sep = "\t"
-                else:
-                    sep = " "
-                updated_lines[ipv4_line] = (
-                    sep.join(parts) + "\n" if line.endswith("\n") else sep.join(parts)
+                updated_lines[ipv4_line] = " ".join(parts) + (
+                    "\n" if line.endswith("\n") else ""
                 )
 
     # Update ::1 line
@@ -149,13 +137,8 @@ def update_hosts_with_hostname(
                 # Add hostname after localhost
                 localhost_idx = parts.index("localhost")
                 parts.insert(localhost_idx + 1, new_hostname)
-                # Preserve original line formatting
-                if "\t" in line:
-                    sep = "\t"
-                else:
-                    sep = " "
-                updated_lines[ipv6_line] = (
-                    sep.join(parts) + "\n" if line.endswith("\n") else sep.join(parts)
+                updated_lines[ipv6_line] = " ".join(parts) + (
+                    "\n" if line.endswith("\n") else ""
                 )
 
     return updated_lines
