@@ -26,23 +26,22 @@ class HostnameWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.resize(500, 200)
 
         # Central widget
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         layout = QVBoxLayout(central_widget)
-        layout.setSpacing(16)
-        layout.setContentsMargins(32, 32, 32, 32)
+        layout.setSpacing(8)
 
         # Hostname input
         input_layout = QHBoxLayout()
-        new_label = QLabel(_("Hostname"))
-        input_layout.addWidget(new_label)
+        label = QLabel(_("Hostname"))
+        input_layout.addWidget(label)
 
-        self.hostname_input = QLineEdit()
-        self.hostname_input.setPlaceholderText(_("Enter hostname"))
-        input_layout.addWidget(self.hostname_input)
+        self.input = QLineEdit()
+        self.input.setPlaceholderText(_("Enter hostname"))
+        self.input.setFixedWidth(250)
+        input_layout.addWidget(self.input)
         layout.addLayout(input_layout)
 
         # Button bar
@@ -54,7 +53,6 @@ class HostnameWindow(QMainWindow):
         button_layout.addWidget(self.save_btn)
 
         layout.addLayout(button_layout)
-        layout.addStretch()
 
         # Load current hostname
         self.load_hostname()
@@ -63,7 +61,7 @@ class HostnameWindow(QMainWindow):
         """Load the current system hostname."""
         try:
             current = get_current_hostname()
-            self.hostname_input.setText(current)
+            self.input.setText(current)
         except FileNotFoundError:
             QMessageBox.warning(self, _("Error"), _("/etc/hostname not found."))
         except PermissionError:
@@ -79,7 +77,7 @@ class HostnameWindow(QMainWindow):
 
     def save_hostname(self) -> None:
         """Save the new hostname."""
-        new_hostname = self.hostname_input.text().strip()
+        new_hostname = self.input.text().strip()
 
         if not new_hostname:
             QMessageBox.warning(self, _("Error"), _("Hostname cannot be empty."))
@@ -104,7 +102,7 @@ class HostnameWindow(QMainWindow):
         try:
             current = get_current_hostname()
         except Exception:
-            current = self.hostname_input.text()
+            current = self.input.text()
         if current != new_hostname:
             reply = QMessageBox.question(
                 self,
