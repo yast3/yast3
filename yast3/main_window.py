@@ -15,6 +15,7 @@ from PySide6.QtWidgets import (
 
 from .module import Module
 from .modules import (
+    CronModule,
     GitModule,
     HostnameModule,
     HostsModule,
@@ -27,6 +28,7 @@ class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.modules = (
+            CronModule(),
             GitModule(),
             HostnameModule(),
             HostsModule(),

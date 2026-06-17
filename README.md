@@ -25,7 +25,7 @@ Planned:
 ## Run
 
 ```bash
-sudo zypper install python3-pyside6 python3-Babel
+sudo zypper install python3-pyside6 python3-Babel python3-crontab
 python3 -m yast3
 ```
 
