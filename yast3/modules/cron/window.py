@@ -11,7 +11,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.i18n import _
-from yast3.modules.cron.tab import CronTab
+from yast3.modules.cron.cron_tab import CronTab
 
 
 class CronWindow(QMainWindow):
