@@ -1,6 +1,6 @@
 """SSH Hosts module."""
 
-from .manager import HostManager
-from .tab import HostsTab
+from yast3.modules.ssh.hosts.manager import HostManager
+from yast3.modules.ssh.hosts.tab import HostsTab
 
 __all__ = ["HostsTab", "HostManager"]

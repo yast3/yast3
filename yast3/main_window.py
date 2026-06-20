@@ -13,8 +13,8 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from .module import Module
-from .modules import (
+from yast3.module import Module
+from yast3.modules import (
     CronModule,
     GitModule,
     HostnameModule,

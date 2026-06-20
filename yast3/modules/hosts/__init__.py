@@ -1,8 +1,8 @@
 """Hosts module package."""
 
-from ...i18n import _
-from ...module import Module
-from .window import HostsWindow
+from yast3.i18n import _
+from yast3.module import Module
+from yast3.modules.hosts.window import HostsWindow
 
 
 class HostsModule(Module):

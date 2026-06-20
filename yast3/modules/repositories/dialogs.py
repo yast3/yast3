@@ -15,7 +15,7 @@ from PySide6.QtWidgets import (
 
 from yast3.i18n import _
 
-from .repos import RepoEntry
+from yast3.modules.repositories.repos import RepoEntry
 
 
 class RepoEditDialog(QDialog):

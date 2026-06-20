@@ -1,8 +1,8 @@
 """Packages module package."""
 
-from ...i18n import _
-from ...module import Module
-from .winodw import PackagesWindow
+from yast3.i18n import _
+from yast3.module import Module
+from yast3.modules.packages.winodw import PackagesWindow
 
 
 class PackagesModule(Module):
