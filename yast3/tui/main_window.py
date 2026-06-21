@@ -18,18 +18,6 @@ from yast3.tui import (
 )
 
 
-# Emoji icons for each module type
-MODULE_ICONS = {
-    "Hostname": "💻",
-    "Git": "📝",
-    "Hosts": "🌐",
-    "Cron": "⏰",
-    "Repositories": "📦",
-    "SSH Client": "🔐",
-    "Packages": "🎁",
-}
-
-
 class ModuleButton(Button):
     """A button for launching a module."""
 
@@ -52,11 +40,8 @@ class ModuleButton(Button):
     """
 
     def __init__(self, module: Module) -> None:
-        # Create valid ID: only letters, numbers, underscores, hyphens
         safe_id = module.name.lower().replace(" ", "-").replace("_", "-")
-        # Get icon for this module
-        icon = MODULE_ICONS.get(module.name, "⚙️")
-        label = f"{icon} {module.name}"
+        label = f"{module.emoji} {module.name}"
         super().__init__(label, id=f"module-{safe_id}")
         self.module = module
 

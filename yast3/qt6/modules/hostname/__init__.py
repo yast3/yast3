@@ -9,7 +9,7 @@ class HostnameModule(Module):
     window: HostnameWindow | None = None
 
     def __init__(self):
-        super().__init__(_("Hostname"), ("computer", "preferences-system-network"))
+        super().__init__(_("Hostname"), ("computer", "preferences-system-network"), "💻")
 
     def launch(self) -> None:
         """Launch the hostname module window."""

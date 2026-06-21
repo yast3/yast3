@@ -9,7 +9,7 @@ class HostsModule(Module):
     window: HostsWindow | None = None
 
     def __init__(self):
-        super().__init__(_("Hosts"), ("network", "network-workgroup"))
+        super().__init__(_("Hosts"), ("network", "network-workgroup"), "🌐")
 
     def launch(self) -> None:
         """Launch the hosts module window."""

@@ -9,7 +9,7 @@ from yast3.tui.git.window import GitWindow
 
 class GitModule(Module):
     def __init__(self):
-        super().__init__(_("Git"), ("preferences-git", "settings"))
+        super().__init__(_("Git"), ("preferences-git", "settings"), "📝")
 
     def create_window(self) -> Screen:
         """Create and return the git configuration window."""

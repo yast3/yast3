@@ -10,7 +10,7 @@ class RepositoriesModule(Module):
 
     def __init__(self):
         super().__init__(
-            _("Repositories"), ("system-software-install", "package-x-generic")
+            _("Repositories"), ("system-software-install", "package-x-generic"), "📦"
         )
 
     def launch(self) -> None:

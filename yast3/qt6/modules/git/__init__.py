@@ -9,7 +9,7 @@ class GitModule(Module):
     window: GitWindow | None = None
 
     def __init__(self):
-        super().__init__(_("Git"), ("preferences-git", "settings"))
+        super().__init__(_("Git"), ("preferences-git", "settings"), "📝")
 
     def launch(self) -> None:
         """Launch the Git module window."""
