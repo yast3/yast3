@@ -3,7 +3,6 @@
 from textual.app import App, ComposeResult
 from textual.containers import Grid, ScrollableContainer
 from textual.widgets import Button, Footer, Header, Static
-from textual.screen import Screen
 
 from yast3.core.i18n import _
 from yast3.core.module import Module
@@ -21,21 +20,9 @@ from yast3.tui import (
 class ModuleButton(Button):
     """A button for launching a module."""
 
-    DEFAULT_CSS = """
+    CSS = """
     ModuleButton {
-        width: 1fr;
-        height: 5;
-        margin: 1 2;
-        padding: 1 2;
-        content-align: center middle;
-    }
-
-    ModuleButton:focus {
-        background: $accent;
-    }
-
-    ModuleButton:hover {
-        background: $accent-darken-1;
+        width: 100%;
     }
     """
 
@@ -50,17 +37,13 @@ class MainWindow(App):
     """Main YaST3 TUI application."""
 
     CSS = """
-    Screen {
-        align: center middle;
-    }
-
     .module-grid {
         grid-size: 4;
         grid-columns: 1fr 1fr 1fr 1fr;
         grid-rows: auto;
+        grid-gutter: 2;
         padding: 2;
         width: 100%;
-        max-width: 120;
     }
 
     .title {
