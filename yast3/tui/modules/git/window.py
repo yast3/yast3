@@ -28,29 +28,15 @@ class GitWindow(Screen):
         padding: 1;
     }
 
-    .input-row {
-        height: 3;
-        margin-bottom: 1;
-    }
-
     .input-label {
         width: 18;
         content-align: right middle;
         padding-right: 1;
     }
 
-    Input, Select {
-        width: 1fr;
-    }
-
     .button-row {
         align: right middle;
-        height: 3;
         margin-top: 1;
-    }
-
-    Button {
-        margin-left: 1;
     }
 
     .message {
@@ -64,14 +50,6 @@ class GitWindow(Screen):
 
     .success {
         color: green;
-    }
-
-    TabbedContent {
-        height: 1fr;
-    }
-
-    Vertical {
-        height: auto;
     }
     """
 
@@ -106,29 +84,29 @@ class GitWindow(Screen):
 
     def _compose_user_tab(self) -> ComposeResult:
         with Vertical():
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("User Name"), classes="input-label")
                 yield Input(placeholder=_("Enter your Git user name"), id="user-name")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Email Address"), classes="input-label")
                 yield Input(placeholder=_("Enter your Git email address"), id="user-email")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("GPG Signing Key"), classes="input-label")
                 yield Input(placeholder=_("Enter GPG key ID"), id="user-signingkey")
 
     def _compose_core_tab(self) -> ComposeResult:
         with Vertical():
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Default Editor"), classes="input-label")
                 yield Input(placeholder=_("e.g., vim, nano, code"), id="core-editor")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Auto CRLF"), classes="input-label")
                 yield Select(
                     [("", ""), ("true", "true"), ("false", "false"), ("input", "input")],
                     id="core-autocrlf",
                     allow_blank=True,
                 )
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Safe CRLF"), classes="input-label")
                 yield Select(
                     [("", ""), ("true", "true"), ("false", "false"), ("warn", "warn")],
@@ -138,21 +116,21 @@ class GitWindow(Screen):
 
     def _compose_commit_tab(self) -> ComposeResult:
         with Vertical():
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Commit Template"), classes="input-label")
                 yield Input(placeholder=_("Path to commit template"), id="commit-template")
             yield Checkbox(_("Sign commits with GPG"), id="commit-gpgsign")
 
     def _compose_merge_tab(self) -> ComposeResult:
         with Vertical():
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Conflict Style"), classes="input-label")
                 yield Select(
                     [("", ""), ("merge", "merge"), ("diff3", "diff3")],
                     id="merge-conflictstyle",
                     allow_blank=True,
                 )
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Pull Rebase"), classes="input-label")
                 yield Select(
                     [("", ""), ("true", "true"), ("false", "false"), ("interactive", "interactive"), ("preserve", "preserve")],
@@ -163,10 +141,10 @@ class GitWindow(Screen):
     def _compose_other_tab(self) -> ComposeResult:
         with Vertical():
             yield Checkbox(_("Enable color output"), id="color-ui")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Default Branch Name"), classes="input-label")
                 yield Input(placeholder=_("e.g., main, master"), id="init-defaultbranch")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Credential Helper"), classes="input-label")
                 yield Select(
                     [("", ""), ("cache", "cache"), ("store", "store"), ("gnome-keyring", "gnome-keyring"), ("kwallet", "kwallet")],

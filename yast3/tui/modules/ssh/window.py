@@ -212,12 +212,7 @@ class SSHWindow(Screen):
 
     .button-row {
         align: left middle;
-        height: 3;
         margin-bottom: 1;
-    }
-
-    Button {
-        margin-right: 1;
     }
 
     .message {
@@ -597,18 +592,9 @@ class GenerateKeyScreen(Screen):
         padding-right: 1;
     }
 
-    Input {
-        width: 1fr;
-    }
-
     .button-row {
         align: right middle;
-        height: 3;
         margin-top: 1;
-    }
-
-    Button {
-        margin-left: 1;
     }
     """
 
@@ -623,16 +609,16 @@ class GenerateKeyScreen(Screen):
     def compose(self) -> ComposeResult:
         with Vertical(classes="container"):
             yield Label(_("Generate SSH Key"), classes="title")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Name"), classes="input-label")
                 yield Input(value="id_rsa", id="name-input", placeholder=_("Key filename"))
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Type"), classes="input-label")
                 yield Input(value="rsa", id="type-input", placeholder=_("rsa, ed25519, ecdsa"))
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Bits"), classes="input-label")
                 yield Input(value="4096", id="bits-input", placeholder=_("Key bits"))
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Comment"), classes="input-label")
                 yield Input(placeholder=_("Optional comment"), id="comment-input")
             with Horizontal(classes="button-row"):

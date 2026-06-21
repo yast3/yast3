@@ -35,12 +35,7 @@ class RepositoriesWindow(Screen):
 
     .button-row {
         align: left middle;
-        height: 3;
         margin-bottom: 1;
-    }
-
-    Button {
-        margin-right: 1;
     }
 
     .message {
@@ -281,22 +276,13 @@ class RepoEditScreen(Screen):
         padding-right: 1;
     }
 
-    Input, Select {
-        width: 1fr;
-    }
-
     Checkbox {
         margin-bottom: 1;
     }
 
     .button-row {
         align: right middle;
-        height: 3;
         margin-top: 1;
-    }
-
-    Button {
-        margin-left: 1;
     }
     """
 
@@ -320,29 +306,29 @@ class RepoEditScreen(Screen):
     def compose(self) -> ComposeResult:
         with Vertical(classes="container"):
             yield Label(self.screen_title, classes="title")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Repository ID"), classes="input-label")
                 yield Input(value=self._get_value("id"), id="id-input", placeholder=_("Unique repository ID"))
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Name"), classes="input-label")
                 yield Input(value=self._get_value("name"), id="name-input", placeholder=_("Display name"))
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Base URL"), classes="input-label")
                 yield Input(value=self._get_value("baseurl"), id="baseurl-input", placeholder=_("Base URL"))
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Mirror List"), classes="input-label")
                 yield Input(value=self._get_value("mirrorlist"), id="mirrorlist-input", placeholder=_("Mirror list URL"))
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Priority"), classes="input-label")
                 yield Input(value=self._get_value("priority"), id="priority-input", placeholder=_("Priority (default 99)"))
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Type"), classes="input-label")
                 yield Select(
                     [("yast2", "yast2"), ("rpm-md", "rpm-md"), ("plaindir", "plaindir")],
                     id="type-select",
                     allow_blank=True,
                 )
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("GPG Key"), classes="input-label")
                 yield Input(value=self._get_value("gpgkey"), id="gpgkey-input", placeholder=_("GPG key URL"))
             yield Checkbox(_("Enabled"), id="enabled-check", value=self._get_bool("enabled", True))

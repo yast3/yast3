@@ -30,12 +30,7 @@ class CronWindow(Screen):
 
     .button-row {
         align: left middle;
-        height: 3;
         margin-bottom: 1;
-    }
-
-    Button {
-        margin-right: 1;
     }
 
     .message {
@@ -232,29 +227,15 @@ class CronEditScreen(Screen):
         border: solid green;
     }
 
-    .input-row {
-        height: 3;
-        margin-bottom: 1;
-    }
-
     .input-label {
         width: 10;
         content-align: right middle;
         padding-right: 1;
     }
 
-    Input {
-        width: 1fr;
-    }
-
     .button-row {
         align: right middle;
-        height: 3;
         margin-top: 1;
-    }
-
-    Button {
-        margin-left: 1;
     }
     """
 
@@ -289,25 +270,25 @@ class CronEditScreen(Screen):
     def compose(self) -> ComposeResult:
         with Vertical(classes="container"):
             yield Label(self.screen_title, classes="title")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Minute"), classes="input-label")
                 yield Input(value=self.initial_job.minute, id="minute-input", placeholder="0-59 or *")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Hour"), classes="input-label")
                 yield Input(value=self.initial_job.hour, id="hour-input", placeholder="0-23 or *")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Day"), classes="input-label")
                 yield Input(value=self.initial_job.day, id="day-input", placeholder="1-31 or *")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Month"), classes="input-label")
                 yield Input(value=self.initial_job.month, id="month-input", placeholder="1-12 or *")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Weekday"), classes="input-label")
                 yield Input(value=self.initial_job.weekday, id="weekday-input", placeholder="0-7 or *")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Command"), classes="input-label")
                 yield Input(value=self.initial_job.command, id="command-input", placeholder=_("Command to execute"))
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Comment"), classes="input-label")
                 yield Input(value=self.initial_job.comment, id="comment-input", placeholder=_("Optional comment"))
             with Horizontal(classes="button-row"):

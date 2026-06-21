@@ -32,12 +32,7 @@ class HostsWindow(Screen):
 
     .button-row {
         align: left middle;
-        height: 3;
         margin-bottom: 1;
-    }
-
-    Button {
-        margin-right: 1;
     }
 
     .message {
@@ -228,29 +223,15 @@ class HostsEditScreen(Screen):
         border: solid green;
     }
 
-    .input-row {
-        height: 3;
-        margin-bottom: 1;
-    }
-
     .input-label {
         width: 12;
         content-align: right middle;
         padding-right: 1;
     }
 
-    Input {
-        width: 1fr;
-    }
-
     .button-row {
         align: right middle;
-        height: 3;
         margin-top: 1;
-    }
-
-    Button {
-        margin-left: 1;
     }
     """
 
@@ -278,13 +259,13 @@ class HostsEditScreen(Screen):
     def compose(self) -> ComposeResult:
         with Vertical(classes="container"):
             yield Label(self.screen_title, classes="title")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("IP Address"), classes="input-label")
                 yield Input(value=self.initial_ip, id="ip-input")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Hostname"), classes="input-label")
                 yield Input(value=self.initial_hostname, id="hostname-input")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Comment"), classes="input-label")
                 yield Input(value=self.initial_comment, id="comment-input")
             with Horizontal(classes="button-row"):

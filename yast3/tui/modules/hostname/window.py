@@ -27,29 +27,15 @@ class HostnameWindow(Screen):
         border: solid green;
     }
 
-    .input-row {
-        height: 3;
-        margin-bottom: 1;
-    }
-
     .input-label {
         width: 12;
         content-align: right middle;
         padding-right: 1;
     }
 
-    Input {
-        width: 1fr;
-    }
-
     .button-row {
         align: right middle;
-        height: 3;
         margin-top: 1;
-    }
-
-    Button {
-        margin-left: 1;
     }
 
     .message {
@@ -76,7 +62,7 @@ class HostnameWindow(Screen):
         yield Header()
         with Vertical(classes="container"):
             yield Label(_("Hostname Configuration"), classes="title")
-            with Horizontal(classes="input-row"):
+            with Horizontal():
                 yield Label(_("Hostname"), classes="input-label")
                 yield Input(placeholder=_("Enter hostname"), id="hostname-input")
             with Horizontal(classes="button-row"):
