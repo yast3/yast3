@@ -1,20 +1,22 @@
-"""Hosts module package - Qt6 GUI."""
+"""Repositories module package - Qt6 GUI."""
 
 from yast3.core.i18n import _
 from yast3.core.module import Module
-from yast3.qt6.modules.hosts.window import HostsWindow
+from yast3.qt6.repositories.window import RepositoriesWindow
 
 
-class HostsModule(Module):
-    window: HostsWindow | None = None
+class RepositoriesModule(Module):
+    window: RepositoriesWindow | None = None
 
     def __init__(self):
-        super().__init__(_("Hosts"), ("network", "network-workgroup"), "🌐")
+        super().__init__(
+            _("Repositories"), ("system-software-install", "package-x-generic"), "📦"
+        )
 
     def launch(self) -> None:
-        """Launch the hosts module window."""
+        """Launch the repositories module window."""
         if self.window is None:
-            self.window = HostsWindow()
+            self.window = RepositoriesWindow()
             self.window.setWindowTitle(self.name + " — " + _("YaST3"))
             self.window.closed.connect(self._on_window_closed)
         self.window.show()
@@ -25,4 +27,4 @@ class HostsModule(Module):
         self.window = None
 
 
-__all__ = ["HostsModule"]
+__all__ = ["RepositoriesModule"]

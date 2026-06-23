@@ -15,7 +15,7 @@ from PySide6.QtWidgets import (
 
 from yast3.core.i18n import _
 from yast3.core.module import Module
-from yast3.qt6.modules import (
+from yast3.qt6 import (
     CronModule,
     GitModule,
     HostnameModule,

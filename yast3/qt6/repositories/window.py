@@ -23,7 +23,7 @@ from yast3.core.modules.repositories import (
     load_repos,
     save_repo_entry,
 )
-from yast3.qt6.modules.repositories.dialogs import RepoEditDialog
+from yast3.qt6.repositories.dialogs import RepoEditDialog
 
 
 class RepositoriesWindow(QMainWindow):
