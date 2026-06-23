@@ -4,18 +4,17 @@ Save YaST ♥️ with Python 3 & Qt6 Widgets.
 
 ## Modules
 
-Available:
+| Name | Core | Qt6 | GTK4 | TUI |
+|------|:----:|:---:|:----:|:---:|
+| Git | ✅ | ✅ | ❌ | ✅ |
+| Hostname | ✅ | ✅ | ❌ | ✅ |
+| Hosts | ✅ | ✅ | ❌ | ✅ |
+| Repositories | ✅ | ✅ | ❌ | ✅ |
+| SSH Client | ✅ | ✅ | ❌ | ✅ |
+| Cron | ✅ | ✅ | ❌ | ✅ |
+| Packages | ✅ | ✅ | ❌ | ❌ |
 
-- Git: manage Git global config
-- Hostname: manage system hostname
-- Hosts: manage `/etc/hosts`
-- Repositories: manage software repositories (rpm)
-- SSH Client: manage SSH client settings, keys and hosts (user)
-
-Planned:
-
-- Packages: manage installed software packages (rpm)
-- SSH Server: manage SSH server settings (system)
+**Planned:** SSH Server (system)
 
 ## Requirements
 
