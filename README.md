@@ -20,11 +20,12 @@ Save YaST ♥️ with Python 3 & Qt6 Widgets.
 
 - Python 3.12+
 - Qt6 bindings for Python via PySide6
+- GTK4 bindings for Python via PyGObject
 
 ## Run
 
 ```bash
-sudo zypper install python3-pyside6 python3-Babel python3-crontab
+sudo zypper install python3-pyside6 python3-gobject python3-Babel python3-crontab
 python3 -m yast3
 ```
 
