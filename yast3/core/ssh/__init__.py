@@ -1,6 +1,6 @@
 """SSH config management core logic."""
 
-from yast3.core.modules.ssh.ssh import (
+from yast3.core.ssh.ssh import (
     PermissionIssue,
     SSHConfigEntry,
     SSH_CONFIG_DIR,

@@ -15,7 +15,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.core.modules.hostname import (
+from yast3.core.hostname import (
     get_current_hostname,
     set_hostname,
 )

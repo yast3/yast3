@@ -15,7 +15,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.core.modules.ssh import get_available_options
+from yast3.core.ssh import get_available_options
 
 
 class SSHOptionEditDialog(QDialog):

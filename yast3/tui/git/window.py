@@ -6,7 +6,7 @@ from textual.screen import Screen
 from textual.widgets import Button, Checkbox, Header, Input, Label, Select, Static, TabbedContent, TabPane
 
 from yast3.core.i18n import _
-from yast3.core.modules.git import (
+from yast3.core.git import (
     get_git_config,
     is_git_installed,
     set_git_config,

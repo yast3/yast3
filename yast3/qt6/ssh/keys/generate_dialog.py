@@ -17,7 +17,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.core.modules.ssh import SSH_CONFIG_DIR
+from yast3.core.ssh import SSH_CONFIG_DIR
 
 
 class GenerateKeyThread(QThread):

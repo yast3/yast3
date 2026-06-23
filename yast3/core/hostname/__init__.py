@@ -1,6 +1,6 @@
 """Hostname management core logic."""
 
-from yast3.core.modules.hostname.hostname import (
+from yast3.core.hostname.hostname import (
     HostnameInfo,
     find_localhost_lines,
     get_current_hostname,

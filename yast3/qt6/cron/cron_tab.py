@@ -16,7 +16,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.core.modules.cron import CronJob, load_cron_jobs, save_cron_jobs
+from yast3.core.cron import CronJob, load_cron_jobs, save_cron_jobs
 from yast3.qt6.cron.cron_edit_dialog import CronEditDialog
 
 

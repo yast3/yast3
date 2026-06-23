@@ -7,7 +7,7 @@ import subprocess
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from yast3.core.modules.ssh import SSH_CONFIG_DIR
+from yast3.core.ssh import SSH_CONFIG_DIR
 
 
 @dataclass

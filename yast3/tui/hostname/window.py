@@ -6,7 +6,7 @@ from textual.screen import Screen
 from textual.widgets import Button, Header, Input, Label, Static
 
 from yast3.core.i18n import _
-from yast3.core.modules.hostname import (
+from yast3.core.hostname import (
     get_current_hostname,
     set_hostname,
 )

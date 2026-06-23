@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Optional, Tuple
 
-from yast3.core.modules.ssh import SSHConfigEntry, load_ssh_config, save_ssh_config
+from yast3.core.ssh import SSHConfigEntry, load_ssh_config, save_ssh_config
 
 
 class HostManager:

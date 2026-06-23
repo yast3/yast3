@@ -6,7 +6,7 @@ from textual.screen import Screen
 from textual.widgets import Button, Checkbox, DataTable, Header, Input, Label, Select, Static
 
 from yast3.core.i18n import _
-from yast3.core.modules.repositories import (
+from yast3.core.repositories import (
     RepoEntry,
     delete_repo_entry,
     load_repos,

@@ -16,7 +16,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.core.modules.cron import CronJob, validate_cron_job, get_suggestions
+from yast3.core.cron import CronJob, validate_cron_job, get_suggestions
 
 
 class CronEditDialog(QDialog):

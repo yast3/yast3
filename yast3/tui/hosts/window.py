@@ -6,7 +6,7 @@ from textual.screen import Screen
 from textual.widgets import Button, DataTable, Header, Input, Label, Static
 
 from yast3.core.i18n import _
-from yast3.core.modules.hosts import HostEntry, load_hosts, save_hosts
+from yast3.core.hosts import HostEntry, load_hosts, save_hosts
 
 HOSTS_FILE = "/etc/hosts"
 

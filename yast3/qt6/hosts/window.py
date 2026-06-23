@@ -17,7 +17,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.core.modules.hosts import HostEntry, load_hosts, save_hosts
+from yast3.core.hosts import HostEntry, load_hosts, save_hosts
 from yast3.qt6.hosts.dialogs import HostsEditDialog
 
 HOSTS_FILE = "/etc/hosts"

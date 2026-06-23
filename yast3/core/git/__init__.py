@@ -1,6 +1,6 @@
 """Git configuration core logic."""
 
-from yast3.core.modules.git.git import (
+from yast3.core.git.git import (
     GitConfig,
     get_git_config,
     is_git_installed,

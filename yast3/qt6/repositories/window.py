@@ -17,7 +17,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.core.modules.repositories import (
+from yast3.core.repositories import (
     RepoEntry,
     delete_repo_entry,
     load_repos,

@@ -10,7 +10,7 @@ from textual.screen import Screen
 from textual.widgets import Button, DataTable, Header, Input, Label, Static, TabbedContent, TabPane
 
 from yast3.core.i18n import _
-from yast3.core.modules.ssh import (
+from yast3.core.ssh import (
     SSHConfigEntry,
     SSH_CONFIG_DIR,
     check_ssh_permissions,

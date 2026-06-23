@@ -7,7 +7,7 @@ from PySide6.QtWidgets import QMessageBox
 
 from yast3.core.i18n import _
 from yast3.core.module import Module
-from yast3.core.modules.ssh import check_ssh_permissions, fix_ssh_permissions
+from yast3.core.ssh import check_ssh_permissions, fix_ssh_permissions
 from yast3.qt6.ssh.window import SSHWindow
 
 

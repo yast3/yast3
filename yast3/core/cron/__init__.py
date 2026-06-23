@@ -1,6 +1,6 @@
 """Cron job management core logic."""
 
-from yast3.core.modules.cron.cron import (
+from yast3.core.cron.cron import (
     CronJob,
     get_suggestions,
     load_cron_jobs,
