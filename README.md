@@ -6,13 +6,13 @@ Save YaST ♥️ with Python 3 & Qt6 Widgets.
 
 | Name | Core | Qt6 | GTK4 | TUI |
 |------|:----:|:---:|:----:|:---:|
-| Git | ✅ | ✅ | ❌ | ✅ |
-| Hostname | ✅ | ✅ | ❌ | ✅ |
-| Hosts | ✅ | ✅ | ❌ | ✅ |
-| Repositories | ✅ | ✅ | ❌ | ✅ |
-| SSH Client | ✅ | ✅ | ❌ | ✅ |
-| Cron | ✅ | ✅ | ❌ | ✅ |
-| Packages | ✅ | ✅ | ❌ | ❌ |
+| Git | ✅ | ✅ | ✅ | ✅ |
+| Hostname | ✅ | ✅ | ✅ | ✅ |
+| Hosts | ✅ | ✅ | ✅ | ✅ |
+| Repositories | ✅ | ✅ | ✅ | ✅ |
+| SSH Client | ✅ | ✅ | ✅ | ✅ |
+| Cron | ✅ | ✅ | ✅ | ✅ |
+| Packages | ✅ | ✅ | ✅ | ❌ |
 
 **Planned:** SSH Server (system)
 
