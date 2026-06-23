@@ -19,27 +19,22 @@ class RepositoriesWindow(Screen):
 
     CSS = """
     Screen {
-        align: center middle;
+        height: 100%;
     }
 
-    .container {
-        width: 100%;
-        height: auto;
-        max-height: 80%;
-        padding: 1;
-    }
-
-    DataTable {
-        height: 1fr;
+    .button-bar {
+        height: 3;
+        margin-bottom: 1;
+        padding-left: 1;
     }
 
     .button-row {
         align: left middle;
-        margin-bottom: 1;
     }
 
-    .message {
-        margin-top: 1;
+    .message-area {
+        height: 3;
+        padding-left: 1;
         color: yellow;
     }
 
@@ -66,13 +61,12 @@ class RepositoriesWindow(Screen):
 
     def compose(self) -> ComposeResult:
         yield Header()
-        with Vertical(classes="container"):
-            with Horizontal(classes="button-row"):
-                yield Button(_("Add"), id="add-btn")
-                yield Button(_("Edit"), id="edit-btn")
-                yield Button(_("Delete"), id="delete-btn")
-            yield DataTable(id="repos-table")
-            yield Static("", id="message", classes="message")
+        with Horizontal(classes="button-bar"):
+            yield Button(_("Add"), id="add-btn")
+            yield Button(_("Edit"), id="edit-btn")
+            yield Button(_("Delete"), id="delete-btn")
+        yield DataTable(id="repos-table")
+        yield Static("", id="message", classes="message-area")
 
     def on_mount(self) -> None:
         """Load repositories on mount."""
