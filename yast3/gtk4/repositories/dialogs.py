@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -56,13 +56,13 @@ class RepoEditDialog(Gtk.Dialog):
         url_type_label = Gtk.Label(label=_("URL Type"))
         url_type_label.set_size_request(100, -1)
         url_type_label.set_halign(Gtk.Align.START)
-        url_type_box.pack_start(url_type_label, True, True, 0)
+        url_type_box.append(url_type_label)
         self.url_type_combo = Gtk.ComboBoxText()
         self.url_type_combo.append_text(_("Base URL"))
         self.url_type_combo.append_text(_("Mirror List"))
         self.url_type_combo.set_active(0)
         url_type_box.append(self.url_type_combo)
-        content.pack_start(url_type_box, True, True, 0)
+        content.append(url_type_box)
 
         # URL
         url_value = entry.baseurl if entry and entry.baseurl else (entry.mirrorlist if entry else "")
@@ -76,7 +76,7 @@ class RepoEditDialog(Gtk.Dialog):
         type_label = Gtk.Label(label=_("Type"))
         type_label.set_size_request(100, -1)
         type_label.set_halign(Gtk.Align.START)
-        type_box.pack_start(type_label, True, True, 0)
+        type_box.append(type_label)
         self.type_combo = Gtk.ComboBoxText()
         for t in ["rpm-md", "rpm-dir", "plaindir", "yum", "yast2", "obsolete"]:
             self.type_combo.append_text(t)
@@ -89,7 +89,7 @@ class RepoEditDialog(Gtk.Dialog):
         else:
             self.type_combo.set_active(0)
         type_box.append(self.type_combo)
-        content.pack_start(type_box, True, True, 0)
+        content.append(type_box)
 
         # GPG Check
         self.gpgcheck_check = Gtk.CheckButton(label=_("Check GPG signature"))
@@ -104,13 +104,13 @@ class RepoEditDialog(Gtk.Dialog):
         priority_label = Gtk.Label(label=_("Priority"))
         priority_label.set_size_request(100, -1)
         priority_label.set_halign(Gtk.Align.START)
-        priority_box.pack_start(priority_label, True, True, 0)
+        priority_box.append(priority_label)
         self.priority_spin = Gtk.SpinButton()
         self.priority_spin.set_range(1, 99)
         self.priority_spin.set_value(entry.priority if entry else 99)
         self.priority_spin.set_increments(1, 10)
         priority_box.append(self.priority_spin)
-        content.pack_start(priority_box, True, True, 0)
+        content.append(priority_box)
 
         # Keep Packages
         self.keep_packages_check = Gtk.CheckButton(label=_("Keep packages"))
@@ -124,14 +124,14 @@ class RepoEditDialog(Gtk.Dialog):
         label_widget = Gtk.Label(label=label)
         label_widget.set_size_request(100, -1)
         label_widget.set_halign(Gtk.Align.START)
-        box.pack_start(label_widget, True, True, 0)
+        box.append(label_widget)
 
         entry = Gtk.Entry()
         entry.set_text(value)
         entry.set_hexpand(True)
-        box.pack_start(entry, True, True, 0)
+        box.append(entry)
 
-        parent.pack_start(box, True, True, 0)
+        parent.append(box)
         return entry
 
     def get_values(self) -> dict:

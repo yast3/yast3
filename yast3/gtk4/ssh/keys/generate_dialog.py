@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -39,51 +39,51 @@ class GenerateKeyDialog(Gtk.Dialog):
         algo_label = Gtk.Label(label=_("Algorithm"))
         algo_label.set_size_request(100, -1)
         algo_label.set_halign(Gtk.Align.START)
-        algo_box.pack_start(algo_label, True, True, 0)
+        algo_box.append(algo_label)
         self.algo_combo = Gtk.ComboBoxText()
         for algo in ["ed25519", "rsa", "ecdsa", "dsa"]:
             self.algo_combo.append_text(algo)
         self.algo_combo.set_active(0)  # ed25519 is default
         algo_box.append(self.algo_combo)
-        content.pack_start(algo_box, True, True, 0)
+        content.append(algo_box)
 
         # Key size (for RSA/ECDSA)
         size_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         size_label = Gtk.Label(label=_("Key Size"))
         size_label.set_size_request(100, -1)
         size_label.set_halign(Gtk.Align.START)
-        size_box.pack_start(size_label, True, True, 0)
+        size_box.append(size_label)
         self.size_combo = Gtk.ComboBoxText()
         for size in ["2048", "3072", "4096"]:
             self.size_combo.append_text(size)
         self.size_combo.set_active(0)
         size_box.append(self.size_combo)
-        content.pack_start(size_box, True, True, 0)
+        content.append(size_box)
 
         # Comment
         comment_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         comment_label = Gtk.Label(label=_("Comment"))
         comment_label.set_size_request(100, -1)
         comment_label.set_halign(Gtk.Align.START)
-        comment_box.pack_start(comment_label, True, True, 0)
+        comment_box.append(comment_label)
         self.comment_entry = Gtk.Entry()
         self.comment_entry.set_placeholder_text(_("Optional comment (e.g., user@host)"))
         self.comment_entry.set_hexpand(True)
         comment_box.append(self.comment_entry)
-        content.pack_start(comment_box, True, True, 0)
+        content.append(comment_box)
 
         # Passphrase
         passphrase_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         passphrase_label = Gtk.Label(label=_("Passphrase"))
         passphrase_label.set_size_request(100, -1)
         passphrase_label.set_halign(Gtk.Align.START)
-        passphrase_box.pack_start(passphrase_label, True, True, 0)
+        passphrase_box.append(passphrase_label)
         self.passphrase_entry = Gtk.Entry()
         self.passphrase_entry.set_placeholder_text(_("Optional passphrase"))
         self.passphrase_entry.set_visibility(False)
         self.passphrase_entry.set_hexpand(True)
         passphrase_box.append(self.passphrase_entry)
-        content.pack_start(passphrase_box, True, True, 0)
+        content.append(passphrase_box)
 
         # Connect OK button to generate
         ok_btn = self.get_widget_for_response(Gtk.ResponseType.OK)
@@ -111,4 +111,4 @@ class GenerateKeyDialog(Gtk.Dialog):
             )
             dialog.format_secondary_text(_("Failed to generate key: {0}").format(error))
             dialog.connect("response", lambda d, r: d.destroy())
-            dialog.show_all()
+            dialog.present()

@@ -5,7 +5,7 @@ import stat
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -26,12 +26,12 @@ class SSHClientModule(Module):
         if self.window is None:
             self.window = SSHWindow()
             self.window.set_title(self.name + " — " + _("YaST3"))
-            self.window.connect("delete-event", self._on_window_closed)
+            self.window.connect("close-request", self._on_window_closed)
 
         # Check SSH permissions before showing the window
         self._check_and_fix_permissions()
 
-        self.window.show_all()
+        self.window.present()
 
     def _check_and_fix_permissions(self) -> None:
         """Check SSH directory permissions and prompt user to fix insecure ones."""
@@ -64,7 +64,7 @@ class SSHClientModule(Module):
             ).format(detail)
         )
         dialog.connect("response", self._on_permission_dialog_response, issues)
-        dialog.show_all()
+        dialog.present()
 
     def _on_permission_dialog(self, dialog, response_id, issues) -> None:
         """Handle permission dialog response."""
@@ -87,7 +87,7 @@ class SSHClientModule(Module):
                     ).format(failed_names)
                 )
                 error_dialog.connect("response", lambda d, r: d.destroy())
-                error_dialog.show_all()
+                error_dialog.present()
             else:
                 success_dialog = Gtk.MessageDialog(
                     transient_for=self.window,
@@ -98,7 +98,7 @@ class SSHClientModule(Module):
                 )
                 success_dialog.format_secondary_text(_("SSH permissions have been fixed successfully."))
                 success_dialog.connect("response", lambda d, r: d.destroy())
-                success_dialog.show_all()
+                success_dialog.present()
         dialog.destroy()
 
     def _on_permission_dialog_response(self, dialog, response_id, issues) -> None:

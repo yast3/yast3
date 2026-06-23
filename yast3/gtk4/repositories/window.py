@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -47,7 +47,7 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
         self.delete_btn.connect("clicked", self._on_delete_clicked)
         button_box.append(self.delete_btn)
 
-        self.main_box.pack_start(button_box, True, True, 0)
+        self.main_box.append(button_box)
 
         # Create list view
         self._create_list_view()
@@ -111,7 +111,7 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         scrolled.set_child(self.tree_view)
-        self.main_box.pack_start(scrolled, True, True, 0)
+        self.main_box.append(scrolled)
 
     def _load_repos(self) -> None:
         """Load repositories from /etc/zypp/repos.d/*.repo files."""
@@ -173,7 +173,7 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
         """Add a new repository."""
         dialog = RepoEditDialog(self)
         dialog.connect("response", self._on_add_dialog_response)
-        dialog.show_all()
+        dialog.present()
 
     def _on_add_dialog_response(self, dialog, response_id) -> None:
         """Handle add dialog response."""
@@ -207,7 +207,7 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
                 priority=values["priority"],
                 keep_packages=values["keep_packages"],
             )
-            self.repo_entries.pack_start(new_entry, True, True, 0)
+            self.repo_entries.append(new_entry)
             self._populate_list()
 
             result = save_repo_entry(new_entry)
@@ -228,7 +228,7 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
 
         dialog = RepoEditDialog(self, entry)
         dialog.connect("response", self._on_edit_dialog_response, index)
-        dialog.show_all()
+        dialog.present()
 
     def _on_edit_dialog_response(self, dialog, response_id, index: int) -> None:
         """Handle edit dialog response."""
@@ -290,7 +290,7 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
         )
         confirm_dialog.format_secondary_text(_("Are you sure you want to delete repository '{}'?").format(entry.name))
         confirm_dialog.connect("response", self._on_delete_confirm_response, tree_iter, index)
-        confirm_dialog.show_all()
+        confirm_dialog.present()
 
     def _on_delete_confirm_response(self, dialog, response_id, tree_iter, index: int) -> None:
         """Handle delete confirmation response."""
@@ -324,9 +324,4 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
         )
         dialog.format_secondary_text(message)
         dialog.connect("response", lambda d, r: d.destroy())
-        dialog.show_all()
-
-    def do_delete_event(self, event) -> bool:
-        """Handle window close request."""
-        self.emit("delete-event")
-        return False
+        dialog.present()

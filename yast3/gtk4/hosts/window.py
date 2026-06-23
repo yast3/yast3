@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -47,11 +47,11 @@ class HostsWindow(Gtk.ApplicationWindow):
         button_box.set_hexpand(True)
 
         self.save_btn = Gtk.Button(label=_("Save"))
-        self.save_btn.get_style_context().add_class("suggested-action")
+        self.save_btn.add_css_class("suggested-action")
         self.save_btn.connect("clicked", self._on_save_clicked)
         button_box.append(self.save_btn)
 
-        self.main_box.pack_start(button_box, True, True, 0)
+        self.main_box.append(button_box)
 
         # Create list view for hosts
         self._create_list_view()
@@ -107,7 +107,7 @@ class HostsWindow(Gtk.ApplicationWindow):
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         scrolled.set_child(self.tree_view)
-        self.main_box.pack_start(scrolled, True, True, 0)
+        self.main_box.append(scrolled)
 
     def _load_hosts(self) -> None:
         """Load hosts from /etc/hosts file."""
@@ -153,7 +153,7 @@ class HostsWindow(Gtk.ApplicationWindow):
         """Add a new host entry."""
         dialog = HostsEditDialog(self)
         dialog.connect("response", self._on_add_dialog_response)
-        dialog.show_all()
+        dialog.present()
 
     def _on_add_dialog_response(self, dialog, response_id) -> None:
         """Handle add dialog response."""
@@ -190,7 +190,7 @@ class HostsWindow(Gtk.ApplicationWindow):
 
         dialog = HostsEditDialog(self, entry.ip, " ".join(entry.hostnames), entry.comment)
         dialog.connect("response", self._on_edit_dialog_response, index)
-        dialog.show_all()
+        dialog.present()
 
     def _on_edit_dialog_response(self, dialog, response_id, index: int) -> None:
         """Handle edit dialog response."""
@@ -230,7 +230,7 @@ class HostsWindow(Gtk.ApplicationWindow):
         )
         confirm_dialog.format_secondary_text(_("Are you sure you want to delete this entry?"))
         confirm_dialog.connect("response", self._on_delete_confirm_response, tree_iter)
-        confirm_dialog.show_all()
+        confirm_dialog.present()
 
     def _on_delete_confirm_response(self, dialog, response_id, tree_iter) -> None:
         """Handle delete confirmation response."""
@@ -265,12 +265,7 @@ class HostsWindow(Gtk.ApplicationWindow):
         )
         dialog.format_secondary_text(message)
         dialog.connect("response", lambda d, r: d.destroy())
-        dialog.show_all()
-
-    def do_delete_event(self, event) -> bool:
-        """Handle window close request."""
-        self.emit("delete-event")
-        return False
+        dialog.present()
 
 
 class HostsEditDialog(Gtk.Dialog):
@@ -301,36 +296,36 @@ class HostsEditDialog(Gtk.Dialog):
         ip_label = Gtk.Label(label=_("IP Address:"))
         ip_label.set_size_request(100, -1)
         ip_label.set_halign(Gtk.Align.START)
-        ip_box.pack_start(ip_label, True, True, 0)
+        ip_box.append(ip_label)
         self.ip_entry = Gtk.Entry()
         self.ip_entry.set_text(ip)
         self.ip_entry.set_hexpand(True)
         ip_box.append(self.ip_entry)
-        content.pack_start(ip_box, True, True, 0)
+        content.append(ip_box)
 
         # Hostname
         hostname_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         hostname_label = Gtk.Label(label=_("Hostname:"))
         hostname_label.set_size_request(100, -1)
         hostname_label.set_halign(Gtk.Align.START)
-        hostname_box.pack_start(hostname_label, True, True, 0)
+        hostname_box.append(hostname_label)
         self.hostname_entry = Gtk.Entry()
         self.hostname_entry.set_text(hostname)
         self.hostname_entry.set_hexpand(True)
         hostname_box.append(self.hostname_entry)
-        content.pack_start(hostname_box, True, True, 0)
+        content.append(hostname_box)
 
         # Comment
         comment_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         comment_label = Gtk.Label(label=_("Comment:"))
         comment_label.set_size_request(100, -1)
         comment_label.set_halign(Gtk.Align.START)
-        comment_box.pack_start(comment_label, True, True, 0)
+        comment_box.append(comment_label)
         self.comment_entry = Gtk.Entry()
         self.comment_entry.set_text(comment)
         self.comment_entry.set_hexpand(True)
         comment_box.append(self.comment_entry)
-        content.pack_start(comment_box, True, True, 0)
+        content.append(comment_box)
 
     def get_values(self) -> tuple[str, str, str]:
         """Get the dialog values."""

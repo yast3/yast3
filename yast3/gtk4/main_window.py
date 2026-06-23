@@ -38,7 +38,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # Create main container
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        scrolled.add(self.main_box)
+        scrolled.set_child(self.main_box)
 
         # Create grid for module buttons
         self.grid = Gtk.Grid()
@@ -57,10 +57,8 @@ class MainWindow(Gtk.ApplicationWindow):
             row, column = divmod(index, 4)
             self.grid.attach(button, column, row, 1, 1)
 
-        self.main_box.pack_start(self.grid, True, True, 0)
-        self.add(scrolled)
-
-        self.show_all()
+        self.main_box.append(self.grid)
+        self.set_child(scrolled)
 
     def _build_module_button(self, module: Module) -> Gtk.Button:
         """Create a button for a module."""
@@ -76,25 +74,25 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # Try to get icon from theme
         icon_name = None
-        icon_theme = Gtk.IconTheme.get_default()
+        icon_theme = Gtk.IconTheme.get_for_display(self.get_display())
         for name in module.icon_names:
             if icon_theme.has_icon(name):
                 icon_name = name
                 break
 
         if icon_name:
-            icon = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.DIALOG)
-            content_box.pack_start(icon, True, True, 0)
+            icon = Gtk.Image.new_from_icon_name(icon_name)
+            content_box.append(icon)
         else:
             # Use emoji as fallback
             emoji_label = Gtk.Label(label=module.emoji)
-            content_box.pack_start(emoji_label, True, True, 0)
+            content_box.append(emoji_label)
 
         # Module name
         name_label = Gtk.Label(label=module.name)
-        content_box.pack_start(name_label, True, True, 0)
+        content_box.append(name_label)
 
-        button.add(content_box)
+        button.set_child(content_box)
 
         button.connect("clicked", self._on_module_clicked, module)
 

@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -74,7 +74,7 @@ class CronEditDialog(Gtk.Dialog):
         self.comment_entry.set_hexpand(True)
         grid.attach(self.comment_entry, 1, 6, 2, 1)
 
-        content.pack_start(grid, True, True, 0)
+        content.append(grid)
 
         # Connect OK button to validation
         ok_btn = self.get_widget_for_response(Gtk.ResponseType.OK)
@@ -121,7 +121,7 @@ class CronEditDialog(Gtk.Dialog):
         )
         dialog.format_secondary_text(text)
         dialog.connect("response", lambda d, r: d.destroy())
-        dialog.show_all()
+        dialog.present()
 
     def _on_ok_clicked(self, button: Gtk.Button) -> None:
         """Validate and accept the dialog."""
@@ -147,7 +147,7 @@ class CronEditDialog(Gtk.Dialog):
             )
             dialog.format_secondary_text(msg)
             dialog.connect("response", lambda d, r: d.destroy())
-            dialog.show_all()
+            dialog.present()
             return
 
         self.result_job = job

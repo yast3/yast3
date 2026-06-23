@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -42,7 +42,7 @@ class SSHOptionEditDialog(Gtk.Dialog):
 
         self.options_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         scrolled.set_child(self.options_box)
-        content.pack_start(scrolled, True, True, 0)
+        content.append(scrolled)
 
         # Available options
         self.available_options = get_available_options()
@@ -61,8 +61,8 @@ class SSHOptionEditDialog(Gtk.Dialog):
         add_btn.connect("clicked", self._on_add_custom_option)
         custom_box.append(self.custom_key_entry)
         custom_box.append(self.custom_value_entry)
-        custom_box.pack_start(add_btn, True, True, 0)
-        content.pack_start(custom_box, True, True, 0)
+        custom_box.append(add_btn)
+        content.append(custom_box)
 
     def _add_option_row(self, key: str, desc: str, value: str) -> None:
         """Add an option row."""
@@ -71,16 +71,16 @@ class SSHOptionEditDialog(Gtk.Dialog):
         key_label = Gtk.Label(label=key)
         key_label.set_size_request(150, -1)
         key_label.set_halign(Gtk.Align.START)
-        row_box.pack_start(key_label, True, True, 0)
+        row_box.append(key_label)
 
         entry = Gtk.Entry()
         entry.set_placeholder_text(desc)
         entry.set_text(value)
         entry.set_hexpand(True)
         entry.connect("changed", self._on_option_changed, key)
-        row_box.pack_start(entry, True, True, 0)
+        row_box.append(entry)
 
-        self.options_box.pack_start(row_box, True, True, 0)
+        self.options_box.append(row_box)
 
     def _on_option_changed(self, entry: Gtk.Entry, key: str) -> None:
         """Update option value."""
@@ -121,7 +121,7 @@ class SSHOptionEditDialog(Gtk.Dialog):
         )
         dialog.format_secondary_text(message)
         dialog.connect("response", lambda d, r: d.destroy())
-        dialog.show_all()
+        dialog.present()
 
     def get_options(self) -> dict[str, str]:
         """Get the current options."""
@@ -158,12 +158,12 @@ class SSHEditDialog(Gtk.Dialog):
         host_label = Gtk.Label(label=_("Host Pattern:"))
         host_label.set_size_request(100, -1)
         host_label.set_halign(Gtk.Align.START)
-        host_box.pack_start(host_label, True, True, 0)
+        host_box.append(host_label)
         self.host_entry = Gtk.Entry()
         self.host_entry.set_text(host)
         self.host_entry.set_hexpand(True)
         host_box.append(self.host_entry)
-        content.pack_start(host_box, True, True, 0)
+        content.append(host_box)
 
         # Options button
         self.options_btn = Gtk.Button(label=_("Edit Options"))
@@ -172,7 +172,7 @@ class SSHEditDialog(Gtk.Dialog):
 
         # Options summary
         self.options_summary = Gtk.Label()
-        self.options_summary.get_style_context().add_class("dim-label")
+        self.options_summary.add_css_class("dim-label")
         self._update_options_summary()
         content.append(self.options_summary)
 
@@ -180,7 +180,7 @@ class SSHEditDialog(Gtk.Dialog):
         """Open options editing dialog."""
         dialog = SSHOptionEditDialog(self, self.options)
         dialog.connect("response", self._on_options_dialog_response)
-        dialog.show_all()
+        dialog.present()
 
     def _on_options_dialog_response(self, dialog, response_id) -> None:
         """Handle options dialog response."""

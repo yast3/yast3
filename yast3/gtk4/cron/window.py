@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -35,7 +35,7 @@ class CronWindow(Gtk.ApplicationWindow):
         self.root_tab = CronTab(user_mode=False)
         self.notebook.append_page(self.root_tab, Gtk.Label(label=_("Root Cron Jobs")))
 
-        self.main_box.pack_start(self.notebook, True, True, 0)
+        self.main_box.append(self.notebook)
 
-        self.add(self.main_box)
-        self.show_all()
+        self.set_child(self.main_box)
+        self.present()

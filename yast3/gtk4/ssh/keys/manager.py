@@ -53,7 +53,7 @@ class KeyManager:
             if filename in ("known_hosts", "authorized_keys", "config", "known_hosts2", "authorized_keys2"):
                 continue
             # This might be a private key
-            private_key_files.pack_start(filename, True, True, 0)
+            private_key_files.append(filename)
 
         for filename in private_key_files:
             filepath = os.path.join(SSH_DIR, filename)

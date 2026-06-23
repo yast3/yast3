@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -48,7 +48,7 @@ class KeysTab(Gtk.Box):
         self.refresh_btn.connect("clicked", self._on_refresh)
         button_box.append(self.refresh_btn)
 
-        self.pack_start(button_box, True, True, 0)
+        self.append(button_box)
 
         # Create list view
         self._create_list_view()
@@ -127,7 +127,7 @@ class KeysTab(Gtk.Box):
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         scrolled.set_child(self.tree_view)
-        self.pack_start(scrolled, True, True, 0)
+        self.append(scrolled)
 
     def _load_keys(self) -> None:
         """Load SSH keys from ~/.ssh/ directory."""
@@ -168,7 +168,7 @@ class KeysTab(Gtk.Box):
         """Open dialog to generate a new SSH key."""
         dialog = GenerateKeyDialog(self.get_root())
         dialog.connect("response", self._on_generate_dialog_response)
-        dialog.show_all()
+        dialog.present()
 
     def _on_generate_dialog_response(self, dialog, response_id) -> None:
         """Handle generate dialog response."""
@@ -228,7 +228,7 @@ class KeysTab(Gtk.Box):
             )
         )
         confirm_dialog.connect("response", self._on_delete_confirm_response, index)
-        confirm_dialog.show_all()
+        confirm_dialog.present()
 
     def _on_delete_confirm_response(self, dialog, response_id, index: int) -> None:
         """Handle delete confirmation response."""
@@ -262,4 +262,4 @@ class KeysTab(Gtk.Box):
         )
         dialog.format_secondary_text(message)
         dialog.connect("response", lambda d, r: d.destroy())
-        dialog.show_all()
+        dialog.present()

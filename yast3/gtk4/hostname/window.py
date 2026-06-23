@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -33,25 +33,25 @@ class HostnameWindow(Gtk.ApplicationWindow):
         label = Gtk.Label(label=_("Hostname"))
         label.set_size_request(100, -1)
         label.set_halign(Gtk.Align.START)
-        input_box.pack_start(label, True, True, 0)
+        input_box.append(label)
 
         self.input = Gtk.Entry()
         self.input.set_placeholder_text(_("Enter hostname"))
         self.input.set_hexpand(True)
         input_box.append(self.input)
 
-        self.main_box.pack_start(input_box, True, True, 0)
+        self.main_box.append(input_box)
 
         # Button box
         button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         button_box.set_halign(Gtk.Align.END)
 
         self.save_btn = Gtk.Button(label=_("Save"))
-        self.save_btn.get_style_context().add_class("suggested-action")
+        self.save_btn.add_css_class("suggested-action")
         self.save_btn.connect("clicked", self._on_save_clicked)
         button_box.append(self.save_btn)
 
-        self.main_box.pack_start(button_box, True, True, 0)
+        self.main_box.append(button_box)
 
         self.set_child(self.main_box)
 
@@ -123,7 +123,7 @@ class HostnameWindow(Gtk.ApplicationWindow):
         )
         dialog.format_secondary_text(message)
         dialog.connect("response", lambda d, r: d.destroy())
-        dialog.show_all()
+        dialog.present()
 
     def _show_confirm_dialog(self, title: str, message: str) -> bool:
         """Show a confirmation dialog and return True if confirmed."""
@@ -144,13 +144,8 @@ class HostnameWindow(Gtk.ApplicationWindow):
             d.destroy()
 
         dialog.connect("response", on_response)
-        dialog.show_all()
+        dialog.present()
 
         # For GTK4, we need to use a callback-based approach
         # This is a simplified version - in production you'd use async properly
         return False  # Will be handled by callback
-
-    def do_delete_event(self, event) -> bool:
-        """Handle window close request."""
-        self.emit("delete-event")
-        return False

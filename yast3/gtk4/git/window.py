@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -32,9 +32,9 @@ class GitWindow(Gtk.ApplicationWindow):
 
         if not is_git_installed():
             label = Gtk.Label(label=_("Git is not installed on this system."))
-            self.main_box.pack_start(label, True, True, 0)
-            self.add(self.main_box)
-            self.show_all()
+            self.main_box.append(label)
+            self.set_child(self.main_box)
+            self.present()
             return
 
         self.config = get_git_config()
@@ -62,25 +62,25 @@ class GitWindow(Gtk.ApplicationWindow):
         self.other_tab = self._create_other_tab()
         self.notebook.append_page(self.other_tab, Gtk.Label(label=_("Other")))
 
-        self.main_box.pack_start(self.notebook, True, True, 0)
+        self.main_box.append(self.notebook)
 
         # Button box
         button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         button_box.set_halign(Gtk.Align.END)
 
         self.save_btn = Gtk.Button(label=_("Save"))
-        self.save_btn.get_style_context().add_class("suggested-action")
+        self.save_btn.add_css_class("suggested-action")
         self.save_btn.connect("clicked", self._on_save_clicked)
-        button_box.pack_start(self.save_btn, True, True, 0)
+        button_box.append(self.save_btn)
 
         self.reset_btn = Gtk.Button(label=_("Reset"))
         self.reset_btn.connect("clicked", self._on_reset_clicked)
-        button_box.pack_start(self.reset_btn, True, True, 0)
+        button_box.append(self.reset_btn)
 
-        self.main_box.pack_start(button_box, True, True, 0)
+        self.main_box.append(button_box)
 
-        self.add(self.main_box)
-        self.show_all()
+        self.set_child(self.main_box)
+        self.present()
 
     def _create_user_tab(self) -> Gtk.Box:
         """Create User settings tab."""
@@ -133,24 +133,24 @@ class GitWindow(Gtk.ApplicationWindow):
         label = Gtk.Label(label=_("Commit Template"))
         label.set_size_request(150, -1)
         label.set_halign(Gtk.Align.START)
-        template_box.pack_start(label, True, True, 0)
+        template_box.append(label)
 
         self.template_entry = Gtk.Entry()
         self.template_entry.set_placeholder_text(_("Path to commit template"))
         self.template_entry.set_text(self.config.commit_template or "")
         self.template_entry.set_hexpand(True)
-        template_box.pack_start(self.template_entry, True, True, 0)
+        template_box.append(self.template_entry)
 
         self.template_btn = Gtk.Button(label=_("Browse"))
         self.template_btn.connect("clicked", self._on_browse_template)
-        template_box.pack_start(self.template_btn, True, True, 0)
+        template_box.append(self.template_btn)
 
-        box.pack_start(template_box, True, True, 0)
+        box.append(template_box)
 
         # GPG Sign
         self.gpgsign_check = Gtk.CheckButton(label=_("Sign commits with GPG"))
         self.gpgsign_check.set_active(self.config.commit_gpgsign)
-        box.pack_start(self.gpgsign_check, True, True, 0)
+        box.append(self.gpgsign_check)
 
         return box
 
@@ -181,7 +181,7 @@ class GitWindow(Gtk.ApplicationWindow):
         # Color UI
         self.color_ui_check = Gtk.CheckButton(label=_("Enable color output"))
         self.color_ui_check.set_active(self.config.color_ui)
-        box.pack_start(self.color_ui_check, True, True, 0)
+        box.append(self.color_ui_check)
 
         # Default Branch
         self.defaultbranch_entry = self._create_entry_row(box, _("Default Branch Name"), self.config.init_defaultbranch, _("e.g., main, master"))
@@ -198,15 +198,15 @@ class GitWindow(Gtk.ApplicationWindow):
         label = Gtk.Label(label=label_text)
         label.set_size_request(150, -1)
         label.set_halign(Gtk.Align.START)
-        box.pack_start(label, True, True, 0)
+        box.append(label)
 
         entry = Gtk.Entry()
         entry.set_placeholder_text(placeholder)
         entry.set_text(value or "")
         entry.set_hexpand(True)
-        box.pack_start(entry, True, True, 0)
+        box.append(entry)
 
-        parent.pack_start(box, True, True, 0)
+        parent.append(box)
         return entry
 
     def _create_combo_row(self, parent: Gtk.Box, label_text: str, items: list, current_value: str) -> Gtk.ComboBoxText:
@@ -216,7 +216,7 @@ class GitWindow(Gtk.ApplicationWindow):
         label = Gtk.Label(label=label_text)
         label.set_size_request(150, -1)
         label.set_halign(Gtk.Align.START)
-        box.pack_start(label, True, True, 0)
+        box.append(label)
 
         combo = Gtk.ComboBoxText()
         for item in items:
@@ -225,24 +225,25 @@ class GitWindow(Gtk.ApplicationWindow):
             combo.set_active(items.index(current_value))
         else:
             combo.set_active(0)
-        box.pack_start(combo, True, True, 0)
+        box.append(combo)
 
-        parent.pack_start(box, True, True, 0)
+        parent.append(box)
         return combo
 
     def _on_browse_template(self, button: Gtk.Button) -> None:
         """Browse for commit template file."""
-        dialog = Gtk.FileChooserDialog(
-            _("Select Commit Template"),
-            self,
-            Gtk.FileChooserAction.OPEN,
-            (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK),
-        )
+        dialog = Gtk.FileDialog()
+        dialog.set_title(_("Select Commit Template"))
 
-        response = dialog.run()
-        if response == Gtk.ResponseType.OK:
-            self.template_entry.set_text(dialog.get_filename())
-        dialog.destroy()
+        def on_open_callback(dialog, result):
+            try:
+                file = dialog.open_finish(result)
+                if file:
+                    self.template_entry.set_text(file.get_path())
+            except Exception:
+                pass
+
+        dialog.open(self, None, on_open_callback)
 
     def _on_save_clicked(self, button: Gtk.Button) -> None:
         """Save the configuration."""
@@ -324,4 +325,4 @@ class GitWindow(Gtk.ApplicationWindow):
         )
         dialog.format_secondary_text(message)
         dialog.connect("response", lambda d, r: d.destroy())
-        dialog.show_all()
+        dialog.present()

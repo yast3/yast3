@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -46,11 +46,11 @@ class CronTab(Gtk.Box):
         button_box.set_hexpand(True)
 
         self.save_btn = Gtk.Button(label=_("Save"))
-        self.save_btn.get_style_context().add_class("suggested-action")
+        self.save_btn.add_css_class("suggested-action")
         self.save_btn.connect("clicked", self._on_save_clicked)
         button_box.append(self.save_btn)
 
-        self.pack_start(button_box, True, True, 0)
+        self.append(button_box)
 
         # Create list view
         self._create_list_view()
@@ -125,7 +125,7 @@ class CronTab(Gtk.Box):
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         scrolled.set_child(self.tree_view)
-        self.pack_start(scrolled, True, True, 0)
+        self.append(scrolled)
 
     def _load_jobs(self) -> None:
         """Load cron jobs from file."""
@@ -169,14 +169,14 @@ class CronTab(Gtk.Box):
         """Add a new cron job."""
         dialog = CronEditDialog(self.get_root())
         dialog.connect("response", self._on_add_dialog_response)
-        dialog.show_all()
+        dialog.present()
 
     def _on_add_dialog_response(self, dialog, response_id) -> None:
         """Handle add dialog response."""
         if response_id == Gtk.ResponseType.OK:
             job = dialog.get_job()
             if job:
-                self.jobs.pack_start(job, True, True, 0)
+                self.jobs.append(job)
                 self._populate_list()
         dialog.destroy()
 
@@ -193,7 +193,7 @@ class CronTab(Gtk.Box):
 
         dialog = CronEditDialog(self.get_root(), job)
         dialog.connect("response", self._on_edit_dialog_response, index)
-        dialog.show_all()
+        dialog.present()
 
     def _on_edit_dialog_response(self, dialog, response_id, index: int) -> None:
         """Handle edit dialog response."""
@@ -221,7 +221,7 @@ class CronTab(Gtk.Box):
         )
         confirm_dialog.format_secondary_text(_("Are you sure you want to delete this cron job?"))
         confirm_dialog.connect("response", self._on_delete_confirm_response, tree_iter)
-        confirm_dialog.show_all()
+        confirm_dialog.present()
 
     def _on_delete_confirm_response(self, dialog, response_id, tree_iter) -> None:
         """Handle delete confirmation response."""
@@ -254,4 +254,4 @@ class CronTab(Gtk.Box):
         )
         dialog.format_secondary_text(message)
         dialog.connect("response", lambda d, r: d.destroy())
-        dialog.show_all()
+        dialog.present()

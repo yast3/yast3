@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -18,7 +18,7 @@ def main() -> int:
 
     def on_activate(app):
         win = MainWindow(application=app)
-        win.show_all()
+        win.present()
 
     app.connect("activate", on_activate)
 

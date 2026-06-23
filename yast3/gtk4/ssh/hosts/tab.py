@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -46,11 +46,11 @@ class HostsTab(Gtk.Box):
         button_box.set_hexpand(True)
 
         self.save_btn = Gtk.Button(label=_("Save"))
-        self.save_btn.get_style_context().add_class("suggested-action")
+        self.save_btn.add_css_class("suggested-action")
         self.save_btn.connect("clicked", self._on_save_clicked)
         button_box.append(self.save_btn)
 
-        self.pack_start(button_box, True, True, 0)
+        self.append(button_box)
 
         # Create list view
         self._create_list_view()
@@ -97,7 +97,7 @@ class HostsTab(Gtk.Box):
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         scrolled.set_child(self.tree_view)
-        self.pack_start(scrolled, True, True, 0)
+        self.append(scrolled)
 
     def _load_config(self) -> None:
         """Load SSH config from ~/.ssh/config file."""
@@ -139,7 +139,7 @@ class HostsTab(Gtk.Box):
         """Add a new SSH host entry."""
         dialog = SSHEditDialog(self.get_root())
         dialog.connect("response", self._on_add_dialog_response)
-        dialog.show_all()
+        dialog.present()
 
     def _on_add_dialog_response(self, dialog, response_id) -> None:
         """Handle add dialog response."""
@@ -165,7 +165,7 @@ class HostsTab(Gtk.Box):
 
         dialog = SSHEditDialog(self.get_root(), entry.host, entry.options)
         dialog.connect("response", self._on_edit_dialog_response, index)
-        dialog.show_all()
+        dialog.present()
 
     def _on_edit_dialog_response(self, dialog, response_id, index: int) -> None:
         """Handle edit dialog response."""
@@ -205,7 +205,7 @@ class HostsTab(Gtk.Box):
         )
         confirm_dialog.format_secondary_text(_("Are you sure you want to delete this entry?"))
         confirm_dialog.connect("response", self._on_delete_confirm_response, tree_iter)
-        confirm_dialog.show_all()
+        confirm_dialog.present()
 
     def _on_delete_confirm_response(self, dialog, response_id, tree_iter) -> None:
         """Handle delete confirmation response."""
@@ -238,4 +238,4 @@ class HostsTab(Gtk.Box):
         )
         dialog.format_secondary_text(message)
         dialog.connect("response", lambda d, r: d.destroy())
-        dialog.show_all()
+        dialog.present()

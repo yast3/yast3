@@ -2,7 +2,7 @@
 
 import gi
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
@@ -24,8 +24,8 @@ class RepositoriesModule(Module):
         if self.window is None:
             self.window = RepositoriesWindow()
             self.window.set_title(self.name + " — " + _("YaST3"))
-            self.window.connect("delete-event", self._on_window_closed)
-        self.window.show_all()
+            self.window.connect("close-request", self._on_window_closed)
+        self.window.present()
 
     def _on_window_closed(self, window) -> None:
         """Handle window closed signal."""
