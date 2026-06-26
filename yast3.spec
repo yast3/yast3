@@ -7,6 +7,8 @@ License:        GPL-3.0-or-later
 URL:            https://github.com/yast3/yast3
 Source0:        https://github.com/yast3/yast3/archive/v%{version}.tar.gz
 
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-Babel
