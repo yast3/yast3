@@ -22,6 +22,21 @@ configuration management.
 This is a metapackage that recommends the Qt6 GUI interface.
 Install %{name}-qt6, %{name}-gtk4, or %{name}-tui for specific interfaces.
 
+%package core
+Summary:        YaST3 core functionality shared by all interfaces
+Requires:       python3-crontab
+
+%description core
+Core modules and utilities shared by YaST3 Qt6, GTK4 and TUI interfaces.
+
+%package gtk4
+Summary:        YaST3 GTK4 GUI interface
+Requires:       %{name}-core = %{version}-%{release}
+Requires:       python3-gobject
+
+%description gtk4
+GTK4 GUI interface for YaST3 desktop settings shell.
+
 %package qt6
 Summary:        YaST3 Qt6 GUI interface
 Requires:       %{name}-core = %{version}-%{release}
@@ -37,21 +52,6 @@ Requires:       python3-textual
 
 %description tui
 Textual TUI interface for YaST3 desktop settings shell.
-
-%package gtk4
-Summary:        YaST3 GTK4 GUI interface
-Requires:       %{name}-core = %{version}-%{release}
-Requires:       python3-gobject
-
-%description gtk4
-GTK4 GUI interface for YaST3 desktop settings shell.
-
-%package core
-Summary:        YaST3 core functionality shared by all interfaces
-Requires:       python3-crontab
-
-%description core
-Core modules and utilities shared by YaST3 Qt6, GTK4 and TUI interfaces.
 
 %prep
 %autosetup
@@ -72,6 +72,10 @@ Core modules and utilities shared by YaST3 Qt6, GTK4 and TUI interfaces.
 %{_datadir}/icons/hicolor/64x64/apps/%{name}.svg
 %{_datadir}/locale/
 
+%files gtk4
+%{python3_sitelib}/yast3/gtk4/
+%{_bindir}/yast3-gtk4
+
 %files qt6
 %{python3_sitelib}/yast3/qt6/
 %{_bindir}/yast3-qt6
@@ -80,10 +84,4 @@ Core modules and utilities shared by YaST3 Qt6, GTK4 and TUI interfaces.
 %{python3_sitelib}/yast3/tui/
 %{_bindir}/yast3-tui
 
-%files gtk4
-%{python3_sitelib}/yast3/gtk4/
-%{_bindir}/yast3-gtk4
-
 %changelog
-* Fri Jun 26 2026 YaST3 Team <yast3@opensuse.org> - 0.1.0-1
-- Initial package release
