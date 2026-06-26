@@ -90,6 +90,9 @@ include-package-data = true
 "share/locale/en/LC_MESSAGES" = ["locale/en/LC_MESSAGES/yast3.mo"]
 "share/locale/zh_CN/LC_MESSAGES" = ["locale/zh_CN/LC_MESSAGES/yast3.mo"]
 "share/locale/zh_TW/LC_MESSAGES" = ["locale/zh_TW/LC_MESSAGES/yast3.mo"]
+"share/locale/fr/LC_MESSAGES" = ["locale/fr/LC_MESSAGES/yast3.mo"]
+"share/locale/de/LC_MESSAGES" = ["locale/de/LC_MESSAGES/yast3.mo"]
+"share/locale/it/LC_MESSAGES" = ["locale/it/LC_MESSAGES/yast3.mo"]
 
 [tool.black]
 line-length = 88
