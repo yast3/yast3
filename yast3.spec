@@ -4,7 +4,7 @@ Release:        1%{?dist}
 Summary:        YaST3 desktop settings shell built with Python 3 and Qt6 Widgets
 
 License:        GPL-3.0-or-later
-URL:            https://github.com/opensuse/yast3
+URL:            https://github.com/yast3/yast3
 Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  python3-devel
