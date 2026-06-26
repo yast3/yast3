@@ -1,11 +1,11 @@
 Name:           yast3
 Version:        0.1.0
-Release:        1%{?dist}
-Summary:        YaST3 desktop settings shell built with Python 3 and Qt6 Widgets
+Release:        0
+Summary:        GUI & TUI system settings tool
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/yast3/yast3
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/yast3/yast3/archive/v%{version}.tar.gz
 
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
