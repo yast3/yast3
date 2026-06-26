@@ -1,7 +1,10 @@
 """Internationalization support using gettext."""
 
+from __future__ import annotations
+
 import gettext
 import os
+from typing import Callable
 
 APP_NAME = "yast3"
 
@@ -16,8 +19,32 @@ LOCALE_DIRS = [
     "/usr/share/locale",
 ]
 
-# Global translation function
-_ = gettext.gettext
+# Type alias for gettext function
+_GettextFunc = Callable[[str], str]
+
+
+class _TranslationWrapper:
+    """A callable wrapper that always delegates to the current translation function.
+
+    This ensures that modules importing '_' from this module will always use
+    the correct translation function after init_i18n() is called.
+    """
+
+    __slots__ = ('_gettext_func',)
+
+    def __init__(self) -> None:
+        self._gettext_func: _GettextFunc = gettext.gettext
+
+    def __call__(self, msgid: str) -> str:
+        return self._gettext_func(msgid)
+
+    def set_gettext(self, func: _GettextFunc) -> None:
+        """Set the underlying gettext function to use."""
+        self._gettext_func = func
+
+
+# Global translation wrapper instance
+_: _TranslationWrapper = _TranslationWrapper()
 
 
 def _find_locale_dir() -> str | None:
@@ -30,17 +57,16 @@ def _find_locale_dir() -> str | None:
 
 def init_i18n() -> None:
     """Initialize gettext translations."""
-    global _
     localedir = _find_locale_dir()
 
     if localedir is None:
         translation = gettext.NullTranslations()
-        _ = translation.gettext
+        _.set_gettext(translation.gettext)
         return
 
     try:
         translation = gettext.translation(APP_NAME, localedir=localedir)
-        _ = translation.gettext
+        _.set_gettext(translation.gettext)
     except FileNotFoundError:
         translation = gettext.NullTranslations()
-        _ = translation.gettext
+        _.set_gettext(translation.gettext)
