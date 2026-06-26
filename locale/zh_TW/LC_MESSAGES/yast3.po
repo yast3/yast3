@@ -1,17 +1,18 @@
-# English (US) translations for YaST3.
-# Copyright (C) 2024 YaST3
-# This file is distributed under the same license as the yast3 package.
+# Chinese (Traditional, Taiwan) translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  yast3\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-26 13:41+0000\n"
-"PO-Revision-Date: 2024-01-01 00:00+0000\n"
-"Last-Translator: \n"
-"Language: en_US\n"
-"Language-Team: English (US)\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-06-26 15:55+0000\n"
+"PO-Revision-Date: 2026-06-26 23:49+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_Hant_TW\n"
+"Language-Team: zh_Hant_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +21,7 @@ msgstr ""
 #: yast3/gtk4/cron/__init__.py:18 yast3/qt6/cron/__init__.py:12
 #: yast3/tui/cron/__init__.py:12
 msgid "Cron"
-msgstr ""
+msgstr "排程工作"
 
 #: yast3/gtk4/cron/__init__.py:24 yast3/gtk4/git/__init__.py:24
 #: yast3/gtk4/hostname/__init__.py:24 yast3/gtk4/hosts/__init__.py:24
@@ -35,12 +36,12 @@ msgstr "YaST3"
 #: yast3/gtk4/cron/cron_edit_dialog.py:18 yast3/qt6/cron/cron_edit_dialog.py:31
 #: yast3/tui/cron/window.py:172
 msgid "Edit Cron Job"
-msgstr ""
+msgstr "編輯排程工作"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:18 yast3/qt6/cron/cron_edit_dialog.py:31
 #: yast3/tui/cron/window.py:158
 msgid "Add Cron Job"
-msgstr ""
+msgstr "新增排程工作"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:28 yast3/gtk4/hosts/window.py:283
 #: yast3/gtk4/repositories/dialogs.py:27 yast3/gtk4/ssh/dialogs.py:27
@@ -49,7 +50,7 @@ msgstr ""
 #: yast3/tui/hosts/window.py:273 yast3/tui/repositories/window.py:334
 #: yast3/tui/ssh/window.py:526 yast3/tui/ssh/window.py:626
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:29 yast3/gtk4/hosts/window.py:284
 #: yast3/gtk4/repositories/dialogs.py:28 yast3/gtk4/ssh/dialogs.py:28
@@ -57,70 +58,68 @@ msgstr ""
 #: yast3/tui/hosts/window.py:272 yast3/tui/repositories/window.py:333
 #: yast3/tui/ssh/window.py:525 yast3/tui/ssh/window.py:625
 msgid "OK"
-msgstr ""
+msgstr "確定"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:45 yast3/gtk4/cron/cron_tab.py:81
 #: yast3/qt6/cron/cron_edit_dialog.py:40 yast3/qt6/cron/cron_tab.py:61
 #: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:274
 msgid "Minute"
-msgstr ""
+msgstr "分钟"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:45 yast3/qt6/cron/cron_edit_dialog.py:39
 msgid "0-59 or *"
-msgstr ""
+msgstr "0-59 或 *"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:48 yast3/gtk4/cron/cron_tab.py:88
 #: yast3/qt6/cron/cron_edit_dialog.py:44 yast3/qt6/cron/cron_tab.py:62
 #: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:277
 msgid "Hour"
-msgstr ""
+msgstr "小時"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:48 yast3/qt6/cron/cron_edit_dialog.py:43
 msgid "0-23 or *"
-msgstr ""
+msgstr "0-23 或 *"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:51 yast3/gtk4/cron/cron_tab.py:95
 #: yast3/qt6/cron/cron_edit_dialog.py:48 yast3/qt6/cron/cron_tab.py:63
 #: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:280
 msgid "Day"
-msgstr ""
+msgstr "日期"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:51 yast3/qt6/cron/cron_edit_dialog.py:47
 msgid "1-31 or *"
-msgstr ""
+msgstr "1-31 或 *"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:54 yast3/gtk4/cron/cron_tab.py:102
 #: yast3/qt6/cron/cron_edit_dialog.py:52 yast3/qt6/cron/cron_tab.py:64
 #: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:283
-#, fuzzy
 msgid "Month"
-msgstr "Other"
+msgstr "月份"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:54 yast3/qt6/cron/cron_edit_dialog.py:51
 msgid "1-12 or *"
-msgstr ""
+msgstr "1-12 或 *"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:57 yast3/gtk4/cron/cron_tab.py:109
 #: yast3/qt6/cron/cron_edit_dialog.py:56 yast3/qt6/cron/cron_tab.py:65
 #: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:286
 msgid "Weekday"
-msgstr ""
+msgstr "星期"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:57 yast3/qt6/cron/cron_edit_dialog.py:55
 msgid "0-7 or *"
-msgstr ""
+msgstr "0-7 或 *"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:60 yast3/gtk4/cron/cron_tab.py:116
 #: yast3/qt6/cron/cron_edit_dialog.py:60 yast3/qt6/cron/cron_tab.py:66
 #: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:289
-#, fuzzy
 msgid "Command"
-msgstr "Commit"
+msgstr "命令"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:64 yast3/qt6/cron/cron_edit_dialog.py:59
 #: yast3/tui/cron/window.py:290
 msgid "Command to execute"
-msgstr ""
+msgstr "执行的命令"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:69 yast3/gtk4/hosts/window.py:98
 #: yast3/gtk4/ssh/keys/generate_dialog.py:65 yast3/gtk4/ssh/keys/tab.py:96
@@ -128,26 +127,24 @@ msgstr ""
 #: yast3/qt6/ssh/keys/tab.py:65 yast3/tui/cron/window.py:292
 #: yast3/tui/hosts/window.py:79 yast3/tui/hosts/window.py:269
 #: yast3/tui/ssh/window.py:293 yast3/tui/ssh/window.py:622
-#, fuzzy
 msgid "Comment"
-msgstr "Commit"
+msgstr "備註"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:73 yast3/qt6/cron/cron_edit_dialog.py:64
 #: yast3/tui/cron/window.py:293 yast3/tui/ssh/window.py:623
-#, fuzzy
 msgid "Optional comment"
-msgstr "Commit"
+msgstr "可选備註"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:105
 #: yast3/gtk4/cron/cron_edit_dialog.py:120
 #: yast3/qt6/cron/cron_edit_dialog.py:91 yast3/qt6/cron/cron_edit_dialog.py:97
 msgid "Suggestions"
-msgstr ""
+msgstr "建议"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:146
 #: yast3/qt6/cron/cron_edit_dialog.py:113
 msgid "Validation Error"
-msgstr ""
+msgstr "驗證錯誤"
 
 #: yast3/gtk4/cron/cron_tab.py:33 yast3/gtk4/hosts/window.py:34
 #: yast3/gtk4/repositories/window.py:38 yast3/gtk4/ssh/dialogs.py:60
@@ -158,7 +155,7 @@ msgstr ""
 #: yast3/tui/cron/window.py:77 yast3/tui/hosts/window.py:69
 #: yast3/tui/repositories/window.py:65 yast3/tui/ssh/window.py:259
 msgid "Add"
-msgstr ""
+msgstr "新增"
 
 #: yast3/gtk4/cron/cron_tab.py:37 yast3/gtk4/hosts/window.py:38
 #: yast3/gtk4/repositories/window.py:42 yast3/gtk4/ssh/hosts/tab.py:37
@@ -167,7 +164,7 @@ msgstr ""
 #: yast3/tui/cron/window.py:78 yast3/tui/hosts/window.py:70
 #: yast3/tui/repositories/window.py:66 yast3/tui/ssh/window.py:260
 msgid "Edit"
-msgstr ""
+msgstr "編輯"
 
 #: yast3/gtk4/cron/cron_tab.py:41 yast3/gtk4/hosts/window.py:42
 #: yast3/gtk4/repositories/window.py:46 yast3/gtk4/ssh/hosts/tab.py:41
@@ -178,7 +175,7 @@ msgstr ""
 #: yast3/tui/repositories/window.py:67 yast3/tui/ssh/window.py:261
 #: yast3/tui/ssh/window.py:269
 msgid "Delete"
-msgstr ""
+msgstr "刪除"
 
 #: yast3/gtk4/cron/cron_tab.py:48 yast3/gtk4/git/window.py:71
 #: yast3/gtk4/hostname/window.py:49 yast3/gtk4/hosts/window.py:49
@@ -189,7 +186,7 @@ msgstr ""
 #: yast3/tui/hostname/window.py:69 yast3/tui/hosts/window.py:72
 #: yast3/tui/ssh/window.py:262
 msgid "Save"
-msgstr "Save"
+msgstr "儲存"
 
 #: yast3/gtk4/cron/cron_tab.py:74 yast3/gtk4/hosts/window.py:77
 #: yast3/gtk4/repositories/dialogs.py:45 yast3/gtk4/repositories/window.py:93
@@ -198,7 +195,7 @@ msgstr "Save"
 #: yast3/tui/hosts/window.py:79 yast3/tui/repositories/window.py:74
 #: yast3/tui/repositories/window.py:328 yast3/tui/ssh/window.py:288
 msgid "Enabled"
-msgstr ""
+msgstr "启用"
 
 #: yast3/gtk4/cron/cron_tab.py:137 yast3/gtk4/cron/cron_tab.py:242
 #: yast3/gtk4/cron/cron_tab.py:244 yast3/gtk4/git/window.py:257
@@ -245,7 +242,7 @@ msgstr ""
 #: yast3/qt6/ssh/keys/generate_dialog.py:242 yast3/qt6/ssh/keys/tab.py:177
 #: yast3/qt6/ssh/keys/tab.py:217
 msgid "Error"
-msgstr "Error"
+msgstr "錯誤"
 
 #: yast3/gtk4/cron/cron_tab.py:187 yast3/gtk4/cron/cron_tab.py:211
 #: yast3/gtk4/hosts/window.py:184 yast3/gtk4/hosts/window.py:220
@@ -256,17 +253,17 @@ msgstr "Error"
 #: yast3/qt6/repositories/window.py:185 yast3/qt6/repositories/window.py:228
 #: yast3/qt6/ssh/hosts/tab.py:148 yast3/qt6/ssh/hosts/tab.py:169
 msgid "Information"
-msgstr ""
+msgstr "信息"
 
 #: yast3/gtk4/cron/cron_tab.py:187 yast3/qt6/cron/cron_tab.py:147
 #: yast3/tui/cron/window.py:165
 msgid "Please select a cron job to edit."
-msgstr ""
+msgstr "請選擇要編輯的排程工作。"
 
 #: yast3/gtk4/cron/cron_tab.py:211 yast3/qt6/cron/cron_tab.py:160
 #: yast3/tui/cron/window.py:184
 msgid "Please select a cron job to delete."
-msgstr ""
+msgstr "請選擇要刪除的排程工作。"
 
 #: yast3/gtk4/cron/cron_tab.py:220 yast3/gtk4/hostname/window.py:99
 #: yast3/gtk4/hosts/window.py:229 yast3/gtk4/repositories/window.py:289
@@ -275,11 +272,11 @@ msgstr ""
 #: yast3/qt6/repositories/window.py:235 yast3/qt6/ssh/hosts/tab.py:181
 #: yast3/qt6/ssh/keys/generate_dialog.py:184
 msgid "Confirm"
-msgstr ""
+msgstr "确认"
 
 #: yast3/gtk4/cron/cron_tab.py:222 yast3/qt6/cron/cron_tab.py:164
 msgid "Are you sure you want to delete this cron job?"
-msgstr ""
+msgstr "您確定要刪除此排程工作吗？"
 
 #: yast3/gtk4/cron/cron_tab.py:240 yast3/gtk4/git/window.py:276
 #: yast3/gtk4/hostname/window.py:106 yast3/gtk4/hosts/window.py:249
@@ -291,37 +288,34 @@ msgstr ""
 #: yast3/qt6/ssh/keys/generate_dialog.py:232 yast3/qt6/ssh/keys/tab.py:174
 #: yast3/qt6/ssh/keys/tab.py:221
 msgid "Success"
-msgstr "Success"
+msgstr "成功"
 
 #: yast3/gtk4/cron/cron_tab.py:240 yast3/qt6/cron/cron_tab.py:201
-#, fuzzy
 msgid "Cron jobs saved successfully."
-msgstr "Git configuration saved successfully."
+msgstr "排程工作儲存成功。"
 
 #: yast3/gtk4/cron/cron_tab.py:242 yast3/gtk4/hostname/window.py:109
 #: yast3/qt6/cron/cron_tab.py:204 yast3/qt6/hostname/window.py:130
 msgid "Permission denied. Root permission required."
-msgstr ""
+msgstr "權限被拒絕。需要 root 權限。"
 
 #: yast3/gtk4/cron/cron_tab.py:244 yast3/qt6/cron/cron_tab.py:207
-#, fuzzy
 msgid "Failed to save cron jobs."
-msgstr "Failed to save Git configuration."
+msgstr "儲存排程工作失敗。"
 
 #: yast3/gtk4/cron/window.py:18
-#, fuzzy
 msgid "Cron Configuration — YaST3"
-msgstr "Git Configuration — YaST3"
+msgstr "排程工作設定 — YaST3"
 
 #: yast3/gtk4/cron/window.py:32 yast3/qt6/cron/window.py:32
 #: yast3/tui/cron/window.py:68
 msgid "User Cron Jobs"
-msgstr ""
+msgstr "使用者排程工作"
 
 #: yast3/gtk4/cron/window.py:36 yast3/qt6/cron/window.py:35
 #: yast3/tui/cron/window.py:70
 msgid "Root Cron Jobs"
-msgstr ""
+msgstr "系統排程工作"
 
 #: yast3/gtk4/git/__init__.py:18 yast3/qt6/git/__init__.py:12
 #: yast3/tui/git/__init__.py:12
@@ -330,156 +324,155 @@ msgstr "Git"
 
 #: yast3/gtk4/git/window.py:24 yast3/qt6/git/window.py:33
 msgid "Git Configuration — YaST3"
-msgstr "Git Configuration — YaST3"
+msgstr "Git 設定 — YaST3"
 
 #: yast3/gtk4/git/window.py:34 yast3/qt6/git/window.py:40
 msgid "Git is not installed on this system."
-msgstr "Git is not installed on this system."
+msgstr "系統未安裝 Git。"
 
 #: yast3/gtk4/git/window.py:47 yast3/qt6/git/window.py:51
 #: yast3/tui/git/window.py:70 yast3/tui/ssh/window.py:519
 msgid "User"
-msgstr "User"
+msgstr "使用者"
 
 #: yast3/gtk4/git/window.py:51 yast3/qt6/git/window.py:56
 #: yast3/tui/git/window.py:72
 msgid "Core"
-msgstr "Core"
+msgstr "核心"
 
 #: yast3/gtk4/git/window.py:55 yast3/qt6/git/window.py:61
 #: yast3/tui/git/window.py:74
 msgid "Commit"
-msgstr "Commit"
+msgstr "提交"
 
 #: yast3/gtk4/git/window.py:59 yast3/qt6/git/window.py:66
 #: yast3/tui/git/window.py:76
 msgid "Merge"
-msgstr "Merge"
+msgstr "合并"
 
 #: yast3/gtk4/git/window.py:63 yast3/qt6/git/window.py:71
 #: yast3/tui/git/window.py:78
 msgid "Other"
-msgstr "Other"
+msgstr "其他"
 
 #: yast3/gtk4/git/window.py:76 yast3/qt6/git/window.py:83
 #: yast3/tui/git/window.py:82
 msgid "Reset"
-msgstr "Reset"
+msgstr "重置"
 
 #: yast3/gtk4/git/window.py:94 yast3/qt6/git/window.py:96
 #: yast3/tui/git/window.py:88
 msgid "User Name"
-msgstr "User Name"
+msgstr "使用者名"
 
 #: yast3/gtk4/git/window.py:94 yast3/qt6/git/window.py:98
 #: yast3/tui/git/window.py:89
 msgid "Enter your Git user name"
-msgstr "Enter your Git user name"
+msgstr "输入您的 Git 使用者名"
 
 #: yast3/gtk4/git/window.py:97 yast3/qt6/git/window.py:104
 #: yast3/tui/git/window.py:91
 msgid "Email Address"
-msgstr "Email Address"
+msgstr "邮箱地址"
 
 #: yast3/gtk4/git/window.py:97 yast3/qt6/git/window.py:106
 #: yast3/tui/git/window.py:92
 msgid "Enter your Git email address"
-msgstr "Enter your Git email address"
+msgstr "输入您的 Git 邮箱地址"
 
 #: yast3/gtk4/git/window.py:100 yast3/qt6/git/window.py:112
 #: yast3/tui/git/window.py:94
 msgid "GPG Signing Key"
-msgstr "GPG Signing Key"
+msgstr "GPG 签名金鑰"
 
 #: yast3/gtk4/git/window.py:100 yast3/qt6/git/window.py:114
 #: yast3/tui/git/window.py:95
 msgid "Enter GPG key ID"
-msgstr "Enter GPG key ID"
+msgstr "输入 GPG 金鑰 ID"
 
 #: yast3/gtk4/git/window.py:113 yast3/qt6/git/window.py:127
 #: yast3/tui/git/window.py:100
 msgid "Default Editor"
-msgstr "Default Editor"
+msgstr "默认編輯器"
 
 #: yast3/gtk4/git/window.py:113 yast3/qt6/git/window.py:129
 #: yast3/tui/git/window.py:101
 msgid "e.g., vim, nano, code"
-msgstr "e.g., vim, nano, code"
+msgstr "例如：vim, nano, code"
 
 #: yast3/gtk4/git/window.py:116 yast3/qt6/git/window.py:135
 #: yast3/tui/git/window.py:103
 msgid "Auto CRLF"
-msgstr "Auto CRLF"
+msgstr "自動 CRLF"
 
 #: yast3/gtk4/git/window.py:119 yast3/qt6/git/window.py:144
 #: yast3/tui/git/window.py:110
 msgid "Safe CRLF"
-msgstr "Safe CRLF"
+msgstr "安全 CRLF"
 
 #: yast3/gtk4/git/window.py:133 yast3/qt6/git/window.py:160
 #: yast3/tui/git/window.py:120
 msgid "Commit Template"
-msgstr "Commit Template"
+msgstr "提交模板"
 
 #: yast3/gtk4/git/window.py:139 yast3/tui/git/window.py:121
-#, fuzzy
 msgid "Path to commit template"
-msgstr "Commit Template"
+msgstr "提交模板路徑"
 
 #: yast3/gtk4/git/window.py:144 yast3/qt6/git/window.py:163
 msgid "Browse"
-msgstr "Browse"
+msgstr "浏览"
 
 #: yast3/gtk4/git/window.py:151 yast3/qt6/git/window.py:169
 #: yast3/tui/git/window.py:122
 msgid "Sign commits with GPG"
-msgstr "Sign commits with GPG"
+msgstr "使用 GPG 签名提交"
 
 #: yast3/gtk4/git/window.py:166 yast3/qt6/git/window.py:182
 #: yast3/tui/git/window.py:127
 msgid "Conflict Style"
-msgstr "Conflict Style"
+msgstr "冲突样式"
 
 #: yast3/gtk4/git/window.py:169 yast3/qt6/git/window.py:191
 #: yast3/tui/git/window.py:134
 msgid "Pull Rebase"
-msgstr "Pull Rebase"
+msgstr "拉取時變基"
 
 #: yast3/gtk4/git/window.py:182 yast3/qt6/git/window.py:206
 #: yast3/tui/git/window.py:143
 msgid "Enable color output"
-msgstr "Enable color output"
+msgstr "启用彩色输出"
 
 #: yast3/gtk4/git/window.py:187 yast3/qt6/git/window.py:212
 #: yast3/tui/git/window.py:145
 msgid "Default Branch Name"
-msgstr "Default Branch Name"
+msgstr "默认分支名称"
 
 #: yast3/gtk4/git/window.py:187 yast3/qt6/git/window.py:214
 #: yast3/tui/git/window.py:146
 msgid "e.g., main, master"
-msgstr "e.g., main, master"
+msgstr "例如：main, master"
 
 #: yast3/gtk4/git/window.py:190 yast3/qt6/git/window.py:220
 #: yast3/tui/git/window.py:148
 msgid "Credential Helper"
-msgstr "Credential Helper"
+msgstr "凭据助手"
 
 #: yast3/gtk4/git/window.py:236 yast3/qt6/git/window.py:234
 msgid "Select Commit Template"
-msgstr "Select Commit Template"
+msgstr "選擇提交模板"
 
 #: yast3/gtk4/git/window.py:257 yast3/qt6/git/window.py:249
 msgid "User name and email are required."
-msgstr "User name and email are required."
+msgstr "使用者名和邮箱為必填项。"
 
 #: yast3/gtk4/git/window.py:276 yast3/qt6/git/window.py:270
 msgid "Git configuration saved successfully."
-msgstr "Git configuration saved successfully."
+msgstr "Git 設定儲存成功。"
 
 #: yast3/gtk4/git/window.py:278 yast3/qt6/git/window.py:275
 msgid "Failed to save Git configuration."
-msgstr "Failed to save Git configuration."
+msgstr "儲存 Git 設定失敗。"
 
 #: yast3/gtk4/hostname/__init__.py:18 yast3/gtk4/hostname/window.py:33
 #: yast3/gtk4/hosts/window.py:91 yast3/qt6/hostname/__init__.py:12
@@ -487,297 +480,284 @@ msgstr "Failed to save Git configuration."
 #: yast3/tui/hostname/__init__.py:12 yast3/tui/hostname/window.py:66
 #: yast3/tui/hosts/window.py:79 yast3/tui/hosts/window.py:266
 msgid "Hostname"
-msgstr ""
+msgstr "主機名"
 
 #: yast3/gtk4/hostname/window.py:21
-#, fuzzy
 msgid "Hostname Configuration — YaST3"
-msgstr "Git Configuration — YaST3"
+msgstr "主機名設定 — YaST3"
 
 #: yast3/gtk4/hostname/window.py:39 yast3/qt6/hostname/window.py:42
 #: yast3/tui/hostname/window.py:67
-#, fuzzy
 msgid "Enter hostname"
-msgstr "User Name"
+msgstr "输入主機名"
 
 #: yast3/gtk4/hostname/window.py:67 yast3/qt6/hostname/window.py:66
 msgid "/etc/hostname not found."
-msgstr ""
+msgstr "/etc/hostname 未找到。"
 
 #: yast3/gtk4/hostname/window.py:69 yast3/qt6/hostname/window.py:71
 msgid "Cannot read /etc/hostname. Root permission required."
-msgstr ""
+msgstr "无法讀取 /etc/hostname。需要 root 權限。"
 
 #: yast3/gtk4/hostname/window.py:71 yast3/qt6/hostname/window.py:75
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Failed to load hostname: {0}"
-msgstr "Failed to save Git configuration."
+msgstr "加载主機名失敗：{0}"
 
 #: yast3/gtk4/hostname/window.py:78 yast3/qt6/hostname/window.py:83
 msgid "Hostname cannot be empty."
-msgstr ""
+msgstr "主機名不能為空。"
 
 #: yast3/gtk4/hostname/window.py:83 yast3/qt6/hostname/window.py:89
 msgid "Hostname is too long (maximum 253 characters)."
-msgstr ""
+msgstr "主機名過長（最多 253 個字符）。"
 
 #: yast3/gtk4/hostname/window.py:89 yast3/qt6/hostname/window.py:97
 msgid "Hostname contains invalid characters."
-msgstr ""
+msgstr "主機名套件含无效字符。"
 
 #: yast3/gtk4/hostname/window.py:99 yast3/qt6/hostname/window.py:111
 #, python-brace-format
 msgid "Are you sure you want to change the hostname from '{0}' to '{1}'?"
-msgstr ""
+msgstr "您確定要将主機名從 '{0}' 改為 '{1}' 吗？"
 
 #: yast3/gtk4/hostname/window.py:106 yast3/qt6/hostname/window.py:125
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Hostname changed successfully to '{0}'."
-msgstr "Saved successfully"
+msgstr "主機名已成功更改為 '{0}'。"
 
 #: yast3/gtk4/hostname/window.py:111 yast3/gtk4/hosts/window.py:253
 #: yast3/gtk4/repositories/window.py:312 yast3/qt6/hostname/window.py:134
 #: yast3/qt6/hosts/window.py:275 yast3/qt6/repositories/window.py:272
 msgid "Authentication failed or pkexec not available."
-msgstr ""
+msgstr "認證失敗或 pkexec 不可用。"
 
 #: yast3/gtk4/hostname/window.py:113 yast3/qt6/hostname/window.py:138
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Failed to set hostname: {0}"
-msgstr "Failed to save Git configuration."
+msgstr "设置主機名失敗：{0}"
 
 #: yast3/gtk4/hosts/__init__.py:18 yast3/gtk4/ssh/window.py:33
 #: yast3/qt6/hosts/__init__.py:12 yast3/qt6/ssh/window.py:36
 #: yast3/tui/hosts/__init__.py:12 yast3/tui/ssh/window.py:250
 msgid "Hosts"
-msgstr ""
+msgstr "主機"
 
 #: yast3/gtk4/hosts/window.py:22
-#, fuzzy
 msgid "Hosts Configuration — YaST3"
-msgstr "Git Configuration — YaST3"
+msgstr "主機設定 — YaST3"
 
 #: yast3/gtk4/hosts/window.py:84 yast3/qt6/hosts/window.py:63
 #: yast3/tui/hosts/window.py:79 yast3/tui/hosts/window.py:263
-#, fuzzy
 msgid "IP Address"
-msgstr "Email Address"
+msgstr "IP 地址"
 
 #: yast3/gtk4/hosts/window.py:120 yast3/qt6/hosts/window.py:104
 #, python-brace-format
 msgid "Cannot read {0}. Root permission required."
-msgstr ""
+msgstr "无法讀取 {0}。需要 root 權限。"
 
 #: yast3/gtk4/hosts/window.py:123 yast3/qt6/hosts/window.py:109
 #, python-brace-format
 msgid "{0} not found."
-msgstr ""
+msgstr "{0} 未找到。"
 
 #: yast3/gtk4/hosts/window.py:177 yast3/gtk4/hosts/window.py:213
 #: yast3/qt6/hosts/window.py:179 yast3/qt6/hosts/window.py:216
-#, fuzzy
 msgid "IP address and hostname are required."
-msgstr "User name and email are required."
+msgstr "IP 地址和主機名是必要的。"
 
 #: yast3/gtk4/hosts/window.py:184 yast3/gtk4/ssh/hosts/tab.py:159
 #: yast3/qt6/hosts/window.py:187 yast3/qt6/ssh/hosts/tab.py:148
 #: yast3/tui/hosts/window.py:130
 msgid "Please select a host entry to edit."
-msgstr ""
+msgstr "請選擇要編輯的主機項目。"
 
 #: yast3/gtk4/hosts/window.py:220 yast3/gtk4/ssh/hosts/tab.py:187
 #: yast3/qt6/hosts/window.py:224 yast3/qt6/ssh/hosts/tab.py:169
 #: yast3/tui/hosts/window.py:149
 msgid "Please select a host entry to delete."
-msgstr ""
+msgstr "請選擇要刪除的主機項目。"
 
 #: yast3/gtk4/hosts/window.py:231 yast3/gtk4/ssh/hosts/tab.py:206
 #: yast3/qt6/hosts/window.py:229 yast3/qt6/ssh/hosts/tab.py:181
 msgid "Are you sure you want to delete this entry?"
-msgstr ""
+msgstr "您確定要刪除此項目吗？"
 
 #: yast3/gtk4/hosts/window.py:249 yast3/qt6/hosts/window.py:264
-#, fuzzy
 msgid "Hosts file saved successfully."
-msgstr "Saved successfully"
+msgstr "主機檔案儲存成功。"
 
 #: yast3/gtk4/hosts/window.py:251 yast3/qt6/hosts/window.py:271
 #, python-brace-format
 msgid "Cannot write to {0}. Root permission required."
-msgstr ""
+msgstr "无法寫入 {0}。需要 root 權限。"
 
 #: yast3/gtk4/hosts/window.py:255 yast3/qt6/hosts/window.py:278
-#, fuzzy
 msgid "Failed to save hosts file."
-msgstr "Failed to save Git configuration."
+msgstr "儲存主機檔案失敗。"
 
 #: yast3/gtk4/hosts/window.py:276 yast3/qt6/hosts/dialogs.py:29
 msgid "Add/Edit Host Entry"
-msgstr ""
+msgstr "新增/編輯主機項目"
 
 #: yast3/gtk4/hosts/window.py:296 yast3/qt6/hosts/dialogs.py:36
-#, fuzzy
 msgid "IP Address:"
-msgstr "Email Address"
+msgstr "IP 地址："
 
 #: yast3/gtk4/hosts/window.py:308 yast3/qt6/hosts/dialogs.py:45
 msgid "Hostname:"
-msgstr ""
+msgstr "主機名："
 
 #: yast3/gtk4/hosts/window.py:320 yast3/qt6/hosts/dialogs.py:52
 #: yast3/qt6/ssh/keys/generate_dialog.py:123
-#, fuzzy
 msgid "Comment:"
-msgstr "Commit"
+msgstr "備註："
 
 #: yast3/gtk4/packages/__init__.py:18 yast3/qt6/packages/__init__.py:12
 #: yast3/qt6/packages/window.py:13 yast3/qt6/packages/window.py:18
 #: yast3/tui/packages/__init__.py:12
 msgid "Packages"
-msgstr ""
+msgstr "軟體套件"
 
 #: yast3/gtk4/packages/window.py:17
 msgid "Packages — YaST3"
-msgstr ""
+msgstr "軟體套件 — YaST3"
 
 #: yast3/gtk4/packages/window.py:27
 msgid "Packages module is not yet implemented."
-msgstr ""
+msgstr "軟體套件模块尚未实现。"
 
 #: yast3/gtk4/repositories/__init__.py:19 yast3/qt6/repositories/__init__.py:13
 #: yast3/tui/repositories/__init__.py:12
 msgid "Repositories"
-msgstr ""
+msgstr "軟體來源"
 
 #: yast3/gtk4/repositories/dialogs.py:18 yast3/qt6/repositories/dialogs.py:26
 #: yast3/tui/repositories/window.py:125
 msgid "Add Repository"
-msgstr ""
+msgstr "新增軟體來源"
 
 #: yast3/gtk4/repositories/dialogs.py:18 yast3/qt6/repositories/dialogs.py:26
 #: yast3/tui/repositories/window.py:138
 msgid "Edit Repository"
-msgstr ""
+msgstr "編輯軟體來源"
 
 #: yast3/gtk4/repositories/dialogs.py:39 yast3/qt6/repositories/dialogs.py:34
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: yast3/gtk4/repositories/dialogs.py:42 yast3/gtk4/repositories/window.py:72
 #: yast3/gtk4/ssh/keys/tab.py:68 yast3/qt6/repositories/dialogs.py:41
 #: yast3/qt6/repositories/window.py:59 yast3/qt6/ssh/keys/tab.py:61
 #: yast3/tui/repositories/window.py:74 yast3/tui/repositories/window.py:307
 #: yast3/tui/ssh/window.py:293 yast3/tui/ssh/window.py:613
-#, fuzzy
 msgid "Name"
-msgstr "User Name"
+msgstr "名称"
 
 #: yast3/gtk4/repositories/dialogs.py:50 yast3/gtk4/repositories/window.py:101
 #: yast3/qt6/repositories/dialogs.py:52 yast3/qt6/repositories/window.py:59
 #: yast3/tui/repositories/window.py:74 yast3/tui/repositories/window.py:329
-#, fuzzy
 msgid "Auto Refresh"
-msgstr "Auto CRLF"
+msgstr "自動刷新"
 
 #: yast3/gtk4/repositories/dialogs.py:56 yast3/qt6/repositories/dialogs.py:58
 msgid "URL Type"
-msgstr ""
+msgstr "URL 类型"
 
 #: yast3/gtk4/repositories/dialogs.py:61 yast3/qt6/repositories/dialogs.py:60
 #: yast3/tui/repositories/window.py:310 yast3/tui/repositories/window.py:311
 msgid "Base URL"
-msgstr ""
+msgstr "基础 URL"
 
 #: yast3/gtk4/repositories/dialogs.py:62 yast3/qt6/repositories/dialogs.py:60
 #: yast3/tui/repositories/window.py:313
 msgid "Mirror List"
-msgstr ""
+msgstr "映像清單"
 
 #: yast3/gtk4/repositories/dialogs.py:69 yast3/gtk4/repositories/window.py:79
 #: yast3/qt6/repositories/dialogs.py:66 yast3/qt6/repositories/window.py:59
 #: yast3/tui/repositories/window.py:74
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: yast3/gtk4/repositories/dialogs.py:72 yast3/qt6/repositories/dialogs.py:77
 msgid "Path"
-msgstr ""
+msgstr "路徑"
 
 #: yast3/gtk4/repositories/dialogs.py:76 yast3/qt6/repositories/dialogs.py:84
 #: yast3/tui/repositories/window.py:319 yast3/tui/ssh/window.py:293
 #: yast3/tui/ssh/window.py:616
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
 #: yast3/gtk4/repositories/dialogs.py:95 yast3/qt6/repositories/dialogs.py:94
 msgid "Check GPG signature"
-msgstr ""
+msgstr "检查 GPG 签名"
 
 #: yast3/gtk4/repositories/dialogs.py:100 yast3/qt6/repositories/dialogs.py:100
 msgid "GPG Key URL"
-msgstr ""
+msgstr "GPG 金鑰 URL"
 
 #: yast3/gtk4/repositories/dialogs.py:104 yast3/gtk4/repositories/window.py:85
 #: yast3/qt6/repositories/dialogs.py:107 yast3/qt6/repositories/window.py:59
 #: yast3/tui/repositories/window.py:74 yast3/tui/repositories/window.py:316
 msgid "Priority"
-msgstr ""
+msgstr "優先順序"
 
 #: yast3/gtk4/repositories/dialogs.py:116 yast3/qt6/repositories/dialogs.py:115
 msgid "Keep packages"
-msgstr ""
+msgstr "保留軟體套件"
 
 #: yast3/gtk4/repositories/window.py:26
-#, fuzzy
 msgid "Repositories Configuration — YaST3"
-msgstr "Git Configuration — YaST3"
+msgstr "軟體來源設定 — YaST3"
 
 #: yast3/gtk4/repositories/window.py:124 yast3/qt6/repositories/window.py:101
 msgid "Cannot read repository directory. Root permission required."
-msgstr ""
+msgstr "无法讀取軟體來源目錄。需要 root 權限。"
 
 #: yast3/gtk4/repositories/window.py:186 yast3/gtk4/repositories/window.py:241
 #: yast3/qt6/repositories/window.py:150 yast3/qt6/repositories/window.py:197
 msgid "Repository ID is required."
-msgstr ""
+msgstr "軟體來源 ID 是必要的。"
 
 #: yast3/gtk4/repositories/window.py:190 yast3/gtk4/repositories/window.py:245
 #: yast3/qt6/repositories/window.py:153 yast3/qt6/repositories/window.py:200
 msgid "URL is required."
-msgstr ""
+msgstr "URL 是必要的。"
 
 #: yast3/gtk4/repositories/window.py:222 yast3/qt6/repositories/window.py:185
 #: yast3/tui/repositories/window.py:131
 msgid "Please select a repository to edit."
-msgstr ""
+msgstr "請選擇要編輯的軟體來源。"
 
 #: yast3/gtk4/repositories/window.py:276 yast3/qt6/repositories/window.py:228
 #: yast3/tui/repositories/window.py:148
 msgid "Please select a repository to delete."
-msgstr ""
+msgstr "請選擇要刪除的軟體來源。"
 
 #: yast3/gtk4/repositories/window.py:291 yast3/qt6/repositories/window.py:236
 #, python-brace-format
 msgid "Are you sure you want to delete repository '{}'?"
-msgstr ""
+msgstr "您確定要刪除軟體來源 '{}' 吗？"
 
 #: yast3/gtk4/repositories/window.py:310 yast3/qt6/repositories/window.py:268
 msgid "Cannot write to repository directory. Root permission required."
-msgstr ""
+msgstr "无法寫入軟體來源目錄。需要 root 權限。"
 
 #: yast3/gtk4/repositories/window.py:314 yast3/qt6/repositories/window.py:276
-#, fuzzy
 msgid "Failed to save repository configuration."
-msgstr "Failed to save Git configuration."
+msgstr "儲存軟體來源設定失敗。"
 
 #: yast3/gtk4/ssh/__init__.py:22 yast3/qt6/ssh/__init__.py:18
 #: yast3/tui/ssh/__init__.py:12
 msgid "SSH Client"
-msgstr ""
+msgstr "SSH 客户端"
 
 #: yast3/gtk4/ssh/__init__.py:57 yast3/qt6/ssh/__init__.py:51
 msgid "SSH Permission Warning"
-msgstr ""
+msgstr "SSH 權限警告"
 
 #: yast3/gtk4/ssh/__init__.py:61 yast3/qt6/ssh/__init__.py:53
 #, python-brace-format
@@ -788,6 +768,11 @@ msgid ""
 "\n"
 "Would you like to fix them now?"
 msgstr ""
+"以下 SSH 项目的權限不安全：\n"
+"\n"
+"{0}\n"
+"\n"
+"您要现在修复它们吗？"
 
 #: yast3/gtk4/ssh/__init__.py:86 yast3/qt6/ssh/__init__.py:71
 #, python-brace-format
@@ -796,190 +781,188 @@ msgid ""
 "\n"
 "{0}"
 msgstr ""
+"修复以下项目的權限失敗：\n"
+"\n"
+"{0}"
 
 #: yast3/gtk4/ssh/__init__.py:99 yast3/qt6/ssh/__init__.py:78
 msgid "SSH permissions have been fixed successfully."
-msgstr ""
+msgstr "SSH 權限已成功修复。"
 
 #: yast3/gtk4/ssh/dialogs.py:18 yast3/qt6/ssh/dialogs.py:26
 msgid "Edit SSH Options"
-msgstr ""
+msgstr "編輯 SSH 選項"
 
 #: yast3/gtk4/ssh/dialogs.py:57 yast3/qt6/ssh/dialogs.py:55
 msgid "Option name"
-msgstr ""
+msgstr "選項名称"
 
 #: yast3/gtk4/ssh/dialogs.py:59 yast3/qt6/ssh/dialogs.py:57
 msgid "Option value"
-msgstr ""
+msgstr "選項值"
 
 #: yast3/gtk4/ssh/dialogs.py:99 yast3/qt6/ssh/dialogs.py:86
 msgid "Option name is required."
-msgstr ""
+msgstr "選項名称是必要的。"
 
 #: yast3/gtk4/ssh/dialogs.py:105 yast3/qt6/ssh/dialogs.py:92
 msgid "Option already exists."
-msgstr ""
+msgstr "選項已存在。"
 
 #: yast3/gtk4/ssh/dialogs.py:136 yast3/qt6/ssh/dialogs.py:119
 msgid "Add/Edit SSH Host"
-msgstr ""
+msgstr "新增/編輯 SSH 主機"
 
 #: yast3/gtk4/ssh/dialogs.py:158 yast3/qt6/ssh/dialogs.py:128
 msgid "Host Pattern:"
-msgstr ""
+msgstr "主機模式："
 
 #: yast3/gtk4/ssh/dialogs.py:169 yast3/qt6/ssh/dialogs.py:134
 msgid "Edit Options"
-msgstr ""
+msgstr "編輯選項"
 
 #: yast3/gtk4/ssh/dialogs.py:195 yast3/qt6/ssh/dialogs.py:162
 #, python-brace-format
 msgid "Options: {0}"
-msgstr ""
+msgstr "選項：{0}"
 
 #: yast3/gtk4/ssh/dialogs.py:197 yast3/qt6/ssh/dialogs.py:164
 msgid "No options set"
-msgstr ""
+msgstr "未设置選項"
 
 #: yast3/gtk4/ssh/window.py:19
-#, fuzzy
 msgid "SSH Configuration — YaST3"
-msgstr "Git Configuration — YaST3"
+msgstr "SSH 設定 — YaST3"
 
 #: yast3/gtk4/ssh/window.py:37 yast3/qt6/ssh/window.py:40
 #: yast3/tui/ssh/window.py:252
 msgid "Keys"
-msgstr ""
+msgstr "金鑰"
 
 #: yast3/gtk4/ssh/hosts/tab.py:81 yast3/qt6/ssh/hosts/tab.py:61
 #: yast3/tui/ssh/window.py:288
 msgid "Host Pattern"
-msgstr ""
+msgstr "主機模式"
 
 #: yast3/gtk4/ssh/hosts/tab.py:88 yast3/qt6/ssh/hosts/tab.py:61
 #: yast3/tui/ssh/window.py:288
 msgid "Options"
-msgstr ""
+msgstr "選項"
 
 #: yast3/gtk4/ssh/hosts/tab.py:122 yast3/qt6/ssh/hosts/tab.py:122
 #: yast3/qt6/ssh/hosts/tab.py:213 yast3/tui/ssh/window.py:327
 #, python-brace-format
 msgid " and {0} more"
-msgstr ""
+msgstr " 还有 {0} 個"
 
 #: yast3/gtk4/ssh/hosts/tab.py:152 yast3/gtk4/ssh/hosts/tab.py:180
 #: yast3/qt6/ssh/hosts/tab.py:141 yast3/qt6/ssh/hosts/tab.py:162
 msgid "Host pattern is required."
-msgstr ""
+msgstr "主機模式是必要的。"
 
 #: yast3/gtk4/ssh/hosts/tab.py:195 yast3/qt6/ssh/hosts/tab.py:176
 #: yast3/tui/ssh/window.py:383
 msgid "Cannot delete the default host entry."
-msgstr ""
+msgstr "无法刪除默认主機項目。"
 
 #: yast3/gtk4/ssh/hosts/tab.py:224 yast3/qt6/ssh/hosts/tab.py:222
-#, fuzzy
 msgid "SSH config saved successfully."
-msgstr "Git configuration saved successfully."
+msgstr "SSH 設定儲存成功。"
 
 #: yast3/gtk4/ssh/hosts/tab.py:226 yast3/qt6/ssh/hosts/tab.py:226
 msgid "Cannot write to SSH config. Check permissions."
-msgstr ""
+msgstr "无法寫入 SSH 設定。請检查權限。"
 
 #: yast3/gtk4/ssh/hosts/tab.py:228 yast3/qt6/ssh/hosts/tab.py:229
-#, fuzzy
 msgid "Failed to save SSH config."
-msgstr "Failed to save Git configuration."
+msgstr "儲存 SSH 設定失敗。"
 
 #: yast3/gtk4/ssh/keys/generate_dialog.py:18
 #: yast3/qt6/ssh/keys/generate_dialog.py:80 yast3/tui/ssh/window.py:611
 msgid "Generate SSH Key"
-msgstr ""
+msgstr "產生 SSH 金鑰"
 
 #: yast3/gtk4/ssh/keys/generate_dialog.py:27
 #: yast3/qt6/ssh/keys/generate_dialog.py:159 yast3/tui/ssh/window.py:268
 msgid "Generate"
-msgstr ""
+msgstr "產生"
 
 #: yast3/gtk4/ssh/keys/generate_dialog.py:39 yast3/gtk4/ssh/keys/tab.py:75
 #: yast3/qt6/ssh/keys/tab.py:62
 msgid "Algorithm"
-msgstr ""
+msgstr "算法"
 
 #: yast3/gtk4/ssh/keys/generate_dialog.py:52
-#, fuzzy
 msgid "Key Size"
-msgstr "User Name"
+msgstr "金鑰大小"
 
 #: yast3/gtk4/ssh/keys/generate_dialog.py:70
-#, fuzzy
 msgid "Optional comment (e.g., user@host)"
-msgstr "Commit"
+msgstr "可选備註（如：user@host）"
 
 #: yast3/gtk4/ssh/keys/generate_dialog.py:77 yast3/gtk4/ssh/keys/tab.py:102
 #: yast3/qt6/ssh/keys/tab.py:66 yast3/tui/ssh/window.py:293
 msgid "Passphrase"
-msgstr ""
+msgstr "密碼短語"
 
 #: yast3/gtk4/ssh/keys/generate_dialog.py:82
 msgid "Optional passphrase"
-msgstr ""
+msgstr "可选密碼短語"
 
 #: yast3/gtk4/ssh/keys/generate_dialog.py:112
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Failed to generate key: {0}"
-msgstr "Failed to save Git configuration."
+msgstr "產生金鑰失敗：{0}"
 
 #: yast3/gtk4/ssh/keys/tab.py:37 yast3/qt6/ssh/keys/tab.py:40
 msgid "Copy Public Key"
-msgstr ""
+msgstr "复制公钥"
 
 #: yast3/gtk4/ssh/keys/tab.py:47 yast3/qt6/ssh/keys/tab.py:50
 msgid "Refresh"
-msgstr ""
+msgstr "刷新"
 
 #: yast3/gtk4/ssh/keys/tab.py:82 yast3/qt6/ssh/keys/tab.py:63
 msgid "Size"
-msgstr ""
+msgstr "大小"
 
 #: yast3/gtk4/ssh/keys/tab.py:89 yast3/qt6/ssh/keys/tab.py:64
 msgid "Fingerprint"
-msgstr ""
+msgstr "指纹"
 
 #: yast3/gtk4/ssh/keys/tab.py:109 yast3/qt6/ssh/keys/tab.py:67
 msgid "Public"
-msgstr ""
+msgstr "公钥"
 
 #: yast3/gtk4/ssh/keys/tab.py:116 yast3/qt6/ssh/keys/tab.py:68
 msgid "Private"
-msgstr ""
+msgstr "私钥"
 
 #: yast3/gtk4/ssh/keys/tab.py:147 yast3/gtk4/ssh/keys/tab.py:148
 #: yast3/gtk4/ssh/keys/tab.py:149 yast3/qt6/ssh/keys/tab.py:137
 #: yast3/qt6/ssh/keys/tab.py:140 yast3/qt6/ssh/keys/tab.py:143
 #: yast3/tui/ssh/window.py:336
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 #: yast3/gtk4/ssh/keys/tab.py:147 yast3/gtk4/ssh/keys/tab.py:148
 #: yast3/gtk4/ssh/keys/tab.py:149 yast3/qt6/ssh/keys/tab.py:137
 #: yast3/qt6/ssh/keys/tab.py:140 yast3/qt6/ssh/keys/tab.py:143
 #: yast3/tui/ssh/window.py:336
 msgid "No"
-msgstr ""
+msgstr "否"
 
 #: yast3/gtk4/ssh/keys/tab.py:194 yast3/qt6/ssh/keys/tab.py:174
 msgid "Public key copied to clipboard."
-msgstr ""
+msgstr "公钥已复制到剪贴板。"
 
 #: yast3/gtk4/ssh/keys/tab.py:196 yast3/qt6/ssh/keys/tab.py:177
 msgid "Cannot read public key file."
-msgstr ""
+msgstr "无法讀取公钥檔案。"
 
 #: yast3/gtk4/ssh/keys/tab.py:223 yast3/qt6/ssh/keys/tab.py:200
 msgid "Confirm Delete"
-msgstr ""
+msgstr "确认刪除"
 
 #: yast3/gtk4/ssh/keys/tab.py:226 yast3/qt6/ssh/keys/tab.py:201
 #, python-brace-format
@@ -988,6 +971,9 @@ msgid ""
 "\n"
 "{0}"
 msgstr ""
+"您確定要刪除以下金鑰吗？\n"
+"\n"
+"{0}"
 
 #: yast3/gtk4/ssh/keys/tab.py:243 yast3/qt6/ssh/keys/tab.py:218
 #, python-brace-format
@@ -996,621 +982,415 @@ msgid ""
 "\n"
 "{0}"
 msgstr ""
+"刪除某些檔案失敗：\n"
+"\n"
+"{0}"
 
 #: yast3/gtk4/ssh/keys/tab.py:246 yast3/qt6/ssh/keys/tab.py:221
-#, fuzzy
 msgid "Key deleted successfully."
-msgstr "Saved successfully"
+msgstr "金鑰刪除成功。"
 
 #: yast3/qt6/git/window.py:234
 msgid "All Files (*)"
-msgstr "All Files (*)"
+msgstr "所有檔案 (*)"
 
 #: yast3/qt6/git/window.py:272 yast3/qt6/hosts/window.py:266
 msgid "Saved successfully"
-msgstr "Saved successfully"
+msgstr "儲存成功"
 
 #: yast3/qt6/git/window.py:303 yast3/tui/git/window.py:219
 msgid "Reset to original values"
-msgstr "Reset to original values"
+msgstr "恢复為原始值"
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:90
-#, fuzzy
 msgid "Key Name:"
-msgstr "User Name"
+msgstr "金鑰名称："
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:92
 msgid "e.g., id_ed25519"
-msgstr ""
+msgstr "例如：id_ed25519"
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:98
 msgid "Key Type:"
-msgstr ""
+msgstr "金鑰类型："
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:110
 msgid "Key Size:"
-msgstr ""
+msgstr "金鑰大小："
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:125
 msgid "e.g., user@hostname"
-msgstr ""
+msgstr "例如：user@hostname"
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:131
 msgid "Passphrase:"
-msgstr ""
+msgstr "密碼短語："
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:138
 #, python-brace-format
 msgid "The key will be saved to {0}"
-msgstr ""
+msgstr "金鑰将儲存到 {0}"
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:143
 msgid "Public Key:"
-msgstr ""
+msgstr "公钥："
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:177
-#, fuzzy
 msgid "Key name is required."
-msgstr "User name and email are required."
+msgstr "金鑰名称是必要的。"
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:185
 msgid "Key names starting with 'id_' are recommended. Continue anyway?"
-msgstr ""
+msgstr "建议金鑰名称以 'id_' 開头。仍然继续吗？"
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:195
 msgid "A key with this name already exists."
-msgstr ""
+msgstr "此名称的金鑰已存在。"
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:232
-#, fuzzy
 msgid "SSH key generated successfully."
-msgstr "Saved successfully"
+msgstr "SSH 金鑰產生成功。"
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:237
 #, python-brace-format
 msgid "Failed to read public key: {0}"
-msgstr ""
+msgstr "讀取公钥失敗：{0}"
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:242
 #, python-brace-format
 msgid "Failed to generate SSH key: {0}"
-msgstr ""
+msgstr "產生 SSH 金鑰失敗：{0}"
 
 #: yast3/tui/cron/window.py:100
 #, python-brace-format
 msgid "User cron error: {0}"
-msgstr ""
+msgstr "使用者排程工作錯誤：{0}"
 
 #: yast3/tui/cron/window.py:102
 #, python-brace-format
 msgid "Root cron error: {0}"
-msgstr ""
+msgstr "系統排程工作錯誤：{0}"
 
 #: yast3/tui/cron/window.py:189
 msgid "Cron job deleted."
-msgstr ""
+msgstr "排程工作已刪除。"
 
 #: yast3/tui/cron/window.py:198
-#, fuzzy
 msgid "Success: Cron jobs saved successfully."
-msgstr "Git configuration saved successfully."
+msgstr "成功：排程工作儲存成功。"
 
 #: yast3/tui/cron/window.py:200 yast3/tui/hostname/window.py:135
 msgid "Error: Permission denied. Root permission required."
-msgstr ""
+msgstr "錯誤：權限被拒絕。需要 root 權限。"
 
 #: yast3/tui/cron/window.py:202
-#, fuzzy
 msgid "Error: Failed to save cron jobs."
-msgstr "Failed to save Git configuration."
+msgstr "錯誤：儲存排程工作失敗。"
 
 #: yast3/tui/cron/window.py:209
 msgid "Cron job added."
-msgstr ""
+msgstr "排程工作已新增。"
 
 #: yast3/tui/cron/window.py:216
 msgid "Cron job updated."
-msgstr ""
+msgstr "排程工作已更新。"
 
 #: yast3/tui/cron/window.py:316
-#, fuzzy
 msgid "Error: Command is required."
-msgstr "User name and email are required."
+msgstr "錯誤：命令是必要的。"
 
 #: yast3/tui/git/window.py:158
-#, fuzzy
 msgid "Error: Git is not installed on this system."
-msgstr "Git is not installed on this system."
+msgstr "錯誤：此系統未安裝 Git。"
 
 #: yast3/tui/git/window.py:239
-#, fuzzy
 msgid "Error: User name and email are required."
-msgstr "User name and email are required."
+msgstr "錯誤：使用者名和邮箱是必要的。"
 
 #: yast3/tui/git/window.py:258
-#, fuzzy
 msgid "Success: Git configuration saved successfully."
-msgstr "Git configuration saved successfully."
+msgstr "成功：Git 設定儲存成功。"
 
 #: yast3/tui/git/window.py:260
-#, fuzzy
 msgid "Error: Failed to save Git configuration."
-msgstr "Failed to save Git configuration."
+msgstr "錯誤：儲存 Git 設定失敗。"
 
 #: yast3/tui/hostname/window.py:64
-#, fuzzy
 msgid "Hostname Configuration"
-msgstr "Git Configuration — YaST3"
+msgstr "主機名設定"
 
 #: yast3/tui/hostname/window.py:79
 msgid "Error: /etc/hostname not found."
-msgstr ""
+msgstr "錯誤：未找到 /etc/hostname。"
 
 #: yast3/tui/hostname/window.py:82
 msgid "Error: Cannot read /etc/hostname. Root permission required."
-msgstr ""
+msgstr "錯誤：无法讀取 /etc/hostname。需要 root 權限。"
 
 #: yast3/tui/hostname/window.py:86 yast3/tui/hostname/window.py:144
 #: yast3/tui/ssh/window.py:415 yast3/tui/ssh/window.py:451
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Error: {0}"
-msgstr "Error"
+msgstr "錯誤：{0}"
 
 #: yast3/tui/hostname/window.py:110
 msgid "Error: Hostname cannot be empty."
-msgstr ""
+msgstr "錯誤：主機名不能為空。"
 
 #: yast3/tui/hostname/window.py:115
 msgid "Error: Hostname is too long (maximum 253 characters)."
-msgstr ""
+msgstr "錯誤：主機名太長（最多 253 個字符）。"
 
 #: yast3/tui/hostname/window.py:122
 msgid "Error: Hostname contains invalid characters."
-msgstr ""
+msgstr "錯誤：主機名套件含无效字符。"
 
 #: yast3/tui/hostname/window.py:129
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Success: Hostname changed successfully to '{0}'."
-msgstr "Saved successfully"
+msgstr "成功：主機名已成功更改為 '{0}'。"
 
 #: yast3/tui/hostname/window.py:140 yast3/tui/hosts/window.py:169
 #: yast3/tui/repositories/window.py:243
 msgid "Error: Authentication failed or pkexec not available."
-msgstr ""
+msgstr "錯誤：認證失敗或 pkexec 不可用。"
 
 #: yast3/tui/hosts/window.py:92
 #, python-brace-format
 msgid "Error: Cannot read {0}. Root permission required."
-msgstr ""
+msgstr "錯誤：无法讀取 {0}。需要 root 權限。"
 
 #: yast3/tui/hosts/window.py:97
 #, python-brace-format
 msgid "Error: {0} not found."
-msgstr ""
+msgstr "錯誤：未找到 {0}。"
 
 #: yast3/tui/hosts/window.py:124 yast3/tui/ssh/window.py:508
 msgid "Add Host Entry"
-msgstr ""
+msgstr "新增主機項目"
 
 #: yast3/tui/hosts/window.py:137 yast3/tui/ssh/window.py:508
 msgid "Edit Host Entry"
-msgstr ""
+msgstr "編輯主機項目"
 
 #: yast3/tui/hosts/window.py:154
 msgid "Entry deleted."
-msgstr ""
+msgstr "項目已刪除。"
 
 #: yast3/tui/hosts/window.py:161
-#, fuzzy
 msgid "Success: Hosts file saved successfully."
-msgstr "Saved successfully"
+msgstr "成功：主機檔案儲存成功。"
 
 #: yast3/tui/hosts/window.py:164
 #, python-brace-format
 msgid "Error: Cannot write to {0}. Root permission required."
-msgstr ""
+msgstr "錯誤：无法寫入 {0}。需要 root 權限。"
 
 #: yast3/tui/hosts/window.py:173
-#, fuzzy
 msgid "Error: Failed to save hosts file."
-msgstr "Failed to save Git configuration."
+msgstr "錯誤：儲存主機檔案失敗。"
 
 #: yast3/tui/hosts/window.py:191
 msgid "Entry added."
-msgstr ""
+msgstr "項目已新增。"
 
 #: yast3/tui/hosts/window.py:193 yast3/tui/hosts/window.py:212
-#, fuzzy
 msgid "Error: IP address and hostname are required."
-msgstr "User name and email are required."
+msgstr "錯誤：IP 地址和主機名是必要的。"
 
 #: yast3/tui/hosts/window.py:210
 msgid "Entry updated."
-msgstr ""
+msgstr "項目已更新。"
 
 #: yast3/tui/packages/window.py:39
 msgid "Packages Management"
-msgstr ""
+msgstr "軟體套件管理"
 
 #: yast3/tui/packages/window.py:40
 msgid "Package management functionality is not yet implemented in TUI mode."
-msgstr ""
+msgstr "軟體套件管理功能尚未在 TUI 模式下实现。"
 
 #: yast3/tui/packages/window.py:41
 msgid "Please use the Qt6 GUI version for full package management features."
-msgstr ""
+msgstr "請使用 Qt6 GUI 版本以获得完整的軟體套件管理功能。"
 
 #: yast3/tui/packages/window.py:42
-#, fuzzy
 msgid "Close"
-msgstr "Core"
+msgstr "關閉"
 
 #: yast3/tui/repositories/window.py:87
 msgid "Error: Cannot read repository directory. Root permission required."
-msgstr ""
+msgstr "錯誤：无法讀取軟體來源目錄。需要 root 權限。"
 
 #: yast3/tui/repositories/window.py:156
 msgid "Repository deleted."
-msgstr ""
+msgstr "軟體來源已刪除。"
 
 #: yast3/tui/repositories/window.py:166 yast3/tui/repositories/window.py:204
 msgid "Error: Repository ID is required."
-msgstr ""
+msgstr "錯誤：軟體來源 ID 是必要的。"
 
 #: yast3/tui/repositories/window.py:169 yast3/tui/repositories/window.py:207
-#, fuzzy
 msgid "Error: URL is required."
-msgstr "User name and email are required."
+msgstr "錯誤：URL 是必要的。"
 
 #: yast3/tui/repositories/window.py:193
 msgid "Repository added."
-msgstr ""
+msgstr "軟體來源已新增。"
 
 #: yast3/tui/repositories/window.py:230
 msgid "Repository updated."
-msgstr ""
+msgstr "軟體來源已更新。"
 
 #: yast3/tui/repositories/window.py:238
 msgid "Error: Cannot write to repository directory. Root permission required."
-msgstr ""
+msgstr "錯誤：无法寫入軟體來源目錄。需要 root 權限。"
 
 #: yast3/tui/repositories/window.py:247
-#, fuzzy
 msgid "Error: Failed to save repository configuration."
-msgstr "Failed to save Git configuration."
+msgstr "錯誤：儲存軟體來源設定失敗。"
 
 #: yast3/tui/repositories/window.py:304
 msgid "Repository ID"
-msgstr ""
+msgstr "軟體來源 ID"
 
 #: yast3/tui/repositories/window.py:305
 msgid "Unique repository ID"
-msgstr ""
+msgstr "唯一軟體來源 ID"
 
 #: yast3/tui/repositories/window.py:308
 msgid "Display name"
-msgstr ""
+msgstr "顯示名称"
 
 #: yast3/tui/repositories/window.py:314
 msgid "Mirror list URL"
-msgstr ""
+msgstr "映像清單 URL"
 
 #: yast3/tui/repositories/window.py:317
 msgid "Priority (default 99)"
-msgstr ""
+msgstr "優先順序（默认 99）"
 
 #: yast3/tui/repositories/window.py:326
-#, fuzzy
 msgid "GPG Key"
-msgstr "GPG Signing Key"
+msgstr "GPG 金鑰"
 
 #: yast3/tui/repositories/window.py:327
 msgid "GPG key URL"
-msgstr ""
+msgstr "GPG 金鑰 URL"
 
 #: yast3/tui/repositories/window.py:330
 msgid "GPG Check"
-msgstr ""
+msgstr "GPG 检查"
 
 #: yast3/tui/repositories/window.py:331
 msgid "Keep Packages"
-msgstr ""
+msgstr "保留軟體套件"
 
 #: yast3/tui/ssh/window.py:283
 msgid "Warning: Some SSH files have insecure permissions."
-msgstr ""
+msgstr "警告：某些 SSH 檔案權限不安全。"
 
 #: yast3/tui/ssh/window.py:293 yast3/tui/ssh/window.py:619
 msgid "Bits"
-msgstr ""
+msgstr "位数"
 
 #: yast3/tui/ssh/window.py:307
 msgid "Error: Cannot read SSH config."
-msgstr ""
+msgstr "錯誤：无法讀取 SSH 設定。"
 
 #: yast3/tui/ssh/window.py:368
 msgid "Please select a host to edit."
-msgstr ""
+msgstr "請選擇要編輯的主機。"
 
 #: yast3/tui/ssh/window.py:378
 msgid "Please select a host to delete."
-msgstr ""
+msgstr "請選擇要刪除的主機。"
 
 #: yast3/tui/ssh/window.py:388
 msgid "Host entry deleted."
-msgstr ""
+msgstr "主機項目已刪除。"
 
 #: yast3/tui/ssh/window.py:395
-#, fuzzy
 msgid "Success: SSH config saved successfully."
-msgstr "Git configuration saved successfully."
+msgstr "成功：SSH 設定儲存成功。"
 
 #: yast3/tui/ssh/window.py:397
-#, fuzzy
 msgid "Error: Cannot write to SSH config."
-msgstr "Failed to save Git configuration."
+msgstr "錯誤：无法寫入 SSH 設定。"
 
 #: yast3/tui/ssh/window.py:399
-#, fuzzy
 msgid "Error: Failed to save SSH config."
-msgstr "Failed to save Git configuration."
+msgstr "錯誤：儲存 SSH 設定失敗。"
 
 #: yast3/tui/ssh/window.py:405
 msgid "Please select a key to delete."
-msgstr ""
+msgstr "請選擇要刪除的金鑰。"
 
 #: yast3/tui/ssh/window.py:413
-#, fuzzy
 msgid "Key deleted."
-msgstr "Saved successfully"
+msgstr "金鑰已刪除。"
 
 #: yast3/tui/ssh/window.py:420 yast3/tui/ssh/window.py:431
-#, fuzzy
 msgid "Error: Host pattern is required."
-msgstr "User name and email are required."
+msgstr "錯誤：主機模式是必要的。"
 
 #: yast3/tui/ssh/window.py:426
 msgid "Host entry added."
-msgstr ""
+msgstr "主機項目已新增。"
 
 #: yast3/tui/ssh/window.py:442
 msgid "Host entry updated."
-msgstr ""
+msgstr "主機項目已更新。"
 
 #: yast3/tui/ssh/window.py:449
-#, fuzzy
 msgid "Key generated successfully."
-msgstr "Saved successfully"
+msgstr "金鑰產生成功。"
 
 #: yast3/tui/ssh/window.py:510
 msgid "Host"
-msgstr ""
+msgstr "主機"
 
 #: yast3/tui/ssh/window.py:511
 msgid "Host pattern"
-msgstr ""
+msgstr "主機模式"
 
 #: yast3/tui/ssh/window.py:513
-#, fuzzy
 msgid "HostName"
-msgstr "User Name"
+msgstr "主機名"
 
 #: yast3/tui/ssh/window.py:514
-#, fuzzy
 msgid "Real hostname"
-msgstr "User Name"
+msgstr "實際主機名"
 
 #: yast3/tui/ssh/window.py:516
 msgid "Port"
-msgstr ""
+msgstr "連接埠"
 
 #: yast3/tui/ssh/window.py:517
 msgid "Port number"
-msgstr ""
+msgstr "連接埠号"
 
 #: yast3/tui/ssh/window.py:520
-#, fuzzy
 msgid "Username"
-msgstr "User Name"
+msgstr "使用者名"
 
 #: yast3/tui/ssh/window.py:522
 msgid "IdentityFile"
-msgstr ""
+msgstr "身份檔案"
 
 #: yast3/tui/ssh/window.py:523
 msgid "Key file path"
-msgstr ""
+msgstr "金鑰檔案路徑"
 
 #: yast3/tui/ssh/window.py:614
-#, fuzzy
 msgid "Key filename"
-msgstr "User Name"
+msgstr "金鑰檔案名"
 
 #: yast3/tui/ssh/window.py:617
 msgid "rsa, ed25519, ecdsa"
-msgstr ""
+msgstr "rsa, ed25519, ecdsa"
 
 #: yast3/tui/ssh/window.py:620
 msgid "Key bits"
-msgstr ""
-
-#~ msgid "This settings module is not implemented yet."
-#~ msgstr ""
-
-#~ msgid "Hosts"
-#~ msgstr "Hosts"
-
-#~ msgid "Add/Edit Host Entry"
-#~ msgstr "Add/Edit Host Entry"
-
-#~ msgid "IP Address:"
-#~ msgstr "IP Address:"
-
-#~ msgid "Hostname:"
-#~ msgstr "Hostname:"
-
-#~ msgid "Comment:"
-#~ msgstr "Comment:"
-
-#~ msgid "File"
-#~ msgstr ""
-
-#~ msgid "Add"
-#~ msgstr "Add"
-
-#~ msgid "Edit"
-#~ msgstr "Edit"
-
-#~ msgid "Delete"
-#~ msgstr "Delete"
-
-#~ msgid "IP Address"
-#~ msgstr "IP Address"
-
-#~ msgid "Hostname"
-#~ msgstr "Hostname"
-
-#~ msgid "Cannot read {0}. Root permission required."
-#~ msgstr "Cannot read {0}. Root permission required."
-
-#~ msgid "{0} not found."
-#~ msgstr "{0} not found."
-
-#~ msgid "IP address and hostname are required."
-#~ msgstr "IP address and hostname are required."
-
-#~ msgid "Information"
-#~ msgstr "Information"
-
-#~ msgid "Please select a host entry to edit."
-#~ msgstr "Please select a host entry to edit."
-
-#~ msgid "Please select a host entry to delete."
-#~ msgstr "Please select a host entry to delete."
-
-#~ msgid "Confirm"
-#~ msgstr "Confirm"
-
-#~ msgid "Are you sure you want to delete this entry?"
-#~ msgstr "Are you sure you want to delete this entry?"
-
-#~ msgid "Hosts file saved successfully."
-#~ msgstr "Hosts file saved successfully."
-
-#~ msgid "Cannot write to {0}. Root permission required."
-#~ msgstr "Cannot write to {0}. Root permission required."
-
-#~ msgid "Authentication failed or pkexec not available."
-#~ msgstr "Authentication failed or pkexec not available."
-
-#~ msgid "Failed to save hosts file."
-#~ msgstr "Failed to save hosts file."
-
-#~ msgid "Packages"
-#~ msgstr "Packages"
-
-#~ msgid "Name"
-#~ msgstr "Hostname"
-
-#~ msgid "Keep packages"
-#~ msgstr "Packages"
-
-#~ msgid "Cannot read repository directory. Root permission required."
-#~ msgstr "Cannot read {0}. Root permission required."
-
-#~ msgid "Repository ID is required."
-#~ msgstr "IP address and hostname are required."
-
-#~ msgid "Please select a repository to edit."
-#~ msgstr "Please select a host entry to edit."
-
-#~ msgid "Please select a repository to delete."
-#~ msgstr "Please select a host entry to delete."
-
-#~ msgid "Are you sure you want to delete repository '{}'?"
-#~ msgstr "Are you sure you want to delete this entry?"
-
-#~ msgid "Cannot write to repository directory. Root permission required."
-#~ msgstr "Cannot write to {0}. Root permission required."
-
-#~ msgid "Failed to save repository configuration."
-#~ msgstr "Failed to save hosts file."
-
-#~ msgid "SSH permissions have been fixed successfully."
-#~ msgstr "Hosts file saved successfully."
-
-#~ msgid "Option name"
-#~ msgstr "Hostname"
-
-#~ msgid "Add/Edit SSH Host"
-#~ msgstr "Add/Edit Host Entry"
-
-#~ msgid "Host pattern is required."
-#~ msgstr "IP address and hostname are required."
-
-#~ msgid "SSH config saved successfully."
-#~ msgstr "Hosts file saved successfully."
-
-#~ msgid "Cannot write to SSH config. Check permissions."
-#~ msgstr "Cannot write to {0}. Root permission required."
-
-#~ msgid "Failed to save SSH config."
-#~ msgstr "Failed to save hosts file."
-
-#~ msgid "Key Name:"
-#~ msgstr "Hostname"
-
-#~ msgid "Key name is required."
-#~ msgstr "IP address and hostname are required."
-
-#~ msgid "SSH key generated successfully."
-#~ msgstr "Hosts file saved successfully."
-
-#~ msgid "Confirm Delete"
-#~ msgstr "Confirm"
-
-#~ msgid ""
-#~ "Are you sure you want to delete the following keys?\n"
-#~ "\n"
-#~ "{0}"
-#~ msgstr "Are you sure you want to delete this entry?"
-
-#~ msgid ""
-#~ "Failed to delete some files:\n"
-#~ "\n"
-#~ "{0}"
-#~ msgstr "Failed to save hosts file."
-
-#~ msgid "Key deleted successfully."
-#~ msgstr "Saved successfully"
-
-#~ msgid "{0} directory not found."
-#~ msgstr "{0} not found."
-
-#~ msgid "Cannot read SSH config. Check permissions."
-#~ msgstr "Cannot read {0}. Root permission required."
-
-#~ msgid "System ready"
-#~ msgstr "System ready"
-
-#~ msgid ""
-#~ "Manage the system hostname. The hostname"
-#~ " will be updated in /etc/hostname and"
-#~ " /etc/hosts."
-#~ msgstr ""
-
-#~ msgid "Current hostname:"
-#~ msgstr ""
-
-#~ msgid "Enter new hostname"
-#~ msgstr ""
-
-#~ msgid "Apply"
-#~ msgstr ""
-
-#~ msgid "Unknown"
-#~ msgstr ""
-
-#~ msgid "Hostname updated"
-#~ msgstr ""
+msgstr "金鑰位数"
 
