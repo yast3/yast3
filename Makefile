@@ -47,8 +47,8 @@ clean::
 	$(FIND) $(PYTHON_DIRS) -name '*.py[cod]' -print0 | $(XARGS) -0 $(RM)
 
 po::
-	pybabel extract -F babel.cfg -o locale/yast3.pot yast3/
-	pybabel update -i locale/yast3.pot -d locale -D yast3
+	pybabel extract -F babel.cfg -o locale/template/yast3.pot yast3/
+	pybabel update -i locale/template/yast3.pot -d locale -D yast3
 
 mo::
 	pybabel compile -d locale -D yast3
