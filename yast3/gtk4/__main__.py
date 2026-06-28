@@ -14,7 +14,7 @@ def main() -> int:
     # Initialize internationalization
     init_i18n()
 
-    app = Gtk.Application(application_id="com.yast3.YaST3")
+    app = Gtk.Application(application_id="yast3-gtk4")
 
     def on_activate(app):
         win = MainWindow(application=app)

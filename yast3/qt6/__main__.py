@@ -12,6 +12,7 @@ def main() -> int:
 
     app = QApplication.instance() or QApplication([])
     app.setApplicationName("YaST3")
+    app.setDesktopFileName("yast3-qt6")
 
     window = MainWindow()
     window.show()
