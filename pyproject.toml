@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "yast3"
-version = "0.0.6"
+version = "0.0.7"
 description = "YaST3 desktop settings shell built with Python 3 and Qt6 Widgets."
 readme = "README.md"
 requires-python = ">=3.12"
