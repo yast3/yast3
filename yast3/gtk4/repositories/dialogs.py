@@ -8,6 +8,8 @@ from gi.repository import Gtk
 
 from yast3.core.i18n import _
 from yast3.core.repositories import RepoEntry
+from yast3.core.repositories.mirrors.opensuse import opensuse_mirrors
+from yast3.core.repositories.mirrors.packman import packman_mirrors
 
 
 class RepoEditDialog(Gtk.Dialog):
@@ -150,4 +152,65 @@ class RepoEditDialog(Gtk.Dialog):
             "gpgkey": self.gpgkey_entry.get_text().strip(),
             "priority": int(self.priority_spin.get_value()),
             "keep_packages": self.keep_packages_check.get_active(),
+        }
+
+
+class SwitchMirrorDialog(Gtk.Dialog):
+    """Dialog for switching mirrors for openSUSE and Packman repositories."""
+
+    def __init__(self, parent):
+        super().__init__(
+            title=_("Switch Mirror"),
+            transient_for=parent,
+            modal=True,
+        )
+
+        self.set_default_size(450, -1)
+
+        self.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
+        self.add_button(_("OK"), Gtk.ResponseType.OK)
+
+        content = self.get_content_area()
+        content.set_spacing(12)
+        content.set_margin_top(12)
+        content.set_margin_bottom(12)
+        content.set_margin_start(12)
+        content.set_margin_end(12)
+
+        opensuse_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
+        opensuse_label = Gtk.Label(label=_("openSUSE Mirror"))
+        opensuse_label.set_size_request(120, -1)
+        opensuse_label.set_halign(Gtk.Align.START)
+        opensuse_box.append(opensuse_label)
+
+        self.opensuse_combo = Gtk.ComboBoxText()
+        self.opensuse_combo.set_hexpand(True)
+        self.opensuse_mirror_urls = []
+        for mirror in opensuse_mirrors:
+            self.opensuse_combo.append_text(f"{mirror.organization} ({mirror.location})")
+            self.opensuse_mirror_urls.append(mirror.url)
+        self.opensuse_combo.set_active(0)
+        opensuse_box.append(self.opensuse_combo)
+        content.append(opensuse_box)
+
+        packman_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
+        packman_label = Gtk.Label(label=_("Packman Mirror"))
+        packman_label.set_size_request(120, -1)
+        packman_label.set_halign(Gtk.Align.START)
+        packman_box.append(packman_label)
+
+        self.packman_combo = Gtk.ComboBoxText()
+        self.packman_combo.set_hexpand(True)
+        self.packman_mirror_urls = []
+        for mirror in packman_mirrors:
+            self.packman_combo.append_text(f"{mirror.organization} ({mirror.location})")
+            self.packman_mirror_urls.append(mirror.url)
+        self.packman_combo.set_active(0)
+        packman_box.append(self.packman_combo)
+        content.append(packman_box)
+
+    def get_values(self) -> dict:
+        return {
+            "opensuse_mirror": self.opensuse_mirror_urls[self.opensuse_combo.get_active()],
+            "packman_mirror": self.packman_mirror_urls[self.packman_combo.get_active()],
         }

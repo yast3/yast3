@@ -1,6 +1,7 @@
 from yast3.core.repositories.mirrors.mirror import Mirror
 
 opensuse_mirrors = [
+    Mirror(url='https://download.opensuse.org/', organization='openSUSE', location='Global', sync_frequency='1h'),
     Mirror(url='https://mirrors.aliyun.com/opensuse/', organization='Alibaba Cloud', location='China', sync_frequency='24h'),
     Mirror(url='https://mirror.karneval.cz/pub/linux/opensuse/', organization='Karneval (Vodafone)', location='Czech', sync_frequency='1h'),
     Mirror(url='https://ftp.fau.de/opensuse/', organization='Friedrich-Alexander University', location='Germany', sync_frequency='1h'),

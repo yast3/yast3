@@ -22,8 +22,9 @@ from yast3.core.repositories import (
     delete_repo_entry,
     load_repos,
     save_repo_entry,
+    switch_mirror,
 )
-from yast3.qt6.repositories.dialogs import RepoEditDialog
+from yast3.qt6.repositories.dialogs import RepoEditDialog, SwitchMirrorDialog
 
 
 class RepositoriesWindow(QMainWindow):
@@ -49,6 +50,10 @@ class RepositoriesWindow(QMainWindow):
         self.delete_btn = QPushButton(_("Delete"))
         self.delete_btn.clicked.connect(self.delete_repo)
         button_layout.addWidget(self.delete_btn)
+
+        self.switch_mirror_btn = QPushButton(_("Switch Mirror"))
+        self.switch_mirror_btn.clicked.connect(self.switch_mirror_action)
+        button_layout.addWidget(self.switch_mirror_btn)
 
         button_layout.addStretch()
         layout.addLayout(button_layout)
@@ -240,6 +245,34 @@ class RepositoriesWindow(QMainWindow):
             if result == "ok":
                 self.repo_entries.pop(current_row)
                 self.table.removeRow(current_row)
+            else:
+                self.handle_save_error(result)
+
+    def switch_mirror_action(self) -> None:
+        dialog = SwitchMirrorDialog(self)
+        if dialog.exec():
+            values = dialog.get_values()
+            opensuse_url = values["opensuse_mirror"]
+            packman_url = values["packman_mirror"]
+
+            reply = QMessageBox.question(
+                self,
+                _("Confirm"),
+                _("Are you sure you want to switch mirrors?\n\nopenSUSE mirror: {}\nPackman mirror: {}").format(
+                    opensuse_url, packman_url
+                ),
+            )
+            if reply != QMessageBox.StandardButton.Yes:
+                return
+
+            result = switch_mirror(opensuse_url, packman_url)
+            if result == "ok":
+                QMessageBox.information(
+                    self,
+                    _("Success"),
+                    _("Mirror switching completed successfully."),
+                )
+                self.load_repos()
             else:
                 self.handle_save_error(result)
 

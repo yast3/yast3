@@ -15,6 +15,8 @@ from PySide6.QtWidgets import (
 
 from yast3.core.i18n import _
 from yast3.core.repositories import RepoEntry
+from yast3.core.repositories.mirrors.opensuse import opensuse_mirrors
+from yast3.core.repositories.mirrors.packman import packman_mirrors
 
 
 class RepoEditDialog(QDialog):
@@ -139,4 +141,53 @@ class RepoEditDialog(QDialog):
             "gpgkey": self.gpgkey_edit.text().strip(),
             "priority": self.priority_spin.value(),
             "keep_packages": self.keep_packages_check.isChecked(),
+        }
+
+
+class SwitchMirrorDialog(QDialog):
+    """Dialog for switching mirrors for openSUSE and Packman repositories."""
+
+    def __init__(self, parent: QWidget | None = None):
+        super().__init__(parent)
+        self.setWindowTitle(_("Switch Mirror"))
+        self.setMinimumWidth(450)
+
+        layout = QVBoxLayout(self)
+        layout.setSpacing(12)
+
+        opensuse_layout = QHBoxLayout()
+        opensuse_label = QLabel(_("openSUSE Mirror"))
+        opensuse_label.setFixedWidth(120)
+        opensuse_layout.addWidget(opensuse_label)
+        self.opensuse_combo = QComboBox()
+        for mirror in opensuse_mirrors:
+            self.opensuse_combo.addItem(
+                f"{mirror.organization} ({mirror.location})", mirror.url
+            )
+        opensuse_layout.addWidget(self.opensuse_combo)
+        layout.addLayout(opensuse_layout)
+
+        packman_layout = QHBoxLayout()
+        packman_label = QLabel(_("Packman Mirror"))
+        packman_label.setFixedWidth(120)
+        packman_layout.addWidget(packman_label)
+        self.packman_combo = QComboBox()
+        for mirror in packman_mirrors:
+            self.packman_combo.addItem(
+                f"{mirror.organization} ({mirror.location})", mirror.url
+            )
+        packman_layout.addWidget(self.packman_combo)
+        layout.addLayout(packman_layout)
+
+        self.buttons = QDialogButtonBox(
+            QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
+        )
+        self.buttons.accepted.connect(self.accept)
+        self.buttons.rejected.connect(self.reject)
+        layout.addWidget(self.buttons)
+
+    def get_values(self) -> dict:
+        return {
+            "opensuse_mirror": self.opensuse_combo.currentData(),
+            "packman_mirror": self.packman_combo.currentData(),
         }

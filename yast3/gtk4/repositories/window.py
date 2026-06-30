@@ -12,8 +12,9 @@ from yast3.core.repositories import (
     delete_repo_entry,
     load_repos,
     save_repo_entry,
+    switch_mirror,
 )
-from yast3.gtk4.repositories.dialogs import RepoEditDialog
+from yast3.gtk4.repositories.dialogs import RepoEditDialog, SwitchMirrorDialog
 
 
 class RepositoriesWindow(Gtk.ApplicationWindow):
@@ -46,6 +47,10 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
         self.delete_btn = Gtk.Button(label=_("Delete"))
         self.delete_btn.connect("clicked", self._on_delete_clicked)
         button_box.append(self.delete_btn)
+
+        self.switch_mirror_btn = Gtk.Button(label=_("Switch Mirror"))
+        self.switch_mirror_btn.connect("clicked", self._on_switch_mirror_clicked)
+        button_box.append(self.switch_mirror_btn)
 
         self.main_box.append(button_box)
 
@@ -300,6 +305,46 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
             if result == "ok":
                 self.repo_entries.pop(index)
                 self.list_store.remove(tree_iter)
+            else:
+                self._handle_save_error(result)
+        dialog.destroy()
+
+    def _on_switch_mirror_clicked(self, button: Gtk.Button) -> None:
+        """Switch mirrors for openSUSE and Packman repositories."""
+        dialog = SwitchMirrorDialog(self)
+        dialog.connect("response", self._on_switch_mirror_response)
+        dialog.present()
+
+    def _on_switch_mirror_response(self, dialog, response_id) -> None:
+        """Handle switch mirror dialog response."""
+        if response_id == Gtk.ResponseType.OK:
+            values = dialog.get_values()
+            opensuse_url = values["opensuse_mirror"]
+            packman_url = values["packman_mirror"]
+
+            confirm_dialog = Gtk.MessageDialog(
+                transient_for=self,
+                modal=True,
+                message_type=Gtk.MessageType.QUESTION,
+                buttons=Gtk.ButtonsType.YES_NO,
+                text=_("Confirm"),
+            )
+            confirm_dialog.format_secondary_text(
+                _("Are you sure you want to switch mirrors?\n\nopenSUSE mirror: {}\nPackman mirror: {}").format(
+                    opensuse_url, packman_url
+                )
+            )
+            confirm_dialog.connect("response", self._on_switch_mirror_confirm, opensuse_url, packman_url)
+            confirm_dialog.present()
+        dialog.destroy()
+
+    def _on_switch_mirror_confirm(self, dialog, response_id, opensuse_url: str, packman_url: str) -> None:
+        """Handle switch mirror confirmation response."""
+        if response_id == Gtk.ResponseType.YES:
+            result = switch_mirror(opensuse_url, packman_url)
+            if result == "ok":
+                self._show_message_dialog(Gtk.MessageType.INFO, _("Success"), _("Mirror switching completed successfully."))
+                self._load_repos()
             else:
                 self._handle_save_error(result)
         dialog.destroy()

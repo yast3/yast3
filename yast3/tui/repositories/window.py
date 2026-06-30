@@ -11,7 +11,10 @@ from yast3.core.repositories import (
     delete_repo_entry,
     load_repos,
     save_repo_entry,
+    switch_mirror,
 )
+from yast3.core.repositories.mirrors.opensuse import opensuse_mirrors
+from yast3.core.repositories.mirrors.packman import packman_mirrors
 
 
 class RepositoriesWindow(Screen):
@@ -53,6 +56,7 @@ class RepositoriesWindow(Screen):
         ("a", "add", "Add"),
         ("e", "edit", "Edit"),
         ("d", "delete", "Delete"),
+        ("m", "switch_mirror", "Switch Mirror"),
     ]
 
     def __init__(self) -> None:
@@ -65,6 +69,7 @@ class RepositoriesWindow(Screen):
             yield Button(_("Add"), id="add-btn")
             yield Button(_("Edit"), id="edit-btn")
             yield Button(_("Delete"), id="delete-btn")
+            yield Button(_("Switch Mirror"), id="switch-mirror-btn")
         yield DataTable(id="repos-table")
         yield Static("", id="message", classes="message-area")
 
@@ -119,6 +124,8 @@ class RepositoriesWindow(Screen):
             self.action_edit()
         elif event.button.id == "delete-btn":
             self.action_delete()
+        elif event.button.id == "switch-mirror-btn":
+            self.action_switch_mirror()
 
     def action_add(self) -> None:
         """Add a new repository."""
@@ -154,6 +161,19 @@ class RepositoriesWindow(Screen):
             self.repo_entries.pop(table.cursor_row)
             self.populate_table()
             self.show_message(_("Repository deleted."), success=True)
+        else:
+            self.handle_save_error(result)
+
+    def action_switch_mirror(self) -> None:
+        """Switch mirrors for openSUSE and Packman repositories."""
+        self.app.push_screen(SwitchMirrorScreen(self))
+
+    def switch_mirror(self, opensuse_url: str, packman_url: str) -> None:
+        """Execute mirror switch operation."""
+        result = switch_mirror(opensuse_url, packman_url)
+        if result == "ok":
+            self.show_message(_("Mirror switching completed successfully."), success=True)
+            self.load_repos()
         else:
             self.handle_save_error(result)
 
@@ -395,3 +415,77 @@ class RepoEditScreen(Screen):
             return str(value) if value != Select.BLANK else ""
         except Exception:
             return ""
+
+
+class SwitchMirrorScreen(Screen):
+    """Screen for switching mirrors."""
+
+    CSS = """
+    .container {
+        width: 70;
+        height: auto;
+        max-height: 80%;
+        padding: 2;
+        border: solid green;
+    }
+
+    .input-row {
+        height: 3;
+        margin-bottom: 1;
+    }
+
+    .input-label {
+        width: 16;
+        content-align: right middle;
+        padding-right: 1;
+    }
+
+    .button-row {
+        align: right middle;
+        margin-top: 1;
+    }
+    """
+
+    BINDINGS = [
+        ("escape", "app.pop_screen", "Cancel"),
+    ]
+
+    def __init__(self, parent: RepositoriesWindow) -> None:
+        super().__init__()
+        self.parent_window = parent
+        self.opensuse_mirror_urls = [m.url for m in opensuse_mirrors]
+        self.packman_mirror_urls = [m.url for m in packman_mirrors]
+
+    def compose(self) -> ComposeResult:
+        opensuse_options = [(f"{m.organization} ({m.location})", i) for i, m in enumerate(opensuse_mirrors)]
+        packman_options = [(f"{m.organization} ({m.location})", i) for i, m in enumerate(packman_mirrors)]
+
+        with Vertical(classes="container"):
+            yield Label(_("Switch Mirror"), classes="title")
+            with Horizontal():
+                yield Label(_("openSUSE Mirror"), classes="input-label")
+                yield Select(opensuse_options, id="opensuse-select", allow_blank=False)
+            with Horizontal():
+                yield Label(_("Packman Mirror"), classes="input-label")
+                yield Select(packman_options, id="packman-select", allow_blank=False)
+            with Horizontal(classes="button-row"):
+                yield Button(_("OK"), id="ok-btn", variant="primary")
+                yield Button(_("Cancel"), id="cancel-btn")
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        """Handle button press."""
+        if event.button.id == "ok-btn":
+            self.action_submit()
+        elif event.button.id == "cancel-btn":
+            self.app.pop_screen()
+
+    def action_submit(self) -> None:
+        """Submit the form."""
+        opensuse_idx = self.query_one("#opensuse-select", Select).value
+        packman_idx = self.query_one("#packman-select", Select).value
+
+        opensuse_url = self.opensuse_mirror_urls[opensuse_idx]
+        packman_url = self.packman_mirror_urls[packman_idx]
+
+        self.parent_window.switch_mirror(opensuse_url, packman_url)
+        self.app.pop_screen()
