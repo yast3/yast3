@@ -2,7 +2,7 @@
 
 import unittest
 
-from yast3.core.repositories.switch_mirror import (
+from yast3.core.repositories.mirrors.switch_mirror import (
     _replace_opensuse_mirror_prefix,
     _replace_packman_mirror_prefix,
 )

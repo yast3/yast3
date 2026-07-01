@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from typing import Literal
 
-from yast3.core.repositories.mirrors.opensuse import opensuse_mirrors
-from yast3.core.repositories.mirrors.packman import packman_mirrors
+from yast3.core.repositories.mirrors.opensuse_mirrors import opensuse_mirrors
+from yast3.core.repositories.mirrors.packman_mirrors import packman_mirrors
 from yast3.core.repositories.repos import RepoEntry, load_repos, save_repo_entry
 
 

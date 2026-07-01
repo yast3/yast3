@@ -7,7 +7,7 @@ from yast3.core.repositories.repos import (
     RepoEntry,
     save_repo_entry,
 )
-from yast3.core.repositories.switch_mirror import switch_mirror
+from yast3.core.repositories.mirrors import switch_mirror
 
 __all__ = [
     "delete_repo_entry",
