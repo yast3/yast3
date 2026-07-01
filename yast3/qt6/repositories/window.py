@@ -24,7 +24,8 @@ from yast3.core.repositories import (
     save_repo_entry,
     switch_mirror_pkexec,
 )
-from yast3.qt6.repositories.dialogs import RepoEditDialog, SwitchMirrorDialog
+from yast3.qt6.repositories.repo_edit_dialog import RepoEditDialog
+from yast3.qt6.repositories.switch_mirror_dialog import SwitchMirrorDialog
 
 
 class RepositoriesWindow(QMainWindow):
