@@ -16,8 +16,8 @@ def switch_mirror(
     """Switch mirrors for openSUSE and Packman repositories.
 
     Args:
-        opensuse_mirror_url: The new mirror URL for openSUSE repositories.
-        packman_mirror_url: The new mirror URL for Packman repository.
+        opensuse_mirror_url: The new mirror URL for openSUSE repositories (with protocol).
+        packman_mirror_url: The new mirror URL for Packman repository (with protocol).
 
     Returns:
         "ok" if successful, otherwise an error status.
@@ -63,7 +63,7 @@ def _replace_mirror_prefix(url: str, new_prefix: str) -> str:
 
     Args:
         url: The original repository URL.
-        new_prefix: The new mirror URL prefix.
+        new_prefix: The new mirror URL prefix (with protocol).
 
     Returns:
         The URL with the new mirror prefix.
@@ -71,25 +71,13 @@ def _replace_mirror_prefix(url: str, new_prefix: str) -> str:
     url_lower = url.lower()
     patterns = []
 
-    # Build patterns from mirror lists
     for mirror in opensuse_mirrors:
-        patterns.append(mirror.url.lower())
-        if mirror.url.startswith("https://"):
-            patterns.append(mirror.url.replace("https://", "http://", 1).lower())
+        for proto in mirror.protocols:
+            patterns.append(f"{proto}://{mirror.url}".lower())
 
     for mirror in packman_mirrors:
-        patterns.append(mirror.url.lower())
-        if mirror.url.startswith("https://"):
-            patterns.append(mirror.url.replace("https://", "http://", 1).lower())
-
-    # Add official download.opensuse.org prefixes
-    official_prefixes = [
-        "https://download.opensuse.org/",
-        "http://download.opensuse.org/",
-        "https://download.opensuse.org",
-        "http://download.opensuse.org",
-    ]
-    patterns.extend([p.lower() for p in official_prefixes])
+        for proto in mirror.protocols:
+            patterns.append(f"{proto}://{mirror.url}".lower())
 
     for pattern in patterns:
         if url_lower.startswith(pattern):
@@ -98,7 +86,6 @@ def _replace_mirror_prefix(url: str, new_prefix: str) -> str:
                 remainder = "/" + remainder
             return new_prefix.rstrip("/") + remainder
 
-    # Fallback: extract path after the domain
     parsed = url.split("/", 3)
     if len(parsed) >= 4:
         path = parsed[3]

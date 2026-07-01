@@ -453,21 +453,31 @@ class SwitchMirrorScreen(Screen):
     def __init__(self, parent: RepositoriesWindow) -> None:
         super().__init__()
         self.parent_window = parent
-        self.opensuse_mirror_urls = [m.url for m in opensuse_mirrors]
-        self.packman_mirror_urls = [m.url for m in packman_mirrors]
+        self.opensuse_mirrors_list = list(opensuse_mirrors)
+        self.packman_mirrors_list = list(packman_mirrors)
+        self.opensuse_protocols = []
+        self.packman_protocols = []
 
     def compose(self) -> ComposeResult:
-        opensuse_options = [(f"{m.organization} ({m.location})", i) for i, m in enumerate(opensuse_mirrors)]
-        packman_options = [(f"{m.organization} ({m.location})", i) for i, m in enumerate(packman_mirrors)]
+        opensuse_options = [(f"{m.organization} ({m.location})", i) for i, m in enumerate(self.opensuse_mirrors_list)]
+        packman_options = [(f"{m.organization} ({m.location})", i) for i, m in enumerate(self.packman_mirrors_list)]
+
+        self.opensuse_protocols = self.opensuse_mirrors_list[0].protocols
+        self.packman_protocols = self.packman_mirrors_list[0].protocols
+
+        opensuse_proto_options = [(p.upper(), p) for p in self.opensuse_protocols]
+        packman_proto_options = [(p.upper(), p) for p in self.packman_protocols]
 
         with Vertical(classes="container"):
             yield Label(_("Switch Mirror"), classes="title")
             with Horizontal():
-                yield Label(_("openSUSE Mirror"), classes="input-label")
+                yield Label(_("openSUSE"), classes="input-label")
                 yield Select(opensuse_options, id="opensuse-select", allow_blank=False)
+                yield Select(opensuse_proto_options, id="opensuse-proto-select", allow_blank=False)
             with Horizontal():
-                yield Label(_("Packman Mirror"), classes="input-label")
+                yield Label(_("Packman"), classes="input-label")
                 yield Select(packman_options, id="packman-select", allow_blank=False)
+                yield Select(packman_proto_options, id="packman-proto-select", allow_blank=False)
             with Horizontal(classes="button-row"):
                 yield Button(_("OK"), id="ok-btn", variant="primary")
                 yield Button(_("Cancel"), id="cancel-btn")
@@ -479,13 +489,31 @@ class SwitchMirrorScreen(Screen):
         elif event.button.id == "cancel-btn":
             self.app.pop_screen()
 
+    def on_select_changed(self, event: Select.Changed) -> None:
+        """Handle select changes to update protocol options."""
+        if event.select.id == "opensuse-select":
+            mirror = self.opensuse_mirrors_list[event.select.value]
+            self.opensuse_protocols = mirror.protocols
+            proto_select = self.query_one("#opensuse-proto-select", Select)
+            proto_select.set_options([(p.upper(), p) for p in self.opensuse_protocols])
+        elif event.select.id == "packman-select":
+            mirror = self.packman_mirrors_list[event.select.value]
+            self.packman_protocols = mirror.protocols
+            proto_select = self.query_one("#packman-proto-select", Select)
+            proto_select.set_options([(p.upper(), p) for p in self.packman_protocols])
+
     def action_submit(self) -> None:
         """Submit the form."""
         opensuse_idx = self.query_one("#opensuse-select", Select).value
         packman_idx = self.query_one("#packman-select", Select).value
+        opensuse_proto = self.query_one("#opensuse-proto-select", Select).value
+        packman_proto = self.query_one("#packman-proto-select", Select).value
 
-        opensuse_url = self.opensuse_mirror_urls[opensuse_idx]
-        packman_url = self.packman_mirror_urls[packman_idx]
+        opensuse_mirror = self.opensuse_mirrors_list[opensuse_idx]
+        packman_mirror = self.packman_mirrors_list[packman_idx]
+
+        opensuse_url = f"{opensuse_proto}://{opensuse_mirror.url}"
+        packman_url = f"{packman_proto}://{packman_mirror.url}"
 
         self.parent_window.switch_mirror(opensuse_url, packman_url)
         self.app.pop_screen()
