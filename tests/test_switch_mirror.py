@@ -1,10 +1,13 @@
 """Unit tests for the switch_mirror module."""
 
 import unittest
+from unittest.mock import MagicMock, patch
 
-from yast3.core.repositories.mirrors.switch_mirror import (
+from yast3.core.repositories.switch_mirror import (
     _replace_opensuse_mirror_prefix,
     _replace_packman_mirror_prefix,
+    _status_to_exit_code,
+    switch_mirror_pkexec,
 )
 
 
@@ -168,6 +171,91 @@ class TestReplacePackmanMirrorPrefix(unittest.TestCase):
         new_prefix = "https://mirrors.aliyun.com/packman/"
         result = _replace_packman_mirror_prefix(url, new_prefix)
         self.assertEqual(result, "https://mirrors.aliyun.com/packman/distribution/leap/15.6/repo/oss/")
+
+
+class TestStatusToExitCode(unittest.TestCase):
+    """Tests for _status_to_exit_code function."""
+
+    def test_ok_status(self) -> None:
+        """Should return exit code 0 for ok status."""
+        self.assertEqual(_status_to_exit_code("ok"), 0)
+
+    def test_permission_denied_status(self) -> None:
+        """Should return exit code 1 for permission_denied status."""
+        self.assertEqual(_status_to_exit_code("permission_denied"), 1)
+
+    def test_pkexec_failed_status(self) -> None:
+        """Should return exit code 2 for pkexec_failed status."""
+        self.assertEqual(_status_to_exit_code("pkexec_failed"), 2)
+
+    def test_error_status(self) -> None:
+        """Should return exit code 3 for error status."""
+        self.assertEqual(_status_to_exit_code("error"), 3)
+
+
+class TestSwitchMirrorPkexec(unittest.TestCase):
+    """Tests for switch_mirror_pkexec function."""
+
+    @patch("yast3.core.repositories.switch_mirror.subprocess.run")
+    def test_pkexec_success(self, mock_run: MagicMock) -> None:
+        """Should return ok when pkexec succeeds with exit code 0."""
+        mock_run.return_value.returncode = 0
+        result = switch_mirror_pkexec(
+            "https://mirror.example.com/opensuse/",
+            "https://mirror.example.com/packman/",
+        )
+        self.assertEqual(result, "ok")
+
+    @patch("yast3.core.repositories.switch_mirror.subprocess.run")
+    def test_pkexec_permission_denied(self, mock_run: MagicMock) -> None:
+        """Should return permission_denied when pkexec returns exit code 1."""
+        mock_run.return_value.returncode = 1
+        result = switch_mirror_pkexec(
+            "https://mirror.example.com/opensuse/",
+            "https://mirror.example.com/packman/",
+        )
+        self.assertEqual(result, "permission_denied")
+
+    @patch("yast3.core.repositories.switch_mirror.subprocess.run")
+    def test_pkexec_failed(self, mock_run: MagicMock) -> None:
+        """Should return pkexec_failed when pkexec returns exit code 2."""
+        mock_run.return_value.returncode = 2
+        result = switch_mirror_pkexec(
+            "https://mirror.example.com/opensuse/",
+            "https://mirror.example.com/packman/",
+        )
+        self.assertEqual(result, "pkexec_failed")
+
+    @patch("yast3.core.repositories.switch_mirror.subprocess.run")
+    def test_pkexec_error(self, mock_run: MagicMock) -> None:
+        """Should return error when pkexec returns other exit codes."""
+        mock_run.return_value.returncode = 3
+        result = switch_mirror_pkexec(
+            "https://mirror.example.com/opensuse/",
+            "https://mirror.example.com/packman/",
+        )
+        self.assertEqual(result, "error")
+
+    @patch("yast3.core.repositories.switch_mirror.subprocess.run")
+    def test_pkexec_calls_correct_command(self, mock_run: MagicMock) -> None:
+        """Should call pkexec with the correct wrapper script and arguments."""
+        mock_run.return_value.returncode = 0
+        switch_mirror_pkexec(
+            "https://mirror.example.com/opensuse/",
+            "https://mirror.example.com/packman/",
+        )
+        mock_run.assert_called_once_with(
+            [
+                "pkexec",
+                "/usr/libexec/yast3-switch-mirror",
+                "--opensuse-url",
+                "https://mirror.example.com/opensuse/",
+                "--packman-url",
+                "https://mirror.example.com/packman/",
+            ],
+            capture_output=True,
+            text=True,
+        )
 
 
 if __name__ == "__main__":

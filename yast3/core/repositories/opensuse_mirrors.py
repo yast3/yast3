@@ -1,4 +1,4 @@
-from yast3.core.repositories.mirrors.mirror import Mirror
+from yast3.core.repositories.mirror import Mirror
 
 opensuse_mirrors = [
     Mirror(url='download.opensuse.org/', organization='openSUSE', location='Global', sync_frequency='1h', protocols=['http', 'https']),

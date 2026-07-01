@@ -5,8 +5,8 @@ gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk
 
 from yast3.core.i18n import _
-from yast3.core.repositories.mirrors.opensuse_mirrors import opensuse_mirrors
-from yast3.core.repositories.mirrors.packman_mirrors import packman_mirrors
+from yast3.core.repositories.opensuse_mirrors import opensuse_mirrors
+from yast3.core.repositories.packman_mirrors import packman_mirrors
 
 
 class SwitchMirrorDialog(Gtk.Dialog):

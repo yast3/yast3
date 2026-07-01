@@ -13,9 +13,9 @@ from yast3.core.repositories import (
     save_repo_entry,
     switch_mirror,
 )
-from yast3.core.repositories.mirrors.opensuse_mirrors import opensuse_mirrors
-from yast3.core.repositories.mirrors.packman_mirrors import packman_mirrors
-from yast3.core.repositories.mirrors.switch_mirror import switch_mirror_pkexec
+from yast3.core.repositories.opensuse_mirrors import opensuse_mirrors
+from yast3.core.repositories.packman_mirrors import packman_mirrors
+from yast3.core.repositories.switch_mirror import switch_mirror_pkexec
 
 
 class RepositoriesWindow(Screen):

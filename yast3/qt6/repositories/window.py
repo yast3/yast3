@@ -273,8 +273,8 @@ class RepositoriesWindow(QMainWindow):
                     _("Mirror switching completed successfully."),
                 )
                 self.load_repos()
-            except PermissionError as e:
-                QMessageBox.critical(self, _("Error"), _("Permission denied: %s") % e)
+            except Exception as e:
+                QMessageBox.critical(self, _("Error"), _("Failed to switch mirrors: %s") % e)
 
     def populate_row(self, row: int) -> None:
         entry = self.repo_entries[row]

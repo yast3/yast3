@@ -1,4 +1,4 @@
-from yast3.core.repositories.mirrors.mirror import Mirror
+from yast3.core.repositories.mirror import Mirror
 
 packman_mirrors = [
     Mirror(url='mirrors.aliyun.com/packman/', organization='Alibaba Cloud', location='China', sync_frequency='24h', protocols=['https']),
