@@ -9,7 +9,7 @@ class PackagesModule(Module):
     window: PackagesWindow | None = None
 
     def __init__(self):
-        super().__init__(_("Packages"), ("package-manager", "package"), "🎁")
+        super().__init__(_("Packages"), ("package-manager", "package"), "🎁", experimental=True)
 
     def launch(self) -> None:
         """Launch the packages module window."""

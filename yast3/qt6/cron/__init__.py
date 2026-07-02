@@ -9,7 +9,7 @@ class CronModule(Module):
     window: CronWindow | None = None
 
     def __init__(self):
-        super().__init__(_("Cron"), ("preferences-system-time", "chronometer", "clock"), "⏰")
+        super().__init__(_("Cron"), ("preferences-system-time", "chronometer", "clock"), "⏰", experimental=True)
 
     def launch(self) -> None:
         if self.window is None:
