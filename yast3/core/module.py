@@ -9,11 +9,13 @@ class Module:
     name: str
     icon_names: tuple[str, ...]
     emoji: str
+    experimental: bool = False
 
-    def __init__(self, name: str, icon_names: tuple[str, ...], emoji: str = "⚙️"):
+    def __init__(self, name: str, icon_names: tuple[str, ...], emoji: str = "⚙️", experimental: bool = False) -> None:
         self.name = name
         self.icon_names = icon_names
         self.emoji = emoji
+        self.experimental = experimental
 
     def launch(self) -> None:
         """Launch the module window (deprecated, use create_window)."""
