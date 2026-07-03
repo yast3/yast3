@@ -6,7 +6,7 @@ from textual.screen import Screen
 from textual.widgets import Button, Header, Input, Label, Static
 
 from yast3.core.i18n import _
-from yast3.core.proxy import ProxyConfig, load_proxy_config, save_proxy_config
+from yast3.core.proxy import ProxyConfig
 
 PROXY_FILE = "/etc/sysconfig/proxy"
 
@@ -60,6 +60,7 @@ class ProxyWindow(Screen):
 
     def __init__(self) -> None:
         super().__init__()
+        self.config = ProxyConfig()
         self.proxy_enabled = False
 
     def compose(self) -> ComposeResult:
@@ -91,12 +92,11 @@ class ProxyWindow(Screen):
     def on_mount(self) -> None:
         self._refresh_enabled_button()
         try:
-            config = load_proxy_config()
-            self.proxy_enabled = config.enabled
-            self.query_one("#http-input", Input).value = config.http_proxy
-            self.query_one("#https-input", Input).value = config.https_proxy
-            self.query_one("#ftp-input", Input).value = config.ftp_proxy
-            self.query_one("#no-proxy-input", Input).value = config.no_proxy
+            self.proxy_enabled = self.config.get("PROXY_ENABLED") == "yes"
+            self.query_one("#http-input", Input).value = str(self.config.get("HTTP_PROXY", ""))
+            self.query_one("#https-input", Input).value = str(self.config.get("HTTPS_PROXY", ""))
+            self.query_one("#ftp-input", Input).value = str(self.config.get("FTP_PROXY", ""))
+            self.query_one("#no-proxy-input", Input).value = str(self.config.get("NO_PROXY", ""))
             self._refresh_enabled_button()
         except FileNotFoundError:
             self.show_message(_("Error: {0} not found.").format(PROXY_FILE), error=True)
@@ -138,31 +138,25 @@ class ProxyWindow(Screen):
         self._refresh_enabled_button()
 
     def action_save(self) -> None:
-        config = ProxyConfig(
-            enabled=self.proxy_enabled,
-            http_proxy=self.query_one("#http-input", Input).value.strip(),
-            https_proxy=self.query_one("#https-input", Input).value.strip(),
-            ftp_proxy=self.query_one("#ftp-input", Input).value.strip(),
-            no_proxy=self.query_one("#no-proxy-input", Input).value.strip(),
-        )
+        self.config.update({
+            "PROXY_ENABLED": "yes" if self.proxy_enabled else "no",
+            "HTTP_PROXY": self.query_one("#http-input", Input).value.strip(),
+            "HTTPS_PROXY": self.query_one("#https-input", Input).value.strip(),
+            "FTP_PROXY": self.query_one("#ftp-input", Input).value.strip(),
+            "NO_PROXY": self.query_one("#no-proxy-input", Input).value.strip(),
+        })
 
-        status, message = save_proxy_config(config)
-
-        if status == "ok":
+        try:
+            self.config.write_pkexec()
             self.show_message(_("Success: Proxy configuration saved successfully."), success=True)
             self.set_timer(1.5, self.app.pop_screen)
-        elif status == "permission_denied":
+        except PermissionError:
             self.show_message(
                 _("Error: Permission denied. Root permission required."),
                 error=True,
             )
-        elif status == "pkexec_failed":
+        except Exception as e:
             self.show_message(
-                _("Error: Authentication failed or pkexec not available."),
-                error=True,
-            )
-        else:
-            self.show_message(
-                _("Error: Failed to save proxy configuration: {0}").format(message),
+                _("Error: Failed to save proxy configuration: {0}").format(str(e)),
                 error=True,
             )
