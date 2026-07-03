@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.13 - 2026-07-03
+
+### Core
+
+- Stripped spaces around `=` in proxy config when writing to file
+
 ## 0.0.12 - 2026-07-03
 
 ### Qt6
