@@ -18,7 +18,7 @@ class ProxyWindow(Gtk.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.set_default_size(640, 360)
+        self.set_default_size(640, 320)
         self.set_title(_("Proxy Configuration — YaST3"))
 
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)

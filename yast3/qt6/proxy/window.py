@@ -27,12 +27,14 @@ class ProxyWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.resize(640, 360)
+        self.resize(640, 320)
         self.setWindowTitle(_("Proxy Configuration — YaST3"))
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         layout = QVBoxLayout(central_widget)
+        layout.setContentsMargins(12, 12, 12, 12)
+        layout.setSpacing(12)
 
         self.enabled_check = QCheckBox(_("Enable Proxy"))
         layout.addWidget(self.enabled_check)
@@ -48,6 +50,7 @@ class ProxyWindow(QMainWindow):
         )
 
         button_layout = QHBoxLayout()
+        button_layout.setSpacing(12)
         button_layout.addStretch()
 
         self.save_btn = QPushButton(_("Save"))
@@ -60,6 +63,7 @@ class ProxyWindow(QMainWindow):
 
     def _add_input(self, layout: QVBoxLayout, label: str, placeholder: str) -> QLineEdit:
         row = QHBoxLayout()
+        row.setSpacing(12)
         row.addWidget(QLabel(label))
         edit = QLineEdit()
         edit.setPlaceholderText(placeholder)
