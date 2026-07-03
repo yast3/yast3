@@ -1,2 +1,3 @@
 PySide6==6.11.1
+configobj>=5.0.9
 

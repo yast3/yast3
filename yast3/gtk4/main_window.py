@@ -9,6 +9,7 @@ from yast3.gtk4 import (
     GitModule,
     HostnameModule,
     HostsModule,
+    ProxyModule,
     RepositoriesModule,
     SSHClientModule,
 )
@@ -23,6 +24,7 @@ class MainWindow(Gtk.ApplicationWindow):
             GitModule(),
             HostnameModule(),
             HostsModule(),
+            ProxyModule(),
             RepositoriesModule(),
             SSHClientModule(),
         )

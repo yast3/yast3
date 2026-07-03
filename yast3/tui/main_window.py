@@ -12,6 +12,7 @@ from yast3.tui import (
     HostnameModule,
     HostsModule,
     PackagesModule,
+    ProxyModule,
     RepositoriesModule,
     SSHClientModule,
 )
@@ -71,6 +72,7 @@ class MainWindow(App):
             HostsModule(),
             CronModule(),
             RepositoriesModule(),
+            ProxyModule(),
             SSHClientModule(),
             PackagesModule(),
         ]

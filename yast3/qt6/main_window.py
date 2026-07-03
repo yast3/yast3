@@ -15,6 +15,7 @@ from yast3.qt6 import (
     GitModule,
     HostnameModule,
     HostsModule,
+    ProxyModule,
     RepositoriesModule,
     SSHClientModule,
 )
@@ -29,6 +30,7 @@ class MainWindow(QMainWindow):
             GitModule(),
             HostnameModule(),
             HostsModule(),
+            ProxyModule(),
             RepositoriesModule(),
             SSHClientModule(),
         )
