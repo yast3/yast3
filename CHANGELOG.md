@@ -8,4 +8,6 @@
 
 ## 0.0.8 - 2026-07-01
 
+### Qt6
+
 - Add switch mirror functionality
