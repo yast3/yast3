@@ -4,16 +4,16 @@ Save YaST ♥️ with Python 3 & Qt6 Widgets.
 
 ## Modules
 
-| Name | Core | Qt6 | GTK4 | TUI |
-|------|:----:|:---:|:----:|:---:|
-| Git | ✅ | ✅ | ✅ | ✅ |
-| Hostname | ✅ | ✅ | ✅ | ✅ |
-| Hosts | ✅ | ✅ | ✅ | ✅ |
-| Repositories | ✅ | ✅ | ✅ | ✅ |
-| SSH Client | ✅ | ✅ | ✅ | ✅ |
-| Cron | ✅ | ✅ | ✅ | ✅ |
-| Packages | ✅ | ✅ | ✅ | ❌ |
-| Proxy | ✅ | ✅ | ✅ | ✅ |
+| Name         | Core | Qt6 | GTK4 | TUI |
+|--------------|:----:|:---:|:----:|:---:|
+| Cron         | 🚧   | 🚧  | 🚧   | ❌  |
+| Git          | ✅   | ✅  | 🚧   | ❌  |
+| Hostname     | ✅   | ✅  | 🚧   | ❌  |
+| Hosts        | ✅   | ✅  | 🚧   | ❌  |
+| Packages     | ❌   | ❌  | ❌   | ❌  |
+| Proxy        | ✅   | ✅  | ✅   | ❌  |
+| Repositories | ✅   | ✅  | 🚧   | ❌  |
+| SSH Client   | 🚧   | 🚧  | 🚧   | ❌  |
 
 **Planned:** SSH Server (system)
 
