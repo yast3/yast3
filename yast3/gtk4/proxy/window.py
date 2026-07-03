@@ -7,12 +7,14 @@ gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk
 
 from yast3.core.i18n import _
-from yast3.core.proxy import ProxyConfig, load_proxy_config, save_proxy_config
+from yast3.core.proxy import ProxyConfig
 
 PROXY_FILE = "/etc/sysconfig/proxy"
 
 
 class ProxyWindow(Gtk.ApplicationWindow):
+    config: ProxyConfig
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
@@ -67,12 +69,12 @@ class ProxyWindow(Gtk.ApplicationWindow):
 
     def _load_config(self) -> None:
         try:
-            config = load_proxy_config()
-            self.enabled_check.set_active(config.enabled)
-            self.http_entry.set_text(config.http_proxy)
-            self.https_entry.set_text(config.https_proxy)
-            self.ftp_entry.set_text(config.ftp_proxy)
-            self.no_proxy_entry.set_text(config.no_proxy)
+            self.config = ProxyConfig()
+            self.enabled_check.set_active(self.config.get("PROXY_ENABLED") == "yes")
+            self.http_entry.set_text(str(self.config.get("HTTP_PROXY", "")))
+            self.https_entry.set_text(str(self.config.get("HTTPS_PROXY", "")))
+            self.ftp_entry.set_text(str(self.config.get("FTP_PROXY", "")))
+            self.no_proxy_entry.set_text(str(self.config.get("NO_PROXY", "")))
         except FileNotFoundError:
             self._show_message_dialog(
                 Gtk.MessageType.WARNING,
@@ -93,40 +95,33 @@ class ProxyWindow(Gtk.ApplicationWindow):
             )
 
     def _on_save_clicked(self, button: Gtk.Button) -> None:
-        config = ProxyConfig(
-            enabled=self.enabled_check.get_active(),
-            http_proxy=self.http_entry.get_text().strip(),
-            https_proxy=self.https_entry.get_text().strip(),
-            ftp_proxy=self.ftp_entry.get_text().strip(),
-            no_proxy=self.no_proxy_entry.get_text().strip(),
-        )
+        self.config.update({
+            "PROXY_ENABLED": "yes" if self.enabled_check.get_active() else "no",
+            "HTTP_PROXY": self.http_entry.get_text().strip(),
+            "HTTPS_PROXY": self.https_entry.get_text().strip(),
+            "FTP_PROXY": self.ftp_entry.get_text().strip(),
+            "NO_PROXY": self.no_proxy_entry.get_text().strip(),
+        })
 
-        status, message = save_proxy_config(config)
-
-        if status == "ok":
+        try:
+            self.config.write_pkexec()
             self._show_message_dialog(
                 Gtk.MessageType.INFO,
                 _("Success"),
                 _("Proxy configuration saved successfully."),
             )
             self.close()
-        elif status == "permission_denied":
+        except PermissionError:
             self._show_message_dialog(
                 Gtk.MessageType.ERROR,
                 _("Error"),
                 _("Permission denied. Root permission required."),
             )
-        elif status == "pkexec_failed":
+        except Exception as e:
             self._show_message_dialog(
                 Gtk.MessageType.ERROR,
                 _("Error"),
-                _("Authentication failed or pkexec not available."),
-            )
-        else:
-            self._show_message_dialog(
-                Gtk.MessageType.ERROR,
-                _("Error"),
-                _("Failed to save proxy configuration: {0}").format(message),
+                _("Failed to save proxy configuration: {0}").format(str(e)),
             )
 
     def _show_message_dialog(self, msg_type: Gtk.MessageType, title: str, message: str) -> None:
