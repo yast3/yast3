@@ -15,7 +15,7 @@ class CronModule(Module):
     window: CronWindow | None = None
 
     def __init__(self):
-        super().__init__(_("Cron"), ("preferences-system-time", "chronometer", "clock"), "⏰")
+        super().__init__(_("Cron"), ("preferences-system-time", "chronometer", "clock"), "⏰", experimental=True)
 
     def launch(self, parent: Gtk.ApplicationWindow | None = None) -> None:
         """Launch the cron module window."""

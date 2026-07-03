@@ -15,7 +15,7 @@ class PackagesModule(Module):
     window: PackagesWindow | None = None
 
     def __init__(self):
-        super().__init__(_("Packages"), ("package-manager", "package"), "🎁")
+        super().__init__(_("Packages"), ("package-manager", "package"), "🎁", experimental=True)
 
     def launch(self, parent: Gtk.ApplicationWindow | None = None) -> None:
         """Launch the packages module window."""

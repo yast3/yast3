@@ -2,8 +2,6 @@
 
 from gi.repository import Gtk
 
-from yast3.core.i18n import _
-from yast3.core.module import Module
 from yast3.gtk4 import (
     CronModule,
     GitModule,
@@ -13,6 +11,7 @@ from yast3.gtk4 import (
     RepositoriesModule,
     SSHClientModule,
 )
+from yast3.gtk4.module_button import ModuleButton
 
 
 class MainWindow(Gtk.ApplicationWindow):
@@ -55,51 +54,9 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # Add module buttons
         for index, module in enumerate(self.modules):
-            button = self._build_module_button(module)
+            button = ModuleButton(module, self)
             row, column = divmod(index, 4)
             self.grid.attach(button, column, row, 1, 1)
 
         self.main_box.append(self.grid)
         self.set_child(scrolled)
-
-    def _build_module_button(self, module: Module) -> Gtk.Button:
-        """Create a button for a module."""
-        button = Gtk.Button()
-        button.set_size_request(180, 130)
-
-        # Create button content box
-        content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-        content_box.set_margin_top(16)
-        content_box.set_margin_bottom(16)
-        content_box.set_margin_start(16)
-        content_box.set_margin_end(16)
-
-        # Try to get icon from theme
-        icon_name = None
-        icon_theme = Gtk.IconTheme.get_for_display(self.get_display())
-        for name in module.icon_names:
-            if icon_theme.has_icon(name):
-                icon_name = name
-                break
-
-        if icon_name:
-            icon = Gtk.Image.new_from_icon_name(icon_name)
-            content_box.append(icon)
-        else:
-            # Use emoji as fallback
-            emoji_label = Gtk.Label(label=module.emoji)
-            content_box.append(emoji_label)
-
-        # Module name
-        name_label = Gtk.Label(label=module.name)
-        content_box.append(name_label)
-
-        button.set_child(content_box)
-
-        button.connect("clicked", self._on_module_clicked, module)
-
-        return button
-
-    def _on_module_clicked(self, button: Gtk.Button, module: Module) -> None:
-        """Handle module button click."""
-        module.launch(self)

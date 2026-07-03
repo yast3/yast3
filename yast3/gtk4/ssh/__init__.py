@@ -19,7 +19,7 @@ class SSHClientModule(Module):
     window: SSHWindow | None = None
 
     def __init__(self):
-        super().__init__(_("SSH Client"), ("network-server", "network"), "🔐")
+        super().__init__(_("SSH Client"), ("network-server", "network"), "🔐", experimental=True)
 
     def launch(self, parent: Gtk.ApplicationWindow | None = None) -> None:
         """Launch the SSH client module window."""
