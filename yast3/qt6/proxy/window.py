@@ -16,13 +16,14 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.core.proxy import ProxyConfig, load_proxy_config, save_proxy_config
+from yast3.core.proxy import ProxyConfig
 
 PROXY_FILE = "/etc/sysconfig/proxy"
 
 
 class ProxyWindow(QMainWindow):
     closed = Signal()
+    config: ProxyConfig
 
     def __init__(self):
         super().__init__()
@@ -67,12 +68,12 @@ class ProxyWindow(QMainWindow):
 
     def load_proxy(self) -> None:
         try:
-            config = load_proxy_config()
-            self.enabled_check.setChecked(config.enabled)
-            self.http_edit.setText(config.http_proxy)
-            self.https_edit.setText(config.https_proxy)
-            self.ftp_edit.setText(config.ftp_proxy)
-            self.no_proxy_edit.setText(config.no_proxy)
+            self.config = ProxyConfig()
+            self.enabled_check.setChecked(self.config.get("PROXY_ENABLED") == "yes")
+            self.http_edit.setText(str(self.config.get("HTTP_PROXY", "")))
+            self.https_edit.setText(str(self.config.get("HTTPS_PROXY", "")))
+            self.ftp_edit.setText(str(self.config.get("FTP_PROXY", "")))
+            self.no_proxy_edit.setText(str(self.config.get("NO_PROXY", "")))
         except FileNotFoundError:
             QMessageBox.warning(self, _("Error"), _("{0} not found.").format(PROXY_FILE))
         except PermissionError:
@@ -89,40 +90,33 @@ class ProxyWindow(QMainWindow):
             )
 
     def save_proxy(self) -> None:
-        config = ProxyConfig(
-            enabled=self.enabled_check.isChecked(),
-            http_proxy=self.http_edit.text().strip(),
-            https_proxy=self.https_edit.text().strip(),
-            ftp_proxy=self.ftp_edit.text().strip(),
-            no_proxy=self.no_proxy_edit.text().strip(),
-        )
+        self.config.update({
+            "PROXY_ENABLED": "yes" if self.enabled_check.isChecked() else "no",
+            "HTTP_PROXY": self.http_edit.text().strip(),
+            "HTTPS_PROXY": self.https_edit.text().strip(),
+            "FTP_PROXY": self.ftp_edit.text().strip(),
+            "NO_PROXY": self.no_proxy_edit.text().strip(),
+        })
 
-        status, message = save_proxy_config(config)
-
-        if status == "ok":
+        try:
+            self.config.write_pkexec()
             QMessageBox.information(
                 self,
                 _("Success"),
                 _("Proxy configuration saved successfully."),
             )
             self.close()
-        elif status == "permission_denied":
+        except PermissionError:
             QMessageBox.critical(
                 self,
                 _("Error"),
                 _("Permission denied. Root permission required."),
             )
-        elif status == "pkexec_failed":
+        except Exception as e:
             QMessageBox.critical(
                 self,
                 _("Error"),
-                _("Authentication failed or pkexec not available."),
-            )
-        else:
-            QMessageBox.critical(
-                self,
-                _("Error"),
-                _("Failed to save proxy configuration: {0}").format(message),
+                _("Failed to save proxy configuration: {0}").format(str(e)),
             )
 
     def closeEvent(self, event) -> None:
