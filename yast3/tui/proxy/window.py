@@ -71,17 +71,17 @@ class ProxyWindow(Screen):
                 yield Button(id="enabled-btn", variant="default")
             with Horizontal():
                 yield Label(_("HTTP Proxy"), classes="input-label")
-                yield Input(placeholder=_("http://host:port"), id="http-input")
+                yield Input(placeholder="http://host:port", id="http-input")
             with Horizontal():
                 yield Label(_("HTTPS Proxy"), classes="input-label")
-                yield Input(placeholder=_("http://host:port"), id="https-input")
+                yield Input(placeholder="http://host:port", id="https-input")
             with Horizontal():
                 yield Label(_("FTP Proxy"), classes="input-label")
-                yield Input(placeholder=_("http://host:port"), id="ftp-input")
+                yield Input(placeholder="http://host:port", id="ftp-input")
             with Horizontal():
                 yield Label(_("No Proxy"), classes="input-label")
                 yield Input(
-                    placeholder=_("localhost,127.0.0.1,.example.com"),
+                    placeholder="localhost,127.0.0.1,.example.com",
                     id="no-proxy-input",
                 )
             with Horizontal(classes="button-row"):

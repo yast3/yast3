@@ -37,13 +37,13 @@ class ProxyWindow(QMainWindow):
         self.enabled_check = QCheckBox(_("Enable Proxy"))
         layout.addWidget(self.enabled_check)
 
-        self.http_edit = self._add_input(layout, _("HTTP Proxy"), _("http://host:port"))
-        self.https_edit = self._add_input(layout, _("HTTPS Proxy"), _("http://host:port"))
-        self.ftp_edit = self._add_input(layout, _("FTP Proxy"), _("http://host:port"))
+        self.http_edit = self._add_input(layout, _("HTTP Proxy"), "http://host:port")
+        self.https_edit = self._add_input(layout, _("HTTPS Proxy"), "http://host:port")
+        self.ftp_edit = self._add_input(layout, _("FTP Proxy"), "http://host:port")
         self.no_proxy_edit = self._add_input(
             layout,
             _("No Proxy"),
-            _("localhost,127.0.0.1,.example.com"),
+            "localhost,127.0.0.1,.example.com",
         )
 
         button_layout = QHBoxLayout()

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-02 07:53+0000\n"
+"POT-Creation-Date: 2026-07-03 04:27+0000\n"
 "PO-Revision-Date: 2026-06-27 00:51+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -25,10 +25,11 @@ msgstr "Cron"
 
 #: yast3/gtk4/cron/__init__.py:24 yast3/gtk4/git/__init__.py:24
 #: yast3/gtk4/hostname/__init__.py:24 yast3/gtk4/hosts/__init__.py:24
-#: yast3/gtk4/packages/__init__.py:24 yast3/gtk4/repositories/__init__.py:26
-#: yast3/gtk4/ssh/__init__.py:28 yast3/qt6/cron/__init__.py:17
-#: yast3/qt6/git/__init__.py:18 yast3/qt6/hostname/__init__.py:18
-#: yast3/qt6/hosts/__init__.py:18 yast3/qt6/packages/__init__.py:18
+#: yast3/gtk4/packages/__init__.py:24 yast3/gtk4/proxy/__init__.py:24
+#: yast3/gtk4/repositories/__init__.py:26 yast3/gtk4/ssh/__init__.py:28
+#: yast3/qt6/cron/__init__.py:17 yast3/qt6/git/__init__.py:18
+#: yast3/qt6/hostname/__init__.py:18 yast3/qt6/hosts/__init__.py:18
+#: yast3/qt6/packages/__init__.py:18 yast3/qt6/proxy/__init__.py:18
 #: yast3/qt6/repositories/__init__.py:20 yast3/qt6/ssh/__init__.py:24
 msgid "YaST3"
 msgstr "YaST3"
@@ -49,8 +50,9 @@ msgstr "Ajouter une tâche Cron"
 #: yast3/gtk4/ssh/dialogs.py:27 yast3/gtk4/ssh/dialogs.py:145
 #: yast3/gtk4/ssh/keys/generate_dialog.py:26 yast3/tui/cron/window.py:296
 #: yast3/tui/hostname/window.py:70 yast3/tui/hosts/window.py:273
-#: yast3/tui/repositories/window.py:355 yast3/tui/repositories/window.py:484
-#: yast3/tui/ssh/window.py:526 yast3/tui/ssh/window.py:626
+#: yast3/tui/proxy/window.py:89 yast3/tui/repositories/window.py:355
+#: yast3/tui/repositories/window.py:484 yast3/tui/ssh/window.py:526
+#: yast3/tui/ssh/window.py:626
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -183,12 +185,13 @@ msgstr "Supprimer"
 
 #: yast3/gtk4/cron/cron_tab.py:48 yast3/gtk4/git/window.py:71
 #: yast3/gtk4/hostname/window.py:49 yast3/gtk4/hosts/window.py:49
-#: yast3/gtk4/ssh/hosts/tab.py:48 yast3/qt6/cron/cron_tab.py:51
-#: yast3/qt6/git/window.py:79 yast3/qt6/hostname/window.py:51
-#: yast3/qt6/hosts/window.py:53 yast3/qt6/ssh/hosts/tab.py:52
+#: yast3/gtk4/proxy/window.py:44 yast3/gtk4/ssh/hosts/tab.py:48
+#: yast3/qt6/cron/cron_tab.py:51 yast3/qt6/git/window.py:79
+#: yast3/qt6/hostname/window.py:51 yast3/qt6/hosts/window.py:53
+#: yast3/qt6/proxy/window.py:52 yast3/qt6/ssh/hosts/tab.py:52
 #: yast3/tui/cron/window.py:80 yast3/tui/git/window.py:81
 #: yast3/tui/hostname/window.py:69 yast3/tui/hosts/window.py:72
-#: yast3/tui/ssh/window.py:262
+#: yast3/tui/proxy/window.py:88 yast3/tui/ssh/window.py:262
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -197,8 +200,9 @@ msgstr "Enregistrer"
 #: yast3/gtk4/repositories/window.py:98 yast3/gtk4/ssh/hosts/tab.py:74
 #: yast3/qt6/repositories/repo_edit_dialog.py:42
 #: yast3/qt6/repositories/window.py:65 yast3/tui/cron/window.py:92
-#: yast3/tui/hosts/window.py:79 yast3/tui/repositories/window.py:80
-#: yast3/tui/repositories/window.py:349 yast3/tui/ssh/window.py:288
+#: yast3/tui/hosts/window.py:79 yast3/tui/proxy/window.py:116
+#: yast3/tui/repositories/window.py:80 yast3/tui/repositories/window.py:349
+#: yast3/tui/ssh/window.py:288
 msgid "Enabled"
 msgstr ""
 
@@ -212,27 +216,32 @@ msgstr ""
 #: yast3/gtk4/hosts/window.py:120 yast3/gtk4/hosts/window.py:123
 #: yast3/gtk4/hosts/window.py:177 yast3/gtk4/hosts/window.py:213
 #: yast3/gtk4/hosts/window.py:251 yast3/gtk4/hosts/window.py:253
-#: yast3/gtk4/hosts/window.py:255 yast3/gtk4/repositories/window.py:129
-#: yast3/gtk4/repositories/window.py:191 yast3/gtk4/repositories/window.py:195
-#: yast3/gtk4/repositories/window.py:246 yast3/gtk4/repositories/window.py:250
-#: yast3/gtk4/repositories/window.py:355 yast3/gtk4/repositories/window.py:357
-#: yast3/gtk4/repositories/window.py:359 yast3/gtk4/ssh/__init__.py:82
-#: yast3/gtk4/ssh/dialogs.py:120 yast3/gtk4/ssh/hosts/tab.py:109
-#: yast3/gtk4/ssh/hosts/tab.py:152 yast3/gtk4/ssh/hosts/tab.py:180
-#: yast3/gtk4/ssh/hosts/tab.py:195 yast3/gtk4/ssh/hosts/tab.py:226
-#: yast3/gtk4/ssh/hosts/tab.py:228 yast3/gtk4/ssh/keys/generate_dialog.py:110
-#: yast3/gtk4/ssh/keys/tab.py:196 yast3/gtk4/ssh/keys/tab.py:242
-#: yast3/qt6/cron/cron_tab.py:96 yast3/qt6/cron/cron_tab.py:204
-#: yast3/qt6/cron/cron_tab.py:207 yast3/qt6/git/window.py:249
-#: yast3/qt6/git/window.py:275 yast3/qt6/hostname/window.py:66
-#: yast3/qt6/hostname/window.py:70 yast3/qt6/hostname/window.py:75
-#: yast3/qt6/hostname/window.py:83 yast3/qt6/hostname/window.py:89
-#: yast3/qt6/hostname/window.py:97 yast3/qt6/hostname/window.py:130
-#: yast3/qt6/hostname/window.py:134 yast3/qt6/hostname/window.py:138
-#: yast3/qt6/hosts/window.py:103 yast3/qt6/hosts/window.py:109
-#: yast3/qt6/hosts/window.py:179 yast3/qt6/hosts/window.py:216
-#: yast3/qt6/hosts/window.py:270 yast3/qt6/hosts/window.py:275
-#: yast3/qt6/hosts/window.py:278 yast3/qt6/repositories/window.py:106
+#: yast3/gtk4/hosts/window.py:255 yast3/gtk4/proxy/window.py:81
+#: yast3/gtk4/proxy/window.py:87 yast3/gtk4/proxy/window.py:93
+#: yast3/gtk4/proxy/window.py:117 yast3/gtk4/proxy/window.py:123
+#: yast3/gtk4/repositories/window.py:129 yast3/gtk4/repositories/window.py:191
+#: yast3/gtk4/repositories/window.py:195 yast3/gtk4/repositories/window.py:246
+#: yast3/gtk4/repositories/window.py:250 yast3/gtk4/repositories/window.py:355
+#: yast3/gtk4/repositories/window.py:357 yast3/gtk4/repositories/window.py:359
+#: yast3/gtk4/ssh/__init__.py:82 yast3/gtk4/ssh/dialogs.py:120
+#: yast3/gtk4/ssh/hosts/tab.py:109 yast3/gtk4/ssh/hosts/tab.py:152
+#: yast3/gtk4/ssh/hosts/tab.py:180 yast3/gtk4/ssh/hosts/tab.py:195
+#: yast3/gtk4/ssh/hosts/tab.py:226 yast3/gtk4/ssh/hosts/tab.py:228
+#: yast3/gtk4/ssh/keys/generate_dialog.py:110 yast3/gtk4/ssh/keys/tab.py:196
+#: yast3/gtk4/ssh/keys/tab.py:242 yast3/qt6/cron/cron_tab.py:96
+#: yast3/qt6/cron/cron_tab.py:204 yast3/qt6/cron/cron_tab.py:207
+#: yast3/qt6/git/window.py:249 yast3/qt6/git/window.py:275
+#: yast3/qt6/hostname/window.py:66 yast3/qt6/hostname/window.py:70
+#: yast3/qt6/hostname/window.py:75 yast3/qt6/hostname/window.py:83
+#: yast3/qt6/hostname/window.py:89 yast3/qt6/hostname/window.py:97
+#: yast3/qt6/hostname/window.py:130 yast3/qt6/hostname/window.py:134
+#: yast3/qt6/hostname/window.py:138 yast3/qt6/hosts/window.py:103
+#: yast3/qt6/hosts/window.py:109 yast3/qt6/hosts/window.py:179
+#: yast3/qt6/hosts/window.py:216 yast3/qt6/hosts/window.py:270
+#: yast3/qt6/hosts/window.py:275 yast3/qt6/hosts/window.py:278
+#: yast3/qt6/proxy/window.py:78 yast3/qt6/proxy/window.py:82
+#: yast3/qt6/proxy/window.py:88 yast3/qt6/proxy/window.py:112
+#: yast3/qt6/proxy/window.py:118 yast3/qt6/repositories/window.py:106
 #: yast3/qt6/repositories/window.py:156 yast3/qt6/repositories/window.py:159
 #: yast3/qt6/repositories/window.py:185 yast3/qt6/repositories/window.py:203
 #: yast3/qt6/repositories/window.py:206 yast3/qt6/repositories/window.py:228
@@ -287,11 +296,12 @@ msgstr ""
 
 #: yast3/gtk4/cron/cron_tab.py:240 yast3/gtk4/git/window.py:276
 #: yast3/gtk4/hostname/window.py:106 yast3/gtk4/hosts/window.py:249
-#: yast3/gtk4/repositories/window.py:346 yast3/gtk4/ssh/__init__.py:97
-#: yast3/gtk4/ssh/hosts/tab.py:224 yast3/gtk4/ssh/keys/tab.py:194
-#: yast3/gtk4/ssh/keys/tab.py:246 yast3/qt6/cron/cron_tab.py:201
-#: yast3/qt6/git/window.py:270 yast3/qt6/hostname/window.py:124
-#: yast3/qt6/hosts/window.py:264 yast3/qt6/repositories/window.py:273
+#: yast3/gtk4/proxy/window.py:110 yast3/gtk4/repositories/window.py:346
+#: yast3/gtk4/ssh/__init__.py:97 yast3/gtk4/ssh/hosts/tab.py:224
+#: yast3/gtk4/ssh/keys/tab.py:194 yast3/gtk4/ssh/keys/tab.py:246
+#: yast3/qt6/cron/cron_tab.py:201 yast3/qt6/git/window.py:270
+#: yast3/qt6/hostname/window.py:124 yast3/qt6/hosts/window.py:264
+#: yast3/qt6/proxy/window.py:105 yast3/qt6/repositories/window.py:273
 #: yast3/qt6/ssh/__init__.py:77 yast3/qt6/ssh/hosts/tab.py:222
 #: yast3/qt6/ssh/keys/generate_dialog.py:232 yast3/qt6/ssh/keys/tab.py:174
 #: yast3/qt6/ssh/keys/tab.py:221
@@ -303,7 +313,8 @@ msgid "Cron jobs saved successfully."
 msgstr ""
 
 #: yast3/gtk4/cron/cron_tab.py:242 yast3/gtk4/hostname/window.py:109
-#: yast3/qt6/cron/cron_tab.py:204 yast3/qt6/hostname/window.py:130
+#: yast3/gtk4/proxy/window.py:118 yast3/qt6/cron/cron_tab.py:204
+#: yast3/qt6/hostname/window.py:130 yast3/qt6/proxy/window.py:113
 msgid "Permission denied. Root permission required."
 msgstr ""
 
@@ -560,12 +571,14 @@ msgstr ""
 msgid "IP Address"
 msgstr ""
 
-#: yast3/gtk4/hosts/window.py:120 yast3/qt6/hosts/window.py:104
+#: yast3/gtk4/hosts/window.py:120 yast3/gtk4/proxy/window.py:88
+#: yast3/qt6/hosts/window.py:104 yast3/qt6/proxy/window.py:83
 #, python-brace-format
 msgid "Cannot read {0}. Root permission required."
 msgstr ""
 
-#: yast3/gtk4/hosts/window.py:123 yast3/qt6/hosts/window.py:109
+#: yast3/gtk4/hosts/window.py:123 yast3/gtk4/proxy/window.py:82
+#: yast3/qt6/hosts/window.py:109 yast3/qt6/proxy/window.py:78
 #, python-brace-format
 msgid "{0} not found."
 msgstr "{0} non trouvé."
@@ -635,6 +648,53 @@ msgstr ""
 #: yast3/gtk4/packages/window.py:27
 msgid "Packages module is not yet implemented."
 msgstr "Le module Paquets n'est pas encore implémenté."
+
+#: yast3/gtk4/proxy/__init__.py:18 yast3/qt6/proxy/__init__.py:12
+#: yast3/tui/proxy/__init__.py:12
+msgid "Proxy"
+msgstr "Proxy"
+
+#: yast3/gtk4/proxy/window.py:22 yast3/qt6/proxy/window.py:31
+msgid "Proxy Configuration — YaST3"
+msgstr "Configuration du proxy — YaST3"
+
+#: yast3/gtk4/proxy/window.py:30 yast3/qt6/proxy/window.py:37
+msgid "Enable Proxy"
+msgstr "Activer le proxy"
+
+#: yast3/gtk4/proxy/window.py:33 yast3/qt6/proxy/window.py:40
+#: yast3/tui/proxy/window.py:73
+msgid "HTTP Proxy"
+msgstr "Proxy HTTP"
+
+#: yast3/gtk4/proxy/window.py:34 yast3/qt6/proxy/window.py:41
+#: yast3/tui/proxy/window.py:76
+msgid "HTTPS Proxy"
+msgstr "Proxy HTTPS"
+
+#: yast3/gtk4/proxy/window.py:35 yast3/qt6/proxy/window.py:42
+#: yast3/tui/proxy/window.py:79
+msgid "FTP Proxy"
+msgstr "Proxy FTP"
+
+#: yast3/gtk4/proxy/window.py:37 yast3/qt6/proxy/window.py:45
+#: yast3/tui/proxy/window.py:82
+msgid "No Proxy"
+msgstr "Pas de proxy"
+
+#: yast3/gtk4/proxy/window.py:94 yast3/qt6/proxy/window.py:89
+#, python-brace-format
+msgid "Failed to load proxy configuration: {0}"
+msgstr "Echec du chargement de la configuration du proxy : {0}"
+
+#: yast3/gtk4/proxy/window.py:111 yast3/qt6/proxy/window.py:106
+msgid "Proxy configuration saved successfully."
+msgstr "La configuration du proxy a ete enregistree avec succes."
+
+#: yast3/gtk4/proxy/window.py:124 yast3/qt6/proxy/window.py:119
+#, python-brace-format
+msgid "Failed to save proxy configuration: {0}"
+msgstr "Echec de l'enregistrement de la configuration du proxy : {0}"
 
 #: yast3/gtk4/repositories/__init__.py:19 yast3/qt6/repositories/__init__.py:13
 #: yast3/tui/repositories/__init__.py:12
@@ -1107,7 +1167,9 @@ msgstr "Le nom de la clé est requis."
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:185
 msgid "Key names starting with 'id_' are recommended. Continue anyway?"
-msgstr "Les noms de clé commençant par 'id_' sont recommandés. Continuer quand même ?"
+msgstr ""
+"Les noms de clé commençant par 'id_' sont recommandés. Continuer quand "
+"même ?"
 
 #: yast3/qt6/ssh/keys/generate_dialog.py:195
 msgid "A key with this name already exists."
@@ -1146,8 +1208,9 @@ msgid "Success: Cron jobs saved successfully."
 msgstr ""
 
 #: yast3/tui/cron/window.py:200 yast3/tui/hostname/window.py:135
+#: yast3/tui/proxy/window.py:155
 msgid "Error: Permission denied. Root permission required."
-msgstr "Erreur : Accès refusé. Droits root requis."
+msgstr "Erreur : permission refusee. Les droits root sont requis."
 
 #: yast3/tui/cron/window.py:202
 msgid "Error: Failed to save cron jobs."
@@ -1221,15 +1284,15 @@ msgstr ""
 msgid "Error: Authentication failed or pkexec not available."
 msgstr ""
 
-#: yast3/tui/hosts/window.py:92
+#: yast3/tui/hosts/window.py:92 yast3/tui/proxy/window.py:105
 #, python-brace-format
 msgid "Error: Cannot read {0}. Root permission required."
-msgstr "Erreur : Impossible de lire {0}. Droits root requis."
+msgstr "Erreur : impossible de lire {0}. Les droits root sont requis."
 
-#: yast3/tui/hosts/window.py:97
+#: yast3/tui/hosts/window.py:97 yast3/tui/proxy/window.py:102
 #, python-brace-format
 msgid "Error: {0} not found."
-msgstr ""
+msgstr "Erreur : {0} introuvable."
 
 #: yast3/tui/hosts/window.py:124 yast3/tui/ssh/window.py:508
 msgid "Add Host Entry"
@@ -1283,6 +1346,33 @@ msgstr ""
 #: yast3/tui/packages/window.py:42
 msgid "Close"
 msgstr "Fermer"
+
+#: yast3/tui/proxy/window.py:69
+msgid "Proxy Configuration"
+msgstr "Configuration du proxy"
+
+#: yast3/tui/proxy/window.py:110
+#, python-brace-format
+msgid "Error: Failed to load proxy configuration: {0}"
+msgstr "Erreur : echec du chargement de la configuration du proxy : {0}"
+
+#: yast3/tui/proxy/window.py:116
+msgid "Disabled"
+msgstr "Desactive"
+
+#: yast3/tui/proxy/window.py:117
+#, python-brace-format
+msgid "Proxy State: {0}"
+msgstr "Etat du proxy : {0}"
+
+#: yast3/tui/proxy/window.py:151
+msgid "Success: Proxy configuration saved successfully."
+msgstr "Succes : la configuration du proxy a ete enregistree avec succes."
+
+#: yast3/tui/proxy/window.py:160
+#, python-brace-format
+msgid "Error: Failed to save proxy configuration: {0}"
+msgstr "Erreur : echec de l'enregistrement de la configuration du proxy : {0}"
 
 #: yast3/tui/repositories/window.py:93
 msgid "Error: Cannot read repository directory. Root permission required."

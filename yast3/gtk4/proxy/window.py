@@ -30,12 +30,12 @@ class ProxyWindow(Gtk.ApplicationWindow):
         self.enabled_check = Gtk.CheckButton(label=_("Enable Proxy"))
         self.main_box.append(self.enabled_check)
 
-        self.http_entry = self._build_input_row(_("HTTP Proxy"), _("http://host:port"))
-        self.https_entry = self._build_input_row(_("HTTPS Proxy"), _("http://host:port"))
-        self.ftp_entry = self._build_input_row(_("FTP Proxy"), _("http://host:port"))
+        self.http_entry = self._build_input_row(_("HTTP Proxy"), "http://host:port")
+        self.https_entry = self._build_input_row(_("HTTPS Proxy"), "http://host:port")
+        self.ftp_entry = self._build_input_row(_("FTP Proxy"), "http://host:port")
         self.no_proxy_entry = self._build_input_row(
             _("No Proxy"),
-            _("localhost,127.0.0.1,.example.com"),
+            "localhost,127.0.0.1,.example.com",
         )
 
         button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
