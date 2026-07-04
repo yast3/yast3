@@ -24,6 +24,7 @@ from yast3.core.repositories import (
     save_repo_entry,
     switch_mirror_pkexec,
 )
+from yast3.qt6.repositories.import_repo_button import ImportRepoButton
 from yast3.qt6.repositories.repo_edit_dialog import RepoEditDialog
 from yast3.qt6.repositories.switch_mirror_dialog import SwitchMirrorDialog
 
@@ -43,6 +44,10 @@ class RepositoriesWindow(QMainWindow):
         self.add_btn = QPushButton(_("Add"))
         self.add_btn.clicked.connect(self.add_repo)
         button_layout.addWidget(self.add_btn)
+
+        self.import_btn = ImportRepoButton(self)
+        self.import_btn.repo_selected.connect(self.import_third_party_repo)
+        button_layout.addWidget(self.import_btn)
 
         self.edit_btn = QPushButton(_("Edit"))
         self.edit_btn.clicked.connect(self.edit_repo)
@@ -92,6 +97,29 @@ class RepositoriesWindow(QMainWindow):
         layout.addWidget(self.table)
 
         self.repo_entries: list[RepoEntry] = []
+        self.load_repos()
+
+    def import_third_party_repo(self, entry: RepoEntry) -> None:
+        if any(entry.id == existing_entry.id for existing_entry in self.repo_entries):
+            QMessageBox.information(
+                self,
+                _("Information"),
+                _("Repository '{}' already exists.").format(entry.name),
+            )
+            return
+
+        result = save_repo_entry(entry)
+        if result != "ok":
+            QMessageBox.critical(
+                self, _("Error"), _("Failed to import repository: %s") % result
+            )
+            return
+
+        QMessageBox.information(
+            self,
+            _("Success"),
+            _("Repository '{}' imported successfully.").format(entry.name),
+        )
         self.load_repos()
 
     def load_repos(self) -> None:

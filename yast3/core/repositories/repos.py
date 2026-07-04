@@ -163,9 +163,10 @@ def save_repo_entry(
 
     # Use pkexec to get root permission
     try:
-        with tempfile.NamedTemporaryFile(mode="w", suffix=".repo", delete=False) as tmp:
-            config.write(tmp)
+        with tempfile.NamedTemporaryFile(mode="w+", suffix=".repo", delete=False) as tmp:
             tmp_path = tmp.name
+            config.write(tmp)
+            os.chmod(tmp_path, 0o664)
 
         result = subprocess.run(
             ["pkexec", "cp", tmp_path, filepath],
