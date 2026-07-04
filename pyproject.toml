@@ -46,6 +46,7 @@ yast3-tui = "yast3.tui.__main__:main"
 packages = [
     "yast3.core",
     "yast3.core.cron",
+    "yast3.core.distro",
     "yast3.core.git",
     "yast3.core.hostname",
     "yast3.core.hosts",
