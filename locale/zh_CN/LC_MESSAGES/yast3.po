@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  yast3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-03 04:27+0000\n"
+"POT-Creation-Date: 2026-07-04 07:58+0000\n"
 "PO-Revision-Date: 2026-06-14 05:40+0000\n"
 "Last-Translator: \n"
 "Language: zh_CN\n"
@@ -16,6 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
+
+#: yast3/gtk4/module_button.py:51 yast3/qt6/module_button.py:43
+msgid "Experimental"
+msgstr "实验性"
 
 #: yast3/gtk4/cron/__init__.py:18 yast3/qt6/cron/__init__.py:12
 #: yast3/tui/cron/__init__.py:12
@@ -49,7 +53,7 @@ msgstr "添加计划任务"
 #: yast3/gtk4/ssh/dialogs.py:27 yast3/gtk4/ssh/dialogs.py:145
 #: yast3/gtk4/ssh/keys/generate_dialog.py:26 yast3/tui/cron/window.py:296
 #: yast3/tui/hostname/window.py:70 yast3/tui/hosts/window.py:273
-#: yast3/tui/proxy/window.py:89 yast3/tui/repositories/window.py:355
+#: yast3/tui/proxy/window.py:92 yast3/tui/repositories/window.py:355
 #: yast3/tui/repositories/window.py:484 yast3/tui/ssh/window.py:526
 #: yast3/tui/ssh/window.py:626
 msgid "Cancel"
@@ -155,7 +159,7 @@ msgstr "验证错误"
 #: yast3/gtk4/repositories/window.py:39 yast3/gtk4/ssh/dialogs.py:60
 #: yast3/gtk4/ssh/hosts/tab.py:33 yast3/gtk4/ssh/keys/tab.py:33
 #: yast3/qt6/cron/cron_tab.py:37 yast3/qt6/hosts/window.py:40
-#: yast3/qt6/repositories/window.py:43 yast3/qt6/ssh/dialogs.py:58
+#: yast3/qt6/repositories/window.py:44 yast3/qt6/ssh/dialogs.py:58
 #: yast3/qt6/ssh/hosts/tab.py:38 yast3/qt6/ssh/keys/tab.py:36
 #: yast3/tui/cron/window.py:77 yast3/tui/hosts/window.py:69
 #: yast3/tui/repositories/window.py:70 yast3/tui/ssh/window.py:259
@@ -165,7 +169,7 @@ msgstr "添加"
 #: yast3/gtk4/cron/cron_tab.py:37 yast3/gtk4/hosts/window.py:38
 #: yast3/gtk4/repositories/window.py:43 yast3/gtk4/ssh/hosts/tab.py:37
 #: yast3/qt6/cron/cron_tab.py:41 yast3/qt6/hosts/window.py:43
-#: yast3/qt6/repositories/window.py:47 yast3/qt6/ssh/hosts/tab.py:42
+#: yast3/qt6/repositories/window.py:52 yast3/qt6/ssh/hosts/tab.py:42
 #: yast3/tui/cron/window.py:78 yast3/tui/hosts/window.py:70
 #: yast3/tui/repositories/window.py:71 yast3/tui/ssh/window.py:260
 msgid "Edit"
@@ -174,7 +178,7 @@ msgstr "编辑"
 #: yast3/gtk4/cron/cron_tab.py:41 yast3/gtk4/hosts/window.py:42
 #: yast3/gtk4/repositories/window.py:47 yast3/gtk4/ssh/hosts/tab.py:41
 #: yast3/gtk4/ssh/keys/tab.py:42 yast3/qt6/cron/cron_tab.py:45
-#: yast3/qt6/hosts/window.py:47 yast3/qt6/repositories/window.py:51
+#: yast3/qt6/hosts/window.py:47 yast3/qt6/repositories/window.py:56
 #: yast3/qt6/ssh/hosts/tab.py:46 yast3/qt6/ssh/keys/tab.py:45
 #: yast3/tui/cron/window.py:79 yast3/tui/hosts/window.py:71
 #: yast3/tui/repositories/window.py:72 yast3/tui/ssh/window.py:261
@@ -184,13 +188,13 @@ msgstr "删除"
 
 #: yast3/gtk4/cron/cron_tab.py:48 yast3/gtk4/git/window.py:71
 #: yast3/gtk4/hostname/window.py:49 yast3/gtk4/hosts/window.py:49
-#: yast3/gtk4/proxy/window.py:44 yast3/gtk4/ssh/hosts/tab.py:48
+#: yast3/gtk4/proxy/window.py:45 yast3/gtk4/ssh/hosts/tab.py:48
 #: yast3/qt6/cron/cron_tab.py:51 yast3/qt6/git/window.py:79
 #: yast3/qt6/hostname/window.py:51 yast3/qt6/hosts/window.py:53
-#: yast3/qt6/proxy/window.py:52 yast3/qt6/ssh/hosts/tab.py:52
+#: yast3/qt6/proxy/window.py:56 yast3/qt6/ssh/hosts/tab.py:52
 #: yast3/tui/cron/window.py:80 yast3/tui/git/window.py:81
 #: yast3/tui/hostname/window.py:69 yast3/tui/hosts/window.py:72
-#: yast3/tui/proxy/window.py:88 yast3/tui/ssh/window.py:262
+#: yast3/tui/proxy/window.py:91 yast3/tui/ssh/window.py:262
 msgid "Save"
 msgstr "保存"
 
@@ -198,8 +202,8 @@ msgstr "保存"
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:38
 #: yast3/gtk4/repositories/window.py:98 yast3/gtk4/ssh/hosts/tab.py:74
 #: yast3/qt6/repositories/repo_edit_dialog.py:42
-#: yast3/qt6/repositories/window.py:65 yast3/tui/cron/window.py:92
-#: yast3/tui/hosts/window.py:79 yast3/tui/proxy/window.py:116
+#: yast3/qt6/repositories/window.py:70 yast3/tui/cron/window.py:92
+#: yast3/tui/hosts/window.py:79 yast3/tui/proxy/window.py:120
 #: yast3/tui/repositories/window.py:80 yast3/tui/repositories/window.py:349
 #: yast3/tui/ssh/window.py:288
 msgid "Enabled"
@@ -215,9 +219,9 @@ msgstr "启用"
 #: yast3/gtk4/hosts/window.py:120 yast3/gtk4/hosts/window.py:123
 #: yast3/gtk4/hosts/window.py:177 yast3/gtk4/hosts/window.py:213
 #: yast3/gtk4/hosts/window.py:251 yast3/gtk4/hosts/window.py:253
-#: yast3/gtk4/hosts/window.py:255 yast3/gtk4/proxy/window.py:81
-#: yast3/gtk4/proxy/window.py:87 yast3/gtk4/proxy/window.py:93
-#: yast3/gtk4/proxy/window.py:117 yast3/gtk4/proxy/window.py:123
+#: yast3/gtk4/hosts/window.py:255 yast3/gtk4/proxy/window.py:83
+#: yast3/gtk4/proxy/window.py:89 yast3/gtk4/proxy/window.py:95
+#: yast3/gtk4/proxy/window.py:118 yast3/gtk4/proxy/window.py:124
 #: yast3/gtk4/repositories/window.py:129 yast3/gtk4/repositories/window.py:191
 #: yast3/gtk4/repositories/window.py:195 yast3/gtk4/repositories/window.py:246
 #: yast3/gtk4/repositories/window.py:250 yast3/gtk4/repositories/window.py:355
@@ -238,19 +242,19 @@ msgstr "启用"
 #: yast3/qt6/hosts/window.py:109 yast3/qt6/hosts/window.py:179
 #: yast3/qt6/hosts/window.py:216 yast3/qt6/hosts/window.py:270
 #: yast3/qt6/hosts/window.py:275 yast3/qt6/hosts/window.py:278
-#: yast3/qt6/proxy/window.py:78 yast3/qt6/proxy/window.py:82
-#: yast3/qt6/proxy/window.py:88 yast3/qt6/proxy/window.py:112
-#: yast3/qt6/proxy/window.py:118 yast3/qt6/repositories/window.py:106
-#: yast3/qt6/repositories/window.py:156 yast3/qt6/repositories/window.py:159
-#: yast3/qt6/repositories/window.py:185 yast3/qt6/repositories/window.py:203
-#: yast3/qt6/repositories/window.py:206 yast3/qt6/repositories/window.py:228
-#: yast3/qt6/repositories/window.py:250 yast3/qt6/repositories/window.py:278
-#: yast3/qt6/repositories/window.py:293 yast3/qt6/ssh/__init__.py:69
-#: yast3/qt6/ssh/dialogs.py:86 yast3/qt6/ssh/dialogs.py:92
-#: yast3/qt6/ssh/hosts/tab.py:90 yast3/qt6/ssh/hosts/tab.py:141
-#: yast3/qt6/ssh/hosts/tab.py:162 yast3/qt6/ssh/hosts/tab.py:176
-#: yast3/qt6/ssh/hosts/tab.py:226 yast3/qt6/ssh/hosts/tab.py:229
-#: yast3/qt6/ssh/keys/generate_dialog.py:177
+#: yast3/qt6/proxy/window.py:84 yast3/qt6/proxy/window.py:88
+#: yast3/qt6/proxy/window.py:94 yast3/qt6/proxy/window.py:117
+#: yast3/qt6/proxy/window.py:123 yast3/qt6/repositories/window.py:114
+#: yast3/qt6/repositories/window.py:134 yast3/qt6/repositories/window.py:184
+#: yast3/qt6/repositories/window.py:187 yast3/qt6/repositories/window.py:213
+#: yast3/qt6/repositories/window.py:231 yast3/qt6/repositories/window.py:234
+#: yast3/qt6/repositories/window.py:256 yast3/qt6/repositories/window.py:278
+#: yast3/qt6/repositories/window.py:306 yast3/qt6/repositories/window.py:321
+#: yast3/qt6/ssh/__init__.py:69 yast3/qt6/ssh/dialogs.py:86
+#: yast3/qt6/ssh/dialogs.py:92 yast3/qt6/ssh/hosts/tab.py:90
+#: yast3/qt6/ssh/hosts/tab.py:141 yast3/qt6/ssh/hosts/tab.py:162
+#: yast3/qt6/ssh/hosts/tab.py:176 yast3/qt6/ssh/hosts/tab.py:226
+#: yast3/qt6/ssh/hosts/tab.py:229 yast3/qt6/ssh/keys/generate_dialog.py:177
 #: yast3/qt6/ssh/keys/generate_dialog.py:195
 #: yast3/qt6/ssh/keys/generate_dialog.py:237
 #: yast3/qt6/ssh/keys/generate_dialog.py:242 yast3/qt6/ssh/keys/tab.py:177
@@ -264,8 +268,9 @@ msgstr "错误"
 #: yast3/gtk4/ssh/hosts/tab.py:159 yast3/gtk4/ssh/hosts/tab.py:187
 #: yast3/qt6/cron/cron_tab.py:147 yast3/qt6/cron/cron_tab.py:160
 #: yast3/qt6/hosts/window.py:187 yast3/qt6/hosts/window.py:224
-#: yast3/qt6/repositories/window.py:191 yast3/qt6/repositories/window.py:234
-#: yast3/qt6/ssh/hosts/tab.py:148 yast3/qt6/ssh/hosts/tab.py:169
+#: yast3/qt6/repositories/window.py:106 yast3/qt6/repositories/window.py:219
+#: yast3/qt6/repositories/window.py:262 yast3/qt6/ssh/hosts/tab.py:148
+#: yast3/qt6/ssh/hosts/tab.py:169
 msgid "Information"
 msgstr "信息"
 
@@ -283,8 +288,8 @@ msgstr "请选择要删除的计划任务。"
 #: yast3/gtk4/hosts/window.py:229 yast3/gtk4/repositories/window.py:294
 #: yast3/gtk4/repositories/window.py:330 yast3/gtk4/ssh/hosts/tab.py:204
 #: yast3/qt6/cron/cron_tab.py:164 yast3/qt6/hostname/window.py:109
-#: yast3/qt6/hosts/window.py:229 yast3/qt6/repositories/window.py:241
-#: yast3/qt6/repositories/window.py:261 yast3/qt6/ssh/hosts/tab.py:181
+#: yast3/qt6/hosts/window.py:229 yast3/qt6/repositories/window.py:269
+#: yast3/qt6/repositories/window.py:289 yast3/qt6/ssh/hosts/tab.py:181
 #: yast3/qt6/ssh/keys/generate_dialog.py:184
 msgid "Confirm"
 msgstr "确认"
@@ -295,15 +300,15 @@ msgstr "您确定要删除此计划任务吗？"
 
 #: yast3/gtk4/cron/cron_tab.py:240 yast3/gtk4/git/window.py:276
 #: yast3/gtk4/hostname/window.py:106 yast3/gtk4/hosts/window.py:249
-#: yast3/gtk4/proxy/window.py:110 yast3/gtk4/repositories/window.py:346
+#: yast3/gtk4/proxy/window.py:111 yast3/gtk4/repositories/window.py:346
 #: yast3/gtk4/ssh/__init__.py:97 yast3/gtk4/ssh/hosts/tab.py:224
 #: yast3/gtk4/ssh/keys/tab.py:194 yast3/gtk4/ssh/keys/tab.py:246
 #: yast3/qt6/cron/cron_tab.py:201 yast3/qt6/git/window.py:270
 #: yast3/qt6/hostname/window.py:124 yast3/qt6/hosts/window.py:264
-#: yast3/qt6/proxy/window.py:105 yast3/qt6/repositories/window.py:273
-#: yast3/qt6/ssh/__init__.py:77 yast3/qt6/ssh/hosts/tab.py:222
-#: yast3/qt6/ssh/keys/generate_dialog.py:232 yast3/qt6/ssh/keys/tab.py:174
-#: yast3/qt6/ssh/keys/tab.py:221
+#: yast3/qt6/proxy/window.py:110 yast3/qt6/repositories/window.py:120
+#: yast3/qt6/repositories/window.py:301 yast3/qt6/ssh/__init__.py:77
+#: yast3/qt6/ssh/hosts/tab.py:222 yast3/qt6/ssh/keys/generate_dialog.py:232
+#: yast3/qt6/ssh/keys/tab.py:174 yast3/qt6/ssh/keys/tab.py:221
 msgid "Success"
 msgstr "成功"
 
@@ -312,8 +317,8 @@ msgid "Cron jobs saved successfully."
 msgstr "计划任务保存成功。"
 
 #: yast3/gtk4/cron/cron_tab.py:242 yast3/gtk4/hostname/window.py:109
-#: yast3/gtk4/proxy/window.py:118 yast3/qt6/cron/cron_tab.py:204
-#: yast3/qt6/hostname/window.py:130 yast3/qt6/proxy/window.py:113
+#: yast3/gtk4/proxy/window.py:119 yast3/qt6/cron/cron_tab.py:204
+#: yast3/qt6/hostname/window.py:130 yast3/qt6/proxy/window.py:118
 msgid "Permission denied. Root permission required."
 msgstr "权限被拒绝。需要 root 权限。"
 
@@ -570,14 +575,14 @@ msgstr "主机配置 — YaST3"
 msgid "IP Address"
 msgstr "IP 地址"
 
-#: yast3/gtk4/hosts/window.py:120 yast3/gtk4/proxy/window.py:88
-#: yast3/qt6/hosts/window.py:104 yast3/qt6/proxy/window.py:83
+#: yast3/gtk4/hosts/window.py:120 yast3/gtk4/proxy/window.py:90
+#: yast3/qt6/hosts/window.py:104 yast3/qt6/proxy/window.py:89
 #, python-brace-format
 msgid "Cannot read {0}. Root permission required."
 msgstr "无法读取 {0}。需要 root 权限。"
 
-#: yast3/gtk4/hosts/window.py:123 yast3/gtk4/proxy/window.py:82
-#: yast3/qt6/hosts/window.py:109 yast3/qt6/proxy/window.py:78
+#: yast3/gtk4/hosts/window.py:123 yast3/gtk4/proxy/window.py:84
+#: yast3/qt6/hosts/window.py:109 yast3/qt6/proxy/window.py:84
 #, python-brace-format
 msgid "{0} not found."
 msgstr "{0} 未找到。"
@@ -657,42 +662,45 @@ msgstr "代理"
 msgid "Proxy Configuration — YaST3"
 msgstr "代理配置 — YaST3"
 
-#: yast3/gtk4/proxy/window.py:30 yast3/qt6/proxy/window.py:37
+#: yast3/gtk4/proxy/window.py:30 yast3/qt6/proxy/window.py:39
 msgid "Enable Proxy"
 msgstr "启用代理"
 
-#: yast3/gtk4/proxy/window.py:33 yast3/qt6/proxy/window.py:40
+#: yast3/gtk4/proxy/window.py:33 yast3/qt6/proxy/window.py:42
 #: yast3/tui/proxy/window.py:73
 msgid "HTTP Proxy"
 msgstr "HTTP 代理"
 
-msgid "SOCKS Proxy"
-msgstr "SOCKS 代理"
-#: yast3/gtk4/proxy/window.py:34 yast3/qt6/proxy/window.py:41
+#: yast3/gtk4/proxy/window.py:34 yast3/qt6/proxy/window.py:43
 #: yast3/tui/proxy/window.py:76
 msgid "HTTPS Proxy"
 msgstr "HTTPS 代理"
 
-#: yast3/gtk4/proxy/window.py:35 yast3/qt6/proxy/window.py:42
+#: yast3/gtk4/proxy/window.py:35 yast3/qt6/proxy/window.py:44
 #: yast3/tui/proxy/window.py:79
 msgid "FTP Proxy"
 msgstr "FTP 代理"
 
-#: yast3/gtk4/proxy/window.py:37 yast3/qt6/proxy/window.py:45
+#: yast3/gtk4/proxy/window.py:36 yast3/qt6/proxy/window.py:45
 #: yast3/tui/proxy/window.py:82
+msgid "SOCKS Proxy"
+msgstr "SOCKS 代理"
+
+#: yast3/gtk4/proxy/window.py:38 yast3/qt6/proxy/window.py:48
+#: yast3/tui/proxy/window.py:85
 msgid "No Proxy"
 msgstr "不使用代理"
 
-#: yast3/gtk4/proxy/window.py:94 yast3/qt6/proxy/window.py:89
+#: yast3/gtk4/proxy/window.py:96 yast3/qt6/proxy/window.py:95
 #, python-brace-format
 msgid "Failed to load proxy configuration: {0}"
 msgstr "加载代理配置失败：{0}"
 
-#: yast3/gtk4/proxy/window.py:111 yast3/qt6/proxy/window.py:106
+#: yast3/gtk4/proxy/window.py:112 yast3/qt6/proxy/window.py:111
 msgid "Proxy configuration saved successfully."
 msgstr "代理配置已成功保存。"
 
-#: yast3/gtk4/proxy/window.py:124 yast3/qt6/proxy/window.py:119
+#: yast3/gtk4/proxy/window.py:125 yast3/qt6/proxy/window.py:124
 #, python-brace-format
 msgid "Failed to save proxy configuration: {0}"
 msgstr "保存代理配置失败：{0}"
@@ -709,7 +717,7 @@ msgstr "软件源配置 — YaST3"
 #: yast3/gtk4/repositories/dialogs/switch_mirror.py:17
 #: yast3/gtk4/repositories/window.py:51
 #: yast3/qt6/repositories/switch_mirror_dialog.py:21
-#: yast3/qt6/repositories/window.py:55 yast3/tui/repositories/window.py:73
+#: yast3/qt6/repositories/window.py:60 yast3/tui/repositories/window.py:73
 #: yast3/tui/repositories/window.py:473
 msgid "Switch Mirror"
 msgstr "切换镜像"
@@ -717,7 +725,7 @@ msgstr "切换镜像"
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:36
 #: yast3/gtk4/repositories/window.py:77 yast3/gtk4/ssh/keys/tab.py:68
 #: yast3/qt6/repositories/repo_edit_dialog.py:37
-#: yast3/qt6/repositories/window.py:65 yast3/qt6/ssh/keys/tab.py:61
+#: yast3/qt6/repositories/window.py:70 yast3/qt6/ssh/keys/tab.py:61
 #: yast3/tui/repositories/window.py:80 yast3/tui/repositories/window.py:328
 #: yast3/tui/ssh/window.py:293 yast3/tui/ssh/window.py:613
 msgid "Name"
@@ -726,14 +734,14 @@ msgstr "名称"
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:59
 #: yast3/gtk4/repositories/window.py:84
 #: yast3/qt6/repositories/repo_edit_dialog.py:58
-#: yast3/qt6/repositories/window.py:65 yast3/tui/repositories/window.py:80
+#: yast3/qt6/repositories/window.py:70 yast3/tui/repositories/window.py:80
 msgid "URL"
 msgstr "URL"
 
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:88
 #: yast3/gtk4/repositories/window.py:90
 #: yast3/qt6/repositories/repo_edit_dialog.py:94
-#: yast3/qt6/repositories/window.py:65 yast3/tui/repositories/window.py:80
+#: yast3/qt6/repositories/window.py:70 yast3/tui/repositories/window.py:80
 #: yast3/tui/repositories/window.py:337
 msgid "Priority"
 msgstr "优先级"
@@ -741,41 +749,41 @@ msgstr "优先级"
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:42
 #: yast3/gtk4/repositories/window.py:106
 #: yast3/qt6/repositories/repo_edit_dialog.py:46
-#: yast3/qt6/repositories/window.py:65 yast3/tui/repositories/window.py:80
+#: yast3/qt6/repositories/window.py:70 yast3/tui/repositories/window.py:80
 #: yast3/tui/repositories/window.py:350
 msgid "Auto Refresh"
 msgstr "自动刷新"
 
-#: yast3/gtk4/repositories/window.py:129 yast3/qt6/repositories/window.py:107
+#: yast3/gtk4/repositories/window.py:129 yast3/qt6/repositories/window.py:135
 msgid "Cannot read repository directory. Root permission required."
 msgstr "无法读取软件源目录。需要 root 权限。"
 
 #: yast3/gtk4/repositories/window.py:191 yast3/gtk4/repositories/window.py:246
-#: yast3/qt6/repositories/window.py:156 yast3/qt6/repositories/window.py:203
+#: yast3/qt6/repositories/window.py:184 yast3/qt6/repositories/window.py:231
 msgid "Repository ID is required."
 msgstr "软件源 ID 是必需的。"
 
 #: yast3/gtk4/repositories/window.py:195 yast3/gtk4/repositories/window.py:250
-#: yast3/qt6/repositories/window.py:159 yast3/qt6/repositories/window.py:206
+#: yast3/qt6/repositories/window.py:187 yast3/qt6/repositories/window.py:234
 msgid "URL is required."
 msgstr "URL 是必需的。"
 
-#: yast3/gtk4/repositories/window.py:227 yast3/qt6/repositories/window.py:191
+#: yast3/gtk4/repositories/window.py:227 yast3/qt6/repositories/window.py:219
 #: yast3/tui/repositories/window.py:139
 msgid "Please select a repository to edit."
 msgstr "请选择要编辑的软件源。"
 
-#: yast3/gtk4/repositories/window.py:281 yast3/qt6/repositories/window.py:234
+#: yast3/gtk4/repositories/window.py:281 yast3/qt6/repositories/window.py:262
 #: yast3/tui/repositories/window.py:156
 msgid "Please select a repository to delete."
 msgstr "请选择要删除的软件源。"
 
-#: yast3/gtk4/repositories/window.py:296 yast3/qt6/repositories/window.py:242
+#: yast3/gtk4/repositories/window.py:296 yast3/qt6/repositories/window.py:270
 #, python-brace-format
 msgid "Are you sure you want to delete repository '{}'?"
 msgstr "您确定要删除软件源 '{}' 吗？"
 
-#: yast3/gtk4/repositories/window.py:333 yast3/qt6/repositories/window.py:262
+#: yast3/gtk4/repositories/window.py:333 yast3/qt6/repositories/window.py:290
 #, python-brace-format
 msgid ""
 "Are you sure you want to switch mirrors?\n"
@@ -788,7 +796,7 @@ msgstr ""
 "openSUSE 镜像：{}\n"
 "Packman 镜像：{}"
 
-#: yast3/gtk4/repositories/window.py:346 yast3/qt6/repositories/window.py:274
+#: yast3/gtk4/repositories/window.py:346 yast3/qt6/repositories/window.py:302
 #: yast3/tui/repositories/window.py:176
 msgid "Mirror switching completed successfully."
 msgstr "镜像切换已成功完成。"
@@ -1114,10 +1122,6 @@ msgstr ""
 msgid "Key deleted successfully."
 msgstr "密钥删除成功。"
 
-#: yast3/qt6/module_button.py:43
-msgid "Experimental"
-msgstr "实验性"
-
 #: yast3/qt6/git/window.py:234
 msgid "All Files (*)"
 msgstr "所有文件 (*)"
@@ -1130,18 +1134,37 @@ msgstr "保存成功"
 msgid "Reset to original values"
 msgstr "恢复为原始值"
 
-#: yast3/qt6/repositories/window.py:185 yast3/qt6/repositories/window.py:228
-#: yast3/qt6/repositories/window.py:293
+#: yast3/qt6/repositories/import_repo_button.py:21
+msgid "Import"
+msgstr "导入"
+
+#: yast3/qt6/repositories/window.py:107
+#, python-brace-format
+msgid "Repository '{}' already exists."
+msgstr "软件源 '{}' 已存在。"
+
+#: yast3/qt6/repositories/window.py:114
+#, python-format
+msgid "Failed to import repository: %s"
+msgstr "导入软件源失败：%s"
+
+#: yast3/qt6/repositories/window.py:121
+#, python-brace-format
+msgid "Repository '{}' imported successfully."
+msgstr "软件源 '{}' 导入成功。"
+
+#: yast3/qt6/repositories/window.py:213 yast3/qt6/repositories/window.py:256
+#: yast3/qt6/repositories/window.py:321
 #, python-format
 msgid "Failed to save repository: %s"
 msgstr "保存软件源失败：%s"
 
-#: yast3/qt6/repositories/window.py:250
+#: yast3/qt6/repositories/window.py:278
 #, python-format
 msgid "Failed to delete repository: %s"
 msgstr "删除软件源失败：%s"
 
-#: yast3/qt6/repositories/window.py:278
+#: yast3/qt6/repositories/window.py:306
 #, python-format
 msgid "Failed to switch mirrors: %s"
 msgstr "切换镜像失败：%s"
@@ -1224,7 +1247,7 @@ msgid "Success: Cron jobs saved successfully."
 msgstr "成功：计划任务保存成功。"
 
 #: yast3/tui/cron/window.py:200 yast3/tui/hostname/window.py:135
-#: yast3/tui/proxy/window.py:155
+#: yast3/tui/proxy/window.py:158
 msgid "Error: Permission denied. Root permission required."
 msgstr "错误：权限被拒绝。需要 root 权限。"
 
@@ -1300,12 +1323,12 @@ msgstr "成功：主机名已成功更改为 '{0}'。"
 msgid "Error: Authentication failed or pkexec not available."
 msgstr "错误：认证失败或 pkexec 不可用。"
 
-#: yast3/tui/hosts/window.py:92 yast3/tui/proxy/window.py:105
+#: yast3/tui/hosts/window.py:92 yast3/tui/proxy/window.py:109
 #, python-brace-format
 msgid "Error: Cannot read {0}. Root permission required."
 msgstr "错误：无法读取 {0}。需要 root 权限。"
 
-#: yast3/tui/hosts/window.py:97 yast3/tui/proxy/window.py:102
+#: yast3/tui/hosts/window.py:97 yast3/tui/proxy/window.py:106
 #, python-brace-format
 msgid "Error: {0} not found."
 msgstr "错误：未找到 {0}。"
@@ -1367,25 +1390,25 @@ msgstr "关闭"
 msgid "Proxy Configuration"
 msgstr "代理配置"
 
-#: yast3/tui/proxy/window.py:110
+#: yast3/tui/proxy/window.py:114
 #, python-brace-format
 msgid "Error: Failed to load proxy configuration: {0}"
 msgstr "错误：加载代理配置失败：{0}"
 
-#: yast3/tui/proxy/window.py:116
+#: yast3/tui/proxy/window.py:120
 msgid "Disabled"
 msgstr "禁用"
 
-#: yast3/tui/proxy/window.py:117
+#: yast3/tui/proxy/window.py:121
 #, python-brace-format
 msgid "Proxy State: {0}"
 msgstr "代理状态：{0}"
 
-#: yast3/tui/proxy/window.py:151
+#: yast3/tui/proxy/window.py:154
 msgid "Success: Proxy configuration saved successfully."
 msgstr "成功：代理配置已成功保存。"
 
-#: yast3/tui/proxy/window.py:160
+#: yast3/tui/proxy/window.py:163
 #, python-brace-format
 msgid "Error: Failed to save proxy configuration: {0}"
 msgstr "错误：保存代理配置失败：{0}"
