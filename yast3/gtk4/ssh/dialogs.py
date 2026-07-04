@@ -119,7 +119,7 @@ class SSHOptionEditDialog(Gtk.Dialog):
             buttons=Gtk.ButtonsType.OK,
             text=_("Error"),
         )
-        dialog.format_secondary_text(message)
+        dialog.set_property("secondary-text", message)
         dialog.connect("response", lambda d, r: d.destroy())
         dialog.present()
 

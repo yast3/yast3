@@ -219,7 +219,7 @@ class CronTab(Gtk.Box):
             buttons=Gtk.ButtonsType.YES_NO,
             text=_("Confirm"),
         )
-        confirm_dialog.format_secondary_text(_("Are you sure you want to delete this cron job?"))
+        confirm_dialog.set_property("secondary-text", _("Are you sure you want to delete this cron job?"))
         confirm_dialog.connect("response", self._on_delete_confirm_response, tree_iter)
         confirm_dialog.present()
 
@@ -252,6 +252,6 @@ class CronTab(Gtk.Box):
             buttons=Gtk.ButtonsType.OK,
             text=title,
         )
-        dialog.format_secondary_text(message)
+        dialog.set_property("secondary-text", message)
         dialog.connect("response", lambda d, r: d.destroy())
         dialog.present()

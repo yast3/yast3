@@ -119,7 +119,7 @@ class CronEditDialog(Gtk.Dialog):
             buttons=Gtk.ButtonsType.OK,
             text=_("Suggestions"),
         )
-        dialog.format_secondary_text(text)
+        dialog.set_property("secondary-text", text)
         dialog.connect("response", lambda d, r: d.destroy())
         dialog.present()
 
@@ -145,7 +145,7 @@ class CronEditDialog(Gtk.Dialog):
                 buttons=Gtk.ButtonsType.OK,
                 text=_("Validation Error"),
             )
-            dialog.format_secondary_text(msg)
+            dialog.set_property("secondary-text", msg)
             dialog.connect("response", lambda d, r: d.destroy())
             dialog.present()
             return

@@ -109,6 +109,6 @@ class GenerateKeyDialog(Gtk.Dialog):
                 buttons=Gtk.ButtonsType.OK,
                 text=_("Error"),
             )
-            dialog.format_secondary_text(_("Failed to generate key: {0}").format(error))
+            dialog.set_property("secondary-text", _("Failed to generate key: {0}").format(error))
             dialog.connect("response", lambda d, r: d.destroy())
             dialog.present()

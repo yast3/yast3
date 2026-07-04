@@ -56,7 +56,7 @@ class SSHClientModule(Module):
             buttons=Gtk.ButtonsType.YES_NO,
             text=_("SSH Permission Warning"),
         )
-        dialog.format_secondary_text(
+        dialog.set_property("secondary-text", 
             _(
                 "The following SSH items have insecure permissions:\n\n"
                 "{0}\n\n"
@@ -81,7 +81,7 @@ class SSHClientModule(Module):
                     buttons=Gtk.ButtonsType.OK,
                     text=_("Error"),
                 )
-                error_dialog.format_secondary_text(
+                error_dialog.set_property("secondary-text", 
                     _(
                         "Failed to fix permissions for the following items:\n\n" "{0}"
                     ).format(failed_names)
@@ -96,7 +96,7 @@ class SSHClientModule(Module):
                     buttons=Gtk.ButtonsType.OK,
                     text=_("Success"),
                 )
-                success_dialog.format_secondary_text(_("SSH permissions have been fixed successfully."))
+                success_dialog.set_property("secondary-text", _("SSH permissions have been fixed successfully."))
                 success_dialog.connect("response", lambda d, r: d.destroy())
                 success_dialog.present()
         dialog.destroy()

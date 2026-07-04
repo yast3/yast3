@@ -121,7 +121,7 @@ class HostnameWindow(Gtk.ApplicationWindow):
             buttons=Gtk.ButtonsType.OK,
             text=title,
         )
-        dialog.format_secondary_text(message)
+        dialog.set_property("secondary-text", message)
         dialog.connect("response", lambda d, r: d.destroy())
         dialog.present()
 
@@ -134,7 +134,7 @@ class HostnameWindow(Gtk.ApplicationWindow):
             buttons=Gtk.ButtonsType.YES_NO,
             text=title,
         )
-        dialog.format_secondary_text(message)
+        dialog.set_property("secondary-text", message)
 
         result = False
 

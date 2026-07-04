@@ -222,7 +222,7 @@ class KeysTab(Gtk.Box):
             buttons=Gtk.ButtonsType.YES_NO,
             text=_("Confirm Delete"),
         )
-        confirm_dialog.format_secondary_text(
+        confirm_dialog.set_property("secondary-text", 
             _("Are you sure you want to delete the following keys?\n\n{0}").format(
                 "\n".join(files_to_delete)
             )
@@ -260,6 +260,6 @@ class KeysTab(Gtk.Box):
             buttons=Gtk.ButtonsType.OK,
             text=title,
         )
-        dialog.format_secondary_text(message)
+        dialog.set_property("secondary-text", message)
         dialog.connect("response", lambda d, r: d.destroy())
         dialog.present()

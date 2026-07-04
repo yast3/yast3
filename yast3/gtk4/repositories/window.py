@@ -14,6 +14,7 @@ from yast3.core.repositories import (
     save_repo_entry,
     switch_mirror,
 )
+from yast3.gtk4.repositories.import_repo_button import ImportRepoButton
 from yast3.gtk4.repositories.dialogs import RepoEditDialog, SwitchMirrorDialog
 
 
@@ -39,6 +40,9 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
         self.add_btn = Gtk.Button(label=_("Add"))
         self.add_btn.connect("clicked", self._on_add_clicked)
         button_box.append(self.add_btn)
+
+        self.import_btn = ImportRepoButton(self._on_import_repo_selected)
+        button_box.append(self.import_btn)
 
         self.edit_btn = Gtk.Button(label=_("Edit"))
         self.edit_btn.connect("clicked", self._on_edit_clicked)
@@ -220,6 +224,32 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
                 self._handle_save_error(result)
         dialog.destroy()
 
+    def _on_import_repo_selected(self, entry: RepoEntry) -> None:
+        """Import a predefined third-party repository."""
+        if any(entry.id == existing_entry.id for existing_entry in self.repo_entries):
+            self._show_message_dialog(
+                Gtk.MessageType.INFO,
+                _("Information"),
+                _("Repository '{}' already exists.").format(entry.name),
+            )
+            return
+
+        result = save_repo_entry(entry)
+        if result != "ok":
+            self._show_message_dialog(
+                Gtk.MessageType.ERROR,
+                _("Error"),
+                _("Failed to import repository: %s") % result,
+            )
+            return
+
+        self._show_message_dialog(
+            Gtk.MessageType.INFO,
+            _("Success"),
+            _("Repository '{}' imported successfully.").format(entry.name),
+        )
+        self._load_repos()
+
     def _on_edit_clicked(self, button: Gtk.Button) -> None:
         """Edit the selected repository."""
         model, tree_iter = self.selection.get_selected()
@@ -293,7 +323,10 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
             buttons=Gtk.ButtonsType.YES_NO,
             text=_("Confirm"),
         )
-        confirm_dialog.format_secondary_text(_("Are you sure you want to delete repository '{}'?").format(entry.name))
+        confirm_dialog.set_property("secondary-text", 
+            _("Are you sure you want to delete repository '{}'?"
+            ).format(entry.name)
+        )
         confirm_dialog.connect("response", self._on_delete_confirm_response, tree_iter, index)
         confirm_dialog.present()
 
@@ -329,7 +362,7 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
                 buttons=Gtk.ButtonsType.YES_NO,
                 text=_("Confirm"),
             )
-            confirm_dialog.format_secondary_text(
+            confirm_dialog.set_property("secondary-text", 
                 _("Are you sure you want to switch mirrors?\n\nopenSUSE mirror: {}\nPackman mirror: {}").format(
                     opensuse_url, packman_url
                 )
@@ -367,6 +400,6 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
             buttons=Gtk.ButtonsType.OK,
             text=title,
         )
-        dialog.format_secondary_text(message)
+        dialog.set_property("secondary-text", message)
         dialog.connect("response", lambda d, r: d.destroy())
         dialog.present()
