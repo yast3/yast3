@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.opensuse.yast3.gtk4</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>YaST3 GTK4</name>
+  <summary>Desktop settings shell built with Python and GTK4</summary>
+
+  <developer id="org.opensuse">
+    <name>openSUSE Community</name>
+  </developer>
+
+  <url type="homepage">https://github.com/YaST3/YaST3</url>
+
+  <description>
+    <p>
+      YaST3 GTK4 is a desktop settings shell for Linux systems. It provides a
+      Python-based GTK4 interface for system modules such as repositories,
+      proxy, hostname, hosts, and other administration tasks.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">org.opensuse.yast3.gtk4.desktop</launchable>
+
+  <provides>
+    <binary>yast3-gtk4</binary>
+  </provides>
+
+  <categories>
+    <category>Settings</category>
+    <category>System</category>
+  </categories>
+
+  <content_rating type="oars-1.1" />
+
+  <icon type="stock">yast3</icon>
+</component>
