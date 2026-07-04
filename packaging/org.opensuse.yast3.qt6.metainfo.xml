@@ -33,5 +33,5 @@
 
   <content_rating type="oars-1.1" />
 
-  <icon type="stock">yast3</icon>
+  <icon type="stock">org.opensuse.yast3.qt6</icon>
 </component>

@@ -33,5 +33,5 @@
 
   <content_rating type="oars-1.1" />
 
-  <icon type="stock">org.opensuse.yast3.gtk4</icon>
+  <icon type="stock">yast3</icon>
 </component>

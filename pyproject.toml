@@ -92,7 +92,7 @@ include-package-data = true
 [tool.setuptools.data-files]
 "share/applications" = ["packaging/org.opensuse.yast3.qt6.desktop", "packaging/org.opensuse.yast3.gtk4.desktop"]
 "share/metainfo" = ["packaging/org.opensuse.yast3.qt6.metainfo.xml", "packaging/org.opensuse.yast3.gtk4.metainfo.xml"]
-"share/icons/hicolor/64x64/apps" = ["packaging/yast3.svg"]
+"share/icons/hicolor/64x64/apps" = ["packaging/org.opensuse.yast3.qt6.svg", "packaging/org.opensuse.yast3.gtk4.svg"]
 "share/locale/en/LC_MESSAGES" = ["locale/en/LC_MESSAGES/yast3.mo"]
 "share/locale/zh_CN/LC_MESSAGES" = ["locale/zh_CN/LC_MESSAGES/yast3.mo"]
 "share/locale/zh_TW/LC_MESSAGES" = ["locale/zh_TW/LC_MESSAGES/yast3.mo"]
