@@ -4,6 +4,7 @@ from gi.repository import Gtk
 
 from yast3.gtk4 import (
     CronModule,
+    FlatpakModule,
     GitModule,
     HostnameModule,
     HostsModule,
@@ -20,6 +21,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
         self.modules = (
             CronModule(),
+            FlatpakModule(),
             GitModule(),
             HostnameModule(),
             HostsModule(),

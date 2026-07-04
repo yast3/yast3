@@ -12,6 +12,7 @@ from PySide6.QtWidgets import (
 
 from yast3.qt6 import (
     CronModule,
+    FlatpakModule,
     GitModule,
     HostnameModule,
     HostsModule,
@@ -27,6 +28,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.modules = (
             CronModule(),
+            FlatpakModule(),
             GitModule(),
             HostnameModule(),
             HostsModule(),
