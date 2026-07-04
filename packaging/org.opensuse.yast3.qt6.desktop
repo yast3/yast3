@@ -6,5 +6,5 @@ Comment=Desktop settings shell built with Python and Qt6
 Exec=yast3-qt6
 Icon=org.opensuse.yast3.qt6
 Terminal=false
-Categories=Settings;System;
-StartupWMClass=YaST3-Qt6
+Categories=Settings;
+StartupWMClass=org.opensuse.yast3.qt6

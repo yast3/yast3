@@ -11,8 +11,8 @@ def main() -> int:
     init_i18n()
 
     app = QApplication([])
-    app.setApplicationName("YaST3")
-    app.setDesktopFileName("yast3-qt6")
+    app.setApplicationName("YaST3 Qt6")
+    app.setDesktopFileName("org.opensuse.yast3.qt6")
 
     window = MainWindow()
     window.show()
