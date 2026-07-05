@@ -7,17 +7,14 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QMainWindow,
     QMessageBox,
-    QPushButton,
     QVBoxLayout,
     QWidget,
 )
 
-from yast3.core.flatpak import (
-    install_flatpak_pkexec,
-    is_flatpak_installed,
-    remove_flatpak_pkexec,
-)
+from yast3.core.flatpak import is_flatpak_installed
 from yast3.core.i18n import _
+from yast3.qt6.flatpak.install_button import InstallFlatpakWidget
+from yast3.qt6.flatpak.remove_button import RemoveFlatpakWidget
 from yast3.qt6.flatpak.remote_manager import FlatpakRemoteManager
 
 
@@ -37,9 +34,9 @@ class FlatpakWindow(QMainWindow):
 
         self.install_box = QWidget()
         install_layout = QVBoxLayout(self.install_box)
-        self.install_btn = QPushButton(_("Install Flatpak"))
-        self.install_btn.clicked.connect(self.install_flatpak)
-        install_layout.addWidget(self.install_btn)
+        self.install_widget = InstallFlatpakWidget(self.install_box)
+        self.install_widget.action_finished.connect(self._on_install_finished)
+        install_layout.addWidget(self.install_widget)
         layout.addWidget(self.install_box)
 
         self.manage_box = QWidget()
@@ -50,9 +47,9 @@ class FlatpakWindow(QMainWindow):
 
         danger_layout = QHBoxLayout()
         danger_layout.addStretch()
-        self.remove_flatpak_btn = QPushButton(_("Remove Flatpak"))
-        self.remove_flatpak_btn.clicked.connect(self.remove_flatpak)
-        danger_layout.addWidget(self.remove_flatpak_btn)
+        self.remove_widget = RemoveFlatpakWidget(self.manage_box)
+        self.remove_widget.action_finished.connect(self._on_remove_finished)
+        danger_layout.addWidget(self.remove_widget)
         manage_layout.addLayout(danger_layout)
 
         layout.addWidget(self.manage_box)
@@ -69,30 +66,37 @@ class FlatpakWindow(QMainWindow):
             self.manage_box.hide()
             self.install_box.show()
 
-    def install_flatpak(self) -> None:
-        try:
-            install_flatpak_pkexec()
+    def _on_install_finished(self, success: bool, error: str) -> None:
+        if success:
             QMessageBox.information(self, _("Success"), _("Flatpak installed successfully."))
             self.refresh_state()
-        except Exception as e:
-            QMessageBox.critical(self, _("Error"), _("Failed to install Flatpak: {0}").format(str(e)))
+        else:
+            QMessageBox.critical(
+                self,
+                _("Error"),
+                _("Failed to install Flatpak: {0}").format(error or _("Unknown error")),
+            )
 
-    def remove_flatpak(self) -> None:
-        reply = QMessageBox.question(
-            self,
-            _("Confirm"),
-            _("Are you sure you want to remove Flatpak?"),
-        )
-        if reply != QMessageBox.StandardButton.Yes:
-            return
-
-        try:
-            remove_flatpak_pkexec()
+    def _on_remove_finished(self, success: bool, error: str) -> None:
+        if success:
             QMessageBox.information(self, _("Success"), _("Flatpak removed successfully."))
             self.refresh_state()
-        except Exception as e:
-            QMessageBox.critical(self, _("Error"), _("Failed to remove Flatpak: {0}").format(str(e)))
+        else:
+            QMessageBox.critical(
+                self,
+                _("Error"),
+                _("Failed to remove Flatpak: {0}").format(error or _("Unknown error")),
+            )
 
     def closeEvent(self, event) -> None:
+        if self.install_widget.is_running() or self.remove_widget.is_running():
+            QMessageBox.warning(
+                self,
+                _("Please wait"),
+                _("A Flatpak operation is still running. Please wait for it to finish."),
+            )
+            event.ignore()
+            return
+
         self.closed.emit()
         self.deleteLater()
