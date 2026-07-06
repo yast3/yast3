@@ -35,7 +35,7 @@ class RemoteDialog(QDialog):
         layout = QVBoxLayout(self)
         form = QFormLayout()
 
-        self.name_label = QLabel(remote.name if remote else "") if edit_mode else None
+        self.name_label = QLabel(remote.name if remote else "")
         self.name_input: QLineEdit | None = None
 
         if edit_mode:
