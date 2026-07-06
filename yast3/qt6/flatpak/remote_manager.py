@@ -3,14 +3,9 @@
 from __future__ import annotations
 
 from PySide6.QtWidgets import (
-    QComboBox,
     QDialog,
-    QDialogButtonBox,
-    QFormLayout,
     QHBoxLayout,
     QHeaderView,
-    QLabel,
-    QLineEdit,
     QMessageBox,
     QPushButton,
     QTableWidget,
@@ -27,65 +22,7 @@ from yast3.core.flatpak import (
     modify_flatpak_remote_url,
 )
 from yast3.core.i18n import _
-
-
-class _RemoteDialog(QDialog):
-    def __init__(
-        self,
-        parent: QWidget,
-        title: str,
-        remote: FlatpakRemote | None = None,
-        edit_mode: bool = False,
-    ) -> None:
-        super().__init__(parent)
-        self.setWindowTitle(title)
-
-        layout = QVBoxLayout(self)
-        form = QFormLayout()
-
-        self.name_label = QLabel(remote.name if remote else "") if edit_mode else None
-        self.name_input: QLineEdit | None = None
-
-        if edit_mode:
-            form.addRow(_("Name"), self.name_label)
-        else:
-            self.name_input = QLineEdit()
-            form.addRow(_("Name"), self.name_input)
-
-        self.url_input = QLineEdit()
-        self.url_input.setText(remote.url if remote else "")
-        form.addRow(_("URL"), self.url_input)
-
-        if edit_mode:
-            self.scope_value = remote.scope if remote else "system"
-            form.addRow(_("Scope"), QLabel(self.scope_value))
-            self.scope_combo = None
-        else:
-            self.scope_combo = QComboBox()
-            self.scope_combo.addItem(_("System"), "system")
-            self.scope_combo.addItem(_("User"), "user")
-            form.addRow(_("Scope"), self.scope_combo)
-            self.scope_value = "system"
-
-        layout.addLayout(form)
-
-        buttons = QDialogButtonBox(
-            QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
-        )
-        buttons.accepted.connect(self.accept)
-        buttons.rejected.connect(self.reject)
-        layout.addWidget(buttons)
-
-    def values(self) -> tuple[str, str, str]:
-        if self.scope_combo is None:
-            name = self.name_label.text() if self.name_label is not None else ""
-            scope = self.scope_value
-        else:
-            name = self.name_input.text().strip() if self.name_input is not None else ""
-            scope = str(self.scope_combo.currentData())
-
-        url = self.url_input.text().strip()
-        return name, url, scope
+from yast3.qt6.flatpak.remote_dialog import RemoteDialog
 
 
 class FlatpakRemoteManager(QWidget):
@@ -147,7 +84,7 @@ class FlatpakRemoteManager(QWidget):
             self.table.setItem(row, 2, QTableWidgetItem(remote.scope))
 
     def add_remote(self) -> None:
-        dialog = _RemoteDialog(self, _("Add Remote"), edit_mode=False)
+        dialog = RemoteDialog(self, _("Add Remote"), edit_mode=False)
         if dialog.exec() != QDialog.DialogCode.Accepted:
             return
 
@@ -166,7 +103,7 @@ class FlatpakRemoteManager(QWidget):
             return
 
         remote = self.remotes[row]
-        dialog = _RemoteDialog(self, _("Edit"), remote=remote, edit_mode=True)
+        dialog = RemoteDialog(self, _("Edit"), remote=remote, edit_mode=True)
         if dialog.exec() != QDialog.DialogCode.Accepted:
             return
 
