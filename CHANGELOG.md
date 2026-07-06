@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.15 - 2026-07-06
+
+- core,qt6: added flatpak module.
+
 ## 0.0.14 - 2026-07-04
 
 ### Core
