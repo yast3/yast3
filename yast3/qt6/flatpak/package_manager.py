@@ -141,7 +141,7 @@ class FlatpakPackageManager(QWidget):
         self.search_table.setColumnCount(8)
         self.search_table.setHorizontalHeaderLabels(
             [
-                _("App ID"),
+                _("ID"),
                 _("Name"),
                 _("Description"),
                 _("Version"),
@@ -151,16 +151,14 @@ class FlatpakPackageManager(QWidget):
                 _("Installed"),
             ]
         )
-        self.search_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        self.search_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
         self.search_table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
         self.search_table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
         self.search_table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
         self.search_table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.ResizeToContents)
         self.search_table.horizontalHeader().setSectionResizeMode(5, QHeaderView.ResizeMode.ResizeToContents)
-        self.search_table.horizontalHeader().setSectionResizeMode(6, QHeaderView.ResizeMode.Fixed)
-        self.search_table.horizontalHeader().setSectionResizeMode(7, QHeaderView.ResizeMode.Fixed)
-        self.search_table.setColumnWidth(6, 90)
-        self.search_table.setColumnWidth(7, 90)
+        self.search_table.horizontalHeader().setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
+        self.search_table.horizontalHeader().setSectionResizeMode(7, QHeaderView.ResizeMode.ResizeToContents)
         self.search_table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.search_table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
         layout.addWidget(self.search_table)
@@ -215,16 +213,15 @@ class FlatpakPackageManager(QWidget):
         self.installed_table = QTableWidget(self)
         self.installed_table.setColumnCount(7)
         self.installed_table.setHorizontalHeaderLabels(
-            [_("App ID"), _("Name"), _("Description"), _("Version"), _("Branch"), _("Remote"), _("Scope")]
+            [_("ID"), _("Name"), _("Description"), _("Version"), _("Branch"), _("Remote"), _("Scope")]
         )
-        self.installed_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        self.installed_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
         self.installed_table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
         self.installed_table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
         self.installed_table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
         self.installed_table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.ResizeToContents)
         self.installed_table.horizontalHeader().setSectionResizeMode(5, QHeaderView.ResizeMode.ResizeToContents)
-        self.installed_table.horizontalHeader().setSectionResizeMode(6, QHeaderView.ResizeMode.Fixed)
-        self.installed_table.setColumnWidth(6, 90)
+        self.installed_table.horizontalHeader().setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
         self.installed_table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.installed_table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
         layout.addWidget(self.installed_table)
