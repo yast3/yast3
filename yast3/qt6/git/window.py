@@ -30,7 +30,7 @@ class GitWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.resize(600, 500)
-        self.setWindowTitle(_("Git Configuration — YaST3"))
+        self.setWindowTitle(_("{} — YaST3").format(_("Git")))
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)

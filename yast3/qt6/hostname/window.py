@@ -27,6 +27,8 @@ class HostnameWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.setWindowTitle(_("{} — YaST3").format(_("Hostname")))
+
         # Central widget
         central_widget = QWidget()
         self.setCentralWidget(central_widget)

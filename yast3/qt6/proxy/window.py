@@ -28,7 +28,7 @@ class ProxyWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.resize(640, 320)
-        self.setWindowTitle(_("Proxy Configuration — YaST3"))
+        self.setWindowTitle(_("{} — YaST3").format(_("Proxy")))
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)

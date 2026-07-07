@@ -10,7 +10,7 @@ from yast3.core.i18n import _
 class PackagesWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle(_("Packages"))
+        self.setWindowTitle(_("{} — YaST3").format(_("Packages")))
 
         # 2. 必须创建一个 核心Widget 填充中央区域
         central_widget = QWidget()

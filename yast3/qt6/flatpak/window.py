@@ -28,7 +28,7 @@ class FlatpakWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.resize(960, 480)
-        self.setWindowTitle(_("Flatpak Configuration — YaST3"))
+        self.setWindowTitle(_("{} — YaST3").format(_("Flatpak")))
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
