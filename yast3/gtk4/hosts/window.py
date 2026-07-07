@@ -19,7 +19,7 @@ class HostsWindow(Gtk.ApplicationWindow):
         self.hosts_entries: list[HostEntry] = []
 
         self.set_default_size(800, 600)
-        self.set_title(_("Hosts Configuration — YaST3"))
+        self.set_title(_("{} — YaST3").format(_("Hosts")))
 
         # Main container
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)

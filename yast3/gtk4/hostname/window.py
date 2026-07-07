@@ -18,7 +18,7 @@ class HostnameWindow(Gtk.ApplicationWindow):
         super().__init__(**kwargs)
 
         self.set_default_size(400, 200)
-        self.set_title(_("Hostname Configuration — YaST3"))
+        self.set_title(_("{} — YaST3").format(_("Hostname")))
 
         # Main container
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)

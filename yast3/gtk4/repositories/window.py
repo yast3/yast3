@@ -25,7 +25,7 @@ class RepositoriesWindow(Gtk.ApplicationWindow):
         self.repo_entries: list[RepoEntry] = []
 
         self.set_default_size(1200, 600)
-        self.set_title(_("Repositories Configuration — YaST3"))
+        self.set_title(_("{} — YaST3").format(_("Repositories")))
 
         # Main container
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)

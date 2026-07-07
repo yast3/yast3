@@ -21,7 +21,7 @@ class GitWindow(Gtk.ApplicationWindow):
         self.config = None
 
         self.set_default_size(600, 500)
-        self.set_title(_("Git Configuration — YaST3"))
+        self.set_title(_("{} — YaST3").format(_("Git")))
 
         # Main container
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
