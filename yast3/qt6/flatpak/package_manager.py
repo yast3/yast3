@@ -106,23 +106,6 @@ class FlatpakPackageManager(QWidget):
         self.refresh()
 
     def _build_search_layout(self, layout: QVBoxLayout) -> None:
-
-        self.search_input = QLineEdit(self)
-        self.search_input.setPlaceholderText("org.example")
-        self.search_input.returnPressed.connect(self.search_remote)
-
-        self.search_btn = QPushButton(_("Search"), self)
-        self.search_btn.clicked.connect(self.search_remote)
-
-        self.reset_btn = QPushButton(_("Reset"), self)
-        self.reset_btn.clicked.connect(self.reset_remote_search)
-
-        search_row = QHBoxLayout()
-        search_row.addWidget(self.search_input)
-        search_row.addWidget(self.search_btn)
-        search_row.addWidget(self.reset_btn)
-        layout.addLayout(search_row)
-
         btn_layout = QHBoxLayout()
 
         self.install_btn = QPushButton(self.install_action.text(), self)
@@ -130,11 +113,25 @@ class FlatpakPackageManager(QWidget):
         self.install_action.changed.connect(self._sync_action_buttons)
         btn_layout.addWidget(self.install_btn)
 
+        btn_layout.addStretch()
+
+        self.search_input = QLineEdit(self)
+        self.search_input.setPlaceholderText("org.example")
+        self.search_input.returnPressed.connect(self.search_remote)
+        btn_layout.addWidget(self.search_input)
+
+        self.search_btn = QPushButton(_("Search"), self)
+        self.search_btn.clicked.connect(self.search_remote)
+        btn_layout.addWidget(self.search_btn)
+
+        self.reset_btn = QPushButton(_("Reset"), self)
+        self.reset_btn.clicked.connect(self.reset_remote_search)
+        btn_layout.addWidget(self.reset_btn)
+
         self.refresh_catalog_btn = QPushButton(_("Refresh"), self)
         self.refresh_catalog_btn.clicked.connect(self.load_remote_packages)
         btn_layout.addWidget(self.refresh_catalog_btn)
 
-        btn_layout.addStretch()
         layout.addLayout(btn_layout)
 
         self.search_table = QTableWidget(self)
@@ -179,23 +176,6 @@ class FlatpakPackageManager(QWidget):
         layout.addLayout(pager_row)
 
     def _build_installed_layout(self, layout: QVBoxLayout) -> None:
-
-        self.installed_search_input = QLineEdit(self)
-        self.installed_search_input.setPlaceholderText("org.example")
-        self.installed_search_input.returnPressed.connect(self.search_installed)
-
-        self.installed_search_btn = QPushButton(_("Search"), self)
-        self.installed_search_btn.clicked.connect(self.search_installed)
-
-        self.installed_reset_btn = QPushButton(_("Reset"), self)
-        self.installed_reset_btn.clicked.connect(self.reset_installed_search)
-
-        search_row = QHBoxLayout()
-        search_row.addWidget(self.installed_search_input)
-        search_row.addWidget(self.installed_search_btn)
-        search_row.addWidget(self.installed_reset_btn)
-        layout.addLayout(search_row)
-
         btn_layout = QHBoxLayout()
 
         self.uninstall_btn = QPushButton(self.uninstall_action.text(), self)
@@ -203,11 +183,25 @@ class FlatpakPackageManager(QWidget):
         self.uninstall_action.changed.connect(self._sync_action_buttons)
         btn_layout.addWidget(self.uninstall_btn)
 
-        self.refresh_installed_btn = QPushButton(_("Refresh Installed"), self)
+        btn_layout.addStretch()
+
+        self.installed_search_input = QLineEdit(self)
+        self.installed_search_input.setPlaceholderText("org.example")
+        self.installed_search_input.returnPressed.connect(self.search_installed)
+        btn_layout.addWidget(self.installed_search_input)
+
+        self.installed_search_btn = QPushButton(_("Search"), self)
+        self.installed_search_btn.clicked.connect(self.search_installed)
+        btn_layout.addWidget(self.installed_search_btn)
+
+        self.installed_reset_btn = QPushButton(_("Reset"), self)
+        self.installed_reset_btn.clicked.connect(self.reset_installed_search)
+        btn_layout.addWidget(self.installed_reset_btn)
+
+        self.refresh_installed_btn = QPushButton(_("Refresh"), self)
         self.refresh_installed_btn.clicked.connect(self.load_installed_packages)
         btn_layout.addWidget(self.refresh_installed_btn)
 
-        btn_layout.addStretch()
         layout.addLayout(btn_layout)
 
         self.installed_table = QTableWidget(self)

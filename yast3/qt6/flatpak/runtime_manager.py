@@ -47,22 +47,6 @@ class FlatpakRuntimeManager(QWidget):
 
         layout = QVBoxLayout(self)
 
-        self.search_input = QLineEdit(self)
-        self.search_input.setPlaceholderText("org.example.Platform")
-        self.search_input.returnPressed.connect(self.search_runtimes)
-
-        self.search_btn = QPushButton(_("Search"), self)
-        self.search_btn.clicked.connect(self.search_runtimes)
-
-        self.reset_btn = QPushButton(_("Reset"), self)
-        self.reset_btn.clicked.connect(self.reset_search)
-
-        search_row = QHBoxLayout()
-        search_row.addWidget(self.search_input)
-        search_row.addWidget(self.search_btn)
-        search_row.addWidget(self.reset_btn)
-        layout.addLayout(search_row)
-
         btn_layout = QHBoxLayout()
 
         self.uninstall_btn = QPushButton(self.uninstall_action.text(), self)
@@ -70,11 +54,25 @@ class FlatpakRuntimeManager(QWidget):
         self.uninstall_action.changed.connect(self._sync_action_buttons)
         btn_layout.addWidget(self.uninstall_btn)
 
+        btn_layout.addStretch()
+
+        self.search_input = QLineEdit(self)
+        self.search_input.setPlaceholderText("org.example.Platform")
+        self.search_input.returnPressed.connect(self.search_runtimes)
+        btn_layout.addWidget(self.search_input)
+
+        self.search_btn = QPushButton(_("Search"), self)
+        self.search_btn.clicked.connect(self.search_runtimes)
+        btn_layout.addWidget(self.search_btn)
+
+        self.reset_btn = QPushButton(_("Reset"), self)
+        self.reset_btn.clicked.connect(self.reset_search)
+        btn_layout.addWidget(self.reset_btn)
+
         self.refresh_btn = QPushButton(_("Refresh"), self)
         self.refresh_btn.clicked.connect(self.load_runtimes)
         btn_layout.addWidget(self.refresh_btn)
 
-        btn_layout.addStretch()
         layout.addLayout(btn_layout)
 
         self.table = QTableWidget(self)

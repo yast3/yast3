@@ -26,31 +26,33 @@ class FlatpakRuntimeManager(Gtk.Box):
         self.load_runtimes()
 
     def _build_layout(self) -> None:
-        search_row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        controls_row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+
+        self.remove_btn = Gtk.Button(label=_("Remove"))
+        self.remove_btn.connect("clicked", self._on_remove_clicked)
+        controls_row.append(self.remove_btn)
+
+        controls_row.append(Gtk.Box(hexpand=True))
+
         self.search_entry = Gtk.Entry()
         self.search_entry.set_placeholder_text("org.example.Platform")
         self.search_entry.connect("activate", self._on_search_clicked)
-        search_row.append(self.search_entry)
+        self.search_entry.set_hexpand(True)
+        controls_row.append(self.search_entry)
 
         self.search_btn = Gtk.Button(label=_("Search"))
         self.search_btn.connect("clicked", self._on_search_clicked)
-        search_row.append(self.search_btn)
+        controls_row.append(self.search_btn)
 
         self.reset_btn = Gtk.Button(label=_("Reset"))
         self.reset_btn.connect("clicked", self._on_reset_clicked)
-        search_row.append(self.reset_btn)
-        self.append(search_row)
-
-        action_row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        self.remove_btn = Gtk.Button(label=_("Remove"))
-        self.remove_btn.connect("clicked", self._on_remove_clicked)
-        action_row.append(self.remove_btn)
+        controls_row.append(self.reset_btn)
 
         self.refresh_btn = Gtk.Button(label=_("Refresh"))
         self.refresh_btn.connect("clicked", self._on_refresh_clicked)
-        action_row.append(self.refresh_btn)
-        action_row.append(Gtk.Box(hexpand=True))
-        self.append(action_row)
+        controls_row.append(self.refresh_btn)
+
+        self.append(controls_row)
 
         self.list_store = Gtk.ListStore(str, str, str, str, str, str, str)
         self.tree_view = Gtk.TreeView(model=self.list_store)
