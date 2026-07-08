@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-08 04:05+0000\n"
+"POT-Creation-Date: 2026-07-08 05:04+0000\n"
 "PO-Revision-Date: 2026-06-26 23:49+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hant_TW\n"
@@ -253,8 +253,8 @@ msgstr "启用"
 #: yast3/gtk4/flatpak/remote_manager.py:162
 #: yast3/gtk4/flatpak/remote_manager.py:226
 #: yast3/gtk4/flatpak/remote_manager.py:288
-#: yast3/gtk4/flatpak/runtime_manager.py:87
-#: yast3/gtk4/flatpak/runtime_manager.py:142 yast3/gtk4/flatpak/settings.py:50
+#: yast3/gtk4/flatpak/runtime_manager.py:90
+#: yast3/gtk4/flatpak/runtime_manager.py:145 yast3/gtk4/flatpak/settings.py:50
 #: yast3/gtk4/flatpak/window.py:92 yast3/gtk4/git/window.py:257
 #: yast3/gtk4/git/window.py:278 yast3/gtk4/hostname/window.py:67
 #: yast3/gtk4/hostname/window.py:69 yast3/gtk4/hostname/window.py:71
@@ -278,16 +278,16 @@ msgstr "启用"
 #: yast3/gtk4/ssh/hosts/tab.py:228 yast3/gtk4/ssh/keys/generate_dialog.py:110
 #: yast3/gtk4/ssh/keys/tab.py:196 yast3/gtk4/ssh/keys/tab.py:242
 #: yast3/qt6/cron/cron_tab.py:96 yast3/qt6/cron/cron_tab.py:204
-#: yast3/qt6/cron/cron_tab.py:207 yast3/qt6/flatpak/package_manager.py:381
-#: yast3/qt6/flatpak/package_manager.py:392
-#: yast3/qt6/flatpak/package_manager.py:469
-#: yast3/qt6/flatpak/package_manager.py:485
+#: yast3/qt6/cron/cron_tab.py:207 yast3/qt6/flatpak/package_manager.py:375
+#: yast3/qt6/flatpak/package_manager.py:386
+#: yast3/qt6/flatpak/package_manager.py:463
+#: yast3/qt6/flatpak/package_manager.py:479
 #: yast3/qt6/flatpak/remote_manager.py:74
 #: yast3/qt6/flatpak/remote_manager.py:97
 #: yast3/qt6/flatpak/remote_manager.py:116
 #: yast3/qt6/flatpak/remote_manager.py:138
-#: yast3/qt6/flatpak/runtime_manager.py:146
-#: yast3/qt6/flatpak/runtime_manager.py:152 yast3/qt6/flatpak/window.py:95
+#: yast3/qt6/flatpak/runtime_manager.py:154
+#: yast3/qt6/flatpak/runtime_manager.py:160 yast3/qt6/flatpak/window.py:95
 #: yast3/qt6/flatpak/window.py:106 yast3/qt6/git/window.py:249
 #: yast3/qt6/git/window.py:275 yast3/qt6/hostname/window.py:68
 #: yast3/qt6/hostname/window.py:72 yast3/qt6/hostname/window.py:77
@@ -324,17 +324,17 @@ msgstr "錯誤"
 #: yast3/gtk4/flatpak/package_manager.py:326
 #: yast3/gtk4/flatpak/remote_manager.py:111
 #: yast3/gtk4/flatpak/remote_manager.py:122
-#: yast3/gtk4/flatpak/runtime_manager.py:111 yast3/gtk4/hosts/window.py:184
+#: yast3/gtk4/flatpak/runtime_manager.py:114 yast3/gtk4/hosts/window.py:184
 #: yast3/gtk4/hosts/window.py:220 yast3/gtk4/repositories/window.py:232
 #: yast3/gtk4/repositories/window.py:257 yast3/gtk4/repositories/window.py:311
 #: yast3/gtk4/ssh/hosts/tab.py:159 yast3/gtk4/ssh/hosts/tab.py:187
 #: yast3/qt6/cron/cron_tab.py:147 yast3/qt6/cron/cron_tab.py:160
-#: yast3/qt6/flatpak/package_manager.py:341
-#: yast3/qt6/flatpak/package_manager.py:345
-#: yast3/qt6/flatpak/package_manager.py:358
+#: yast3/qt6/flatpak/package_manager.py:335
+#: yast3/qt6/flatpak/package_manager.py:339
+#: yast3/qt6/flatpak/package_manager.py:352
 #: yast3/qt6/flatpak/remote_manager.py:102
 #: yast3/qt6/flatpak/remote_manager.py:121
-#: yast3/qt6/flatpak/runtime_manager.py:126 yast3/qt6/hosts/window.py:188
+#: yast3/qt6/flatpak/runtime_manager.py:134 yast3/qt6/hosts/window.py:188
 #: yast3/qt6/hosts/window.py:225 yast3/qt6/repositories/window.py:107
 #: yast3/qt6/repositories/window.py:220 yast3/qt6/repositories/window.py:263
 #: yast3/qt6/ssh/hosts/tab.py:148 yast3/qt6/ssh/hosts/tab.py:169
@@ -354,13 +354,13 @@ msgstr "請選擇要刪除的排程工作。"
 #: yast3/gtk4/cron/cron_tab.py:220 yast3/gtk4/flatpak/package_manager.py:336
 #: yast3/gtk4/flatpak/remote_manager.py:132
 #: yast3/gtk4/flatpak/remove_action.py:38
-#: yast3/gtk4/flatpak/runtime_manager.py:121 yast3/gtk4/hostname/window.py:99
+#: yast3/gtk4/flatpak/runtime_manager.py:124 yast3/gtk4/hostname/window.py:99
 #: yast3/gtk4/hosts/window.py:229 yast3/gtk4/repositories/window.py:324
 #: yast3/gtk4/repositories/window.py:363 yast3/gtk4/ssh/hosts/tab.py:204
-#: yast3/qt6/cron/cron_tab.py:164 yast3/qt6/flatpak/package_manager.py:363
+#: yast3/qt6/cron/cron_tab.py:164 yast3/qt6/flatpak/package_manager.py:357
 #: yast3/qt6/flatpak/remote_manager.py:127
 #: yast3/qt6/flatpak/remove_action.py:37
-#: yast3/qt6/flatpak/runtime_manager.py:131 yast3/qt6/hostname/window.py:111
+#: yast3/qt6/flatpak/runtime_manager.py:139 yast3/qt6/hostname/window.py:111
 #: yast3/qt6/hosts/window.py:230 yast3/qt6/repositories/window.py:270
 #: yast3/qt6/repositories/window.py:290 yast3/qt6/ssh/hosts/tab.py:181
 #: yast3/qt6/ssh/keys/generate_dialog.py:184
@@ -376,7 +376,7 @@ msgstr "您確定要刪除此排程工作吗？"
 #: yast3/gtk4/flatpak/remote_manager.py:155
 #: yast3/gtk4/flatpak/remote_manager.py:219
 #: yast3/gtk4/flatpak/remote_manager.py:281
-#: yast3/gtk4/flatpak/runtime_manager.py:137 yast3/gtk4/flatpak/settings.py:44
+#: yast3/gtk4/flatpak/runtime_manager.py:140 yast3/gtk4/flatpak/settings.py:44
 #: yast3/gtk4/flatpak/window.py:87 yast3/gtk4/git/window.py:276
 #: yast3/gtk4/hostname/window.py:106 yast3/gtk4/hosts/window.py:249
 #: yast3/gtk4/proxy/window.py:111 yast3/gtk4/repositories/window.py:248
@@ -455,68 +455,68 @@ msgstr ""
 msgid "Flatpak installed successfully."
 msgstr "儲存成功"
 
-#: yast3/gtk4/flatpak/package_manager.py:82
-#: yast3/gtk4/flatpak/runtime_manager.py:35 yast3/gtk4/flatpak/window.py:54
-#: yast3/qt6/flatpak/package_manager.py:114
-#: yast3/qt6/flatpak/package_manager.py:187
-#: yast3/qt6/flatpak/runtime_manager.py:54 yast3/qt6/flatpak/window.py:58
-#, fuzzy
-msgid "Search"
-msgstr "使用者"
-
-#: yast3/gtk4/flatpak/package_manager.py:86
-#: yast3/gtk4/flatpak/runtime_manager.py:39 yast3/gtk4/git/window.py:76
-#: yast3/qt6/flatpak/package_manager.py:117
-#: yast3/qt6/flatpak/package_manager.py:190
-#: yast3/qt6/flatpak/runtime_manager.py:57 yast3/qt6/git/window.py:83
-#: yast3/tui/git/window.py:82
-msgid "Reset"
-msgstr "重置"
-
-#: yast3/gtk4/flatpak/package_manager.py:93
+#: yast3/gtk4/flatpak/package_manager.py:79
 #: yast3/qt6/flatpak/package_manager.py:78
 #, fuzzy
 msgid "Install"
 msgstr "軟體套件"
 
-#: yast3/gtk4/flatpak/package_manager.py:95
-#: yast3/gtk4/flatpak/package_manager.py:100
-#: yast3/gtk4/flatpak/package_manager.py:178
-#: yast3/gtk4/flatpak/remote_manager.py:40
-#: yast3/gtk4/flatpak/runtime_manager.py:49 yast3/gtk4/ssh/keys/tab.py:47
-#: yast3/qt6/flatpak/package_manager.py:133
-#: yast3/qt6/flatpak/package_manager.py:271
-#: yast3/qt6/flatpak/remote_manager.py:49
-#: yast3/qt6/flatpak/runtime_manager.py:73 yast3/qt6/ssh/keys/tab.py:50
-msgid "Refresh"
-msgstr "重新整理"
-
-#: yast3/gtk4/flatpak/package_manager.py:98
-#: yast3/gtk4/flatpak/runtime_manager.py:45
+#: yast3/gtk4/flatpak/package_manager.py:82
+#: yast3/gtk4/flatpak/runtime_manager.py:31
 #: yast3/qt6/flatpak/runtime_manager.py:36
 #, fuzzy
 msgid "Remove"
 msgstr "軟體來源"
 
+#: yast3/gtk4/flatpak/package_manager.py:94
+#: yast3/gtk4/flatpak/runtime_manager.py:43 yast3/gtk4/flatpak/window.py:54
+#: yast3/qt6/flatpak/package_manager.py:123
+#: yast3/qt6/flatpak/package_manager.py:193
+#: yast3/qt6/flatpak/runtime_manager.py:64 yast3/qt6/flatpak/window.py:58
+#, fuzzy
+msgid "Search"
+msgstr "使用者"
+
+#: yast3/gtk4/flatpak/package_manager.py:98
+#: yast3/gtk4/flatpak/runtime_manager.py:47 yast3/gtk4/git/window.py:76
+#: yast3/qt6/flatpak/package_manager.py:127
+#: yast3/qt6/flatpak/package_manager.py:197
+#: yast3/qt6/flatpak/runtime_manager.py:68 yast3/qt6/git/window.py:83
+#: yast3/tui/git/window.py:82
+msgid "Reset"
+msgstr "重置"
+
+#: yast3/gtk4/flatpak/package_manager.py:102
+#: yast3/gtk4/flatpak/package_manager.py:178
+#: yast3/gtk4/flatpak/remote_manager.py:40
+#: yast3/gtk4/flatpak/runtime_manager.py:51 yast3/gtk4/ssh/keys/tab.py:47
+#: yast3/qt6/flatpak/package_manager.py:131
+#: yast3/qt6/flatpak/package_manager.py:201
+#: yast3/qt6/flatpak/package_manager.py:265
+#: yast3/qt6/flatpak/remote_manager.py:49
+#: yast3/qt6/flatpak/runtime_manager.py:72 yast3/qt6/ssh/keys/tab.py:50
+msgid "Refresh"
+msgstr "重新整理"
+
 #: yast3/gtk4/flatpak/package_manager.py:111
-#: yast3/qt6/flatpak/package_manager.py:167
-#: yast3/qt6/flatpak/package_manager.py:230
+#: yast3/qt6/flatpak/package_manager.py:164
+#: yast3/qt6/flatpak/package_manager.py:224
 msgid "Prev"
 msgstr ""
 
 #: yast3/gtk4/flatpak/package_manager.py:118
-#: yast3/qt6/flatpak/package_manager.py:175
-#: yast3/qt6/flatpak/package_manager.py:238
+#: yast3/qt6/flatpak/package_manager.py:172
+#: yast3/qt6/flatpak/package_manager.py:232
 msgid "Next"
 msgstr ""
 
 #: yast3/gtk4/flatpak/package_manager.py:128
 #: yast3/gtk4/flatpak/package_manager.py:140
-#: yast3/gtk4/flatpak/runtime_manager.py:63
+#: yast3/gtk4/flatpak/runtime_manager.py:65
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:34
-#: yast3/qt6/flatpak/package_manager.py:144
-#: yast3/qt6/flatpak/package_manager.py:216
-#: yast3/qt6/flatpak/runtime_manager.py:83
+#: yast3/qt6/flatpak/package_manager.py:141
+#: yast3/qt6/flatpak/package_manager.py:210
+#: yast3/qt6/flatpak/runtime_manager.py:82
 #: yast3/qt6/repositories/repo_edit_dialog.py:31
 msgid "ID"
 msgstr "ID"
@@ -526,11 +526,11 @@ msgstr "ID"
 #: yast3/gtk4/flatpak/remote_manager.py:52
 #: yast3/gtk4/flatpak/remote_manager.py:192
 #: yast3/gtk4/flatpak/remote_manager.py:257
-#: yast3/gtk4/flatpak/runtime_manager.py:64
+#: yast3/gtk4/flatpak/runtime_manager.py:66
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:36
 #: yast3/gtk4/repositories/window.py:81 yast3/gtk4/ssh/keys/tab.py:68
-#: yast3/qt6/flatpak/package_manager.py:145
-#: yast3/qt6/flatpak/package_manager.py:216
+#: yast3/qt6/flatpak/package_manager.py:142
+#: yast3/qt6/flatpak/package_manager.py:210
 #: yast3/qt6/flatpak/remote_dialog.py:42 yast3/qt6/flatpak/remote_dialog.py:45
 #: yast3/qt6/flatpak/remote_manager.py:58
 #: yast3/qt6/flatpak/runtime_manager.py:83
@@ -543,38 +543,38 @@ msgstr "名稱"
 
 #: yast3/gtk4/flatpak/package_manager.py:130
 #: yast3/gtk4/flatpak/package_manager.py:142
-#: yast3/gtk4/flatpak/runtime_manager.py:65
-#: yast3/qt6/flatpak/package_manager.py:146
-#: yast3/qt6/flatpak/package_manager.py:216
-#: yast3/qt6/flatpak/runtime_manager.py:83
+#: yast3/gtk4/flatpak/runtime_manager.py:67
+#: yast3/qt6/flatpak/package_manager.py:143
+#: yast3/qt6/flatpak/package_manager.py:210
+#: yast3/qt6/flatpak/runtime_manager.py:84
 #, fuzzy
 msgid "Description"
 msgstr "編輯選項"
 
 #: yast3/gtk4/flatpak/package_manager.py:131
 #: yast3/gtk4/flatpak/package_manager.py:143
-#: yast3/gtk4/flatpak/runtime_manager.py:66
-#: yast3/qt6/flatpak/package_manager.py:147
-#: yast3/qt6/flatpak/package_manager.py:216
-#: yast3/qt6/flatpak/runtime_manager.py:83
+#: yast3/gtk4/flatpak/runtime_manager.py:68
+#: yast3/qt6/flatpak/package_manager.py:144
+#: yast3/qt6/flatpak/package_manager.py:210
+#: yast3/qt6/flatpak/runtime_manager.py:85
 msgid "Version"
 msgstr ""
 
 #: yast3/gtk4/flatpak/package_manager.py:132
 #: yast3/gtk4/flatpak/package_manager.py:144
-#: yast3/gtk4/flatpak/runtime_manager.py:67
-#: yast3/qt6/flatpak/package_manager.py:148
-#: yast3/qt6/flatpak/package_manager.py:216
-#: yast3/qt6/flatpak/runtime_manager.py:83
+#: yast3/gtk4/flatpak/runtime_manager.py:69
+#: yast3/qt6/flatpak/package_manager.py:145
+#: yast3/qt6/flatpak/package_manager.py:210
+#: yast3/qt6/flatpak/runtime_manager.py:86
 msgid "Branch"
 msgstr ""
 
 #: yast3/gtk4/flatpak/package_manager.py:133
 #: yast3/gtk4/flatpak/package_manager.py:145
-#: yast3/gtk4/flatpak/runtime_manager.py:68
-#: yast3/qt6/flatpak/package_manager.py:149
-#: yast3/qt6/flatpak/package_manager.py:216
-#: yast3/qt6/flatpak/runtime_manager.py:83
+#: yast3/gtk4/flatpak/runtime_manager.py:70
+#: yast3/qt6/flatpak/package_manager.py:146
+#: yast3/qt6/flatpak/package_manager.py:210
+#: yast3/qt6/flatpak/runtime_manager.py:87
 msgid "Remote"
 msgstr ""
 
@@ -583,47 +583,47 @@ msgstr ""
 #: yast3/gtk4/flatpak/remote_manager.py:54
 #: yast3/gtk4/flatpak/remote_manager.py:196
 #: yast3/gtk4/flatpak/remote_manager.py:261
-#: yast3/gtk4/flatpak/runtime_manager.py:69
-#: yast3/qt6/flatpak/package_manager.py:150
-#: yast3/qt6/flatpak/package_manager.py:216
+#: yast3/gtk4/flatpak/runtime_manager.py:72
+#: yast3/qt6/flatpak/package_manager.py:147
+#: yast3/qt6/flatpak/package_manager.py:210
 #: yast3/qt6/flatpak/remote_dialog.py:53 yast3/qt6/flatpak/remote_dialog.py:59
 #: yast3/qt6/flatpak/remote_manager.py:58
-#: yast3/qt6/flatpak/runtime_manager.py:83
+#: yast3/qt6/flatpak/runtime_manager.py:89
 #, fuzzy
 msgid "Scope"
 msgstr "核心"
 
 #: yast3/gtk4/flatpak/package_manager.py:135 yast3/gtk4/flatpak/window.py:55
-#: yast3/qt6/flatpak/package_manager.py:151 yast3/qt6/flatpak/window.py:59
+#: yast3/qt6/flatpak/package_manager.py:148 yast3/qt6/flatpak/window.py:59
 #, fuzzy
 msgid "Installed"
 msgstr "停用"
 
 #: yast3/gtk4/flatpak/package_manager.py:178
-#: yast3/qt6/flatpak/package_manager.py:269
+#: yast3/qt6/flatpak/package_manager.py:263
 msgid "Loading..."
 msgstr ""
 
 #: yast3/gtk4/flatpak/package_manager.py:219
-#: yast3/qt6/flatpak/package_manager.py:469
+#: yast3/qt6/flatpak/package_manager.py:463
 #, fuzzy, python-brace-format
 msgid "Failed to load package catalog: {0}"
 msgstr "讀取公鑰失敗：{0}"
 
 #: yast3/gtk4/flatpak/package_manager.py:240
-#: yast3/qt6/flatpak/package_manager.py:485
+#: yast3/qt6/flatpak/package_manager.py:479
 #, fuzzy, python-brace-format
 msgid "Failed to load Flatpak packages: {0}"
 msgstr "讀取公鑰失敗：{0}"
 
 #: yast3/gtk4/flatpak/package_manager.py:298
-#: yast3/qt6/flatpak/package_manager.py:341
+#: yast3/qt6/flatpak/package_manager.py:335
 #, fuzzy
 msgid "Please select a package from the list to install."
 msgstr "請選擇要編輯的主機。"
 
 #: yast3/gtk4/flatpak/package_manager.py:306
-#: yast3/qt6/flatpak/package_manager.py:345
+#: yast3/qt6/flatpak/package_manager.py:339
 #, fuzzy
 msgid "The selected package is already installed."
 msgstr "請選擇要編輯的主機。"
@@ -635,19 +635,19 @@ msgid "Package installed successfully."
 msgstr "金鑰產生成功。"
 
 #: yast3/gtk4/flatpak/package_manager.py:318
-#: yast3/qt6/flatpak/package_manager.py:381
+#: yast3/qt6/flatpak/package_manager.py:375
 #, fuzzy, python-brace-format
 msgid "Failed to install package: {0}"
 msgstr "讀取公鑰失敗：{0}"
 
 #: yast3/gtk4/flatpak/package_manager.py:327
-#: yast3/qt6/flatpak/package_manager.py:358
+#: yast3/qt6/flatpak/package_manager.py:352
 #, fuzzy
 msgid "Please select an installed package from the list."
 msgstr "請選擇要編輯的主機項目。"
 
 #: yast3/gtk4/flatpak/package_manager.py:340
-#: yast3/qt6/flatpak/package_manager.py:364
+#: yast3/qt6/flatpak/package_manager.py:358
 #, fuzzy, python-brace-format
 msgid "Are you sure you want to remove package '{0}'?"
 msgstr "您確定要刪除軟體來源 '{}' 嗎？"
@@ -659,14 +659,14 @@ msgid "Package removed successfully."
 msgstr "金鑰刪除成功。"
 
 #: yast3/gtk4/flatpak/package_manager.py:358
-#: yast3/qt6/flatpak/package_manager.py:392
+#: yast3/qt6/flatpak/package_manager.py:386
 #, fuzzy, python-brace-format
 msgid "Failed to remove package: {0}"
 msgstr "讀取公鑰失敗：{0}"
 
 #: yast3/gtk4/flatpak/package_manager.py:399 yast3/gtk4/ssh/keys/tab.py:147
 #: yast3/gtk4/ssh/keys/tab.py:148 yast3/gtk4/ssh/keys/tab.py:149
-#: yast3/qt6/flatpak/package_manager.py:515 yast3/qt6/ssh/keys/tab.py:137
+#: yast3/qt6/flatpak/package_manager.py:509 yast3/qt6/ssh/keys/tab.py:137
 #: yast3/qt6/ssh/keys/tab.py:140 yast3/qt6/ssh/keys/tab.py:143
 #: yast3/tui/ssh/window.py:336
 msgid "Yes"
@@ -674,7 +674,7 @@ msgstr "是"
 
 #: yast3/gtk4/flatpak/package_manager.py:399 yast3/gtk4/ssh/keys/tab.py:147
 #: yast3/gtk4/ssh/keys/tab.py:148 yast3/gtk4/ssh/keys/tab.py:149
-#: yast3/qt6/flatpak/package_manager.py:515 yast3/qt6/ssh/keys/tab.py:137
+#: yast3/qt6/flatpak/package_manager.py:509 yast3/qt6/ssh/keys/tab.py:137
 #: yast3/qt6/ssh/keys/tab.py:140 yast3/qt6/ssh/keys/tab.py:143
 #: yast3/tui/ssh/window.py:336
 msgid "No"
@@ -789,32 +789,38 @@ msgstr "儲存成功"
 msgid "Are you sure you want to remove Flatpak?"
 msgstr "您確定要刪除此項目吗？"
 
-#: yast3/gtk4/flatpak/runtime_manager.py:88
-#: yast3/qt6/flatpak/runtime_manager.py:152
+#: yast3/gtk4/flatpak/runtime_manager.py:71
+#: yast3/qt6/flatpak/runtime_manager.py:88
+#, fuzzy
+msgid "Installed Size"
+msgstr "停用"
+
+#: yast3/gtk4/flatpak/runtime_manager.py:91
+#: yast3/qt6/flatpak/runtime_manager.py:160
 #, fuzzy, python-brace-format
 msgid "Failed to load Flatpak runtimes: {0}"
 msgstr "加载主機名失敗：{0}"
 
-#: yast3/gtk4/flatpak/runtime_manager.py:112
-#: yast3/qt6/flatpak/runtime_manager.py:126
+#: yast3/gtk4/flatpak/runtime_manager.py:115
+#: yast3/qt6/flatpak/runtime_manager.py:134
 #, fuzzy
 msgid "Please select an installed runtime from the list."
 msgstr "請選擇要編輯的主機項目。"
 
-#: yast3/gtk4/flatpak/runtime_manager.py:125
-#: yast3/qt6/flatpak/runtime_manager.py:132
+#: yast3/gtk4/flatpak/runtime_manager.py:128
+#: yast3/qt6/flatpak/runtime_manager.py:140
 #, fuzzy, python-brace-format
 msgid "Are you sure you want to remove runtime '{0}'?"
 msgstr "您確定要刪除軟體來源 '{}' 嗎？"
 
-#: yast3/gtk4/flatpak/runtime_manager.py:137
+#: yast3/gtk4/flatpak/runtime_manager.py:140
 #: yast3/qt6/flatpak/runtime_manager.py:40
 #, fuzzy
 msgid "Runtime removed successfully."
 msgstr "金鑰刪除成功。"
 
-#: yast3/gtk4/flatpak/runtime_manager.py:143
-#: yast3/qt6/flatpak/runtime_manager.py:146
+#: yast3/gtk4/flatpak/runtime_manager.py:146
+#: yast3/qt6/flatpak/runtime_manager.py:154
 #, fuzzy, python-brace-format
 msgid "Failed to remove runtime: {0}"
 msgstr "讀取公鑰失敗：{0}"
@@ -1604,10 +1610,6 @@ msgstr ""
 msgid "Remove Flatpak Package"
 msgstr ""
 
-#: yast3/qt6/flatpak/package_manager.py:206
-msgid "Refresh Installed"
-msgstr ""
-
 #: yast3/qt6/flatpak/runtime_manager.py:37
 msgid "Removing runtime..."
 msgstr ""
@@ -2076,5 +2078,8 @@ msgstr "金鑰位数"
 #~ msgstr ""
 
 #~ msgid "App ID"
+#~ msgstr ""
+
+#~ msgid "Refresh Installed"
 #~ msgstr ""
 

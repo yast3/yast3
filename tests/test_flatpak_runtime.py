@@ -26,8 +26,8 @@ class TestListFlatpakRuntimes(unittest.TestCase):
             args=["flatpak", "list"],
             returncode=0,
             stdout=(
-                "org.freedesktop.Platform\tFreedesktop Platform\tBase runtime\t24.08\t24.08\tflathub\tsystem\n"
-                "org.gnome.Platform\tGNOME Platform\tGNOME runtime\t47\t47\tflathub\tuser\n"
+                "org.freedesktop.Platform\tFreedesktop Platform\tBase runtime\t24.08\t24.08\tflathub\t977.5 MB\tsystem\n"
+                "org.gnome.Platform\tGNOME Platform\tGNOME runtime\t47\t47\tflathub\t1.2 GB\tuser\n"
             ),
             stderr="",
         )
@@ -37,8 +37,10 @@ class TestListFlatpakRuntimes(unittest.TestCase):
         self.assertEqual(len(runtimes), 2)
         self.assertEqual(runtimes[0].runtime_id, "org.freedesktop.Platform")
         self.assertEqual(runtimes[0].remote, "flathub")
+        self.assertEqual(runtimes[0].installed_size, "977.5 MB")
         self.assertEqual(runtimes[0].scope, "system")
         self.assertEqual(runtimes[1].runtime_id, "org.gnome.Platform")
+        self.assertEqual(runtimes[1].installed_size, "1.2 GB")
         self.assertEqual(runtimes[1].scope, "user")
 
 

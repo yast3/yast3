@@ -18,6 +18,7 @@ class FlatpakRuntime:
     description: str = ""
     version: str = ""
     branch: str = ""
+    installed_size: str = ""
     scope: Literal["system", "user"] = "system"
 
 
@@ -31,7 +32,7 @@ def list_flatpak_runtimes() -> list[FlatpakRuntime]:
             "flatpak",
             "list",
             "--runtime",
-            "--columns=application,name,description,version,branch,origin,installation",
+            "--columns=application,name,description,version,branch,origin,size,installation",
         ]
     )
 
@@ -51,7 +52,8 @@ def list_flatpak_runtimes() -> list[FlatpakRuntime]:
         version = parts[3].strip() if len(parts) > 3 else ""
         branch = parts[4].strip() if len(parts) > 4 else ""
         remote = parts[5].strip() if len(parts) > 5 else ""
-        installation = parts[6].strip().lower() if len(parts) > 6 else "system"
+        installed_size = parts[6].strip() if len(parts) > 6 else ""
+        installation = parts[7].strip().lower() if len(parts) > 7 else "system"
         scope: Literal["system", "user"] = "user" if "user" in installation else "system"
 
         runtimes.append(
@@ -62,6 +64,7 @@ def list_flatpak_runtimes() -> list[FlatpakRuntime]:
                 description=description,
                 version=version,
                 branch=branch,
+                installed_size=installed_size,
                 scope=scope,
             )
         )

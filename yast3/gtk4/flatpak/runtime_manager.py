@@ -54,7 +54,7 @@ class FlatpakRuntimeManager(Gtk.Box):
 
         self.append(controls_row)
 
-        self.list_store = Gtk.ListStore(str, str, str, str, str, str, str)
+        self.list_store = Gtk.ListStore(str, str, str, str, str, str, str, str)
         self.tree_view = Gtk.TreeView(model=self.list_store)
         self.tree_view.set_hexpand(True)
         self.tree_view.set_vexpand(True)
@@ -68,7 +68,8 @@ class FlatpakRuntimeManager(Gtk.Box):
             (_("Version"), 3),
             (_("Branch"), 4),
             (_("Remote"), 5),
-            (_("Scope"), 6),
+            (_("Installed Size"), 6),
+            (_("Scope"), 7),
         ]:
             renderer = Gtk.CellRendererText()
             column = Gtk.TreeViewColumn(title, renderer, text=index)
@@ -168,6 +169,7 @@ class FlatpakRuntimeManager(Gtk.Box):
                     runtime.version,
                     runtime.branch,
                     runtime.remote,
+                    runtime.installed_size,
                     runtime.scope,
                 ]
             )
@@ -186,6 +188,7 @@ class FlatpakRuntimeManager(Gtk.Box):
             or normalized_query in runtime.version.lower()
             or normalized_query in runtime.branch.lower()
             or normalized_query in runtime.remote.lower()
+            or normalized_query in runtime.installed_size.lower()
         ]
 
     def _show_message_dialog(self, msg_type: Gtk.MessageType, title: str, message: str) -> None:

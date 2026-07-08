@@ -76,9 +76,18 @@ class FlatpakRuntimeManager(QWidget):
         layout.addLayout(btn_layout)
 
         self.table = QTableWidget(self)
-        self.table.setColumnCount(7)
+        self.table.setColumnCount(8)
         self.table.setHorizontalHeaderLabels(
-            [_("ID"), _("Name"), _("Description"), _("Version"), _("Branch"), _("Remote"), _("Scope")]
+            [
+                _("ID"),
+                _("Name"),
+                _("Description"),
+                _("Version"),
+                _("Branch"),
+                _("Remote"),
+                _("Installed Size"),
+                _("Scope"),
+            ]
         )
         self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
         self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
@@ -86,8 +95,9 @@ class FlatpakRuntimeManager(QWidget):
         self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
         self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.ResizeToContents)
         self.table.horizontalHeader().setSectionResizeMode(5, QHeaderView.ResizeMode.ResizeToContents)
-        self.table.horizontalHeader().setSectionResizeMode(6, QHeaderView.ResizeMode.Fixed)
-        self.table.setColumnWidth(6, 90)
+        self.table.horizontalHeader().setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
+        self.table.horizontalHeader().setSectionResizeMode(7, QHeaderView.ResizeMode.Fixed)
+        self.table.setColumnWidth(7, 90)
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
         layout.addWidget(self.table)
@@ -172,7 +182,8 @@ class FlatpakRuntimeManager(QWidget):
             self.table.setItem(row, 3, QTableWidgetItem(runtime.version))
             self.table.setItem(row, 4, QTableWidgetItem(runtime.branch))
             self.table.setItem(row, 5, QTableWidgetItem(runtime.remote))
-            self.table.setItem(row, 6, QTableWidgetItem(runtime.scope))
+            self.table.setItem(row, 6, QTableWidgetItem(runtime.installed_size))
+            self.table.setItem(row, 7, QTableWidgetItem(runtime.scope))
 
     def _filter_runtimes(self, runtimes: list[FlatpakRuntime], query: str) -> list[FlatpakRuntime]:
         normalized_query = query.strip().lower()
@@ -188,4 +199,5 @@ class FlatpakRuntimeManager(QWidget):
             or normalized_query in runtime.version.lower()
             or normalized_query in runtime.branch.lower()
             or normalized_query in runtime.remote.lower()
+            or normalized_query in runtime.installed_size.lower()
         ]
