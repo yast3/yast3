@@ -18,6 +18,8 @@ class FlatpakPackage:
     description: str = ""
     version: str = ""
     branch: str = ""
+    installed_size: str = ""
+    download_size: str = ""
     scope: Literal["system", "user"] = "system"
 
 
@@ -31,7 +33,7 @@ def list_flatpak_packages() -> list[FlatpakPackage]:
             "flatpak",
             "list",
             "--app",
-            "--columns=application,name,description,version,branch,origin,installation",
+            "--columns=application,name,description,version,branch,origin,size,installation",
         ]
     )
 
@@ -51,7 +53,8 @@ def list_flatpak_packages() -> list[FlatpakPackage]:
         version = parts[3].strip() if len(parts) > 3 else ""
         branch = parts[4].strip() if len(parts) > 4 else ""
         remote = parts[5].strip() if len(parts) > 5 else ""
-        installation = parts[6].strip().lower() if len(parts) > 6 else "system"
+        installed_size = parts[6].strip() if len(parts) > 6 else ""
+        installation = parts[7].strip().lower() if len(parts) > 7 else "system"
         scope: Literal["system", "user"] = "user" if "user" in installation else "system"
 
         if app_id:
@@ -63,6 +66,7 @@ def list_flatpak_packages() -> list[FlatpakPackage]:
                     description=description,
                     version=version,
                     branch=branch,
+                    installed_size=installed_size,
                     scope=scope,
                 )
             )
@@ -95,7 +99,7 @@ def list_remote_flatpak_packages(remote: str = "flathub") -> list[FlatpakPackage
             "flatpak",
             "remote-ls",
             "--app",
-            "--columns=application,name,description,version,branch",
+            "--columns=application,name,description,version,download-size,branch",
             normalized_remote,
         ]
     )
@@ -115,7 +119,8 @@ def list_remote_flatpak_packages(remote: str = "flathub") -> list[FlatpakPackage
         name = parts[1].strip() if len(parts) > 1 else ""
         description = parts[2].strip() if len(parts) > 2 else ""
         version = parts[3].strip() if len(parts) > 3 else ""
-        branch = parts[4].strip() if len(parts) > 4 else ""
+        download_size = parts[4].strip() if len(parts) > 4 else ""
+        branch = parts[5].strip() if len(parts) > 5 else ""
 
         seen.add(app_id)
         packages.append(
@@ -126,6 +131,7 @@ def list_remote_flatpak_packages(remote: str = "flathub") -> list[FlatpakPackage
                 description=description,
                 version=version,
                 branch=branch,
+                download_size=download_size,
                 scope="system",
             )
         )

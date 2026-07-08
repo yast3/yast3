@@ -1,8 +1,12 @@
 # Change Log
 
+## 0.0.16 - 2026-07-09
+
+- feat(flatpak): added package download and installed sizes.
+
 ## 0.0.15 - 2026-07-08
 
-- core,gtk4,qt6: added flatpak module.
+- feat(flatpak): added flatpak module.
 
 ## 0.0.14 - 2026-07-04
 

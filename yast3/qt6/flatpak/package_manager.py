@@ -135,13 +135,14 @@ class FlatpakPackageManager(QWidget):
         layout.addLayout(btn_layout)
 
         self.search_table = QTableWidget(self)
-        self.search_table.setColumnCount(8)
+        self.search_table.setColumnCount(9)
         self.search_table.setHorizontalHeaderLabels(
             [
                 _("ID"),
                 _("Name"),
                 _("Description"),
                 _("Version"),
+                _("Download Size"),
                 _("Branch"),
                 _("Remote"),
                 _("Scope"),
@@ -156,6 +157,7 @@ class FlatpakPackageManager(QWidget):
         self.search_table.horizontalHeader().setSectionResizeMode(5, QHeaderView.ResizeMode.ResizeToContents)
         self.search_table.horizontalHeader().setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
         self.search_table.horizontalHeader().setSectionResizeMode(7, QHeaderView.ResizeMode.ResizeToContents)
+        self.search_table.horizontalHeader().setSectionResizeMode(8, QHeaderView.ResizeMode.ResizeToContents)
         self.search_table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.search_table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
         layout.addWidget(self.search_table)
@@ -205,9 +207,18 @@ class FlatpakPackageManager(QWidget):
         layout.addLayout(btn_layout)
 
         self.installed_table = QTableWidget(self)
-        self.installed_table.setColumnCount(7)
+        self.installed_table.setColumnCount(8)
         self.installed_table.setHorizontalHeaderLabels(
-            [_("ID"), _("Name"), _("Description"), _("Version"), _("Branch"), _("Remote"), _("Scope")]
+            [
+                _("ID"),
+                _("Name"),
+                _("Description"),
+                _("Version"),
+                _("Installed Size"),
+                _("Branch"),
+                _("Remote"),
+                _("Scope"),
+            ]
         )
         self.installed_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
         self.installed_table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
@@ -216,6 +227,7 @@ class FlatpakPackageManager(QWidget):
         self.installed_table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.ResizeToContents)
         self.installed_table.horizontalHeader().setSectionResizeMode(5, QHeaderView.ResizeMode.ResizeToContents)
         self.installed_table.horizontalHeader().setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
+        self.installed_table.horizontalHeader().setSectionResizeMode(7, QHeaderView.ResizeMode.ResizeToContents)
         self.installed_table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.installed_table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
         layout.addWidget(self.installed_table)
@@ -503,11 +515,12 @@ class FlatpakPackageManager(QWidget):
             self.search_table.setItem(row, 1, QTableWidgetItem(package.name))
             self.search_table.setItem(row, 2, QTableWidgetItem(package.description))
             self.search_table.setItem(row, 3, QTableWidgetItem(package.version))
-            self.search_table.setItem(row, 4, QTableWidgetItem(package.branch))
-            self.search_table.setItem(row, 5, QTableWidgetItem(package.remote))
-            self.search_table.setItem(row, 6, QTableWidgetItem(package.scope))
+            self.search_table.setItem(row, 4, QTableWidgetItem(package.download_size))
+            self.search_table.setItem(row, 5, QTableWidgetItem(package.branch))
+            self.search_table.setItem(row, 6, QTableWidgetItem(package.remote))
+            self.search_table.setItem(row, 7, QTableWidgetItem(package.scope))
             installed_text = _("Yes") if package.app_id in self.installed_app_ids else _("No")
-            self.search_table.setItem(row, 7, QTableWidgetItem(installed_text))
+            self.search_table.setItem(row, 8, QTableWidgetItem(installed_text))
 
         self._update_search_pager()
 
@@ -522,9 +535,10 @@ class FlatpakPackageManager(QWidget):
             self.installed_table.setItem(row, 1, QTableWidgetItem(package.name))
             self.installed_table.setItem(row, 2, QTableWidgetItem(package.description))
             self.installed_table.setItem(row, 3, QTableWidgetItem(package.version))
-            self.installed_table.setItem(row, 4, QTableWidgetItem(package.branch))
-            self.installed_table.setItem(row, 5, QTableWidgetItem(package.remote))
-            self.installed_table.setItem(row, 6, QTableWidgetItem(package.scope))
+            self.installed_table.setItem(row, 4, QTableWidgetItem(package.installed_size))
+            self.installed_table.setItem(row, 5, QTableWidgetItem(package.branch))
+            self.installed_table.setItem(row, 6, QTableWidgetItem(package.remote))
+            self.installed_table.setItem(row, 7, QTableWidgetItem(package.scope))
 
         self._update_installed_pager()
 
@@ -597,6 +611,8 @@ class FlatpakPackageManager(QWidget):
             or normalized_query in package.name.lower()
             or normalized_query in package.description.lower()
             or normalized_query in package.version.lower()
+            or normalized_query in package.installed_size.lower()
+            or normalized_query in package.download_size.lower()
             or normalized_query in package.branch.lower()
             or normalized_query in package.remote.lower()
         ]

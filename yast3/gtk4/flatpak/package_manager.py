@@ -123,27 +123,29 @@ class FlatpakPackageManager(Gtk.Box):
 
     def _create_table(self) -> None:
         if self.mode == self.MODE_SEARCH:
+            self.list_store = Gtk.ListStore(str, str, str, str, str, str, str, str, str)
+            columns = [
+                (_("ID"), 0),
+                (_("Name"), 1),
+                (_("Description"), 2),
+                (_("Version"), 3),
+                (_("Download Size"), 4),
+                (_("Branch"), 5),
+                (_("Remote"), 6),
+                (_("Scope"), 7),
+                (_("Installed"), 8),
+            ]
+        else:
             self.list_store = Gtk.ListStore(str, str, str, str, str, str, str, str)
             columns = [
                 (_("ID"), 0),
                 (_("Name"), 1),
                 (_("Description"), 2),
                 (_("Version"), 3),
-                (_("Branch"), 4),
-                (_("Remote"), 5),
-                (_("Scope"), 6),
-                (_("Installed"), 7),
-            ]
-        else:
-            self.list_store = Gtk.ListStore(str, str, str, str, str, str, str)
-            columns = [
-                (_("ID"), 0),
-                (_("Name"), 1),
-                (_("Description"), 2),
-                (_("Version"), 3),
-                (_("Branch"), 4),
-                (_("Remote"), 5),
-                (_("Scope"), 6),
+                (_("Installed Size"), 4),
+                (_("Branch"), 5),
+                (_("Remote"), 6),
+                (_("Scope"), 7),
             ]
 
         self.tree_view = Gtk.TreeView(model=self.list_store)
@@ -403,6 +405,7 @@ class FlatpakPackageManager(Gtk.Box):
                         package.name,
                         package.description,
                         package.version,
+                        package.download_size,
                         package.branch,
                         package.remote,
                         package.scope,
@@ -416,6 +419,7 @@ class FlatpakPackageManager(Gtk.Box):
                         package.name,
                         package.description,
                         package.version,
+                        package.installed_size,
                         package.branch,
                         package.remote,
                         package.scope,
@@ -451,6 +455,8 @@ class FlatpakPackageManager(Gtk.Box):
             or normalized_query in package.name.lower()
             or normalized_query in package.description.lower()
             or normalized_query in package.version.lower()
+            or normalized_query in package.installed_size.lower()
+            or normalized_query in package.download_size.lower()
             or normalized_query in package.branch.lower()
             or normalized_query in package.remote.lower()
         ]
