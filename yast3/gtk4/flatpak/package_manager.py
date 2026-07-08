@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+import threading
+from collections.abc import Callable
 from typing import Literal
 
 import gi
 
 gi.require_version("Gtk", "4.0")
 
-from gi.repository import Gtk
+from gi.repository import GLib, Gtk
 
 from yast3.core.flatpak import (
     FlatpakPackage,
@@ -18,6 +20,30 @@ from yast3.core.flatpak import (
     uninstall_flatpak_package,
 )
 from yast3.core.i18n import _
+
+
+class _RemoteCatalogWorker(threading.Thread):
+    """Worker that loads remote package IDs outside the UI thread."""
+
+    def __init__(
+        self,
+        remote: str,
+        on_loaded: Callable[[list[FlatpakPackage]], bool],
+        on_failed: Callable[[str], bool],
+    ) -> None:
+        super().__init__(daemon=True)
+        self.remote = remote
+        self.on_loaded = on_loaded
+        self.on_failed = on_failed
+
+    def run(self) -> None:
+        try:
+            packages = list_remote_flatpak_packages(self.remote)
+        except Exception as e:
+            GLib.idle_add(self.on_failed, str(e))
+            return
+
+        GLib.idle_add(self.on_loaded, packages)
 
 
 class FlatpakPackageManager(Gtk.Box):
@@ -40,6 +66,8 @@ class FlatpakPackageManager(Gtk.Box):
         self.installed_app_ids: set[str] = set()
         self.search_page = 0
         self.installed_page = 0
+        self.remote_loading = False
+        self.remote_loader: _RemoteCatalogWorker | None = None
 
         self._build_layout()
         self.refresh()
@@ -142,23 +170,64 @@ class FlatpakPackageManager(Gtk.Box):
         else:
             self.load_installed_packages(refresh_current=True)
 
+    def _set_remote_loading(self, loading: bool) -> None:
+        if self.mode != self.MODE_SEARCH:
+            return
+
+        self.remote_loading = loading
+        self.refresh_btn.set_label(_("Loading...") if loading else _("Refresh Catalog"))
+        self.primary_btn.set_sensitive(not loading)
+        self.search_btn.set_sensitive(not loading)
+        self.reset_btn.set_sensitive(not loading)
+        self.refresh_btn.set_sensitive(not loading)
+
     def load_remote_packages(self) -> None:
         if self.mode != self.MODE_SEARCH:
             return
 
-        try:
-            self.remote_packages = list_remote_flatpak_packages(self.DEFAULT_REMOTE)
-        except Exception as e:
-            self._show_message_dialog(
-                Gtk.MessageType.ERROR,
-                _("Error"),
-                _("Failed to load package catalog: {0}").format(str(e)),
-            )
-            self.remote_packages = []
+        if self.remote_loader is not None:
+            return
 
+        self._set_remote_loading(True)
+        self.remote_loader = _RemoteCatalogWorker(
+            self.DEFAULT_REMOTE,
+            on_loaded=self._on_remote_packages_loaded,
+            on_failed=self._on_remote_packages_failed,
+        )
+        self.remote_loader.start()
+
+    def _on_remote_packages_loaded(self, packages: list[FlatpakPackage]) -> bool:
+        if self.mode != self.MODE_SEARCH:
+            self._on_remote_loader_finished()
+            return False
+
+        self.remote_packages = packages
         self.filtered_remote_packages = self._filter_packages(self.remote_packages, self.search_entry.get_text().strip())
         self.search_page = 0
         self._populate_table()
+        self._on_remote_loader_finished()
+        return False
+
+    def _on_remote_packages_failed(self, error: str) -> bool:
+        if self.mode != self.MODE_SEARCH:
+            self._on_remote_loader_finished()
+            return False
+
+        self._show_message_dialog(
+            Gtk.MessageType.ERROR,
+            _("Error"),
+            _("Failed to load package catalog: {0}").format(error),
+        )
+        self.remote_packages = []
+        self.filtered_remote_packages = []
+        self.search_page = 0
+        self._populate_table()
+        self._on_remote_loader_finished()
+        return False
+
+    def _on_remote_loader_finished(self) -> None:
+        self.remote_loader = None
+        self._set_remote_loading(False)
 
     def load_installed_packages(self, refresh_current: bool = True) -> None:
         try:
