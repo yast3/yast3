@@ -10,6 +10,7 @@ from yast3.gtk4 import (
     HostsModule,
     ProxyModule,
     RepositoriesModule,
+    ServicesModule,
     SSHClientModule,
 )
 from yast3.gtk4.module_button import ModuleButton
@@ -27,6 +28,7 @@ class MainWindow(Gtk.ApplicationWindow):
             HostsModule(),
             ProxyModule(),
             RepositoriesModule(),
+            ServicesModule(),
             SSHClientModule(),
         )
 

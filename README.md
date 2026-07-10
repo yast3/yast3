@@ -13,7 +13,7 @@ Save YaST ♥️ with Python 3 & Qt6 Widgets.
 | Packages     | ❌   | ❌  | ❌   | ❌  |
 | Proxy        | ✅   | ✅  | ✅   | ❌  |
 | Repositories | ✅   | ✅  | ✅   | ❌  |
-| Services     | ✅   | ✅  | ❌   | ❌  |
+| Services     | ✅   | ✅  | ✅   | ❌  |
 | SSH Client   | 🚧   | 🚧  | 🚧   | ❌  |
 
 **Planned:** SSH Server (system)
