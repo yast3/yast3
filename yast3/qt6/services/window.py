@@ -114,7 +114,7 @@ class ServicesWindow(QMainWindow):
         self.table = QTableWidget()
         self.table.setColumnCount(5)
         self.table.setHorizontalHeaderLabels(
-            [_("Service"), _("Scope"), _("Status"), _("Enabled"), _("Description")]
+            [_("Name"), _("Scope"), _("Status"), _("Enabled"), _("Description")]
         )
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)

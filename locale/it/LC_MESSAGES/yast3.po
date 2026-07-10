@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-08 10:25+0000\n"
+"POT-Creation-Date: 2026-07-10 13:20+0000\n"
 "PO-Revision-Date: 2026-06-27 00:51+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: it\n"
@@ -60,7 +60,8 @@ msgstr "Cron"
 #: yast3/qt6/flatpak/__init__.py:18 yast3/qt6/git/__init__.py:18
 #: yast3/qt6/hostname/__init__.py:18 yast3/qt6/hosts/__init__.py:18
 #: yast3/qt6/packages/__init__.py:18 yast3/qt6/proxy/__init__.py:18
-#: yast3/qt6/repositories/__init__.py:20 yast3/qt6/ssh/__init__.py:24
+#: yast3/qt6/repositories/__init__.py:20 yast3/qt6/services/__init__.py:18
+#: yast3/qt6/ssh/__init__.py:24
 msgid "YaST3"
 msgstr "YaST3"
 
@@ -237,10 +238,10 @@ msgstr "Salva"
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:38
 #: yast3/gtk4/repositories/window.py:102 yast3/gtk4/ssh/hosts/tab.py:74
 #: yast3/qt6/repositories/repo_edit_dialog.py:42
-#: yast3/qt6/repositories/window.py:71 yast3/tui/cron/window.py:92
-#: yast3/tui/hosts/window.py:79 yast3/tui/proxy/window.py:120
-#: yast3/tui/repositories/window.py:80 yast3/tui/repositories/window.py:349
-#: yast3/tui/ssh/window.py:288
+#: yast3/qt6/repositories/window.py:71 yast3/qt6/services/window.py:117
+#: yast3/tui/cron/window.py:92 yast3/tui/hosts/window.py:79
+#: yast3/tui/proxy/window.py:120 yast3/tui/repositories/window.py:80
+#: yast3/tui/repositories/window.py:349 yast3/tui/ssh/window.py:288
 msgid "Enabled"
 msgstr ""
 
@@ -305,12 +306,12 @@ msgstr ""
 #: yast3/qt6/repositories/window.py:214 yast3/qt6/repositories/window.py:232
 #: yast3/qt6/repositories/window.py:235 yast3/qt6/repositories/window.py:257
 #: yast3/qt6/repositories/window.py:279 yast3/qt6/repositories/window.py:307
-#: yast3/qt6/repositories/window.py:322 yast3/qt6/ssh/__init__.py:69
-#: yast3/qt6/ssh/dialogs.py:86 yast3/qt6/ssh/dialogs.py:92
-#: yast3/qt6/ssh/hosts/tab.py:90 yast3/qt6/ssh/hosts/tab.py:141
-#: yast3/qt6/ssh/hosts/tab.py:162 yast3/qt6/ssh/hosts/tab.py:176
-#: yast3/qt6/ssh/hosts/tab.py:226 yast3/qt6/ssh/hosts/tab.py:229
-#: yast3/qt6/ssh/keys/generate_dialog.py:177
+#: yast3/qt6/repositories/window.py:322 yast3/qt6/services/window.py:141
+#: yast3/qt6/ssh/__init__.py:69 yast3/qt6/ssh/dialogs.py:86
+#: yast3/qt6/ssh/dialogs.py:92 yast3/qt6/ssh/hosts/tab.py:90
+#: yast3/qt6/ssh/hosts/tab.py:141 yast3/qt6/ssh/hosts/tab.py:162
+#: yast3/qt6/ssh/hosts/tab.py:176 yast3/qt6/ssh/hosts/tab.py:226
+#: yast3/qt6/ssh/hosts/tab.py:229 yast3/qt6/ssh/keys/generate_dialog.py:177
 #: yast3/qt6/ssh/keys/generate_dialog.py:195
 #: yast3/qt6/ssh/keys/generate_dialog.py:237
 #: yast3/qt6/ssh/keys/generate_dialog.py:242 yast3/qt6/ssh/keys/tab.py:177
@@ -337,6 +338,7 @@ msgstr "Errore"
 #: yast3/qt6/flatpak/runtime_manager.py:134 yast3/qt6/hosts/window.py:188
 #: yast3/qt6/hosts/window.py:225 yast3/qt6/repositories/window.py:107
 #: yast3/qt6/repositories/window.py:220 yast3/qt6/repositories/window.py:263
+#: yast3/qt6/services/window.py:228 yast3/qt6/services/window.py:257
 #: yast3/qt6/ssh/hosts/tab.py:148 yast3/qt6/ssh/hosts/tab.py:169
 msgid "Information"
 msgstr ""
@@ -417,7 +419,7 @@ msgstr ""
 #: yast3/qt6/flatpak/window.py:31 yast3/qt6/git/window.py:33
 #: yast3/qt6/hostname/window.py:30 yast3/qt6/hosts/window.py:32
 #: yast3/qt6/packages/window.py:13 yast3/qt6/proxy/window.py:31
-#: yast3/qt6/repositories/window.py:37
+#: yast3/qt6/repositories/window.py:37 yast3/qt6/services/window.py:41
 #, fuzzy, python-brace-format
 msgid "{} — YaST3"
 msgstr "YaST3"
@@ -473,6 +475,7 @@ msgstr "Repository"
 #: yast3/qt6/flatpak/package_manager.py:123
 #: yast3/qt6/flatpak/package_manager.py:195
 #: yast3/qt6/flatpak/runtime_manager.py:64 yast3/qt6/flatpak/window.py:58
+#: yast3/qt6/services/window.py:76
 msgid "Search"
 msgstr ""
 
@@ -493,7 +496,8 @@ msgstr ""
 #: yast3/qt6/flatpak/package_manager.py:203
 #: yast3/qt6/flatpak/package_manager.py:277
 #: yast3/qt6/flatpak/remote_manager.py:49
-#: yast3/qt6/flatpak/runtime_manager.py:72 yast3/qt6/ssh/keys/tab.py:50
+#: yast3/qt6/flatpak/runtime_manager.py:72 yast3/qt6/services/window.py:82
+#: yast3/qt6/ssh/keys/tab.py:50
 msgid "Refresh"
 msgstr ""
 
@@ -534,9 +538,10 @@ msgstr ""
 #: yast3/qt6/flatpak/remote_manager.py:58
 #: yast3/qt6/flatpak/runtime_manager.py:83
 #: yast3/qt6/repositories/repo_edit_dialog.py:37
-#: yast3/qt6/repositories/window.py:71 yast3/qt6/ssh/keys/tab.py:61
-#: yast3/tui/repositories/window.py:80 yast3/tui/repositories/window.py:328
-#: yast3/tui/ssh/window.py:293 yast3/tui/ssh/window.py:613
+#: yast3/qt6/repositories/window.py:71 yast3/qt6/services/window.py:117
+#: yast3/qt6/ssh/keys/tab.py:61 yast3/tui/repositories/window.py:80
+#: yast3/tui/repositories/window.py:328 yast3/tui/ssh/window.py:293
+#: yast3/tui/ssh/window.py:613
 msgid "Name"
 msgstr ""
 
@@ -545,7 +550,7 @@ msgstr ""
 #: yast3/gtk4/flatpak/runtime_manager.py:67
 #: yast3/qt6/flatpak/package_manager.py:143
 #: yast3/qt6/flatpak/package_manager.py:215
-#: yast3/qt6/flatpak/runtime_manager.py:84
+#: yast3/qt6/flatpak/runtime_manager.py:84 yast3/qt6/services/window.py:117
 msgid "Description"
 msgstr ""
 
@@ -591,7 +596,8 @@ msgstr ""
 #: yast3/qt6/flatpak/package_manager.py:220
 #: yast3/qt6/flatpak/remote_dialog.py:53 yast3/qt6/flatpak/remote_dialog.py:59
 #: yast3/qt6/flatpak/remote_manager.py:58
-#: yast3/qt6/flatpak/runtime_manager.py:89
+#: yast3/qt6/flatpak/runtime_manager.py:89 yast3/qt6/services/window.py:68
+#: yast3/qt6/services/window.py:117
 #, fuzzy
 msgid "Scope"
 msgstr "Chiudi"
@@ -739,12 +745,14 @@ msgid "Add Remote"
 msgstr ""
 
 #: yast3/gtk4/flatpak/remote_manager.py:188
-#: yast3/qt6/flatpak/remote_dialog.py:57
+#: yast3/qt6/flatpak/remote_dialog.py:57 yast3/qt6/services/window.py:71
+#: yast3/qt6/services/window.py:189
 msgid "System"
 msgstr ""
 
 #: yast3/gtk4/flatpak/remote_manager.py:189 yast3/gtk4/git/window.py:47
 #: yast3/qt6/flatpak/remote_dialog.py:58 yast3/qt6/git/window.py:51
+#: yast3/qt6/services/window.py:72 yast3/qt6/services/window.py:189
 #: yast3/tui/git/window.py:70 yast3/tui/ssh/window.py:519
 msgid "User"
 msgstr ""
@@ -1635,6 +1643,120 @@ msgstr "Impossibile eliminare il repository: %s"
 msgid "Failed to switch mirrors: %s"
 msgstr "Impossibile cambiare mirror: %s"
 
+#: yast3/qt6/services/__init__.py:12 yast3/qt6/services/window.py:41
+msgid "Services"
+msgstr ""
+
+#: yast3/qt6/services/window.py:58 yast3/qt6/services/window.py:117
+msgid "Status"
+msgstr ""
+
+#: yast3/qt6/services/window.py:60 yast3/qt6/services/window.py:70
+#, fuzzy
+msgid "All"
+msgstr "Pacchetti"
+
+#: yast3/qt6/services/window.py:61
+#, fuzzy
+msgid "Active"
+msgstr "Salva"
+
+#: yast3/qt6/services/window.py:62
+msgid "Inactive"
+msgstr ""
+
+#: yast3/qt6/services/window.py:63
+msgid "Failed"
+msgstr ""
+
+#: yast3/qt6/services/window.py:64
+msgid "Activating"
+msgstr ""
+
+#: yast3/qt6/services/window.py:78
+msgid "Service name or description"
+msgstr ""
+
+#: yast3/qt6/services/window.py:91 yast3/qt6/services/window.py:232
+msgid "Start"
+msgstr ""
+
+#: yast3/qt6/services/window.py:95 yast3/qt6/services/window.py:233
+#, fuzzy
+msgid "Stop"
+msgstr "Chiudi"
+
+#: yast3/qt6/services/window.py:99 yast3/qt6/services/window.py:234
+#, fuzzy
+msgid "Enable"
+msgstr "Abilita proxy"
+
+#: yast3/qt6/services/window.py:103 yast3/qt6/services/window.py:235
+#, fuzzy
+msgid "Disable"
+msgstr "Disabilitato"
+
+#: yast3/qt6/services/window.py:107 yast3/qt6/services/window.py:261
+#, fuzzy
+msgid "Logs"
+msgstr "Chiudi"
+
+#: yast3/qt6/services/window.py:142
+#, fuzzy, python-brace-format
+msgid "Failed to load services: {0}"
+msgstr "Impossibile salvare il repository: %s"
+
+#: yast3/qt6/services/window.py:228 yast3/qt6/services/window.py:257
+msgid "Please select a service."
+msgstr ""
+
+#: yast3/qt6/services/window.py:238
+#, fuzzy
+msgid "started"
+msgstr "Disabilitato"
+
+#: yast3/qt6/services/window.py:239
+#, fuzzy
+msgid "stopped"
+msgstr "Chiudi"
+
+#: yast3/qt6/services/window.py:240
+#, fuzzy
+msgid "enabled"
+msgstr "Disabilitato"
+
+#: yast3/qt6/services/window.py:241
+#, fuzzy
+msgid "disabled"
+msgstr "Disabilitato"
+
+#: yast3/qt6/services/window.py:246
+msgid "Working..."
+msgstr ""
+
+#: yast3/qt6/services/window.py:247
+#, python-brace-format
+msgid "{0} Service"
+msgstr ""
+
+#: yast3/qt6/services/window.py:249
+#, fuzzy, python-brace-format
+msgid "Service '{0}' {1} successfully."
+msgstr "Salvato correttamente"
+
+#: yast3/qt6/services/window.py:262
+msgid "Loading logs..."
+msgstr ""
+
+#: yast3/qt6/services/window.py:263
+#, python-brace-format
+msgid "Journal Logs: {0}"
+msgstr ""
+
+#: yast3/qt6/services/window.py:265
+msgid "End of journal output."
+msgstr ""
+
 #: yast3/qt6/ssh/keys/generate_dialog.py:90
 msgid "Key Name:"
 msgstr "Nome chiave:"
@@ -2052,16 +2174,4 @@ msgstr ""
 #: yast3/tui/ssh/window.py:620
 msgid "Key bits"
 msgstr "Bit chiave"
-
-#~ msgid "Refresh Catalog"
-#~ msgstr ""
-
-#~ msgid "Runtime ID"
-#~ msgstr ""
-
-#~ msgid "App ID"
-#~ msgstr ""
-
-#~ msgid "Refresh Installed"
-#~ msgstr ""
 

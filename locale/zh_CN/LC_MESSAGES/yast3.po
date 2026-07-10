@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  yast3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-08 10:25+0000\n"
+"POT-Creation-Date: 2026-07-10 13:20+0000\n"
 "PO-Revision-Date: 2026-06-14 05:40+0000\n"
 "Last-Translator: \n"
 "Language: zh_CN\n"
@@ -59,7 +59,8 @@ msgstr "计划任务"
 #: yast3/qt6/flatpak/__init__.py:18 yast3/qt6/git/__init__.py:18
 #: yast3/qt6/hostname/__init__.py:18 yast3/qt6/hosts/__init__.py:18
 #: yast3/qt6/packages/__init__.py:18 yast3/qt6/proxy/__init__.py:18
-#: yast3/qt6/repositories/__init__.py:20 yast3/qt6/ssh/__init__.py:24
+#: yast3/qt6/repositories/__init__.py:20 yast3/qt6/services/__init__.py:18
+#: yast3/qt6/ssh/__init__.py:24
 msgid "YaST3"
 msgstr "YaST3"
 
@@ -236,10 +237,10 @@ msgstr "保存"
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:38
 #: yast3/gtk4/repositories/window.py:102 yast3/gtk4/ssh/hosts/tab.py:74
 #: yast3/qt6/repositories/repo_edit_dialog.py:42
-#: yast3/qt6/repositories/window.py:71 yast3/tui/cron/window.py:92
-#: yast3/tui/hosts/window.py:79 yast3/tui/proxy/window.py:120
-#: yast3/tui/repositories/window.py:80 yast3/tui/repositories/window.py:349
-#: yast3/tui/ssh/window.py:288
+#: yast3/qt6/repositories/window.py:71 yast3/qt6/services/window.py:117
+#: yast3/tui/cron/window.py:92 yast3/tui/hosts/window.py:79
+#: yast3/tui/proxy/window.py:120 yast3/tui/repositories/window.py:80
+#: yast3/tui/repositories/window.py:349 yast3/tui/ssh/window.py:288
 msgid "Enabled"
 msgstr "启用"
 
@@ -304,12 +305,12 @@ msgstr "启用"
 #: yast3/qt6/repositories/window.py:214 yast3/qt6/repositories/window.py:232
 #: yast3/qt6/repositories/window.py:235 yast3/qt6/repositories/window.py:257
 #: yast3/qt6/repositories/window.py:279 yast3/qt6/repositories/window.py:307
-#: yast3/qt6/repositories/window.py:322 yast3/qt6/ssh/__init__.py:69
-#: yast3/qt6/ssh/dialogs.py:86 yast3/qt6/ssh/dialogs.py:92
-#: yast3/qt6/ssh/hosts/tab.py:90 yast3/qt6/ssh/hosts/tab.py:141
-#: yast3/qt6/ssh/hosts/tab.py:162 yast3/qt6/ssh/hosts/tab.py:176
-#: yast3/qt6/ssh/hosts/tab.py:226 yast3/qt6/ssh/hosts/tab.py:229
-#: yast3/qt6/ssh/keys/generate_dialog.py:177
+#: yast3/qt6/repositories/window.py:322 yast3/qt6/services/window.py:141
+#: yast3/qt6/ssh/__init__.py:69 yast3/qt6/ssh/dialogs.py:86
+#: yast3/qt6/ssh/dialogs.py:92 yast3/qt6/ssh/hosts/tab.py:90
+#: yast3/qt6/ssh/hosts/tab.py:141 yast3/qt6/ssh/hosts/tab.py:162
+#: yast3/qt6/ssh/hosts/tab.py:176 yast3/qt6/ssh/hosts/tab.py:226
+#: yast3/qt6/ssh/hosts/tab.py:229 yast3/qt6/ssh/keys/generate_dialog.py:177
 #: yast3/qt6/ssh/keys/generate_dialog.py:195
 #: yast3/qt6/ssh/keys/generate_dialog.py:237
 #: yast3/qt6/ssh/keys/generate_dialog.py:242 yast3/qt6/ssh/keys/tab.py:177
@@ -336,6 +337,7 @@ msgstr "错误"
 #: yast3/qt6/flatpak/runtime_manager.py:134 yast3/qt6/hosts/window.py:188
 #: yast3/qt6/hosts/window.py:225 yast3/qt6/repositories/window.py:107
 #: yast3/qt6/repositories/window.py:220 yast3/qt6/repositories/window.py:263
+#: yast3/qt6/services/window.py:228 yast3/qt6/services/window.py:257
 #: yast3/qt6/ssh/hosts/tab.py:148 yast3/qt6/ssh/hosts/tab.py:169
 msgid "Information"
 msgstr "信息"
@@ -416,7 +418,7 @@ msgstr "保存计划任务失败。"
 #: yast3/qt6/flatpak/window.py:31 yast3/qt6/git/window.py:33
 #: yast3/qt6/hostname/window.py:30 yast3/qt6/hosts/window.py:32
 #: yast3/qt6/packages/window.py:13 yast3/qt6/proxy/window.py:31
-#: yast3/qt6/repositories/window.py:37
+#: yast3/qt6/repositories/window.py:37 yast3/qt6/services/window.py:41
 #, python-brace-format
 msgid "{} — YaST3"
 msgstr "{} — YaST3"
@@ -470,6 +472,7 @@ msgstr "移除"
 #: yast3/qt6/flatpak/package_manager.py:123
 #: yast3/qt6/flatpak/package_manager.py:195
 #: yast3/qt6/flatpak/runtime_manager.py:64 yast3/qt6/flatpak/window.py:58
+#: yast3/qt6/services/window.py:76
 msgid "Search"
 msgstr "搜索"
 
@@ -490,7 +493,8 @@ msgstr "重置"
 #: yast3/qt6/flatpak/package_manager.py:203
 #: yast3/qt6/flatpak/package_manager.py:277
 #: yast3/qt6/flatpak/remote_manager.py:49
-#: yast3/qt6/flatpak/runtime_manager.py:72 yast3/qt6/ssh/keys/tab.py:50
+#: yast3/qt6/flatpak/runtime_manager.py:72 yast3/qt6/services/window.py:82
+#: yast3/qt6/ssh/keys/tab.py:50
 msgid "Refresh"
 msgstr "刷新"
 
@@ -531,9 +535,10 @@ msgstr "ID"
 #: yast3/qt6/flatpak/remote_manager.py:58
 #: yast3/qt6/flatpak/runtime_manager.py:83
 #: yast3/qt6/repositories/repo_edit_dialog.py:37
-#: yast3/qt6/repositories/window.py:71 yast3/qt6/ssh/keys/tab.py:61
-#: yast3/tui/repositories/window.py:80 yast3/tui/repositories/window.py:328
-#: yast3/tui/ssh/window.py:293 yast3/tui/ssh/window.py:613
+#: yast3/qt6/repositories/window.py:71 yast3/qt6/services/window.py:117
+#: yast3/qt6/ssh/keys/tab.py:61 yast3/tui/repositories/window.py:80
+#: yast3/tui/repositories/window.py:328 yast3/tui/ssh/window.py:293
+#: yast3/tui/ssh/window.py:613
 msgid "Name"
 msgstr "名称"
 
@@ -542,7 +547,7 @@ msgstr "名称"
 #: yast3/gtk4/flatpak/runtime_manager.py:67
 #: yast3/qt6/flatpak/package_manager.py:143
 #: yast3/qt6/flatpak/package_manager.py:215
-#: yast3/qt6/flatpak/runtime_manager.py:84
+#: yast3/qt6/flatpak/runtime_manager.py:84 yast3/qt6/services/window.py:117
 msgid "Description"
 msgstr "描述"
 
@@ -588,7 +593,8 @@ msgstr "远端"
 #: yast3/qt6/flatpak/package_manager.py:220
 #: yast3/qt6/flatpak/remote_dialog.py:53 yast3/qt6/flatpak/remote_dialog.py:59
 #: yast3/qt6/flatpak/remote_manager.py:58
-#: yast3/qt6/flatpak/runtime_manager.py:89
+#: yast3/qt6/flatpak/runtime_manager.py:89 yast3/qt6/services/window.py:68
+#: yast3/qt6/services/window.py:117
 msgid "Scope"
 msgstr "范围"
 
@@ -737,12 +743,14 @@ msgid "Add Remote"
 msgstr "添加软件源"
 
 #: yast3/gtk4/flatpak/remote_manager.py:188
-#: yast3/qt6/flatpak/remote_dialog.py:57
+#: yast3/qt6/flatpak/remote_dialog.py:57 yast3/qt6/services/window.py:71
+#: yast3/qt6/services/window.py:189
 msgid "System"
-msgstr ""
+msgstr "系统"
 
 #: yast3/gtk4/flatpak/remote_manager.py:189 yast3/gtk4/git/window.py:47
 #: yast3/qt6/flatpak/remote_dialog.py:58 yast3/qt6/git/window.py:51
+#: yast3/qt6/services/window.py:72 yast3/qt6/services/window.py:189
 #: yast3/tui/git/window.py:70 yast3/tui/ssh/window.py:519
 msgid "User"
 msgstr "用户"
@@ -1647,6 +1655,115 @@ msgstr "删除软件源失败：%s"
 msgid "Failed to switch mirrors: %s"
 msgstr "切换镜像失败：%s"
 
+#: yast3/qt6/services/__init__.py:12 yast3/qt6/services/window.py:41
+msgid "Services"
+msgstr "服务"
+
+#: yast3/qt6/services/window.py:58 yast3/qt6/services/window.py:117
+msgid "Status"
+msgstr "状态"
+
+#: yast3/qt6/services/window.py:60 yast3/qt6/services/window.py:70
+msgid "All"
+msgstr "全部"
+
+#: yast3/qt6/services/window.py:61
+msgid "Active"
+msgstr "已激活"
+
+#: yast3/qt6/services/window.py:62
+msgid "Inactive"
+msgstr "未激活"
+
+#: yast3/qt6/services/window.py:63
+msgid "Failed"
+msgstr "已失败"
+
+#: yast3/qt6/services/window.py:64
+msgid "Activating"
+msgstr "激活中"
+
+#: yast3/qt6/services/window.py:78
+msgid "Service name or description"
+msgstr "服务名或描述"
+
+#: yast3/qt6/services/window.py:91 yast3/qt6/services/window.py:232
+msgid "Start"
+msgstr "启动"
+
+#: yast3/qt6/services/window.py:95 yast3/qt6/services/window.py:233
+msgid "Stop"
+msgstr "停止"
+
+#: yast3/qt6/services/window.py:99 yast3/qt6/services/window.py:234
+msgid "Enable"
+msgstr "启用开机启动"
+
+#: yast3/qt6/services/window.py:103 yast3/qt6/services/window.py:235
+msgid "Disable"
+msgstr "禁用开机启动"
+
+#: yast3/qt6/services/window.py:107 yast3/qt6/services/window.py:261
+msgid "Logs"
+msgstr "日志"
+
+#: yast3/qt6/services/window.py:142
+#, fuzzy, python-brace-format
+msgid "Failed to load services: {0}"
+msgstr "加载主机名失败：{0}"
+
+#: yast3/qt6/services/window.py:228 yast3/qt6/services/window.py:257
+#, fuzzy
+msgid "Please select a service."
+msgstr "请选择要编辑的主机。"
+
+#: yast3/qt6/services/window.py:238
+#, fuzzy
+msgid "started"
+msgstr "已安装"
+
+#: yast3/qt6/services/window.py:239
+#, fuzzy
+msgid "stopped"
+msgstr "范围"
+
+#: yast3/qt6/services/window.py:240
+#, fuzzy
+msgid "enabled"
+msgstr "启用"
+
+#: yast3/qt6/services/window.py:241
+#, fuzzy
+msgid "disabled"
+msgstr "禁用"
+
+#: yast3/qt6/services/window.py:246
+msgid "Working..."
+msgstr ""
+
+#: yast3/qt6/services/window.py:247
+#, python-brace-format
+msgid "{0} Service"
+msgstr ""
+
+#: yast3/qt6/services/window.py:249
+#, fuzzy, python-brace-format
+msgid "Service '{0}' {1} successfully."
+msgstr "保存成功"
+
+#: yast3/qt6/services/window.py:262
+msgid "Loading logs..."
+msgstr ""
+
+#: yast3/qt6/services/window.py:263
+#, python-brace-format
+msgid "Journal Logs: {0}"
+msgstr ""
+
+#: yast3/qt6/services/window.py:265
+msgid "End of journal output."
+msgstr ""
+
 #: yast3/qt6/ssh/keys/generate_dialog.py:90
 msgid "Key Name:"
 msgstr "密钥名称："
@@ -2062,16 +2179,4 @@ msgstr "rsa, ed25519, ecdsa"
 #: yast3/tui/ssh/window.py:620
 msgid "Key bits"
 msgstr "密钥位数"
-
-#~ msgid "Refresh Catalog"
-#~ msgstr "刷新"
-
-#~ msgid "Runtime ID"
-#~ msgstr "运行时"
-
-#~ msgid "App ID"
-#~ msgstr ""
-
-#~ msgid "Refresh Installed"
-#~ msgstr ""
 
