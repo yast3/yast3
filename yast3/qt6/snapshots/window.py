@@ -23,7 +23,8 @@ from yast3.core.snapshots import (
     SnapshotEntry,
     build_snapshot_create_command,
     build_snapshot_delete_command,
-    list_snapshots,
+    build_snapshot_list_command,
+    parse_snapshots_from_json,
 )
 from yast3.qt6.command.action import CommandAction
 
@@ -40,6 +41,7 @@ class SnapshotsWindow(QMainWindow):
 
         self.snapshots: list[SnapshotEntry] = []
         self.current_action: CommandAction | None = None
+        self._list_action: CommandAction | None = None
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
@@ -85,17 +87,47 @@ class SnapshotsWindow(QMainWindow):
 
         layout.addWidget(self.table)
 
-        self.load_snapshots()
-
     def load_snapshots(self) -> None:
-        try:
-            self.snapshots = list_snapshots()
-            self.populate_table()
-        except Exception as error:
+        if self._list_action is not None and self._list_action.is_running():
+            return
+
+        self.refresh_btn.setEnabled(False)
+        self.refresh_btn.setText(_("Loading..."))
+
+        self._list_action = CommandAction(
+            text=_("Refresh"),
+            running_text=_("Loading..."),
+            dialog_title=_("Load Snapshots"),
+            command=build_snapshot_list_command(),
+            success_output=_("Snapshots loaded successfully."),
+            auto_close_on_success=True,
+            auto_close_delay_ms=200,
+            parent=self,
+        )
+        self._list_action.action_finished.connect(self._on_snapshots_loaded)
+        self._list_action.start_action()
+
+    def _on_snapshots_loaded(self, success: bool, error: str, stdout: str) -> None:
+        self._list_action = None
+        self.refresh_btn.setEnabled(True)
+        self.refresh_btn.setText(_("Refresh"))
+
+        if success:
+            try:
+                self.snapshots = parse_snapshots_from_json(stdout)
+                print(self.snapshots)
+                self.populate_table()
+            except Exception as parse_error:
+                QMessageBox.critical(
+                    self,
+                    _("Error"),
+                    _("Failed to parse snapshot data: {0}").format(str(parse_error)),
+                )
+        else:
             QMessageBox.critical(
                 self,
                 _("Error"),
-                _("Failed to load snapshots: {0}").format(str(error)),
+                _("Failed to load snapshots: {0}").format(error or _("Unknown error")),
             )
 
     def populate_table(self) -> None:
@@ -174,7 +206,7 @@ class SnapshotsWindow(QMainWindow):
         )
         self.current_action.start_action()
 
-    def _reload_after_action(self, success: bool, _error: str) -> None:
+    def _reload_after_action(self, success: bool, _error: str, _stdout: str) -> None:
         if success:
             self.load_snapshots()
 
@@ -185,7 +217,7 @@ class SnapshotsWindow(QMainWindow):
         dialog_title: str,
         command: list[str],
         success_output: str,
-        on_finished: Callable[[bool, str], None] | None,
+        on_finished: Callable[[bool, str, str], None] | None,
     ) -> CommandAction:
         action = CommandAction(
             text=text,
@@ -198,6 +230,10 @@ class SnapshotsWindow(QMainWindow):
         if on_finished is not None:
             action.action_finished.connect(on_finished)
         return action
+
+    def showEvent(self, _event) -> None:
+        super().showEvent(_event)
+        self.load_snapshots()
 
     def closeEvent(self, _event) -> None:
         self.closed.emit()

@@ -85,7 +85,7 @@ class FlatpakWindow(QMainWindow):
             self.manage_box.hide()
             self.install_box.show()
 
-    def _on_install_finished(self, success: bool, error: str) -> None:
+    def _on_install_finished(self, success: bool, error: str, _stdout: str) -> None:
         if success:
             QMessageBox.information(self, _("Success"), _("Flatpak installed successfully."))
             self.refresh_state()
@@ -96,7 +96,7 @@ class FlatpakWindow(QMainWindow):
                 _("Failed to install Flatpak: {0}").format(error or _("Unknown error")),
             )
 
-    def _on_remove_finished(self, success: bool, error: str) -> None:
+    def _on_remove_finished(self, success: bool, error: str, _stdout: str) -> None:
         if success:
             QMessageBox.information(self, _("Success"), _("Flatpak removed successfully."))
             self.refresh_state()

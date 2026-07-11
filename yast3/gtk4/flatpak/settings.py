@@ -39,7 +39,7 @@ class FlatpakSettingsTab(Gtk.Box):
         self.remove_btn.set_label(self.remove_action.text())
         self.remove_btn.set_sensitive(self.remove_action.is_enabled())
 
-    def _on_remove_finished(self, success: bool, error: str) -> None:
+    def _on_remove_finished(self, success: bool, error: str, _stdout: str) -> None:
         if success:
             self._show_message_dialog(Gtk.MessageType.INFO, _("Success"), _("Flatpak removed successfully."))
             if hasattr(self.parent_window, "_refresh_state"):

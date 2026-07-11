@@ -13,7 +13,7 @@ class CommandWorker(QObject):
     """Run a command in a worker thread and stream output."""
 
     output = Signal(str)
-    finished = Signal(int, str)
+    finished = Signal(int, str, str)
 
     def __init__(self, command: list[str]):
         super().__init__()
@@ -31,7 +31,7 @@ class CommandWorker(QObject):
                 bufsize=1,
             )
         except Exception as e:
-            self.finished.emit(-1, str(e))
+            self.finished.emit(-1, str(e), "")
             return
 
         lines: list[str] = []
@@ -43,9 +43,10 @@ class CommandWorker(QObject):
                     self.output.emit(line)
 
         return_code = process.wait()
+        stdout = "\n".join(lines).strip() if lines else ""
         if return_code == 0:
-            self.finished.emit(return_code, "")
+            self.finished.emit(return_code, "", stdout)
             return
 
         error = "\n".join(lines[-20:]).strip() or _("Unknown error")
-        self.finished.emit(return_code, error)
+        self.finished.emit(return_code, error, stdout)

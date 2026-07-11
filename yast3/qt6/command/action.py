@@ -13,7 +13,7 @@ from .worker import CommandWorker
 class CommandAction(QAction):
     """Generic action that executes a command with an output dialog."""
 
-    action_finished = Signal(bool, str)
+    action_finished = Signal(bool, str, str)
 
     def __init__(
         self,
@@ -84,7 +84,7 @@ class CommandAction(QAction):
         if self.dialog is not None:
             self.dialog.append_output(line)
 
-    def _on_finished(self, return_code: int, error: str) -> None:
+    def _on_finished(self, return_code: int, error: str, stdout: str = "") -> None:
         success = return_code == 0
         self.set_busy(False)
 
@@ -97,7 +97,7 @@ class CommandAction(QAction):
             elif error:
                 self.dialog.append_output(error)
 
-        self.action_finished.emit(success, error)
+        self.action_finished.emit(success, error, stdout)
         self.worker_thread = None
         self.worker = None
 

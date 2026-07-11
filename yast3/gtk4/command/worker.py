@@ -16,7 +16,7 @@ class CommandWorker(threading.Thread):
         self,
         command: list[str],
         on_output: Callable[[str], None],
-        on_finished: Callable[[int, str], None],
+        on_finished: Callable[[int, str, str], None],
     ):
         super().__init__(daemon=True)
         self.command = command
@@ -35,7 +35,7 @@ class CommandWorker(threading.Thread):
                 bufsize=1,
             )
         except Exception as e:
-            self.on_finished(-1, str(e))
+            self.on_finished(-1, str(e), "")
             return
 
         lines: list[str] = []
@@ -47,9 +47,10 @@ class CommandWorker(threading.Thread):
                     self.on_output(line)
 
         return_code = process.wait()
+        stdout = "\n".join(lines).strip() if lines else ""
         if return_code == 0:
-            self.on_finished(return_code, "")
+            self.on_finished(return_code, "", stdout)
             return
 
         error = "\n".join(lines[-20:]).strip() or _("Unknown error")
-        self.on_finished(return_code, error)
+        self.on_finished(return_code, error, stdout)

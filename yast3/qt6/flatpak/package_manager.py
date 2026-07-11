@@ -375,7 +375,7 @@ class FlatpakPackageManager(QWidget):
         self.uninstall_action.command = self._build_uninstall_command(app_id, scope)
         self.uninstall_action.start_action()
 
-    def _on_install_finished(self, success: bool, error: str) -> None:
+    def _on_install_finished(self, success: bool, error: str, _stdout: str) -> None:
         if self.mode != self.MODE_SEARCH:
             return
 
@@ -386,7 +386,7 @@ class FlatpakPackageManager(QWidget):
         if error:
             QMessageBox.critical(self, _("Error"), _("Failed to install package: {0}").format(error))
 
-    def _on_uninstall_finished(self, success: bool, error: str) -> None:
+    def _on_uninstall_finished(self, success: bool, error: str, _stdout: str) -> None:
         if self.mode != self.MODE_INSTALLED:
             return
 

@@ -82,7 +82,7 @@ class FlatpakWindow(Gtk.ApplicationWindow):
             self.manage_box.set_visible(False)
             self.install_box.set_visible(True)
 
-    def _on_install_finished(self, success: bool, error: str) -> None:
+    def _on_install_finished(self, success: bool, error: str, _stdout: str) -> None:
         if success:
             self._show_message_dialog(Gtk.MessageType.INFO, _("Success"), _("Flatpak installed successfully."))
             self._refresh_state()

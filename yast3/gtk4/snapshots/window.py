@@ -15,7 +15,8 @@ from yast3.core.snapshots import (
     SnapshotEntry,
     build_snapshot_create_command,
     build_snapshot_delete_command,
-    list_snapshots,
+    build_snapshot_list_command,
+    parse_snapshots_from_json,
 )
 from yast3.gtk4.command.action import CommandAction
 
@@ -28,6 +29,7 @@ class SnapshotsWindow(Gtk.ApplicationWindow):
 
         self.snapshots: list[SnapshotEntry] = []
         self.current_action: CommandAction | None = None
+        self._list_action: CommandAction | None = None
 
         self.set_default_size(1280, 720)
         self.set_title(_("{} — YaST3").format(_("Snapshots")))
@@ -43,7 +45,7 @@ class SnapshotsWindow(Gtk.ApplicationWindow):
 
         self.set_child(self.main_box)
 
-        self.load_snapshots()
+        self.connect("realize", self._on_window_realized)
 
     def _create_actions(self) -> None:
         action_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
@@ -158,15 +160,49 @@ class SnapshotsWindow(Gtk.ApplicationWindow):
 
         return confirmed["value"]
 
+    def _on_window_realized(self, _widget) -> None:
+        self.load_snapshots()
+
     def load_snapshots(self) -> None:
-        try:
-            self.snapshots = list_snapshots()
-            self.populate_list()
-        except Exception as error:
+        if self._list_action is not None and self._list_action.is_running():
+            return
+
+        self.refresh_btn.set_sensitive(False)
+        self.refresh_btn.set_label(_("Loading..."))
+
+        self._list_action = CommandAction(
+            text=_("Refresh"),
+            running_text=_("Loading..."),
+            dialog_title=_("Load Snapshots"),
+            command=build_snapshot_list_command(),
+            success_output=_("Snapshots loaded successfully."),
+            auto_close_on_success=True,
+            auto_close_delay_ms=200,
+            parent_window=self,
+        )
+        self._list_action.connect_finished(self._on_snapshots_loaded)
+        self._list_action.start_action()
+
+    def _on_snapshots_loaded(self, success: bool, error: str, stdout: str) -> None:
+        self._list_action = None
+        self.refresh_btn.set_sensitive(True)
+        self.refresh_btn.set_label(_("Refresh"))
+
+        if success:
+            try:
+                self.snapshots = parse_snapshots_from_json(stdout)
+                self.populate_list()
+            except Exception as parse_error:
+                self._show_message_dialog(
+                    Gtk.MessageType.ERROR,
+                    _("Error"),
+                    _("Failed to parse snapshot data: {0}").format(str(parse_error)),
+                )
+        else:
             self._show_message_dialog(
                 Gtk.MessageType.ERROR,
                 _("Error"),
-                _("Failed to load snapshots: {0}").format(str(error)),
+                _("Failed to load snapshots: {0}").format(error or _("Unknown error")),
             )
 
     def populate_list(self) -> None:
@@ -244,7 +280,7 @@ class SnapshotsWindow(Gtk.ApplicationWindow):
         )
         self.current_action.start_action()
 
-    def _reload_after_action(self, success: bool, _error: str) -> None:
+    def _reload_after_action(self, success: bool, _error: str, _stdout: str) -> None:
         if success:
             self.description_entry.set_text("")
             self.load_snapshots()
@@ -256,7 +292,7 @@ class SnapshotsWindow(Gtk.ApplicationWindow):
         dialog_title: str,
         command: list[str],
         success_output: str,
-        on_finished: Callable[[bool, str], None] | None,
+        on_finished: Callable[[bool, str, str], None] | None,
     ) -> CommandAction:
         action = CommandAction(
             text=text,

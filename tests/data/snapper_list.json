@@ -1,0 +1,336 @@
+{
+  "root": [
+    {
+      "subvolume": "/",
+      "number": 0,
+      "default": false,
+      "active": false,
+      "type": "single",
+      "pre-number": null,
+      "date": "",
+      "user": "root",
+      "used-space": null,
+      "cleanup": "",
+      "description": "current",
+      "userdata": null
+    },
+    {
+      "subvolume": "/",
+      "number": 1,
+      "default": true,
+      "active": true,
+      "type": "single",
+      "pre-number": null,
+      "date": "2024-02-23 19:42:51",
+      "user": "root",
+      "used-space": 5214208,
+      "cleanup": "",
+      "description": "first root filesystem",
+      "userdata": null
+    },
+    {
+      "subvolume": "/",
+      "number": 1536,
+      "default": false,
+      "active": false,
+      "type": "pre",
+      "pre-number": null,
+      "date": "2026-06-26 19:45:20",
+      "user": "root",
+      "used-space": 3091963904,
+      "cleanup": "number",
+      "description": "zypp(zypper)",
+      "userdata": {
+        "important": "yes"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1537,
+      "default": false,
+      "active": false,
+      "type": "post",
+      "pre-number": 1536,
+      "date": "2026-06-26 19:52:27",
+      "user": "root",
+      "used-space": 1457197056,
+      "cleanup": "number",
+      "description": "",
+      "userdata": {
+        "important": "yes"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1552,
+      "default": false,
+      "active": false,
+      "type": "pre",
+      "pre-number": null,
+      "date": "2026-07-01 23:35:04",
+      "user": "root",
+      "used-space": 29536256,
+      "cleanup": "number",
+      "description": "zypp(zypper)",
+      "userdata": {
+        "important": "yes"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1554,
+      "default": false,
+      "active": false,
+      "type": "pre",
+      "pre-number": null,
+      "date": "2026-07-02 00:01:56",
+      "user": "root",
+      "used-space": 29401088,
+      "cleanup": "number",
+      "description": "zypp(zypper)",
+      "userdata": {
+        "important": "yes"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1555,
+      "default": false,
+      "active": false,
+      "type": "post",
+      "pre-number": 1554,
+      "date": "2026-07-02 00:04:01",
+      "user": "root",
+      "used-space": 260288512,
+      "cleanup": "number",
+      "description": "",
+      "userdata": {
+        "important": "yes"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1591,
+      "default": false,
+      "active": false,
+      "type": "pre",
+      "pre-number": null,
+      "date": "2026-07-04 11:04:56",
+      "user": "root",
+      "used-space": 310661120,
+      "cleanup": "number",
+      "description": "zypp(zypper)",
+      "userdata": {
+        "important": "yes"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1592,
+      "default": false,
+      "active": false,
+      "type": "post",
+      "pre-number": 1591,
+      "date": "2026-07-04 11:10:16",
+      "user": "root",
+      "used-space": 341364736,
+      "cleanup": "number",
+      "description": "",
+      "userdata": {
+        "important": "yes"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1604,
+      "default": false,
+      "active": false,
+      "type": "pre",
+      "pre-number": null,
+      "date": "2026-07-05 22:13:49",
+      "user": "root",
+      "used-space": 107151360,
+      "cleanup": "number",
+      "description": "zypp(zypper)",
+      "userdata": {
+        "important": "yes"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1605,
+      "default": false,
+      "active": false,
+      "type": "post",
+      "pre-number": 1604,
+      "date": "2026-07-05 22:14:42",
+      "user": "root",
+      "used-space": 123662336,
+      "cleanup": "number",
+      "description": "",
+      "userdata": {
+        "important": "yes"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1630,
+      "default": false,
+      "active": false,
+      "type": "pre",
+      "pre-number": null,
+      "date": "2026-07-08 16:59:04",
+      "user": "root",
+      "used-space": 521981952,
+      "cleanup": "number",
+      "description": "zypp(zypper)",
+      "userdata": {
+        "important": "yes"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1631,
+      "default": false,
+      "active": false,
+      "type": "post",
+      "pre-number": 1630,
+      "date": "2026-07-08 17:20:03",
+      "user": "root",
+      "used-space": 69283840,
+      "cleanup": "number",
+      "description": "",
+      "userdata": {
+        "important": "yes"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1632,
+      "default": false,
+      "active": false,
+      "type": "pre",
+      "pre-number": null,
+      "date": "2026-07-09 19:57:44",
+      "user": "root",
+      "used-space": 22384640,
+      "cleanup": "number",
+      "description": "zypp(zypper)",
+      "userdata": {
+        "important": "no"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1633,
+      "default": false,
+      "active": false,
+      "type": "post",
+      "pre-number": 1632,
+      "date": "2026-07-09 19:59:08",
+      "user": "root",
+      "used-space": 15880192,
+      "cleanup": "number",
+      "description": "",
+      "userdata": {
+        "important": "no"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1634,
+      "default": false,
+      "active": false,
+      "type": "pre",
+      "pre-number": null,
+      "date": "2026-07-10 10:57:35",
+      "user": "root",
+      "used-space": 1478656,
+      "cleanup": "number",
+      "description": "zypp(zypper)",
+      "userdata": {
+        "important": "no"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1635,
+      "default": false,
+      "active": false,
+      "type": "post",
+      "pre-number": 1634,
+      "date": "2026-07-10 10:57:52",
+      "user": "root",
+      "used-space": 1933312,
+      "cleanup": "number",
+      "description": "",
+      "userdata": {
+        "important": "no"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1646,
+      "default": false,
+      "active": false,
+      "type": "pre",
+      "pre-number": null,
+      "date": "2026-07-11 15:37:00",
+      "user": "root",
+      "used-space": 196608,
+      "cleanup": "number",
+      "description": "zypp(packagekitd)",
+      "userdata": {
+        "important": "no"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1647,
+      "default": false,
+      "active": false,
+      "type": "pre",
+      "pre-number": null,
+      "date": "2026-07-11 15:40:43",
+      "user": "root",
+      "used-space": 184320,
+      "cleanup": "number",
+      "description": "zypp(packagekitd)",
+      "userdata": {
+        "important": "no"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1648,
+      "default": false,
+      "active": false,
+      "type": "pre",
+      "pre-number": null,
+      "date": "2026-07-11 15:43:41",
+      "user": "root",
+      "used-space": 163840,
+      "cleanup": "number",
+      "description": "zypp(zypper)",
+      "userdata": {
+        "important": "no"
+      }
+    },
+    {
+      "subvolume": "/",
+      "number": 1649,
+      "default": false,
+      "active": false,
+      "type": "post",
+      "pre-number": 1648,
+      "date": "2026-07-11 15:44:01",
+      "user": "root",
+      "used-space": 4227072,
+      "cleanup": "number",
+      "description": "",
+      "userdata": {
+        "important": "no"
+      }
+    }
+  ]
+}

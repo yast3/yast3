@@ -267,7 +267,7 @@ class ServicesWindow(QMainWindow):
         )
         self.log_action.start_action()
 
-    def _reload_after_action(self, success: bool, _error: str) -> None:
+    def _reload_after_action(self, success: bool, _error: str, _stdout: str) -> None:
         if success:
             self.load_services()
 
@@ -278,7 +278,7 @@ class ServicesWindow(QMainWindow):
         dialog_title: str,
         command: list[str],
         success_output: str,
-        on_finished: Callable[[bool, str], None] | None,
+        on_finished: Callable[[bool, str, str], None] | None,
     ) -> CommandAction:
         action = CommandAction(
             text=text,

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+
 from dataclasses import dataclass
 
 
@@ -26,8 +27,8 @@ def _to_int(value: object, default: int = -1) -> int:
         return default
 
 
-def _run_snapper_json(command: list[str]) -> list[dict[str, object]]:
-    result = subprocess.run(command, capture_output=True, text=True, check=True)
+def _run_snapper_json(command: list[str], timeout: int | None = None) -> list[dict[str, object]]:
+    result = subprocess.run(command, capture_output=True, text=True, check=True, timeout=timeout)
     payload = result.stdout.strip()
     if not payload:
         return []
@@ -53,10 +54,10 @@ def _parse_snapshot_entry(item: dict[str, object]) -> SnapshotEntry:
     )
 
 
-def list_snapshots(config: str = "root") -> list[SnapshotEntry]:
+def list_snapshots(config: str = "root", timeout: int | None = None) -> list[SnapshotEntry]:
     """List snapshots for the selected snapper config."""
 
-    rows = _run_snapper_json(["snapper", "-c", config, "--jsonout", "list"])
+    rows = _run_snapper_json(["pkexec", "snapper", "-c", config, "--jsonout", "list"], timeout=timeout)
     snapshots = [_parse_snapshot_entry(item) for item in rows]
     snapshots.sort(key=lambda entry: entry.number, reverse=True)
     return snapshots
@@ -77,3 +78,41 @@ def build_snapshot_delete_command(snapshot_number: int, config: str = "root") ->
     if snapshot_number <= 0:
         raise ValueError("Snapshot number must be a positive integer")
     return ["pkexec", "snapper", "-c", config, "delete", str(snapshot_number)]
+
+
+def build_snapshot_list_command(config: str = "root") -> list[str]:
+    """Build a command that lists snapshots using snapper."""
+
+    return ["pkexec", "snapper", "-c", config, "--jsonout", "list"]
+
+
+def parse_snapshots_from_json(json_output: str) -> list[SnapshotEntry]:
+    """Parse snapshot JSON output into a list of SnapshotEntry objects."""
+
+    if not json_output.strip():
+        return []
+
+    data = json.loads(json_output)
+
+    if isinstance(data, list):
+        rows = [item for item in data if isinstance(item, dict)]
+    elif isinstance(data, dict):
+        rows = data.get("snapshots") or data.get("data")
+        if rows is None:
+            for value in data.values():
+                if isinstance(value, list):
+                    rows = value
+                    break
+        if isinstance(rows, list):
+            rows = [item for item in rows if isinstance(item, dict)]
+        else:
+            rows = []
+    else:
+        rows = []
+
+    snapshots = [_parse_snapshot_entry(item) for item in rows]
+    snapshots.sort(key=lambda entry: entry.number, reverse=True)
+    return snapshots
+
+
+

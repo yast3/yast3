@@ -76,7 +76,7 @@ class CommandAction:
     def connect_changed(self, callback: Callable[[], None]) -> None:
         self._changed_handlers.append(callback)
 
-    def connect_finished(self, callback: Callable[[bool, str], None]) -> None:
+    def connect_finished(self, callback: Callable[[bool, str, str], None]) -> None:
         self._finished_handlers.append(callback)
 
     def set_busy(self, busy: bool) -> None:
@@ -87,15 +87,15 @@ class CommandAction:
     def _emit_output(self, line: str) -> None:
         GLib.idle_add(self._on_output, line)
 
-    def _emit_finished(self, return_code: int, error: str) -> None:
-        GLib.idle_add(self._on_finished, return_code, error)
+    def _emit_finished(self, return_code: int, error: str, stdout: str = "") -> None:
+        GLib.idle_add(self._on_finished, return_code, error, stdout)
 
     def _on_output(self, line: str) -> bool:
         if self.dialog is not None:
             self.dialog.append_output(line)
         return False
 
-    def _on_finished(self, return_code: int, error: str) -> bool:
+    def _on_finished(self, return_code: int, error: str, stdout: str = "") -> bool:
         success = return_code == 0
         self.set_busy(False)
 
@@ -109,7 +109,7 @@ class CommandAction:
                 self.dialog.append_output(error)
 
         for callback in self._finished_handlers:
-            callback(success, error)
+            callback(success, error, stdout)
 
         self.worker = None
         return False

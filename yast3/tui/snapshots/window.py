@@ -14,7 +14,8 @@ from yast3.core.snapshots import (
     SnapshotEntry,
     build_snapshot_create_command,
     build_snapshot_delete_command,
-    list_snapshots,
+    build_snapshot_list_command,
+    parse_snapshots_from_json,
 )
 
 
@@ -59,6 +60,7 @@ class SnapshotsWindow(Screen):
     def __init__(self) -> None:
         super().__init__()
         self.snapshots: list[SnapshotEntry] = []
+        self._loading = False
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -95,12 +97,46 @@ class SnapshotsWindow(Screen):
             msg_widget.add_class("success")
 
     def load_snapshots(self) -> None:
-        try:
-            self.snapshots = list_snapshots()
+        if self._loading:
+            return
+
+        self._loading = True
+        refresh_btn = self.query_one("#refresh-btn", Button)
+        refresh_btn.disabled = True
+        refresh_btn.label = _("Loading...")
+
+        command = build_snapshot_list_command()
+
+        def _worker():
+            try:
+                result = subprocess.run(command, capture_output=True, text=True, timeout=30)
+                if result.returncode == 0:
+                    snapshots = parse_snapshots_from_json(result.stdout)
+                    self.app.call_later(self._update_snapshots_ui, True, snapshots)
+                else:
+                    error_text = (result.stdout or result.stderr or _("Unknown error")).strip()
+                    self.app.call_later(self._update_snapshots_ui, False, error_text)
+            except subprocess.TimeoutExpired:
+                self.app.call_later(self._update_snapshots_ui, False, _("Timeout waiting for snapshots"))
+            except Exception as error:
+                self.app.call_later(self._update_snapshots_ui, False, str(error))
+
+        import threading
+
+        threading.Thread(target=_worker, daemon=True).start()
+
+    def _update_snapshots_ui(self, success: bool, result) -> None:
+        self._loading = False
+        refresh_btn = self.query_one("#refresh-btn", Button)
+        refresh_btn.disabled = False
+        refresh_btn.label = _("Refresh")
+
+        if success:
+            self.snapshots = result
             self.populate_table()
-        except Exception as error:
+        else:
             self.show_message(
-                _("Error: Failed to load snapshots: {0}").format(str(error)),
+                _("Error: Failed to load snapshots: {0}").format(str(result)),
                 error=True,
             )
 
