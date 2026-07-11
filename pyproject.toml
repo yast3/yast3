@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "yast3"
-version = "0.0.17"
+version = "0.0.18"
 description = "YaST3 desktop settings shell built with Python 3 and Qt6 Widgets."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -55,6 +55,7 @@ packages = [
     "yast3.core.proxy",
     "yast3.core.repositories",
     "yast3.core.services",
+    "yast3.core.snapshots",
     "yast3.core.ssh",
     "yast3.core.ssh.hosts",
     "yast3.core.ssh.keys",
@@ -69,6 +70,7 @@ packages = [
     "yast3.gtk4.proxy",
     "yast3.gtk4.repositories",
     "yast3.gtk4.services",
+    "yast3.gtk4.snapshots",
     "yast3.gtk4.ssh",
     "yast3.gtk4.ssh.hosts",
     "yast3.gtk4.ssh.keys",
@@ -83,6 +85,7 @@ packages = [
     "yast3.qt6.proxy",
     "yast3.qt6.repositories",
     "yast3.qt6.services",
+    "yast3.qt6.snapshots",
     "yast3.qt6.ssh",
     "yast3.qt6.ssh.hosts",
     "yast3.qt6.ssh.keys",
@@ -95,6 +98,7 @@ packages = [
     "yast3.tui.proxy",
     "yast3.tui.repositories",
     "yast3.tui.services",
+    "yast3.tui.snapshots",
     "yast3.tui.ssh",
 ]
 include-package-data = true
