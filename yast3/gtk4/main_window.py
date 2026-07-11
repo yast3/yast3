@@ -7,6 +7,7 @@ from gi.repository import Gdk, Gtk
 from yast3.core import GITHUB_URL, __version__
 from yast3.gtk4 import (
     CronModule,
+    DateTimeModule,
     FlatpakModule,
     GitModule,
     HostnameModule,
@@ -26,6 +27,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
         self.modules = (
             CronModule(),
+            DateTimeModule(),
             FlatpakModule(),
             GitModule(),
             HostnameModule(),

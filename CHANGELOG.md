@@ -3,6 +3,7 @@
 ## 0.0.18 - 2026-07-11
 
 - feat(snapshots): added snapshots module to list, create, and delete snapper snapshots.
+- feat(datetime): added datetime module to manage timezone and ntp servers.
 
 ## 0.0.17 - 2026-07-10
 

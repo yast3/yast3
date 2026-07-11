@@ -15,6 +15,7 @@ from PySide6.QtWidgets import (
 from yast3.core import GITHUB_URL, __version__
 from yast3.qt6 import (
     CronModule,
+    DateTimeModule,
     FlatpakModule,
     GitModule,
     HostnameModule,
@@ -33,6 +34,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.modules = (
             CronModule(),
+            DateTimeModule(),
             FlatpakModule(),
             GitModule(),
             HostnameModule(),

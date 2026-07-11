@@ -1,6 +1,7 @@
 """YaST3 GTK4 GUI application."""
 
 from yast3.gtk4.cron import CronModule
+from yast3.gtk4.datetime import DateTimeModule
 from yast3.gtk4.flatpak import FlatpakModule
 from yast3.gtk4.git import GitModule
 from yast3.gtk4.hostname import HostnameModule
@@ -14,6 +15,7 @@ from yast3.gtk4.ssh import SSHClientModule
 
 __all__ = [
     "CronModule",
+    "DateTimeModule",
     "FlatpakModule",
     "GitModule",
     "HostnameModule",

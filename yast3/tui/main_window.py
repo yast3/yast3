@@ -9,6 +9,7 @@ from yast3.core.i18n import _
 from yast3.core.module import Module
 from yast3.tui import (
     CronModule,
+    DateTimeModule,
     GitModule,
     HostnameModule,
     HostsModule,
@@ -74,6 +75,7 @@ class MainWindow(App):
             GitModule(),
             HostsModule(),
             CronModule(),
+            DateTimeModule(),
             RepositoriesModule(),
             ProxyModule(),
             ServicesModule(),
