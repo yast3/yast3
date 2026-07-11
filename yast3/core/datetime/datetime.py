@@ -191,6 +191,9 @@ def get_ntp_status() -> NTPStatus:
     return NTPStatus(enabled=enabled, synchronized=synchronized, servers=servers)
 
 
+CHRONYD_D_DIR = "/etc/chrony.d"
+
+
 def get_ntp_servers() -> list[str]:
     """Get configured NTP servers.
 
@@ -199,23 +202,65 @@ def get_ntp_servers() -> list[str]:
     """
     servers = []
 
-    if Path(CHRONYD_CONF).exists():
-        with open(CHRONYD_CONF, "r") as f:
-            for line in f:
-                line = line.strip()
-                if line.startswith("server ") or line.startswith("pool "):
-                    parts = line.split()
-                    if len(parts) > 1:
-                        servers.append(parts[1])
+    script_path = Path(__file__).parent / "get_ntp_servers.py"
 
-    if not servers and Path(NTPD_CONF).exists():
-        with open(NTPD_CONF, "r") as f:
-            for line in f:
-                line = line.strip()
-                if line.startswith("server ") or line.startswith("pool "):
-                    parts = line.split()
-                    if len(parts) > 1:
-                        servers.append(parts[1])
+    try:
+        result = subprocess.run(
+            ["pkexec", sys.executable, str(script_path)],
+            capture_output=True,
+            text=True,
+        )
+
+        if result.returncode == 0:
+            output = result.stdout.strip()
+            if output:
+                servers = output.split(";")
+        else:
+            servers = _read_ntp_servers_fallback()
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        servers = _read_ntp_servers_fallback()
+
+    return servers
+
+
+def _read_ntp_servers_fallback() -> list[str]:
+    """Fallback method to read NTP servers without pkexec."""
+    servers = []
+
+    try:
+        if Path(CHRONYD_CONF).exists():
+            with open(CHRONYD_CONF, "r") as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("server ") or line.startswith("pool "):
+                        parts = line.split()
+                        if len(parts) > 1:
+                            servers.append(parts[1])
+
+        chronyd_d = Path(CHRONYD_D_DIR)
+        if chronyd_d.exists() and chronyd_d.is_dir():
+            for conf_file in sorted(chronyd_d.glob("*.conf")):
+                try:
+                    with open(conf_file, "r") as f:
+                        for line in f:
+                            line = line.strip()
+                            if line.startswith("server ") or line.startswith("pool "):
+                                parts = line.split()
+                                if len(parts) > 1:
+                                    servers.append(parts[1])
+                except PermissionError:
+                    continue
+
+        if not servers and Path(NTPD_CONF).exists():
+            with open(NTPD_CONF, "r") as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("server ") or line.startswith("pool "):
+                        parts = line.split()
+                        if len(parts) > 1:
+                            servers.append(parts[1])
+    except PermissionError:
+        pass
 
     return servers
 

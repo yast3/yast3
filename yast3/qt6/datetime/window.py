@@ -149,6 +149,24 @@ class DateTimeWindow(QMainWindow):
         except Exception as e:
             QMessageBox.warning(self, _("Error"), _("Failed to load timezone: {0}").format(str(e)))
 
+        try:
+            utc = is_hwclock_utc()
+            self.hwclock_checkbox.setChecked(utc)
+        except Exception as e:
+            QMessageBox.warning(self, _("Error"), _("Failed to load hardware clock setting: {0}").format(str(e)))
+
+        try:
+            ntp_status = get_ntp_status()
+            self.ntp_checkbox.setChecked(ntp_status.enabled)
+            self.ntp_entry.setText(" ".join(ntp_status.servers))
+
+            if ntp_status.synchronized:
+                self.ntp_status_label.setText(_("NTP synchronized"))
+            else:
+                self.ntp_status_label.setText(_("NTP not synchronized"))
+        except Exception as e:
+            QMessageBox.warning(self, _("Error"), _("Failed to load NTP status: {0}").format(str(e)))
+
     def _on_save_all(self):
         errors = []
 
