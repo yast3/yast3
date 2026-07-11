@@ -97,14 +97,10 @@ class DateTimeWindow(Screen):
                 yield Label(_("Timezone"), classes="section-title")
                 yield Label(_("Type to search..."), classes="input-label")
                 yield OptionList(id="timezone-list")
-                with Horizontal(classes="button-row"):
-                    yield Button(_("Save Timezone"), id="save-timezone-btn", variant="primary")
 
             with Vertical(classes="section"):
                 yield Label(_("Hardware Clock"), classes="section-title")
                 yield Checkbox(_("Set hardware clock to UTC"), id="hwclock-check")
-                with Horizontal(classes="button-row"):
-                    yield Button(_("Save Hardware Clock"), id="save-hwclock-btn", variant="primary")
 
             with Vertical(classes="section"):
                 yield Label(_("NTP Synchronization"), classes="section-title")
@@ -113,9 +109,11 @@ class DateTimeWindow(Screen):
                     yield Label(_("NTP Servers"), classes="input-label")
                     yield Input(placeholder=_("Enter NTP servers"), id="ntp-input")
                 with Horizontal(classes="button-row"):
-                    yield Button(_("Save NTP"), id="save-ntp-btn", variant="primary")
                     yield Button(_("Sync Now"), id="sync-now-btn")
                 yield Static("", id="ntp-status")
+
+            with Horizontal(classes="button-row"):
+                yield Button(_("Save"), id="save-btn", variant="primary")
 
             yield Static("", id="message", classes="message")
 
@@ -209,85 +207,50 @@ class DateTimeWindow(Screen):
             msg_widget.add_class("success")
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
-        if event.button.id == "save-timezone-btn":
-            self._on_save_timezone()
-        elif event.button.id == "save-hwclock-btn":
-            self._on_save_hwclock()
-        elif event.button.id == "save-ntp-btn":
-            self._on_save_ntp()
+        if event.button.id == "save-btn":
+            self._on_save_all()
         elif event.button.id == "sync-now-btn":
             self._on_sync_now()
 
-    def _on_save_timezone(self):
+    def _on_save_all(self):
+        errors = []
+
         tz_list = self.query_one("#timezone-list", OptionList)
         idx = tz_list.highlighted_option
-        if idx is None:
-            self.show_message(_("Error: Please select a timezone."), error=True)
-            return
+        if idx is not None:
+            options = tz_list.options
+            if idx < len(options):
+                timezone = options[idx].prompt
+                status, message = set_timezone(timezone)
+                if status != "ok":
+                    errors.append(_("Timezone: {0}").format(message))
 
-        options = tz_list.options
-        if idx >= len(options):
-            self.show_message(_("Error: Invalid timezone selected."), error=True)
-            return
-
-        timezone = options[idx].prompt
-
-        status, message = set_timezone(timezone)
-
-        if status == "ok":
-            self.show_message(message, success=True)
-        elif status == "permission_denied":
-            self.show_message(_("Error: Permission denied. Root permission required."), error=True)
-        elif status == "pkexec_failed":
-            self.show_message(_("Error: Authentication failed or pkexec not available."), error=True)
-        else:
-            self.show_message(_("Error: {0}").format(message), error=True)
-
-    def _on_save_hwclock(self):
         utc = self.query_one("#hwclock-check", Checkbox).value
-
         status, message = set_hwclock_utc(utc)
+        if status != "ok":
+            errors.append(_("Hardware clock: {0}").format(message))
 
-        if status == "ok":
-            self.show_message(message, success=True)
-        elif status == "permission_denied":
-            self.show_message(_("Error: Permission denied. Root permission required."), error=True)
-        elif status == "pkexec_failed":
-            self.show_message(_("Error: Authentication failed or pkexec not available."), error=True)
-        else:
-            self.show_message(_("Error: {0}").format(message), error=True)
-
-    def _on_save_ntp(self):
         enabled = self.query_one("#ntp-check", Checkbox).value
         servers = self.query_one("#ntp-input", Input).value.strip().split()
-
         if enabled:
             if not servers:
                 servers = ["pool.ntp.org"]
-
             status, message = set_ntp_servers(servers)
             if status == "ok":
                 status2, message2 = enable_ntp()
-                if status2 == "ok":
-                    self.show_message(_("NTP settings updated successfully."), success=True)
-                else:
-                    self.show_message(_("Error: {0}").format(message2), error=True)
-            elif status == "permission_denied":
-                self.show_message(_("Error: Permission denied. Root permission required."), error=True)
-            elif status == "pkexec_failed":
-                self.show_message(_("Error: Authentication failed or pkexec not available."), error=True)
+                if status2 != "ok":
+                    errors.append(_("NTP: {0}").format(message2))
             else:
-                self.show_message(_("Error: {0}").format(message), error=True)
+                errors.append(_("NTP: {0}").format(message))
         else:
             status, message = disable_ntp()
-            if status == "ok":
-                self.show_message(message, success=True)
-            elif status == "permission_denied":
-                self.show_message(_("Error: Permission denied. Root permission required."), error=True)
-            elif status == "pkexec_failed":
-                self.show_message(_("Error: Authentication failed or pkexec not available."), error=True)
-            else:
-                self.show_message(_("Error: {0}").format(message), error=True)
+            if status != "ok":
+                errors.append(_("NTP: {0}").format(message))
+
+        if errors:
+            self.show_message("\n".join(errors), error=True)
+        else:
+            self.show_message(_("All settings saved successfully."), success=True)
 
     def _on_sync_now(self):
         status, message = sync_time_now()

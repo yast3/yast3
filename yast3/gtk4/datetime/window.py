@@ -38,6 +38,7 @@ class DateTimeWindow(Gtk.ApplicationWindow):
         self._create_timezone_section()
         self._create_hwclock_section()
         self._create_ntp_section()
+        self._create_save_button()
 
         self.set_child(self.main_box)
 
@@ -71,16 +72,11 @@ class DateTimeWindow(Gtk.ApplicationWindow):
 
         entry = self.timezone_combo.get_child()
         entry.set_placeholder_text(_("Search timezone..."))
-        entry.connect("search-changed", self._on_timezone_search)
+        entry.connect("changed", self._on_timezone_search)
 
         input_box.append(self.timezone_combo)
 
         box.append(input_box)
-
-        self.timezone_save_btn = Gtk.Button(label=_("Save Timezone"))
-        self.timezone_save_btn.add_css_class("suggested-action")
-        self.timezone_save_btn.connect("clicked", self._on_save_timezone)
-        box.append(self.timezone_save_btn)
 
         frame.set_child(box)
         self.main_box.append(frame)
@@ -105,11 +101,6 @@ class DateTimeWindow(Gtk.ApplicationWindow):
         switch_box.append(self.hwclock_switch)
 
         box.append(switch_box)
-
-        self.hwclock_save_btn = Gtk.Button(label=_("Save Hardware Clock"))
-        self.hwclock_save_btn.add_css_class("suggested-action")
-        self.hwclock_save_btn.connect("clicked", self._on_save_hwclock)
-        box.append(self.hwclock_save_btn)
 
         frame.set_child(box)
         self.main_box.append(frame)
@@ -146,11 +137,6 @@ class DateTimeWindow(Gtk.ApplicationWindow):
 
         btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
 
-        self.ntp_save_btn = Gtk.Button(label=_("Save NTP Settings"))
-        self.ntp_save_btn.add_css_class("suggested-action")
-        self.ntp_save_btn.connect("clicked", self._on_save_ntp)
-        btn_box.append(self.ntp_save_btn)
-
         self.sync_now_btn = Gtk.Button(label=_("Sync Now"))
         self.sync_now_btn.connect("clicked", self._on_sync_now)
         btn_box.append(self.sync_now_btn)
@@ -163,6 +149,18 @@ class DateTimeWindow(Gtk.ApplicationWindow):
 
         frame.set_child(box)
         self.main_box.append(frame)
+
+    def _create_save_button(self):
+        btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
+        btn_box.set_halign(Gtk.Align.END)
+        btn_box.set_margin_top(12)
+
+        self.save_btn = Gtk.Button(label=_("Save"))
+        self.save_btn.add_css_class("suggested-action")
+        self.save_btn.connect("clicked", self._on_save_all)
+        btn_box.append(self.save_btn)
+
+        self.main_box.append(btn_box)
 
     def _load_settings(self):
         try:
@@ -191,78 +189,45 @@ class DateTimeWindow(Gtk.ApplicationWindow):
         search_text = entry.get_text()
         self._update_timezone_store(search_text)
 
-    def _on_save_timezone(self, button: Gtk.Button):
+    def _on_save_all(self, button: Gtk.Button):
+        errors = []
+
         idx = self.timezone_combo.get_active()
-        if idx < 0:
-            self._show_message_dialog(Gtk.MessageType.WARNING, _("Error"), _("Please select a timezone."))
-            return
+        if idx >= 0:
+            model = self.timezone_combo.get_model()
+            if model is not None:
+                timezone = model[idx][0]
+                if timezone:
+                    status, message = set_timezone(timezone)
+                    if status != "ok":
+                        errors.append(_("Timezone: {0}").format(message))
 
-        model = self.timezone_combo.get_model()
-        if model is None:
-            self._show_message_dialog(Gtk.MessageType.WARNING, _("Error"), _("Invalid timezone selected."))
-            return
-
-        timezone = model[idx][0]
-        if not timezone:
-            self._show_message_dialog(Gtk.MessageType.WARNING, _("Error"), _("Invalid timezone selected."))
-            return
-
-        status, message = set_timezone(timezone)
-
-        if status == "ok":
-            self._show_message_dialog(Gtk.MessageType.INFO, _("Success"), message)
-        elif status == "permission_denied":
-            self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), _("Permission denied. Root permission required."))
-        elif status == "pkexec_failed":
-            self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), _("Authentication failed or pkexec not available."))
-        else:
-            self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), message)
-
-    def _on_save_hwclock(self, button: Gtk.Button):
         utc = self.hwclock_switch.get_active()
-
         status, message = set_hwclock_utc(utc)
+        if status != "ok":
+            errors.append(_("Hardware clock: {0}").format(message))
 
-        if status == "ok":
-            self._show_message_dialog(Gtk.MessageType.INFO, _("Success"), message)
-        elif status == "permission_denied":
-            self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), _("Permission denied. Root permission required."))
-        elif status == "pkexec_failed":
-            self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), _("Authentication failed or pkexec not available."))
-        else:
-            self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), message)
-
-    def _on_save_ntp(self, button: Gtk.Button):
         enabled = self.ntp_switch.get_active()
         servers = self.ntp_entry.get_text().strip().split()
-
         if enabled:
             if not servers:
                 servers = ["pool.ntp.org"]
-
             status, message = set_ntp_servers(servers)
             if status == "ok":
                 status2, message2 = enable_ntp()
-                if status2 == "ok":
-                    self._show_message_dialog(Gtk.MessageType.INFO, _("Success"), _("NTP settings updated successfully."))
-                else:
-                    self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), message2)
-            elif status == "permission_denied":
-                self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), _("Permission denied. Root permission required."))
-            elif status == "pkexec_failed":
-                self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), _("Authentication failed or pkexec not available."))
+                if status2 != "ok":
+                    errors.append(_("NTP: {0}").format(message2))
             else:
-                self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), message)
+                errors.append(_("NTP: {0}").format(message))
         else:
             status, message = disable_ntp()
-            if status == "ok":
-                self._show_message_dialog(Gtk.MessageType.INFO, _("Success"), message)
-            elif status == "permission_denied":
-                self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), _("Permission denied. Root permission required."))
-            elif status == "pkexec_failed":
-                self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), _("Authentication failed or pkexec not available."))
-            else:
-                self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), message)
+            if status != "ok":
+                errors.append(_("NTP: {0}").format(message))
+
+        if errors:
+            self._show_message_dialog(Gtk.MessageType.ERROR, _("Error"), "\n".join(errors))
+        else:
+            self._show_message_dialog(Gtk.MessageType.INFO, _("Success"), _("All settings saved successfully."))
 
     def _on_sync_now(self, button: Gtk.Button):
         status, message = sync_time_now()

@@ -51,6 +51,8 @@ class DateTimeWindow(QMainWindow):
         self._create_hwclock_section(layout)
         self._create_ntp_section(layout)
 
+        self._create_save_button(layout)
+
         self._load_settings()
 
     def _create_timezone_section(self, parent_layout):
@@ -71,10 +73,6 @@ class DateTimeWindow(QMainWindow):
 
         group_layout.addLayout(input_layout)
 
-        self.timezone_save_btn = QPushButton(_("Save Timezone"))
-        self.timezone_save_btn.clicked.connect(self._on_save_timezone)
-        group_layout.addWidget(self.timezone_save_btn)
-
         parent_layout.addLayout(group_layout)
 
     def _create_hwclock_section(self, parent_layout):
@@ -88,10 +86,6 @@ class DateTimeWindow(QMainWindow):
         switch_layout.addWidget(self.hwclock_checkbox)
 
         group_layout.addLayout(switch_layout)
-
-        self.hwclock_save_btn = QPushButton(_("Save Hardware Clock"))
-        self.hwclock_save_btn.clicked.connect(self._on_save_hwclock)
-        group_layout.addWidget(self.hwclock_save_btn)
 
         parent_layout.addLayout(group_layout)
 
@@ -123,10 +117,6 @@ class DateTimeWindow(QMainWindow):
         btn_layout = QHBoxLayout()
         btn_layout.setSpacing(8)
 
-        self.ntp_save_btn = QPushButton(_("Save NTP Settings"))
-        self.ntp_save_btn.clicked.connect(self._on_save_ntp)
-        btn_layout.addWidget(self.ntp_save_btn)
-
         self.sync_now_btn = QPushButton(_("Sync Now"))
         self.sync_now_btn.clicked.connect(self._on_sync_now)
         btn_layout.addWidget(self.sync_now_btn)
@@ -138,6 +128,17 @@ class DateTimeWindow(QMainWindow):
 
         parent_layout.addLayout(group_layout)
 
+    def _create_save_button(self, parent_layout):
+        btn_layout = QHBoxLayout()
+        btn_layout.setSpacing(8)
+        btn_layout.addStretch()
+
+        self.save_btn = QPushButton(_("Save"))
+        self.save_btn.clicked.connect(self._on_save_all)
+        btn_layout.addWidget(self.save_btn)
+
+        parent_layout.addLayout(btn_layout)
+
     def _load_settings(self):
         try:
             timezone = get_current_timezone()
@@ -148,68 +149,41 @@ class DateTimeWindow(QMainWindow):
         except Exception as e:
             QMessageBox.warning(self, _("Error"), _("Failed to load timezone: {0}").format(str(e)))
 
-    def _on_save_timezone(self):
+    def _on_save_all(self):
+        errors = []
+
         timezone = self.timezone_combo.currentText()
-        if not timezone:
-            QMessageBox.warning(self, _("Error"), _("Please select a timezone."))
-            return
+        if timezone:
+            status, message = set_timezone(timezone)
+            if status != "ok":
+                errors.append(_("Timezone: {0}").format(message))
 
-        status, message = set_timezone(timezone)
-
-        if status == "ok":
-            QMessageBox.information(self, _("Success"), message)
-        elif status == "permission_denied":
-            QMessageBox.critical(self, _("Error"), _("Permission denied. Root permission required."))
-        elif status == "pkexec_failed":
-            QMessageBox.critical(self, _("Error"), _("Authentication failed or pkexec not available."))
-        else:
-            QMessageBox.critical(self, _("Error"), message)
-
-    def _on_save_hwclock(self):
         utc = self.hwclock_checkbox.isChecked()
-
         status, message = set_hwclock_utc(utc)
+        if status != "ok":
+            errors.append(_("Hardware clock: {0}").format(message))
 
-        if status == "ok":
-            QMessageBox.information(self, _("Success"), message)
-        elif status == "permission_denied":
-            QMessageBox.critical(self, _("Error"), _("Permission denied. Root permission required."))
-        elif status == "pkexec_failed":
-            QMessageBox.critical(self, _("Error"), _("Authentication failed or pkexec not available."))
-        else:
-            QMessageBox.critical(self, _("Error"), message)
-
-    def _on_save_ntp(self):
         enabled = self.ntp_checkbox.isChecked()
         servers = self.ntp_entry.text().strip().split()
-
         if enabled:
             if not servers:
                 servers = ["pool.ntp.org"]
-
             status, message = set_ntp_servers(servers)
             if status == "ok":
                 status2, message2 = enable_ntp()
-                if status2 == "ok":
-                    QMessageBox.information(self, _("Success"), _("NTP settings updated successfully."))
-                else:
-                    QMessageBox.critical(self, _("Error"), message2)
-            elif status == "permission_denied":
-                QMessageBox.critical(self, _("Error"), _("Permission denied. Root permission required."))
-            elif status == "pkexec_failed":
-                QMessageBox.critical(self, _("Error"), _("Authentication failed or pkexec not available."))
+                if status2 != "ok":
+                    errors.append(_("NTP: {0}").format(message2))
             else:
-                QMessageBox.critical(self, _("Error"), message)
+                errors.append(_("NTP: {0}").format(message))
         else:
             status, message = disable_ntp()
-            if status == "ok":
-                QMessageBox.information(self, _("Success"), message)
-            elif status == "permission_denied":
-                QMessageBox.critical(self, _("Error"), _("Permission denied. Root permission required."))
-            elif status == "pkexec_failed":
-                QMessageBox.critical(self, _("Error"), _("Authentication failed or pkexec not available."))
-            else:
-                QMessageBox.critical(self, _("Error"), message)
+            if status != "ok":
+                errors.append(_("NTP: {0}").format(message))
+
+        if errors:
+            QMessageBox.critical(self, _("Error"), "\n".join(errors))
+        else:
+            QMessageBox.information(self, _("Success"), _("All settings saved successfully."))
 
     def _on_sync_now(self):
         status, message = sync_time_now()
