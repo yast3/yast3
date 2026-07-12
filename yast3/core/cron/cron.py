@@ -10,7 +10,6 @@ from typing import Literal
 from crontab import CronTab
 
 USER_CRON_DIR = "/var/spool/cron/tabs"
-ROOT_CRON_PATH = "/var/spool/cron/root"
 
 
 @dataclass
@@ -113,7 +112,9 @@ def load_cron_jobs(user_mode: bool = True) -> tuple[list[CronJob], str | None]:
         username = os.getlogin()
         cron_path = _get_user_cron_path(username)
     else:
-        cron_path = ROOT_CRON_PATH
+        cron_path = _get_user_cron_path("root")
+
+    print(cron_path)
 
     if not os.path.exists(cron_path):
         return jobs, None
@@ -164,7 +165,7 @@ def save_cron_jobs(jobs: list[CronJob], user_mode: bool = True) -> Literal["ok",
         username = os.getlogin()
         cron_path = _get_user_cron_path(username)
     else:
-        cron_path = ROOT_CRON_PATH
+        cron_path = _get_user_cron_path("root")
 
     lines = []
     for job in jobs:
