@@ -9,7 +9,7 @@ from yast3.tui.services.window import ServicesWindow
 
 class ServicesModule(Module):
     def __init__(self):
-        super().__init__(_("Services"), ("preferences-system-services", "system-run"), "🧰")
+        super().__init__(_("Services"), "🧰")
 
     def create_window(self) -> Screen:
         """Create and return the services management window."""

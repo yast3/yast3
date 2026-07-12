@@ -9,7 +9,7 @@ from yast3.tui.packages.window import PackagesWindow
 
 class PackagesModule(Module):
     def __init__(self):
-        super().__init__(_("Packages"), ("package", "preferences-system"), "🎁")
+        super().__init__(_("Packages"), "🎁")
 
     def create_window(self) -> Screen:
         """Create and return the packages configuration window."""

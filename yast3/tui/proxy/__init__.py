@@ -9,7 +9,7 @@ from yast3.tui.proxy.window import ProxyWindow
 
 class ProxyModule(Module):
     def __init__(self):
-        super().__init__(_("Proxy"), ("network-server", "preferences-system-network"), "🌐")
+        super().__init__(_("Proxy"), "🌐")
 
     def create_window(self) -> Screen:
         """Create and return the proxy configuration window."""

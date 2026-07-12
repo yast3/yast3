@@ -9,7 +9,7 @@ from yast3.tui.snapshots.window import SnapshotsWindow
 
 class SnapshotsModule(Module):
     def __init__(self):
-        super().__init__(_("Snapshots"), ("camera-photo", "document-save"), "📸")
+        super().__init__(_("Snapshots"), "📸")
 
     def create_window(self) -> Screen:
         """Create and return the snapshots management window."""

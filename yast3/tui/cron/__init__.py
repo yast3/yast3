@@ -9,7 +9,7 @@ from yast3.tui.cron.window import CronWindow
 
 class CronModule(Module):
     def __init__(self):
-        super().__init__(_("Cron"), ("clock", "preferences-system-time"), "⏰")
+        super().__init__(_("Cron"), "⏰")
 
     def create_window(self) -> Screen:
         """Create and return the cron configuration window."""

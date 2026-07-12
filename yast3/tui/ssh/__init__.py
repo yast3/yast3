@@ -9,7 +9,7 @@ from yast3.tui.ssh.window import SSHWindow
 
 class SSHClientModule(Module):
     def __init__(self):
-        super().__init__(_("SSH Client"), ("ssh", "network-server"), "🔐")
+        super().__init__(_("SSH Client"), "🔐")
 
     def create_window(self) -> Screen:
         """Create and return the SSH configuration window."""

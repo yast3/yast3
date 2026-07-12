@@ -7,13 +7,11 @@ class Module:
     """Base class for YaST3 TUI modules."""
 
     name: str
-    icon_names: tuple[str, ...]
     emoji: str
     experimental: bool = False
 
-    def __init__(self, name: str, icon_names: tuple[str, ...], emoji: str = "⚙️", experimental: bool = False) -> None:
+    def __init__(self, name: str, emoji: str = "⚙️", experimental: bool = False) -> None:
         self.name = name
-        self.icon_names = icon_names
         self.emoji = emoji
         self.experimental = experimental
 

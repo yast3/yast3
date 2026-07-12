@@ -9,7 +9,7 @@ from yast3.tui.repositories.window import RepositoriesWindow
 
 class RepositoriesModule(Module):
     def __init__(self):
-        super().__init__(_("Repositories"), ("package", "preferences-system"), "📦")
+        super().__init__(_("Repositories"), "📦")
 
     def create_window(self) -> Screen:
         """Create and return the repositories configuration window."""
