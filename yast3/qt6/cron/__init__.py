@@ -14,7 +14,7 @@ class CronModule(Module):
     def launch(self) -> None:
         if self.window is None:
             self.window = CronWindow()
-            self.window.setWindowTitle(self.name + " — " + _("YaST3"))
+            self.window.setWindowTitle(_("{} — YaST3").format(self.name))
             self.window.closed.connect(self._on_window_closed)
 
         self.window.show()
