@@ -91,7 +91,7 @@ class CronTabTab(QWidget):
         self.populate_table()
 
     def populate_table(self) -> None:
-        self.table.setRowCount(len(self.jobs))
+        self.table.setRowCount(len(self.cron.crons or []))
 
         for row, job in enumerate(self.cron.crons or []):
             print(job)
@@ -128,10 +128,11 @@ class CronTabTab(QWidget):
         dialog = CronEditDialog(self)
         if dialog.exec():
             job = dialog.get_job()
-            self.jobs.append(job)
-            row = self.table.rowCount()
-            self.table.insertRow(row)
-            self.populate_row(row)
+            if (job):
+                self.cron.append(job)
+                row = self.table.rowCount()
+                self.table.insertRow(row)
+                self.populate_row(row)
 
     def edit_job(self) -> None:
         current_row = self.table.currentRow()
@@ -143,8 +144,9 @@ class CronTabTab(QWidget):
         dialog = CronEditDialog(self, job)
         if dialog.exec():
             new_job = dialog.get_job()
-            self.jobs[current_row] = new_job
-            self.populate_row(current_row)
+            if (new_job and self.cron.crons):
+                self.cron.crons[current_row] = new_job
+                self.populate_row(current_row)
 
     def delete_job(self) -> None:
         current_row = self.table.currentRow()
@@ -160,14 +162,14 @@ class CronTabTab(QWidget):
             self.table.removeRow(current_row)
 
     def populate_row(self, row: int) -> None:
-        job = self.jobs[row]
+        job =  self.cron.crons[row] if self.cron.crons else CronItem()
 
         enabled_widget = QWidget()
         enabled_layout = QHBoxLayout(enabled_widget)
         enabled_layout.setContentsMargins(0, 0, 0, 0)
         enabled_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         checkbox = QCheckBox()
-        checkbox.setChecked(job.enabled)
+        checkbox.setChecked(job.is_enabled())
         checkbox.stateChanged.connect(lambda s, r=row: self.toggle_enabled(r, s))
         enabled_layout.addWidget(checkbox)
         self.table.setCellWidget(row, 0, enabled_widget)
@@ -176,18 +178,18 @@ class CronTabTab(QWidget):
         self.table.setItem(row, 2, QTableWidgetItem(job.hour))
         self.table.setItem(row, 3, QTableWidgetItem(job.day))
         self.table.setItem(row, 4, QTableWidgetItem(job.month))
-        self.table.setItem(row, 5, QTableWidgetItem(job.weekday))
+        self.table.setItem(row, 5, QTableWidgetItem(job.dow))
 
-        command_text = job.command
+        command_text = job.command or ""
         if job.comment:
             command_text += f"  {job.comment}"
         cmd_item = QTableWidgetItem(command_text)
-        if not job.enabled:
+        if not job.is_enabled():
             cmd_item.setForeground(Qt.GlobalColor.gray)
         self.table.setItem(row, 6, cmd_item)
 
     def save_jobs(self) -> None:
-        result = save_cron_jobs(self.jobs, self.user_mode)
+        result = save_cron_jobs(self.cron.crons or [], self.user_mode)
 
         if result == "ok":
             QMessageBox.information(self, _("Success"), _("Cron jobs saved successfully."))
