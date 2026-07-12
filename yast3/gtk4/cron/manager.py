@@ -39,10 +39,12 @@ class Manager(Gtk.Box):
 
         self.edit_btn = Gtk.Button(label=_("Edit"))
         self.edit_btn.connect("clicked", self._on_edit_clicked)
+        self.edit_btn.set_sensitive(False)
         button_box.append(self.edit_btn)
 
         self.delete_btn = Gtk.Button(label=_("Delete"))
         self.delete_btn.connect("clicked", self._on_delete_clicked)
+        self.delete_btn.set_sensitive(False)
         button_box.append(self.delete_btn)
 
         button_box.append(Gtk.Box())
@@ -115,6 +117,7 @@ class Manager(Gtk.Box):
 
         self.selection = self.tree_view.get_selection()
         self.selection.set_mode(Gtk.SelectionMode.SINGLE)
+        self.selection.connect("changed", self._on_selection_changed)
 
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
@@ -122,6 +125,13 @@ class Manager(Gtk.Box):
         self.append(scrolled)
 
         self._populate_list()
+
+    def _on_selection_changed(self, selection) -> None:
+        """Handle selection change."""
+        model, tree_iter = selection.get_selected()
+        selected = tree_iter is not None
+        self.edit_btn.set_sensitive(selected)
+        self.delete_btn.set_sensitive(selected)
 
     def _populate_list(self) -> None:
         """Populate the list with cron jobs."""

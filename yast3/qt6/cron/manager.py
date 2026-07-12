@@ -28,8 +28,8 @@ class Manager(QWidget):
     def __init__(self, user_mode: bool, parent: QWidget | None = None):
         super().__init__(parent)
         self.user_mode = user_mode
-        self.cron: CronTab = CronTab(user=True) if user_mode else load_root_cron()
-        self.jobs: list[CronItem] = list(self.cron.crons)
+        self.crontab: CronTab = CronTab(user=True) if user_mode else load_root_cron()
+        self.jobs: list[CronItem] = self.crontab.crons or []
         self._setup_ui()
         self.populate_table()
 
@@ -44,10 +44,12 @@ class Manager(QWidget):
 
         self.edit_btn = QPushButton(_("Edit"))
         self.edit_btn.clicked.connect(self.edit_job)
+        self.edit_btn.setEnabled(False)
         button_layout.addWidget(self.edit_btn)
 
         self.delete_btn = QPushButton(_("Delete"))
         self.delete_btn.clicked.connect(self.delete_job)
+        self.delete_btn.setEnabled(False)
         button_layout.addWidget(self.delete_btn)
 
         button_layout.addStretch()
@@ -89,7 +91,13 @@ class Manager(QWidget):
 
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
+        self.table.selectionModel().selectionChanged.connect(self._on_selection_changed)
         layout.addWidget(self.table)
+
+    def _on_selection_changed(self) -> None:
+        selected = self.table.currentRow() >= 0
+        self.edit_btn.setEnabled(selected)
+        self.delete_btn.setEnabled(selected)
 
     def populate_table(self) -> None:
         self.table.setRowCount(len(self.jobs))

@@ -77,8 +77,8 @@ class CronWindow(Screen):
         with Vertical():
             with Horizontal(classes="button-row"):
                 yield Button(_("Add"), id=f"add-{mode}-btn")
-                yield Button(_("Edit"), id=f"edit-{mode}-btn")
-                yield Button(_("Delete"), id=f"delete-{mode}-btn")
+                yield Button(_("Edit"), id=f"edit-{mode}-btn", disabled=True)
+                yield Button(_("Delete"), id=f"delete-{mode}-btn", disabled=True)
                 yield Button(_("Save"), id=f"save-{mode}-btn", variant="primary")
             yield DataTable(id=f"{mode}-table")
 
@@ -87,6 +87,20 @@ class CronWindow(Screen):
         self._setup_table("user")
         self._setup_table("root")
         self.populate_tables()
+
+    def on_data_table_cursor_changed(self, event: DataTable.CursorChanged) -> None:
+        """Handle cursor change in data table."""
+        table_id = event.data_table.id
+        if "-table" in table_id:
+            mode = table_id.replace("-table", "")
+            table = event.data_table
+            jobs = self._get_jobs(mode)
+            selected = table.cursor_row >= 0 and table.cursor_row < len(jobs)
+
+            edit_btn = self.query_one(f"#edit-{mode}-btn", Button)
+            delete_btn = self.query_one(f"#delete-{mode}-btn", Button)
+            edit_btn.disabled = not selected
+            delete_btn.disabled = not selected
 
     def _setup_table(self, mode: str) -> None:
         """Setup table columns."""
