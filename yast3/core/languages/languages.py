@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import dotenv
 import os
 import re
 import subprocess
@@ -549,35 +550,20 @@ def get_locales() -> dict[str, int]:
 
 def read_locale_conf() -> dict[str, str]:
     """Read locale configuration from /etc/locale.conf."""
-    config: dict[str, str] = {}
-
     if Path(LOCALE_CONF_FILE).exists():
         try:
-            with open(LOCALE_CONF_FILE, "r") as f:
-                for line in f:
-                    line = line.strip()
-                    if not line or line.startswith("#"):
-                        continue
-                    if "=" in line:
-                        key, value = line.split("=", 1)
-                        config[key.strip()] = value.strip()
+            return dotenv.dotenv_values(LOCALE_CONF_FILE) or {}
         except (PermissionError, IOError):
             pass
-
-    return config
+    return {}
 
 
 def read_sysconfig_language() -> str:
     """Read INSTALLED_LANGUAGES from /etc/sysconfig/language."""
     if Path(SYSCONFIG_LANGUAGE_FILE).exists():
         try:
-            with open(SYSCONFIG_LANGUAGE_FILE, "r") as f:
-                for line in f:
-                    line = line.strip()
-                    if line.startswith("INSTALLED_LANGUAGES="):
-                        value = line.split("=", 1)[1]
-                        value = value.strip('"').strip("'")
-                        return value
+            config = dotenv.dotenv_values(SYSCONFIG_LANGUAGE_FILE)
+            return config.get("INSTALLED_LANGUAGES", "") or ""
         except (PermissionError, IOError):
             pass
     return ""

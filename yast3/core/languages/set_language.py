@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Set language settings - requires root privileges."""
 
+import dotenv
 import os
 import subprocess
 import sys
@@ -18,25 +19,10 @@ def main() -> None:
     installed_languages = sys.argv[2] if len(sys.argv) > 2 else ""
 
     try:
-        with open(LOCALE_CONF_FILE, "w") as f:
-            f.write(f"LANG={locale_str}\n")
+        dotenv.set_key(LOCALE_CONF_FILE, "LANG", locale_str, quote_mode='never')
 
         if os.path.exists(SYSCONFIG_LANGUAGE_FILE):
-            with open(SYSCONFIG_LANGUAGE_FILE, "r") as f:
-                content = f.read()
-
-            lines = content.split("\n")
-            found_installed = False
-            for i, line in enumerate(lines):
-                if line.startswith("INSTALLED_LANGUAGES="):
-                    lines[i] = f'INSTALLED_LANGUAGES="{installed_languages}"'
-                    found_installed = True
-                    break
-            if not found_installed and installed_languages:
-                lines.append(f'INSTALLED_LANGUAGES="{installed_languages}"')
-
-            with open(SYSCONFIG_LANGUAGE_FILE, "w") as f:
-                f.write("\n".join(lines))
+            dotenv.set_key(SYSCONFIG_LANGUAGE_FILE, "INSTALLED_LANGUAGES", installed_languages, quote_mode='always')
 
         result = subprocess.run(
             ["localectl", "set-locale", f"LANG={locale_str}"],
