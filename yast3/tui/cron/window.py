@@ -5,8 +5,10 @@ from textual.containers import Horizontal, Vertical
 from textual.screen import Screen
 from textual.widgets import Button, DataTable, Header, Input, Label, Static, TabbedContent, TabPane
 
+from crontab import CronItem, CronTab
+
 from yast3.core.i18n import _
-from yast3.core.cron import CronJob, load_cron_jobs, save_cron_jobs
+from yast3.core.cron import load_root_cron, save_cron_jobs
 
 
 class CronWindow(Screen):
@@ -58,8 +60,8 @@ class CronWindow(Screen):
 
     def __init__(self) -> None:
         super().__init__()
-        self.user_jobs: list[CronJob] = []
-        self.root_jobs: list[CronJob] = []
+        self.user_cron: CronTab = CronTab(user=True)
+        self.root_cron: CronTab = load_root_cron()
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -84,43 +86,26 @@ class CronWindow(Screen):
         """Load cron jobs on mount."""
         self._setup_table("user")
         self._setup_table("root")
-        self.load_jobs()
+        self.populate_tables()
 
     def _setup_table(self, mode: str) -> None:
         """Setup table columns."""
         table = self.query_one(f"#{mode}-table", DataTable)
-        table.add_columns(_("Enabled"), _("Minute"), _("Hour"), _("Day"), _("Month"), _("Weekday"), _("Command"))
-
-    def load_jobs(self) -> None:
-        """Load cron jobs."""
-        user_jobs, user_error = load_cron_jobs(True)
-        root_jobs, root_error = load_cron_jobs(False)
-
-        if user_error:
-            self.show_message(_("User cron error: {0}").format(user_error), error=True)
-        if root_error:
-            self.show_message(_("Root cron error: {0}").format(root_error), error=True)
-
-        self.user_jobs = user_jobs
-        self.root_jobs = root_jobs
-        self.populate_tables()
+        table.add_columns(_("Enabled"), _("Minute"), _("Hour"), _("Day"), _("Month"), _("Weekday"), _("Command"), _("Comment"))
 
     def populate_tables(self) -> None:
         """Populate both tables."""
-        self._populate_table("user", self.user_jobs)
-        self._populate_table("root", self.root_jobs)
+        self._populate_table("user", list(self.user_cron.crons))
+        self._populate_table("root", list(self.root_cron.crons))
 
-    def _populate_table(self, mode: str, jobs: list[CronJob]) -> None:
+    def _populate_table(self, mode: str, jobs: list[CronItem]) -> None:
         """Populate a single table."""
         table = self.query_one(f"#{mode}-table", DataTable)
         table.clear()
 
         for job in jobs:
-            enabled = "✓" if job.enabled else ""
-            command = job.command
-            if job.comment:
-                command += f"  {job.comment}"
-            table.add_row(enabled, job.minute, job.hour, job.day, job.month, job.weekday, command)
+            enabled = "✓" if job.is_enabled() else ""
+            table.add_row(enabled, str(job.minute), str(job.hour), str(job.day), str(job.month), str(job.dow), job.command, job.comment)
 
     def show_message(self, message: str, error: bool = False, success: bool = False) -> None:
         """Display a message to the user."""
@@ -149,9 +134,9 @@ class CronWindow(Screen):
             elif action == "save":
                 self._save_jobs(mode)
 
-    def _get_jobs(self, mode: str) -> list[CronJob]:
+    def _get_jobs(self, mode: str) -> list[CronItem]:
         """Get jobs list for mode."""
-        return self.user_jobs if mode == "user" else self.root_jobs
+        return list(self.user_cron.crons) if mode == "user" else list(self.root_cron.crons)
 
     def _add_job(self, mode: str) -> None:
         """Add a new cron job."""
@@ -201,14 +186,14 @@ class CronWindow(Screen):
         else:
             self.show_message(_("Error: Failed to save cron jobs."), error=True)
 
-    def add_job(self, mode: str, job: CronJob) -> None:
+    def add_job(self, mode: str, job: CronItem) -> None:
         """Add a new job."""
         jobs = self._get_jobs(mode)
         jobs.append(job)
         self._populate_table(mode, jobs)
         self.show_message(_("Cron job added."), success=True)
 
-    def update_job(self, mode: str, row: int, job: CronJob) -> None:
+    def update_job(self, mode: str, row: int, job: CronItem) -> None:
         """Update an existing job."""
         jobs = self._get_jobs(mode)
         jobs[row] = job
@@ -248,7 +233,7 @@ class CronEditScreen(Screen):
         parent: CronWindow,
         title: str,
         mode: str,
-        job: CronJob | None = None,
+        job: CronItem | None = None,
         row: int = -1,
     ) -> None:
         super().__init__()
@@ -256,41 +241,39 @@ class CronEditScreen(Screen):
         self.screen_title = title
         self.mode = mode
         self.edit_row = row
-        self.initial_job = job or CronJob(
-            enabled=True,
-            minute="*",
-            hour="*",
-            day="*",
-            month="*",
-            weekday="*",
-            command="",
-            comment="",
-        )
+        self.initial_job = job
 
     def compose(self) -> ComposeResult:
         with Vertical(classes="container"):
             yield Label(self.screen_title, classes="title")
             with Horizontal():
                 yield Label(_("Minute"), classes="input-label")
-                yield Input(value=self.initial_job.minute, id="minute-input", placeholder="0-59 or *")
+                default_minute = str(self.initial_job.minute) if self.initial_job else "*"
+                yield Input(value=default_minute, id="minute-input", placeholder="0-59 or *")
             with Horizontal():
                 yield Label(_("Hour"), classes="input-label")
-                yield Input(value=self.initial_job.hour, id="hour-input", placeholder="0-23 or *")
+                default_hour = str(self.initial_job.hour) if self.initial_job else "*"
+                yield Input(value=default_hour, id="hour-input", placeholder="0-23 or *")
             with Horizontal():
                 yield Label(_("Day"), classes="input-label")
-                yield Input(value=self.initial_job.day, id="day-input", placeholder="1-31 or *")
+                default_day = str(self.initial_job.day) if self.initial_job else "*"
+                yield Input(value=default_day, id="day-input", placeholder="1-31 or *")
             with Horizontal():
                 yield Label(_("Month"), classes="input-label")
-                yield Input(value=self.initial_job.month, id="month-input", placeholder="1-12 or *")
+                default_month = str(self.initial_job.month) if self.initial_job else "*"
+                yield Input(value=default_month, id="month-input", placeholder="1-12 or *")
             with Horizontal():
                 yield Label(_("Weekday"), classes="input-label")
-                yield Input(value=self.initial_job.weekday, id="weekday-input", placeholder="0-7 or *")
+                default_weekday = str(self.initial_job.dow) if self.initial_job else "*"
+                yield Input(value=default_weekday, id="weekday-input", placeholder="0-7 or *")
             with Horizontal():
                 yield Label(_("Command"), classes="input-label")
-                yield Input(value=self.initial_job.command, id="command-input", placeholder=_("Command to execute"))
+                default_command = self.initial_job.command if self.initial_job else ""
+                yield Input(value=default_command, id="command-input", placeholder=_("Command to execute"))
             with Horizontal():
                 yield Label(_("Comment"), classes="input-label")
-                yield Input(value=self.initial_job.comment, id="comment-input", placeholder=_("Optional comment"))
+                default_comment = self.initial_job.comment if self.initial_job else ""
+                yield Input(value=default_comment, id="comment-input", placeholder=_("Optional comment"))
             with Horizontal(classes="button-row"):
                 yield Button(_("OK"), id="ok-btn", variant="primary")
                 yield Button(_("Cancel"), id="cancel-btn")
@@ -317,16 +300,8 @@ class CronEditScreen(Screen):
             self.app.pop_screen()
             return
 
-        job = CronJob(
-            enabled=self.initial_job.enabled,
-            minute=minute or "*",
-            hour=hour or "*",
-            day=day or "*",
-            month=month or "*",
-            weekday=weekday or "*",
-            command=command,
-            comment=comment,
-        )
+        job = CronItem(command=command, comment=comment)
+        job.setall(minute or "*", hour or "*", day or "*", month or "*", weekday or "*")
 
         if self.edit_row >= 0:
             self.parent_window.update_job(self.mode, self.edit_row, job)

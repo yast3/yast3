@@ -4,97 +4,17 @@ from __future__ import annotations
 
 import os
 import subprocess
-from dataclasses import dataclass
 from typing import Literal
 
-from crontab import CronTab
+from crontab import CronTab, CronItem
 
 USER_CRON_DIR = "/var/spool/cron/tabs"
-
-
-@dataclass
-class CronJob:
-    """Represents a single cron job entry."""
-
-    minute: str
-    hour: str
-    day: str
-    month: str
-    weekday: str
-    command: str
-    comment: str = ""
-    enabled: bool = True
-
-    def __str__(self) -> str:
-        """Convert to cron file format string."""
-        line = f"{self.minute} {self.hour} {self.day} {self.month} {self.weekday} {self.command}"
-        if not self.enabled:
-            line = "# " + line
-        return line
-
-    def schedule_str(self) -> str:
-        """Get the schedule string for validation."""
-        return f"{self.minute} {self.hour} {self.day} {self.month} {self.weekday}"
-
-
-def _parse_cron_line(line: str) -> tuple[CronJob | None, str | None]:
-    """Parse a single cron line.
-
-    Returns:
-        Tuple of (CronJob object if valid, standalone comment if any).
-    """
-    stripped = line.strip()
-
-    if not stripped:
-        return None, None
-
-    if stripped.startswith("#"):
-        content = stripped[1:].lstrip()
-        parts = content.split(None, 5)
-        if len(parts) == 6:
-            try:
-                int(parts[0])
-                return CronJob(
-                    minute=parts[0],
-                    hour=parts[1],
-                    day=parts[2],
-                    month=parts[3],
-                    weekday=parts[4],
-                    command=parts[5],
-                    comment="",
-                    enabled=False,
-                ), None
-            except ValueError:
-                pass
-        return None, content
-
-    comment = ""
-    content = stripped
-
-    if "#" in content:
-        idx = content.find("#")
-        comment = content[idx:].strip()
-        content = content[:idx].strip()
-
-    parts = content.split(None, 5)
-    if len(parts) != 6:
-        return None, None
-
-    return CronJob(
-        minute=parts[0],
-        hour=parts[1],
-        day=parts[2],
-        month=parts[3],
-        weekday=parts[4],
-        command=parts[5],
-        comment=comment,
-        enabled=True,
-    ), None
 
 
 def _get_user_cron_path(username: str) -> str:
     """Get the cron file path for a user."""
     return os.path.join(USER_CRON_DIR, username)
+
 
 def load_root_cron() -> CronTab:
     """Load root cron jobs.
@@ -108,17 +28,16 @@ def load_root_cron() -> CronTab:
         text=True,
     )
     if result.returncode != 0:
-        raise Exception("Failed to load root cron jobs.")
+        return CronTab(user='root')
     
-    cron = CronTab(user='root', tab=result.stdout)
+    return CronTab(user='root', tab=result.stdout)
 
-    return cron
 
-def save_cron_jobs(jobs: list[CronJob], user_mode: bool = True) -> Literal["ok", "permission_denied", "error"]:
+def save_cron_jobs(jobs: list[CronItem], user_mode: bool = True) -> Literal["ok", "permission_denied", "error"]:
     """Save cron jobs to file.
 
     Args:
-        jobs: List of CronJob objects to save.
+        jobs: List of CronItem objects to save.
         user_mode: True for user cron, False for root cron.
 
     Returns:
@@ -147,7 +66,10 @@ def save_cron_jobs(jobs: list[CronJob], user_mode: bool = True) -> Literal["ok",
     for job in jobs:
         if job.comment:
             lines.append(job.comment)
-        lines.append(str(job))
+        if job.is_enabled():
+            lines.append(f"{job.minute} {job.hour} {job.day} {job.month} {job.dow} {job.command}")
+        else:
+            lines.append(f"# {job.minute} {job.hour} {job.day} {job.month} {job.dow} {job.command}")
 
     content = "\n".join(header_lines + lines) + "\n"
 
@@ -167,14 +89,14 @@ def save_cron_jobs(jobs: list[CronJob], user_mode: bool = True) -> Literal["ok",
         return "error"
 
 
-def validate_cron_job(job: CronJob) -> tuple[bool, str]:
+def validate_cron_job(job: CronItem) -> tuple[bool, str]:
     """Validate a complete cron job using crontab package.
 
     Returns:
         Tuple of (is_valid, error_message).
     """
     try:
-        CronTab(job.schedule_str())
+        CronTab(f"{job.minute} {job.hour} {job.day} {job.month} {job.dow}")
     except Exception as e:
         return False, str(e)
 
@@ -194,4 +116,3 @@ def get_suggestions(field_type: str) -> list[str]:
         "weekday": ["*", "0", "1-5", "6"],
     }
     return suggestions.get(field_type, [])
-

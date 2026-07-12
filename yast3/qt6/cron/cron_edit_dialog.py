@@ -14,6 +14,7 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
+
 from crontab import CronItem
 
 from yast3.core.i18n import _
@@ -98,18 +99,25 @@ class CronEditDialog(QDialog):
         QMessageBox.information(self, _("Suggestions"), text)
 
     def _on_ok(self) -> None:
-        job = CronItem(
-            command=self.command_edit.text().strip(),
-            comment=self.comment_edit.text().strip(),
-        )
+        minute = self.minute_edit.text().strip() or "*"
+        hour = self.hour_edit.text().strip() or "*"
+        day = self.day_edit.text().strip() or "*"
+        month = self.month_edit.text().strip() or "*"
+        weekday = self.weekday_edit.text().strip() or "*"
+        command = self.command_edit.text().strip()
+        comment = self.comment_edit.text().strip()
 
-        job.setall(
-            self.minute_edit.text().strip(),
-            self.hour_edit.text().strip(),
-            self.day_edit.text().strip(),
-            self.month_edit.text().strip(),
-            self.weekday_edit.text().strip(),
-        )
+        if not command:
+            QMessageBox.warning(self, _("Error"), _("Command cannot be empty"))
+            return
+
+        job = CronItem(command=command, comment=comment)
+        job.setall(minute, hour, day, month, weekday)
+
+        valid, msg = validate_cron_job(job)
+        if not valid:
+            QMessageBox.warning(self, _("Validation Error"), msg)
+            return
 
         self.job = job
         self.accept()

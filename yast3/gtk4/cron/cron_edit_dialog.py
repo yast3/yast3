@@ -6,14 +6,16 @@ gi.require_version("Gtk", "4.0")
 
 from gi.repository import Gtk
 
+from crontab import CronItem
+
 from yast3.core.i18n import _
-from yast3.core.cron import CronJob, validate_cron_job, get_suggestions
+from yast3.core.cron import validate_cron_job, get_suggestions
 
 
 class CronEditDialog(Gtk.Dialog):
     """Dialog for editing or adding a cron job."""
 
-    def __init__(self, parent, job: CronJob | None = None):
+    def __init__(self, parent, job: CronItem | None = None):
         super().__init__(
             title=_("Edit Cron Job") if job else _("Add Cron Job"),
             transient_for=parent,
@@ -24,11 +26,9 @@ class CronEditDialog(Gtk.Dialog):
 
         self.set_default_size(500, -1)
 
-        # Add buttons
         self.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
         self.add_button(_("OK"), Gtk.ResponseType.OK)
 
-        # Content area
         content = self.get_content_area()
         content.set_spacing(8)
         content.set_margin_top(12)
@@ -36,27 +36,16 @@ class CronEditDialog(Gtk.Dialog):
         content.set_margin_start(12)
         content.set_margin_end(12)
 
-        # Grid for fields
         grid = Gtk.Grid()
         grid.set_row_spacing(8)
         grid.set_column_spacing(12)
 
-        # Minute
         self.minute_entry = self._add_field_row(grid, 0, _("Minute"), _("0-59 or *"), "minute")
-
-        # Hour
         self.hour_entry = self._add_field_row(grid, 1, _("Hour"), _("0-23 or *"), "hour")
-
-        # Day
         self.day_entry = self._add_field_row(grid, 2, _("Day"), _("1-31 or *"), "day")
-
-        # Month
         self.month_entry = self._add_field_row(grid, 3, _("Month"), _("1-12 or *"), "month")
-
-        # Weekday
         self.weekday_entry = self._add_field_row(grid, 4, _("Weekday"), _("0-7 or *"), "weekday")
 
-        # Command
         command_label = Gtk.Label(label=_("Command"))
         command_label.set_halign(Gtk.Align.START)
         grid.attach(command_label, 0, 5, 1, 1)
@@ -65,7 +54,6 @@ class CronEditDialog(Gtk.Dialog):
         self.command_entry.set_hexpand(True)
         grid.attach(self.command_entry, 1, 5, 2, 1)
 
-        # Comment
         comment_label = Gtk.Label(label=_("Comment"))
         comment_label.set_halign(Gtk.Align.START)
         grid.attach(comment_label, 0, 6, 1, 1)
@@ -76,18 +64,16 @@ class CronEditDialog(Gtk.Dialog):
 
         content.append(grid)
 
-        # Connect OK button to validation
         ok_btn = self.get_widget_for_response(Gtk.ResponseType.OK)
         if ok_btn:
             ok_btn.connect("clicked", self._on_ok_clicked)
 
-        # Load existing job data
         if self.job:
-            self.minute_entry.set_text(self.job.minute)
-            self.hour_entry.set_text(self.job.hour)
-            self.day_entry.set_text(self.job.day)
-            self.month_entry.set_text(self.job.month)
-            self.weekday_entry.set_text(self.job.weekday)
+            self.minute_entry.set_text(str(self.job.minute))
+            self.hour_entry.set_text(str(self.job.hour))
+            self.day_entry.set_text(str(self.job.day))
+            self.month_entry.set_text(str(self.job.month))
+            self.weekday_entry.set_text(str(self.job.dow))
             self.command_entry.set_text(self.job.command)
             self.comment_entry.set_text(self.job.comment)
 
@@ -125,16 +111,29 @@ class CronEditDialog(Gtk.Dialog):
 
     def _on_ok_clicked(self, button: Gtk.Button) -> None:
         """Validate and accept the dialog."""
-        job = CronJob(
-            minute=self.minute_entry.get_text().strip(),
-            hour=self.hour_entry.get_text().strip(),
-            day=self.day_entry.get_text().strip(),
-            month=self.month_entry.get_text().strip(),
-            weekday=self.weekday_entry.get_text().strip(),
-            command=self.command_entry.get_text().strip(),
-            comment=self.comment_entry.get_text().strip(),
-            enabled=True,
-        )
+        minute = self.minute_entry.get_text().strip() or "*"
+        hour = self.hour_entry.get_text().strip() or "*"
+        day = self.day_entry.get_text().strip() or "*"
+        month = self.month_entry.get_text().strip() or "*"
+        weekday = self.weekday_entry.get_text().strip() or "*"
+        command = self.command_entry.get_text().strip()
+        comment = self.comment_entry.get_text().strip()
+
+        if not command:
+            dialog = Gtk.MessageDialog(
+                transient_for=self,
+                modal=True,
+                message_type=Gtk.MessageType.WARNING,
+                buttons=Gtk.ButtonsType.OK,
+                text=_("Error"),
+            )
+            dialog.set_property("secondary-text", _("Command cannot be empty"))
+            dialog.connect("response", lambda d, r: d.destroy())
+            dialog.present()
+            return
+
+        job = CronItem(command=command, comment=comment)
+        job.setall(minute, hour, day, month, weekday)
 
         valid, msg = validate_cron_job(job)
         if not valid:
@@ -153,6 +152,6 @@ class CronEditDialog(Gtk.Dialog):
         self.result_job = job
         self.response(Gtk.ResponseType.OK)
 
-    def get_job(self) -> CronJob | None:
+    def get_job(self) -> CronItem | None:
         """Get the resulting cron job."""
         return self.result_job
