@@ -6,7 +6,7 @@ from textual.widgets import Button, Footer, Header, Static
 
 from yast3.core import GITHUB_URL, __version__
 from yast3.core.i18n import _
-from yast3.core.module import Module
+from yast3.tui.module import Module
 from yast3.tui import (
     CronModule,
     DateTimeModule,

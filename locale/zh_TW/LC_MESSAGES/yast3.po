@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-11 15:48+0000\n"
+"POT-Creation-Date: 2026-07-12 13:52+0000\n"
 "PO-Revision-Date: 2026-06-26 23:49+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hant_TW\n"
@@ -17,6 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
+
+#: yast3/gtk4/module.py:35 yast3/qt6/module.py:31
+#, fuzzy, python-brace-format
+msgid "{name} — YaST3"
+msgstr "YaST3"
 
 #: yast3/gtk4/module_button.py:51 yast3/qt6/module_button.py:43
 msgid "Experimental"
@@ -40,53 +45,37 @@ msgid "Command failed. See output for details."
 msgstr "命令執行失敗。請查看輸出了解詳情。"
 
 #: yast3/gtk4/command/worker.py:55 yast3/gtk4/flatpak/settings.py:51
-#: yast3/gtk4/flatpak/window.py:93 yast3/gtk4/snapshots/window.py:210
-#: yast3/qt6/command/worker.py:51 yast3/qt6/flatpak/window.py:96
-#: yast3/qt6/flatpak/window.py:107 yast3/qt6/snapshots/window.py:134
+#: yast3/gtk4/flatpak/window.py:92 yast3/gtk4/snapshots/window.py:209
+#: yast3/qt6/command/worker.py:51 yast3/qt6/flatpak/window.py:95
+#: yast3/qt6/flatpak/window.py:106 yast3/qt6/snapshots/window.py:133
 #: yast3/tui/services/window.py:284 yast3/tui/snapshots/window.py:120
 #: yast3/tui/snapshots/window.py:212 yast3/tui/snapshots/window.py:239
 msgid "Unknown error"
 msgstr "未知錯誤"
 
-#: yast3/gtk4/cron/__init__.py:18 yast3/gtk4/cron/window.py:18
-#: yast3/qt6/cron/__init__.py:12 yast3/qt6/cron/window.py:24
+#: yast3/gtk4/cron/__init__.py:16 yast3/qt6/cron/__init__.py:12
 #: yast3/tui/cron/__init__.py:12
 msgid "Cron"
 msgstr "排程工作"
 
-#: yast3/gtk4/cron/__init__.py:24 yast3/gtk4/datetime/__init__.py:24
-#: yast3/gtk4/flatpak/__init__.py:24 yast3/gtk4/git/__init__.py:24
-#: yast3/gtk4/hostname/__init__.py:24 yast3/gtk4/hosts/__init__.py:24
-#: yast3/gtk4/packages/__init__.py:24 yast3/gtk4/proxy/__init__.py:24
-#: yast3/gtk4/repositories/__init__.py:26 yast3/gtk4/services/__init__.py:24
-#: yast3/gtk4/snapshots/__init__.py:24 yast3/gtk4/ssh/__init__.py:28
-#: yast3/qt6/cron/__init__.py:17 yast3/qt6/datetime/__init__.py:20
-#: yast3/qt6/flatpak/__init__.py:18 yast3/qt6/git/__init__.py:18
-#: yast3/qt6/hostname/__init__.py:18 yast3/qt6/hosts/__init__.py:18
-#: yast3/qt6/packages/__init__.py:18 yast3/qt6/proxy/__init__.py:18
-#: yast3/qt6/repositories/__init__.py:20 yast3/qt6/services/__init__.py:18
-#: yast3/qt6/snapshots/__init__.py:18 yast3/qt6/ssh/__init__.py:24
-msgid "YaST3"
-msgstr "YaST3"
-
-#: yast3/gtk4/cron/cron_edit_dialog.py:18 yast3/qt6/cron/cron_edit_dialog.py:31
-#: yast3/tui/cron/window.py:172
+#: yast3/gtk4/cron/cron_edit_dialog.py:20 yast3/qt6/cron/cron_edit_dialog.py:33
+#: yast3/tui/cron/window.py:176
 msgid "Edit Cron Job"
 msgstr "編輯排程工作"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:18 yast3/qt6/cron/cron_edit_dialog.py:31
-#: yast3/tui/cron/window.py:158
+#: yast3/gtk4/cron/cron_edit_dialog.py:20 yast3/qt6/cron/cron_edit_dialog.py:33
+#: yast3/tui/cron/window.py:162
 msgid "Add Cron Job"
 msgstr "新增排程工作"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:28
+#: yast3/gtk4/cron/cron_edit_dialog.py:29
 #: yast3/gtk4/flatpak/remote_manager.py:172
-#: yast3/gtk4/flatpak/remote_manager.py:237 yast3/gtk4/hosts/window.py:283
+#: yast3/gtk4/flatpak/remote_manager.py:237 yast3/gtk4/hosts/window.py:282
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:24
 #: yast3/gtk4/repositories/dialogs/switch_mirror.py:24
-#: yast3/gtk4/snapshots/config_dialog.py:185 yast3/gtk4/snapshots/window.py:150
+#: yast3/gtk4/snapshots/config_dialog.py:185 yast3/gtk4/snapshots/window.py:149
 #: yast3/gtk4/ssh/dialogs.py:27 yast3/gtk4/ssh/dialogs.py:145
-#: yast3/gtk4/ssh/keys/generate_dialog.py:26 yast3/tui/cron/window.py:296
+#: yast3/gtk4/ssh/keys/generate_dialog.py:26 yast3/tui/cron/window.py:307
 #: yast3/tui/hostname/window.py:70 yast3/tui/hosts/window.py:273
 #: yast3/tui/proxy/window.py:92 yast3/tui/repositories/window.py:355
 #: yast3/tui/repositories/window.py:484
@@ -95,13 +84,13 @@ msgstr "新增排程工作"
 msgid "Cancel"
 msgstr "取消"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:29
+#: yast3/gtk4/cron/cron_edit_dialog.py:30
 #: yast3/gtk4/flatpak/remote_manager.py:173
-#: yast3/gtk4/flatpak/remote_manager.py:238 yast3/gtk4/hosts/window.py:284
+#: yast3/gtk4/flatpak/remote_manager.py:238 yast3/gtk4/hosts/window.py:283
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:25
 #: yast3/gtk4/repositories/dialogs/switch_mirror.py:25
 #: yast3/gtk4/snapshots/config_dialog.py:186 yast3/gtk4/ssh/dialogs.py:28
-#: yast3/gtk4/ssh/dialogs.py:146 yast3/tui/cron/window.py:295
+#: yast3/gtk4/ssh/dialogs.py:146 yast3/tui/cron/window.py:306
 #: yast3/tui/hosts/window.py:272 yast3/tui/repositories/window.py:354
 #: yast3/tui/repositories/window.py:483
 #: yast3/tui/snapshots/config_screen.py:111 yast3/tui/ssh/window.py:525
@@ -109,166 +98,93 @@ msgstr "取消"
 msgid "OK"
 msgstr "確定"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:45 yast3/gtk4/cron/cron_tab.py:81
-#: yast3/qt6/cron/cron_edit_dialog.py:40 yast3/qt6/cron/cron_tab.py:61
-#: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:274
+#: yast3/gtk4/cron/cron_edit_dialog.py:43 yast3/gtk4/cron/manager.py:76
+#: yast3/qt6/cron/cron_edit_dialog.py:42 yast3/qt6/cron/manager.py:66
+#: yast3/tui/cron/window.py:108 yast3/tui/cron/window.py:278
 msgid "Minute"
 msgstr "分钟"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:45 yast3/qt6/cron/cron_edit_dialog.py:39
+#: yast3/gtk4/cron/cron_edit_dialog.py:43 yast3/qt6/cron/cron_edit_dialog.py:41
 msgid "0-59 or *"
 msgstr "0-59 或 *"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:48 yast3/gtk4/cron/cron_tab.py:88
-#: yast3/qt6/cron/cron_edit_dialog.py:44 yast3/qt6/cron/cron_tab.py:62
-#: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:277
+#: yast3/gtk4/cron/cron_edit_dialog.py:44 yast3/gtk4/cron/manager.py:82
+#: yast3/qt6/cron/cron_edit_dialog.py:46 yast3/qt6/cron/manager.py:67
+#: yast3/tui/cron/window.py:108 yast3/tui/cron/window.py:282
 msgid "Hour"
 msgstr "小時"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:48 yast3/qt6/cron/cron_edit_dialog.py:43
+#: yast3/gtk4/cron/cron_edit_dialog.py:44 yast3/qt6/cron/cron_edit_dialog.py:45
 msgid "0-23 or *"
 msgstr "0-23 或 *"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:51 yast3/gtk4/cron/cron_tab.py:95
-#: yast3/qt6/cron/cron_edit_dialog.py:48 yast3/qt6/cron/cron_tab.py:63
-#: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:280
+#: yast3/gtk4/cron/cron_edit_dialog.py:45 yast3/gtk4/cron/manager.py:88
+#: yast3/qt6/cron/cron_edit_dialog.py:50 yast3/qt6/cron/manager.py:68
+#: yast3/tui/cron/window.py:108 yast3/tui/cron/window.py:286
 msgid "Day"
 msgstr "日期"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:51 yast3/qt6/cron/cron_edit_dialog.py:47
+#: yast3/gtk4/cron/cron_edit_dialog.py:45 yast3/qt6/cron/cron_edit_dialog.py:49
 msgid "1-31 or *"
 msgstr "1-31 或 *"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:54 yast3/gtk4/cron/cron_tab.py:102
-#: yast3/qt6/cron/cron_edit_dialog.py:52 yast3/qt6/cron/cron_tab.py:64
-#: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:283
+#: yast3/gtk4/cron/cron_edit_dialog.py:46 yast3/gtk4/cron/manager.py:94
+#: yast3/qt6/cron/cron_edit_dialog.py:54 yast3/qt6/cron/manager.py:69
+#: yast3/tui/cron/window.py:108 yast3/tui/cron/window.py:290
 msgid "Month"
 msgstr "月份"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:54 yast3/qt6/cron/cron_edit_dialog.py:51
+#: yast3/gtk4/cron/cron_edit_dialog.py:46 yast3/qt6/cron/cron_edit_dialog.py:53
 msgid "1-12 or *"
 msgstr "1-12 或 *"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:57 yast3/gtk4/cron/cron_tab.py:109
-#: yast3/qt6/cron/cron_edit_dialog.py:56 yast3/qt6/cron/cron_tab.py:65
-#: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:286
+#: yast3/gtk4/cron/cron_edit_dialog.py:47 yast3/gtk4/cron/manager.py:100
+#: yast3/qt6/cron/cron_edit_dialog.py:58 yast3/qt6/cron/manager.py:70
+#: yast3/tui/cron/window.py:108 yast3/tui/cron/window.py:294
 msgid "Weekday"
 msgstr "星期"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:57 yast3/qt6/cron/cron_edit_dialog.py:55
+#: yast3/gtk4/cron/cron_edit_dialog.py:47 yast3/qt6/cron/cron_edit_dialog.py:57
 msgid "0-7 or *"
 msgstr "0-7 或 *"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:60 yast3/gtk4/cron/cron_tab.py:116
-#: yast3/qt6/cron/cron_edit_dialog.py:60 yast3/qt6/cron/cron_tab.py:66
-#: yast3/tui/cron/window.py:92 yast3/tui/cron/window.py:289
+#: yast3/gtk4/cron/cron_edit_dialog.py:49 yast3/gtk4/cron/manager.py:106
+#: yast3/qt6/cron/cron_edit_dialog.py:62 yast3/qt6/cron/manager.py:71
+#: yast3/tui/cron/window.py:108 yast3/tui/cron/window.py:298
 msgid "Command"
 msgstr "命令"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:64 yast3/qt6/cron/cron_edit_dialog.py:59
-#: yast3/tui/cron/window.py:290
+#: yast3/gtk4/cron/cron_edit_dialog.py:53 yast3/qt6/cron/cron_edit_dialog.py:61
+#: yast3/tui/cron/window.py:300
 msgid "Command to execute"
 msgstr "执行的命令"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:69 yast3/gtk4/hosts/window.py:98
-#: yast3/gtk4/ssh/keys/generate_dialog.py:65 yast3/gtk4/ssh/keys/tab.py:96
-#: yast3/qt6/cron/cron_edit_dialog.py:65 yast3/qt6/hosts/window.py:64
-#: yast3/qt6/ssh/keys/tab.py:65 yast3/tui/cron/window.py:292
-#: yast3/tui/hosts/window.py:79 yast3/tui/hosts/window.py:269
-#: yast3/tui/ssh/window.py:293 yast3/tui/ssh/window.py:622
+#: yast3/gtk4/cron/cron_edit_dialog.py:57 yast3/gtk4/cron/manager.py:111
+#: yast3/gtk4/hosts/window.py:97 yast3/gtk4/ssh/keys/generate_dialog.py:65
+#: yast3/gtk4/ssh/keys/tab.py:96 yast3/qt6/cron/cron_edit_dialog.py:67
+#: yast3/qt6/cron/manager.py:72 yast3/qt6/hosts/window.py:63
+#: yast3/qt6/ssh/keys/tab.py:65 yast3/tui/cron/window.py:108
+#: yast3/tui/cron/window.py:302 yast3/tui/hosts/window.py:79
+#: yast3/tui/hosts/window.py:269 yast3/tui/ssh/window.py:293
+#: yast3/tui/ssh/window.py:622
 msgid "Comment"
 msgstr "備註"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:73 yast3/qt6/cron/cron_edit_dialog.py:64
-#: yast3/tui/cron/window.py:293 yast3/tui/ssh/window.py:623
+#: yast3/gtk4/cron/cron_edit_dialog.py:61 yast3/qt6/cron/cron_edit_dialog.py:66
+#: yast3/tui/cron/window.py:304 yast3/tui/ssh/window.py:623
 msgid "Optional comment"
 msgstr "可选備註"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:105
-#: yast3/gtk4/cron/cron_edit_dialog.py:120
-#: yast3/qt6/cron/cron_edit_dialog.py:91 yast3/qt6/cron/cron_edit_dialog.py:97
+#: yast3/gtk4/cron/cron_edit_dialog.py:91
+#: yast3/gtk4/cron/cron_edit_dialog.py:106
+#: yast3/qt6/cron/cron_edit_dialog.py:93 yast3/qt6/cron/cron_edit_dialog.py:99
 msgid "Suggestions"
 msgstr "建议"
 
-#: yast3/gtk4/cron/cron_edit_dialog.py:146
-#: yast3/qt6/cron/cron_edit_dialog.py:113
-msgid "Validation Error"
-msgstr "驗證錯誤"
-
-#: yast3/gtk4/cron/cron_tab.py:33 yast3/gtk4/flatpak/remote_manager.py:28
-#: yast3/gtk4/hosts/window.py:34 yast3/gtk4/repositories/window.py:40
-#: yast3/gtk4/ssh/dialogs.py:60 yast3/gtk4/ssh/hosts/tab.py:33
-#: yast3/gtk4/ssh/keys/tab.py:33 yast3/qt6/cron/cron_tab.py:37
-#: yast3/qt6/flatpak/remote_manager.py:37 yast3/qt6/hosts/window.py:41
-#: yast3/qt6/repositories/window.py:45 yast3/qt6/ssh/dialogs.py:58
-#: yast3/qt6/ssh/hosts/tab.py:38 yast3/qt6/ssh/keys/tab.py:36
-#: yast3/tui/cron/window.py:77 yast3/tui/hosts/window.py:69
-#: yast3/tui/repositories/window.py:70 yast3/tui/ssh/window.py:259
-msgid "Add"
-msgstr "新增"
-
-#: yast3/gtk4/cron/cron_tab.py:37 yast3/gtk4/flatpak/remote_manager.py:32
-#: yast3/gtk4/flatpak/remote_manager.py:233 yast3/gtk4/hosts/window.py:38
-#: yast3/gtk4/repositories/window.py:47 yast3/gtk4/ssh/hosts/tab.py:37
-#: yast3/qt6/cron/cron_tab.py:41 yast3/qt6/flatpak/remote_manager.py:41
-#: yast3/qt6/flatpak/remote_manager.py:106 yast3/qt6/hosts/window.py:44
-#: yast3/qt6/repositories/window.py:53 yast3/qt6/ssh/hosts/tab.py:42
-#: yast3/tui/cron/window.py:78 yast3/tui/hosts/window.py:70
-#: yast3/tui/repositories/window.py:71 yast3/tui/ssh/window.py:260
-msgid "Edit"
-msgstr "編輯"
-
-#: yast3/gtk4/cron/cron_tab.py:41 yast3/gtk4/flatpak/remote_manager.py:36
-#: yast3/gtk4/hosts/window.py:42 yast3/gtk4/repositories/window.py:51
-#: yast3/gtk4/snapshots/window.py:67 yast3/gtk4/snapshots/window.py:151
-#: yast3/gtk4/snapshots/window.py:279 yast3/gtk4/ssh/hosts/tab.py:41
-#: yast3/gtk4/ssh/keys/tab.py:42 yast3/qt6/cron/cron_tab.py:45
-#: yast3/qt6/flatpak/remote_manager.py:45 yast3/qt6/hosts/window.py:48
-#: yast3/qt6/repositories/window.py:57 yast3/qt6/snapshots/window.py:64
-#: yast3/qt6/snapshots/window.py:204 yast3/qt6/ssh/hosts/tab.py:46
-#: yast3/qt6/ssh/keys/tab.py:45 yast3/tui/cron/window.py:79
-#: yast3/tui/hosts/window.py:71 yast3/tui/repositories/window.py:72
-#: yast3/tui/snapshots/window.py:72 yast3/tui/ssh/window.py:261
-#: yast3/tui/ssh/window.py:269
-msgid "Delete"
-msgstr "刪除"
-
-#: yast3/gtk4/cron/cron_tab.py:48 yast3/gtk4/git/window.py:71
-#: yast3/gtk4/hostname/window.py:49 yast3/gtk4/hosts/window.py:49
-#: yast3/gtk4/proxy/window.py:45 yast3/gtk4/ssh/hosts/tab.py:48
-#: yast3/qt6/cron/cron_tab.py:51 yast3/qt6/git/window.py:79
-#: yast3/qt6/hostname/window.py:53 yast3/qt6/hosts/window.py:54
-#: yast3/qt6/proxy/window.py:56 yast3/qt6/ssh/hosts/tab.py:52
-#: yast3/tui/cron/window.py:80 yast3/tui/git/window.py:81
-#: yast3/tui/hostname/window.py:69 yast3/tui/hosts/window.py:72
-#: yast3/tui/proxy/window.py:91 yast3/tui/ssh/window.py:262
-msgid "Save"
-msgstr "儲存"
-
-#: yast3/gtk4/cron/cron_tab.py:74 yast3/gtk4/hosts/window.py:77
-#: yast3/gtk4/repositories/dialogs/repo_edit.py:38
-#: yast3/gtk4/repositories/window.py:102 yast3/gtk4/services/window.py:140
-#: yast3/gtk4/ssh/hosts/tab.py:74 yast3/qt6/repositories/repo_edit_dialog.py:42
-#: yast3/qt6/repositories/window.py:71 yast3/qt6/services/window.py:117
-#: yast3/tui/cron/window.py:92 yast3/tui/hosts/window.py:79
-#: yast3/tui/proxy/window.py:120 yast3/tui/repositories/window.py:80
-#: yast3/tui/repositories/window.py:349 yast3/tui/services/window.py:126
-#: yast3/tui/ssh/window.py:288
-msgid "Enabled"
-msgstr "启用"
-
-#: yast3/gtk4/cron/cron_tab.py:137 yast3/gtk4/cron/cron_tab.py:242
-#: yast3/gtk4/cron/cron_tab.py:244 yast3/gtk4/datetime/window.py:181
-#: yast3/gtk4/datetime/window.py:197 yast3/gtk4/datetime/window.py:202
-#: yast3/gtk4/datetime/window.py:207 yast3/gtk4/datetime/window.py:215
-#: yast3/gtk4/datetime/window.py:217 yast3/gtk4/datetime/window.py:219
-#: yast3/gtk4/datetime/window.py:229 yast3/gtk4/datetime/window.py:231
-#: yast3/gtk4/datetime/window.py:233 yast3/gtk4/datetime/window.py:249
-#: yast3/gtk4/datetime/window.py:251 yast3/gtk4/datetime/window.py:253
-#: yast3/gtk4/datetime/window.py:255 yast3/gtk4/datetime/window.py:261
-#: yast3/gtk4/datetime/window.py:263 yast3/gtk4/datetime/window.py:265
-#: yast3/gtk4/datetime/window.py:274 yast3/gtk4/datetime/window.py:276
-#: yast3/gtk4/datetime/window.py:278 yast3/gtk4/flatpak/package_manager.py:220
+#: yast3/gtk4/cron/cron_edit_dialog.py:128 yast3/gtk4/cron/manager.py:247
+#: yast3/gtk4/datetime/window.py:178 yast3/gtk4/datetime/window.py:227
+#: yast3/gtk4/datetime/window.py:238 yast3/gtk4/datetime/window.py:240
+#: yast3/gtk4/datetime/window.py:242 yast3/gtk4/flatpak/package_manager.py:220
 #: yast3/gtk4/flatpak/package_manager.py:241
 #: yast3/gtk4/flatpak/package_manager.py:319
 #: yast3/gtk4/flatpak/package_manager.py:359
@@ -278,42 +194,36 @@ msgstr "启用"
 #: yast3/gtk4/flatpak/remote_manager.py:288
 #: yast3/gtk4/flatpak/runtime_manager.py:90
 #: yast3/gtk4/flatpak/runtime_manager.py:145 yast3/gtk4/flatpak/settings.py:50
-#: yast3/gtk4/flatpak/window.py:92 yast3/gtk4/git/window.py:257
-#: yast3/gtk4/git/window.py:278 yast3/gtk4/hostname/window.py:67
-#: yast3/gtk4/hostname/window.py:69 yast3/gtk4/hostname/window.py:71
-#: yast3/gtk4/hostname/window.py:78 yast3/gtk4/hostname/window.py:83
-#: yast3/gtk4/hostname/window.py:89 yast3/gtk4/hostname/window.py:109
-#: yast3/gtk4/hostname/window.py:111 yast3/gtk4/hostname/window.py:113
-#: yast3/gtk4/hosts/window.py:120 yast3/gtk4/hosts/window.py:123
-#: yast3/gtk4/hosts/window.py:177 yast3/gtk4/hosts/window.py:213
-#: yast3/gtk4/hosts/window.py:251 yast3/gtk4/hosts/window.py:253
-#: yast3/gtk4/hosts/window.py:255 yast3/gtk4/proxy/window.py:83
-#: yast3/gtk4/proxy/window.py:89 yast3/gtk4/proxy/window.py:95
-#: yast3/gtk4/proxy/window.py:118 yast3/gtk4/proxy/window.py:124
-#: yast3/gtk4/repositories/window.py:133 yast3/gtk4/repositories/window.py:195
-#: yast3/gtk4/repositories/window.py:199 yast3/gtk4/repositories/window.py:241
-#: yast3/gtk4/repositories/window.py:276 yast3/gtk4/repositories/window.py:280
-#: yast3/gtk4/repositories/window.py:388 yast3/gtk4/repositories/window.py:390
-#: yast3/gtk4/repositories/window.py:392 yast3/gtk4/services/window.py:184
+#: yast3/gtk4/flatpak/window.py:91 yast3/gtk4/git/window.py:256
+#: yast3/gtk4/git/window.py:277 yast3/gtk4/hostname/window.py:66
+#: yast3/gtk4/hostname/window.py:68 yast3/gtk4/hostname/window.py:70
+#: yast3/gtk4/hostname/window.py:77 yast3/gtk4/hostname/window.py:82
+#: yast3/gtk4/hostname/window.py:88 yast3/gtk4/hostname/window.py:108
+#: yast3/gtk4/hostname/window.py:110 yast3/gtk4/hostname/window.py:112
+#: yast3/gtk4/hosts/window.py:119 yast3/gtk4/hosts/window.py:122
+#: yast3/gtk4/hosts/window.py:176 yast3/gtk4/hosts/window.py:212
+#: yast3/gtk4/hosts/window.py:250 yast3/gtk4/hosts/window.py:252
+#: yast3/gtk4/hosts/window.py:254 yast3/gtk4/proxy/window.py:82
+#: yast3/gtk4/proxy/window.py:88 yast3/gtk4/proxy/window.py:94
+#: yast3/gtk4/proxy/window.py:117 yast3/gtk4/proxy/window.py:123
+#: yast3/gtk4/repositories/window.py:132 yast3/gtk4/repositories/window.py:194
+#: yast3/gtk4/repositories/window.py:198 yast3/gtk4/repositories/window.py:240
+#: yast3/gtk4/repositories/window.py:275 yast3/gtk4/repositories/window.py:279
+#: yast3/gtk4/repositories/window.py:387 yast3/gtk4/repositories/window.py:389
+#: yast3/gtk4/repositories/window.py:391 yast3/gtk4/services/window.py:183
 #: yast3/gtk4/snapshots/config_dialog.py:46
-#: yast3/gtk4/snapshots/config_dialog.py:227 yast3/gtk4/snapshots/window.py:203
-#: yast3/gtk4/snapshots/window.py:209 yast3/gtk4/ssh/__init__.py:82
+#: yast3/gtk4/snapshots/config_dialog.py:227 yast3/gtk4/snapshots/window.py:202
+#: yast3/gtk4/snapshots/window.py:208 yast3/gtk4/ssh/__init__.py:72
 #: yast3/gtk4/ssh/dialogs.py:120 yast3/gtk4/ssh/hosts/tab.py:109
 #: yast3/gtk4/ssh/hosts/tab.py:152 yast3/gtk4/ssh/hosts/tab.py:180
 #: yast3/gtk4/ssh/hosts/tab.py:195 yast3/gtk4/ssh/hosts/tab.py:226
 #: yast3/gtk4/ssh/hosts/tab.py:228 yast3/gtk4/ssh/keys/generate_dialog.py:110
 #: yast3/gtk4/ssh/keys/tab.py:196 yast3/gtk4/ssh/keys/tab.py:242
-#: yast3/qt6/cron/cron_tab.py:96 yast3/qt6/cron/cron_tab.py:204
-#: yast3/qt6/cron/cron_tab.py:207 yast3/qt6/datetime/window.py:164
-#: yast3/qt6/datetime/window.py:195 yast3/qt6/datetime/window.py:203
-#: yast3/qt6/datetime/window.py:205 yast3/qt6/datetime/window.py:207
-#: yast3/qt6/datetime/window.py:217 yast3/qt6/datetime/window.py:219
-#: yast3/qt6/datetime/window.py:221 yast3/qt6/datetime/window.py:237
-#: yast3/qt6/datetime/window.py:239 yast3/qt6/datetime/window.py:241
-#: yast3/qt6/datetime/window.py:243 yast3/qt6/datetime/window.py:249
-#: yast3/qt6/datetime/window.py:251 yast3/qt6/datetime/window.py:253
-#: yast3/qt6/datetime/window.py:262 yast3/qt6/datetime/window.py:264
-#: yast3/qt6/datetime/window.py:266 yast3/qt6/flatpak/package_manager.py:387
+#: yast3/qt6/cron/cron_edit_dialog.py:111 yast3/qt6/cron/manager.py:227
+#: yast3/qt6/datetime/window.py:148 yast3/qt6/datetime/window.py:154
+#: yast3/qt6/datetime/window.py:166 yast3/qt6/datetime/window.py:200
+#: yast3/qt6/datetime/window.py:211 yast3/qt6/datetime/window.py:213
+#: yast3/qt6/datetime/window.py:215 yast3/qt6/flatpak/package_manager.py:387
 #: yast3/qt6/flatpak/package_manager.py:398
 #: yast3/qt6/flatpak/package_manager.py:475
 #: yast3/qt6/flatpak/package_manager.py:491
@@ -322,28 +232,28 @@ msgstr "启用"
 #: yast3/qt6/flatpak/remote_manager.py:116
 #: yast3/qt6/flatpak/remote_manager.py:138
 #: yast3/qt6/flatpak/runtime_manager.py:154
-#: yast3/qt6/flatpak/runtime_manager.py:160 yast3/qt6/flatpak/window.py:95
-#: yast3/qt6/flatpak/window.py:106 yast3/qt6/git/window.py:249
-#: yast3/qt6/git/window.py:275 yast3/qt6/hostname/window.py:68
-#: yast3/qt6/hostname/window.py:72 yast3/qt6/hostname/window.py:77
-#: yast3/qt6/hostname/window.py:85 yast3/qt6/hostname/window.py:91
-#: yast3/qt6/hostname/window.py:99 yast3/qt6/hostname/window.py:132
-#: yast3/qt6/hostname/window.py:136 yast3/qt6/hostname/window.py:140
-#: yast3/qt6/hosts/window.py:104 yast3/qt6/hosts/window.py:110
-#: yast3/qt6/hosts/window.py:180 yast3/qt6/hosts/window.py:217
-#: yast3/qt6/hosts/window.py:271 yast3/qt6/hosts/window.py:276
-#: yast3/qt6/hosts/window.py:279 yast3/qt6/proxy/window.py:84
-#: yast3/qt6/proxy/window.py:88 yast3/qt6/proxy/window.py:94
-#: yast3/qt6/proxy/window.py:117 yast3/qt6/proxy/window.py:123
-#: yast3/qt6/repositories/window.py:115 yast3/qt6/repositories/window.py:135
-#: yast3/qt6/repositories/window.py:185 yast3/qt6/repositories/window.py:188
-#: yast3/qt6/repositories/window.py:214 yast3/qt6/repositories/window.py:232
-#: yast3/qt6/repositories/window.py:235 yast3/qt6/repositories/window.py:257
-#: yast3/qt6/repositories/window.py:279 yast3/qt6/repositories/window.py:307
-#: yast3/qt6/repositories/window.py:322 yast3/qt6/services/window.py:141
+#: yast3/qt6/flatpak/runtime_manager.py:160 yast3/qt6/flatpak/window.py:94
+#: yast3/qt6/flatpak/window.py:105 yast3/qt6/git/window.py:248
+#: yast3/qt6/git/window.py:274 yast3/qt6/hostname/window.py:66
+#: yast3/qt6/hostname/window.py:70 yast3/qt6/hostname/window.py:75
+#: yast3/qt6/hostname/window.py:83 yast3/qt6/hostname/window.py:89
+#: yast3/qt6/hostname/window.py:97 yast3/qt6/hostname/window.py:130
+#: yast3/qt6/hostname/window.py:134 yast3/qt6/hostname/window.py:138
+#: yast3/qt6/hosts/window.py:103 yast3/qt6/hosts/window.py:109
+#: yast3/qt6/hosts/window.py:179 yast3/qt6/hosts/window.py:216
+#: yast3/qt6/hosts/window.py:270 yast3/qt6/hosts/window.py:275
+#: yast3/qt6/hosts/window.py:278 yast3/qt6/proxy/window.py:83
+#: yast3/qt6/proxy/window.py:87 yast3/qt6/proxy/window.py:93
+#: yast3/qt6/proxy/window.py:116 yast3/qt6/proxy/window.py:122
+#: yast3/qt6/repositories/window.py:114 yast3/qt6/repositories/window.py:134
+#: yast3/qt6/repositories/window.py:184 yast3/qt6/repositories/window.py:187
+#: yast3/qt6/repositories/window.py:213 yast3/qt6/repositories/window.py:231
+#: yast3/qt6/repositories/window.py:234 yast3/qt6/repositories/window.py:256
+#: yast3/qt6/repositories/window.py:278 yast3/qt6/repositories/window.py:306
+#: yast3/qt6/repositories/window.py:321 yast3/qt6/services/window.py:140
 #: yast3/qt6/snapshots/config_dialog.py:38
-#: yast3/qt6/snapshots/config_dialog.py:171 yast3/qt6/snapshots/window.py:127
-#: yast3/qt6/snapshots/window.py:133 yast3/qt6/ssh/__init__.py:69
+#: yast3/qt6/snapshots/config_dialog.py:171 yast3/qt6/snapshots/window.py:126
+#: yast3/qt6/snapshots/window.py:132 yast3/qt6/ssh/__init__.py:59
 #: yast3/qt6/ssh/dialogs.py:86 yast3/qt6/ssh/dialogs.py:92
 #: yast3/qt6/ssh/hosts/tab.py:90 yast3/qt6/ssh/hosts/tab.py:141
 #: yast3/qt6/ssh/hosts/tab.py:162 yast3/qt6/ssh/hosts/tab.py:176
@@ -356,141 +266,194 @@ msgstr "启用"
 msgid "Error"
 msgstr "錯誤"
 
-#: yast3/gtk4/cron/cron_tab.py:187 yast3/gtk4/cron/cron_tab.py:211
+#: yast3/gtk4/cron/cron_edit_dialog.py:130
+#: yast3/qt6/cron/cron_edit_dialog.py:111
+#, fuzzy
+msgid "Command cannot be empty"
+msgstr "主機名不能為空。"
+
+#: yast3/gtk4/cron/manager.py:34 yast3/gtk4/flatpak/remote_manager.py:28
+#: yast3/gtk4/hosts/window.py:33 yast3/gtk4/repositories/window.py:39
+#: yast3/gtk4/ssh/dialogs.py:60 yast3/gtk4/ssh/hosts/tab.py:33
+#: yast3/gtk4/ssh/keys/tab.py:33 yast3/qt6/cron/manager.py:40
+#: yast3/qt6/flatpak/remote_manager.py:37 yast3/qt6/hosts/window.py:40
+#: yast3/qt6/repositories/window.py:44 yast3/qt6/ssh/dialogs.py:58
+#: yast3/qt6/ssh/hosts/tab.py:38 yast3/qt6/ssh/keys/tab.py:36
+#: yast3/tui/cron/window.py:79 yast3/tui/hosts/window.py:69
+#: yast3/tui/repositories/window.py:70 yast3/tui/ssh/window.py:259
+msgid "Add"
+msgstr "新增"
+
+#: yast3/gtk4/cron/manager.py:38 yast3/gtk4/flatpak/remote_manager.py:32
+#: yast3/gtk4/flatpak/remote_manager.py:233 yast3/gtk4/hosts/window.py:37
+#: yast3/gtk4/repositories/window.py:46 yast3/gtk4/ssh/hosts/tab.py:37
+#: yast3/qt6/cron/manager.py:44 yast3/qt6/flatpak/remote_manager.py:41
+#: yast3/qt6/flatpak/remote_manager.py:106 yast3/qt6/hosts/window.py:43
+#: yast3/qt6/repositories/window.py:52 yast3/qt6/ssh/hosts/tab.py:42
+#: yast3/tui/cron/window.py:80 yast3/tui/hosts/window.py:70
+#: yast3/tui/repositories/window.py:71 yast3/tui/ssh/window.py:260
+msgid "Edit"
+msgstr "編輯"
+
+#: yast3/gtk4/cron/manager.py:43 yast3/gtk4/flatpak/remote_manager.py:36
+#: yast3/gtk4/hosts/window.py:41 yast3/gtk4/repositories/window.py:50
+#: yast3/gtk4/snapshots/window.py:66 yast3/gtk4/snapshots/window.py:150
+#: yast3/gtk4/snapshots/window.py:278 yast3/gtk4/ssh/hosts/tab.py:41
+#: yast3/gtk4/ssh/keys/tab.py:42 yast3/qt6/cron/manager.py:49
+#: yast3/qt6/flatpak/remote_manager.py:45 yast3/qt6/hosts/window.py:47
+#: yast3/qt6/repositories/window.py:56 yast3/qt6/snapshots/window.py:63
+#: yast3/qt6/snapshots/window.py:203 yast3/qt6/ssh/hosts/tab.py:46
+#: yast3/qt6/ssh/keys/tab.py:45 yast3/tui/cron/window.py:81
+#: yast3/tui/hosts/window.py:71 yast3/tui/repositories/window.py:72
+#: yast3/tui/snapshots/window.py:72 yast3/tui/ssh/window.py:261
+#: yast3/tui/ssh/window.py:269
+msgid "Delete"
+msgstr "刪除"
+
+#: yast3/gtk4/cron/manager.py:51 yast3/gtk4/datetime/window.py:157
+#: yast3/gtk4/git/window.py:70 yast3/gtk4/hostname/window.py:48
+#: yast3/gtk4/hosts/window.py:48 yast3/gtk4/proxy/window.py:44
+#: yast3/gtk4/ssh/hosts/tab.py:48 yast3/qt6/cron/manager.py:56
+#: yast3/qt6/datetime/window.py:134 yast3/qt6/git/window.py:78
+#: yast3/qt6/hostname/window.py:51 yast3/qt6/hosts/window.py:53
+#: yast3/qt6/proxy/window.py:55 yast3/qt6/ssh/hosts/tab.py:52
+#: yast3/tui/cron/window.py:82 yast3/tui/datetime/window.py:116
+#: yast3/tui/git/window.py:81 yast3/tui/hostname/window.py:69
+#: yast3/tui/hosts/window.py:72 yast3/tui/proxy/window.py:91
+#: yast3/tui/ssh/window.py:262
+msgid "Save"
+msgstr "儲存"
+
+#: yast3/gtk4/cron/manager.py:70 yast3/gtk4/hosts/window.py:76
+#: yast3/gtk4/repositories/dialogs/repo_edit.py:38
+#: yast3/gtk4/repositories/window.py:101 yast3/gtk4/services/window.py:139
+#: yast3/gtk4/ssh/hosts/tab.py:74 yast3/qt6/repositories/repo_edit_dialog.py:42
+#: yast3/qt6/repositories/window.py:70 yast3/qt6/services/window.py:116
+#: yast3/tui/cron/window.py:108 yast3/tui/hosts/window.py:79
+#: yast3/tui/proxy/window.py:120 yast3/tui/repositories/window.py:80
+#: yast3/tui/repositories/window.py:349 yast3/tui/services/window.py:126
+#: yast3/tui/ssh/window.py:288
+msgid "Enabled"
+msgstr "启用"
+
+#: yast3/gtk4/cron/manager.py:183 yast3/gtk4/cron/manager.py:213
 #: yast3/gtk4/flatpak/package_manager.py:299
 #: yast3/gtk4/flatpak/package_manager.py:307
 #: yast3/gtk4/flatpak/package_manager.py:328
 #: yast3/gtk4/flatpak/remote_manager.py:111
 #: yast3/gtk4/flatpak/remote_manager.py:122
-#: yast3/gtk4/flatpak/runtime_manager.py:114 yast3/gtk4/hosts/window.py:184
-#: yast3/gtk4/hosts/window.py:220 yast3/gtk4/repositories/window.py:232
-#: yast3/gtk4/repositories/window.py:257 yast3/gtk4/repositories/window.py:311
-#: yast3/gtk4/services/window.py:272 yast3/gtk4/services/window.py:305
-#: yast3/gtk4/snapshots/window.py:250 yast3/gtk4/snapshots/window.py:270
+#: yast3/gtk4/flatpak/runtime_manager.py:114 yast3/gtk4/hosts/window.py:183
+#: yast3/gtk4/hosts/window.py:219 yast3/gtk4/repositories/window.py:231
+#: yast3/gtk4/repositories/window.py:256 yast3/gtk4/repositories/window.py:310
+#: yast3/gtk4/services/window.py:271 yast3/gtk4/services/window.py:304
+#: yast3/gtk4/snapshots/window.py:249 yast3/gtk4/snapshots/window.py:269
 #: yast3/gtk4/ssh/hosts/tab.py:159 yast3/gtk4/ssh/hosts/tab.py:187
-#: yast3/qt6/cron/cron_tab.py:147 yast3/qt6/cron/cron_tab.py:160
+#: yast3/qt6/cron/manager.py:156 yast3/qt6/cron/manager.py:174
 #: yast3/qt6/flatpak/package_manager.py:347
 #: yast3/qt6/flatpak/package_manager.py:351
 #: yast3/qt6/flatpak/package_manager.py:364
 #: yast3/qt6/flatpak/remote_manager.py:102
 #: yast3/qt6/flatpak/remote_manager.py:121
-#: yast3/qt6/flatpak/runtime_manager.py:134 yast3/qt6/hosts/window.py:188
-#: yast3/qt6/hosts/window.py:225 yast3/qt6/repositories/window.py:107
-#: yast3/qt6/repositories/window.py:220 yast3/qt6/repositories/window.py:263
-#: yast3/qt6/services/window.py:228 yast3/qt6/services/window.py:257
-#: yast3/qt6/snapshots/window.py:176 yast3/qt6/snapshots/window.py:192
+#: yast3/qt6/flatpak/runtime_manager.py:134 yast3/qt6/hosts/window.py:187
+#: yast3/qt6/hosts/window.py:224 yast3/qt6/repositories/window.py:106
+#: yast3/qt6/repositories/window.py:219 yast3/qt6/repositories/window.py:262
+#: yast3/qt6/services/window.py:227 yast3/qt6/services/window.py:256
+#: yast3/qt6/snapshots/window.py:175 yast3/qt6/snapshots/window.py:191
 #: yast3/qt6/ssh/hosts/tab.py:148 yast3/qt6/ssh/hosts/tab.py:169
 msgid "Information"
 msgstr "信息"
 
-#: yast3/gtk4/cron/cron_tab.py:187 yast3/qt6/cron/cron_tab.py:147
-#: yast3/tui/cron/window.py:165
+#: yast3/gtk4/cron/manager.py:183 yast3/qt6/cron/manager.py:156
+#: yast3/tui/cron/window.py:169
 msgid "Please select a cron job to edit."
 msgstr "請選擇要編輯的排程工作。"
 
-#: yast3/gtk4/cron/cron_tab.py:211 yast3/qt6/cron/cron_tab.py:160
-#: yast3/tui/cron/window.py:184
+#: yast3/gtk4/cron/manager.py:213 yast3/qt6/cron/manager.py:174
+#: yast3/tui/cron/window.py:188
 msgid "Please select a cron job to delete."
 msgstr "請選擇要刪除的排程工作。"
 
-#: yast3/gtk4/cron/cron_tab.py:220 yast3/gtk4/flatpak/package_manager.py:338
+#: yast3/gtk4/cron/manager.py:221 yast3/gtk4/flatpak/package_manager.py:338
 #: yast3/gtk4/flatpak/remote_manager.py:132
 #: yast3/gtk4/flatpak/remove_action.py:38
-#: yast3/gtk4/flatpak/runtime_manager.py:124 yast3/gtk4/hostname/window.py:99
-#: yast3/gtk4/hosts/window.py:229 yast3/gtk4/repositories/window.py:324
-#: yast3/gtk4/repositories/window.py:363 yast3/gtk4/ssh/hosts/tab.py:204
-#: yast3/qt6/cron/cron_tab.py:164 yast3/qt6/flatpak/package_manager.py:369
+#: yast3/gtk4/flatpak/runtime_manager.py:124 yast3/gtk4/hostname/window.py:98
+#: yast3/gtk4/hosts/window.py:228 yast3/gtk4/repositories/window.py:323
+#: yast3/gtk4/repositories/window.py:362 yast3/gtk4/ssh/hosts/tab.py:204
+#: yast3/qt6/cron/manager.py:178 yast3/qt6/flatpak/package_manager.py:369
 #: yast3/qt6/flatpak/remote_manager.py:127
 #: yast3/qt6/flatpak/remove_action.py:37
-#: yast3/qt6/flatpak/runtime_manager.py:139 yast3/qt6/hostname/window.py:111
-#: yast3/qt6/hosts/window.py:230 yast3/qt6/repositories/window.py:270
-#: yast3/qt6/repositories/window.py:290 yast3/qt6/ssh/hosts/tab.py:181
+#: yast3/qt6/flatpak/runtime_manager.py:139 yast3/qt6/hostname/window.py:109
+#: yast3/qt6/hosts/window.py:229 yast3/qt6/repositories/window.py:269
+#: yast3/qt6/repositories/window.py:289 yast3/qt6/ssh/hosts/tab.py:181
 #: yast3/qt6/ssh/keys/generate_dialog.py:184
 msgid "Confirm"
 msgstr "确认"
 
-#: yast3/gtk4/cron/cron_tab.py:222 yast3/qt6/cron/cron_tab.py:164
+#: yast3/gtk4/cron/manager.py:223 yast3/qt6/cron/manager.py:178
 msgid "Are you sure you want to delete this cron job?"
 msgstr "您確定要刪除此排程工作吗？"
 
-#: yast3/gtk4/cron/cron_tab.py:240 yast3/gtk4/datetime/window.py:213
-#: yast3/gtk4/datetime/window.py:227 yast3/gtk4/datetime/window.py:247
-#: yast3/gtk4/datetime/window.py:259 yast3/gtk4/datetime/window.py:271
-#: yast3/gtk4/flatpak/package_manager.py:314
+#: yast3/gtk4/cron/manager.py:245 yast3/gtk4/datetime/window.py:229
+#: yast3/gtk4/datetime/window.py:235 yast3/gtk4/flatpak/package_manager.py:314
 #: yast3/gtk4/flatpak/package_manager.py:354
 #: yast3/gtk4/flatpak/remote_manager.py:155
 #: yast3/gtk4/flatpak/remote_manager.py:219
 #: yast3/gtk4/flatpak/remote_manager.py:281
 #: yast3/gtk4/flatpak/runtime_manager.py:140 yast3/gtk4/flatpak/settings.py:44
-#: yast3/gtk4/flatpak/window.py:87 yast3/gtk4/git/window.py:276
-#: yast3/gtk4/hostname/window.py:106 yast3/gtk4/hosts/window.py:249
-#: yast3/gtk4/proxy/window.py:111 yast3/gtk4/repositories/window.py:248
-#: yast3/gtk4/repositories/window.py:379
-#: yast3/gtk4/snapshots/config_dialog.py:220 yast3/gtk4/ssh/__init__.py:97
+#: yast3/gtk4/flatpak/window.py:86 yast3/gtk4/git/window.py:275
+#: yast3/gtk4/hostname/window.py:105 yast3/gtk4/hosts/window.py:248
+#: yast3/gtk4/proxy/window.py:110 yast3/gtk4/repositories/window.py:247
+#: yast3/gtk4/repositories/window.py:378
+#: yast3/gtk4/snapshots/config_dialog.py:220 yast3/gtk4/ssh/__init__.py:87
 #: yast3/gtk4/ssh/hosts/tab.py:224 yast3/gtk4/ssh/keys/tab.py:194
-#: yast3/gtk4/ssh/keys/tab.py:246 yast3/qt6/cron/cron_tab.py:201
-#: yast3/qt6/datetime/window.py:201 yast3/qt6/datetime/window.py:215
-#: yast3/qt6/datetime/window.py:235 yast3/qt6/datetime/window.py:247
-#: yast3/qt6/datetime/window.py:259 yast3/qt6/flatpak/remote_manager.py:94
+#: yast3/gtk4/ssh/keys/tab.py:246 yast3/qt6/cron/manager.py:224
+#: yast3/qt6/datetime/window.py:202 yast3/qt6/datetime/window.py:208
+#: yast3/qt6/flatpak/remote_manager.py:94
 #: yast3/qt6/flatpak/remote_manager.py:113
-#: yast3/qt6/flatpak/remote_manager.py:135 yast3/qt6/flatpak/window.py:90
-#: yast3/qt6/flatpak/window.py:101 yast3/qt6/git/window.py:270
-#: yast3/qt6/hostname/window.py:126 yast3/qt6/hosts/window.py:265
-#: yast3/qt6/proxy/window.py:110 yast3/qt6/repositories/window.py:121
-#: yast3/qt6/repositories/window.py:302
-#: yast3/qt6/snapshots/config_dialog.py:168 yast3/qt6/ssh/__init__.py:77
+#: yast3/qt6/flatpak/remote_manager.py:135 yast3/qt6/flatpak/window.py:89
+#: yast3/qt6/flatpak/window.py:100 yast3/qt6/git/window.py:269
+#: yast3/qt6/hostname/window.py:124 yast3/qt6/hosts/window.py:264
+#: yast3/qt6/proxy/window.py:109 yast3/qt6/repositories/window.py:120
+#: yast3/qt6/repositories/window.py:301
+#: yast3/qt6/snapshots/config_dialog.py:168 yast3/qt6/ssh/__init__.py:67
 #: yast3/qt6/ssh/hosts/tab.py:222 yast3/qt6/ssh/keys/generate_dialog.py:232
 #: yast3/qt6/ssh/keys/tab.py:174 yast3/qt6/ssh/keys/tab.py:221
 msgid "Success"
 msgstr "成功"
 
-#: yast3/gtk4/cron/cron_tab.py:240 yast3/qt6/cron/cron_tab.py:201
+#: yast3/gtk4/cron/manager.py:245 yast3/qt6/cron/manager.py:224
 msgid "Cron jobs saved successfully."
 msgstr "排程工作儲存成功。"
 
-#: yast3/gtk4/cron/cron_tab.py:242 yast3/gtk4/datetime/window.py:215
-#: yast3/gtk4/datetime/window.py:229 yast3/gtk4/datetime/window.py:251
-#: yast3/gtk4/datetime/window.py:261 yast3/gtk4/datetime/window.py:274
-#: yast3/gtk4/hostname/window.py:109 yast3/gtk4/proxy/window.py:119
-#: yast3/qt6/cron/cron_tab.py:204 yast3/qt6/datetime/window.py:203
-#: yast3/qt6/datetime/window.py:217 yast3/qt6/datetime/window.py:239
-#: yast3/qt6/datetime/window.py:249 yast3/qt6/datetime/window.py:262
-#: yast3/qt6/hostname/window.py:132 yast3/qt6/proxy/window.py:118
+#: yast3/gtk4/cron/manager.py:247 yast3/gtk4/datetime/window.py:238
+#: yast3/gtk4/hostname/window.py:108 yast3/gtk4/proxy/window.py:118
+#: yast3/qt6/cron/manager.py:227 yast3/qt6/datetime/window.py:211
+#: yast3/qt6/hostname/window.py:130 yast3/qt6/proxy/window.py:117
 msgid "Permission denied. Root permission required."
 msgstr "權限被拒絕。需要 root 權限。"
 
-#: yast3/gtk4/cron/cron_tab.py:244 yast3/qt6/cron/cron_tab.py:207
-msgid "Failed to save cron jobs."
-msgstr "儲存排程工作失敗。"
+#: yast3/gtk4/cron/window.py:31 yast3/gtk4/flatpak/remote_manager.py:189
+#: yast3/gtk4/git/window.py:46 yast3/gtk4/services/window.py:68
+#: yast3/gtk4/services/window.py:225 yast3/gtk4/snapshots/window.py:99
+#: yast3/qt6/cron/window.py:31 yast3/qt6/flatpak/remote_dialog.py:58
+#: yast3/qt6/git/window.py:50 yast3/qt6/services/window.py:71
+#: yast3/qt6/services/window.py:188 yast3/qt6/snapshots/window.py:77
+#: yast3/tui/cron/window.py:70 yast3/tui/git/window.py:70
+#: yast3/tui/services/window.py:95 yast3/tui/services/window.py:188
+#: yast3/tui/snapshots/window.py:86 yast3/tui/ssh/window.py:519
+msgid "User"
+msgstr "使用者"
 
-#: yast3/gtk4/cron/window.py:18 yast3/gtk4/datetime/window.py:30
-#: yast3/gtk4/flatpak/window.py:25 yast3/gtk4/git/window.py:24
-#: yast3/gtk4/hostname/window.py:21 yast3/gtk4/hosts/window.py:22
-#: yast3/gtk4/packages/window.py:17 yast3/gtk4/proxy/window.py:22
-#: yast3/gtk4/repositories/window.py:28 yast3/gtk4/services/window.py:35
-#: yast3/gtk4/snapshots/window.py:36 yast3/gtk4/ssh/window.py:19
-#: yast3/qt6/cron/window.py:24 yast3/qt6/datetime/window.py:41
-#: yast3/qt6/flatpak/window.py:31 yast3/qt6/git/window.py:33
-#: yast3/qt6/hostname/window.py:30 yast3/qt6/hosts/window.py:32
-#: yast3/qt6/packages/window.py:13 yast3/qt6/proxy/window.py:31
-#: yast3/qt6/repositories/window.py:37 yast3/qt6/services/window.py:41
-#: yast3/qt6/snapshots/window.py:40
-#, fuzzy, python-brace-format
-msgid "{} — YaST3"
-msgstr "YaST3"
+#: yast3/gtk4/cron/window.py:35 yast3/gtk4/flatpak/remote_manager.py:188
+#: yast3/gtk4/services/window.py:67 yast3/gtk4/services/window.py:225
+#: yast3/qt6/cron/window.py:34 yast3/qt6/flatpak/remote_dialog.py:57
+#: yast3/qt6/services/window.py:70 yast3/qt6/services/window.py:188
+#: yast3/tui/cron/window.py:72 yast3/tui/services/window.py:94
+#: yast3/tui/services/window.py:188
+msgid "System"
+msgstr "系統"
 
-#: yast3/gtk4/cron/window.py:32 yast3/qt6/cron/window.py:34
-#: yast3/tui/cron/window.py:68
-msgid "User Cron Jobs"
-msgstr "使用者排程工作"
-
-#: yast3/gtk4/cron/window.py:36 yast3/qt6/cron/window.py:37
-#: yast3/tui/cron/window.py:70
-msgid "Root Cron Jobs"
-msgstr "系統排程工作"
-
-#: yast3/gtk4/datetime/__init__.py:18 yast3/gtk4/datetime/window.py:30
-#: yast3/qt6/datetime/__init__.py:14 yast3/qt6/datetime/window.py:41
+#: yast3/gtk4/datetime/__init__.py:16 yast3/qt6/datetime/__init__.py:12
 #: yast3/tui/datetime/__init__.py:10
 msgid "Date & Time"
 msgstr "日期和時間"
@@ -500,90 +463,82 @@ msgstr "日期和時間"
 msgid "Timezone"
 msgstr "時區"
 
-#: yast3/gtk4/datetime/window.py:73 yast3/qt6/datetime/window.py:70
+#: yast3/gtk4/datetime/window.py:73
 msgid "Search timezone..."
 msgstr "搜尋時區..."
 
-#: yast3/gtk4/datetime/window.py:80 yast3/qt6/datetime/window.py:85
-#: yast3/tui/datetime/window.py:101
-msgid "Save Timezone"
-msgstr "儲存時區"
-
-#: yast3/gtk4/datetime/window.py:89 yast3/tui/datetime/window.py:104
+#: yast3/gtk4/datetime/window.py:84 yast3/tui/datetime/window.py:102
 msgid "Hardware Clock"
 msgstr "硬體時鐘"
 
-#: yast3/gtk4/datetime/window.py:102 yast3/qt6/datetime/window.py:98
-#: yast3/tui/datetime/window.py:105
+#: yast3/gtk4/datetime/window.py:97 yast3/qt6/datetime/window.py:83
+#: yast3/tui/datetime/window.py:103
 msgid "Set hardware clock to UTC"
 msgstr "將硬體時鐘設定為UTC"
 
-#: yast3/gtk4/datetime/window.py:109 yast3/qt6/datetime/window.py:103
-#: yast3/tui/datetime/window.py:107
-msgid "Save Hardware Clock"
-msgstr "儲存硬體時鐘設定"
-
-#: yast3/gtk4/datetime/window.py:118 yast3/tui/datetime/window.py:110
+#: yast3/gtk4/datetime/window.py:108 yast3/tui/datetime/window.py:106
 msgid "NTP Synchronization"
 msgstr "NTP同步"
 
-#: yast3/gtk4/datetime/window.py:129 yast3/qt6/datetime/window.py:116
-#: yast3/tui/datetime/window.py:111
+#: yast3/gtk4/datetime/window.py:119 yast3/qt6/datetime/window.py:97
+#: yast3/tui/datetime/window.py:107
 msgid "Enable NTP synchronization"
 msgstr "啟用NTP同步"
 
-#: yast3/gtk4/datetime/window.py:136 yast3/qt6/datetime/window.py:124
-#: yast3/tui/datetime/window.py:113
+#: yast3/gtk4/datetime/window.py:126 yast3/qt6/datetime/window.py:105
+#: yast3/tui/datetime/window.py:109
 msgid "NTP Servers"
 msgstr "NTP伺服器"
 
-#: yast3/gtk4/datetime/window.py:142 yast3/qt6/datetime/window.py:129
+#: yast3/gtk4/datetime/window.py:132 yast3/qt6/datetime/window.py:110
 msgid "Enter NTP servers separated by spaces"
 msgstr "輸入用空格分隔的NTP伺服器"
 
-#: yast3/gtk4/datetime/window.py:149 yast3/qt6/datetime/window.py:137
-msgid "Save NTP Settings"
-msgstr "儲存NTP設定"
-
-#: yast3/gtk4/datetime/window.py:154 yast3/qt6/datetime/window.py:141
-#: yast3/tui/datetime/window.py:117
+#: yast3/gtk4/datetime/window.py:139 yast3/qt6/datetime/window.py:118
+#: yast3/tui/datetime/window.py:112
 msgid "Sync Now"
 msgstr "立即同步"
 
-#: yast3/gtk4/datetime/window.py:181 yast3/qt6/datetime/window.py:164
+#: yast3/gtk4/datetime/window.py:178 yast3/qt6/datetime/window.py:148
 #, fuzzy, python-brace-format
 msgid "Failed to load timezone: {0}"
 msgstr "載入時區失敗"
 
-#: yast3/gtk4/datetime/window.py:197 yast3/qt6/datetime/window.py:195
-#, fuzzy
-msgid "Please select a timezone."
-msgstr "請選擇一個時區"
+#: yast3/gtk4/datetime/window.py:202 yast3/qt6/datetime/window.py:175
+#: yast3/tui/datetime/window.py:226
+#, fuzzy, python-brace-format
+msgid "Timezone: {0}"
+msgstr "時區"
 
-#: yast3/gtk4/datetime/window.py:202 yast3/gtk4/datetime/window.py:207
-#, fuzzy
-msgid "Invalid timezone selected."
-msgstr "選擇了無效的時區"
+#: yast3/gtk4/datetime/window.py:207 yast3/qt6/datetime/window.py:180
+#: yast3/tui/datetime/window.py:231
+#, fuzzy, python-brace-format
+msgid "Hardware clock: {0}"
+msgstr "硬體時鐘"
 
-#: yast3/gtk4/datetime/window.py:217 yast3/gtk4/datetime/window.py:231
-#: yast3/gtk4/datetime/window.py:253 yast3/gtk4/datetime/window.py:263
-#: yast3/gtk4/datetime/window.py:276 yast3/gtk4/hostname/window.py:111
-#: yast3/gtk4/hosts/window.py:253 yast3/gtk4/repositories/window.py:390
-#: yast3/qt6/datetime/window.py:205 yast3/qt6/datetime/window.py:219
-#: yast3/qt6/datetime/window.py:241 yast3/qt6/datetime/window.py:251
-#: yast3/qt6/datetime/window.py:264 yast3/qt6/hostname/window.py:136
-#: yast3/qt6/hosts/window.py:276
+#: yast3/gtk4/datetime/window.py:218 yast3/gtk4/datetime/window.py:220
+#: yast3/gtk4/datetime/window.py:224 yast3/qt6/datetime/window.py:191
+#: yast3/qt6/datetime/window.py:193 yast3/qt6/datetime/window.py:197
+#: yast3/tui/datetime/window.py:242 yast3/tui/datetime/window.py:244
+#: yast3/tui/datetime/window.py:248
+#, fuzzy, python-brace-format
+msgid "NTP: {0}"
+msgstr "選項：{0}"
+
+#: yast3/gtk4/datetime/window.py:229 yast3/qt6/datetime/window.py:202
+#: yast3/tui/datetime/window.py:253
+#, fuzzy
+msgid "All settings saved successfully."
+msgstr "NTP設定更新成功"
+
+#: yast3/gtk4/datetime/window.py:240 yast3/gtk4/hostname/window.py:110
+#: yast3/gtk4/hosts/window.py:252 yast3/gtk4/repositories/window.py:389
+#: yast3/qt6/datetime/window.py:213 yast3/qt6/hostname/window.py:134
+#: yast3/qt6/hosts/window.py:275
 msgid "Authentication failed or pkexec not available."
 msgstr "認證失敗或 pkexec 不可用。"
 
-#: yast3/gtk4/datetime/window.py:247 yast3/qt6/datetime/window.py:235
-#: yast3/tui/datetime/window.py:272
-#, fuzzy
-msgid "NTP settings updated successfully."
-msgstr "NTP設定更新成功"
-
-#: yast3/gtk4/flatpak/__init__.py:18 yast3/gtk4/flatpak/window.py:25
-#: yast3/qt6/flatpak/__init__.py:12 yast3/qt6/flatpak/window.py:31
+#: yast3/gtk4/flatpak/__init__.py:16 yast3/qt6/flatpak/__init__.py:10
 msgid "Flatpak"
 msgstr "Flatpak"
 
@@ -599,8 +554,8 @@ msgstr "安裝 Flatpak"
 msgid "Installing Flatpak..."
 msgstr "正在安裝 Flatpak..."
 
-#: yast3/gtk4/flatpak/install_action.py:24 yast3/gtk4/flatpak/window.py:87
-#: yast3/qt6/flatpak/install_action.py:20 yast3/qt6/flatpak/window.py:90
+#: yast3/gtk4/flatpak/install_action.py:24 yast3/gtk4/flatpak/window.py:86
+#: yast3/qt6/flatpak/install_action.py:20 yast3/qt6/flatpak/window.py:89
 msgid "Flatpak installed successfully."
 msgstr "Flatpak 安裝成功。"
 
@@ -616,19 +571,19 @@ msgid "Remove"
 msgstr "移除"
 
 #: yast3/gtk4/flatpak/package_manager.py:94
-#: yast3/gtk4/flatpak/runtime_manager.py:43 yast3/gtk4/flatpak/window.py:54
-#: yast3/gtk4/services/window.py:74 yast3/qt6/flatpak/package_manager.py:123
+#: yast3/gtk4/flatpak/runtime_manager.py:43 yast3/gtk4/flatpak/window.py:53
+#: yast3/gtk4/services/window.py:73 yast3/qt6/flatpak/package_manager.py:123
 #: yast3/qt6/flatpak/package_manager.py:195
-#: yast3/qt6/flatpak/runtime_manager.py:64 yast3/qt6/flatpak/window.py:58
-#: yast3/qt6/services/window.py:76 yast3/tui/services/window.py:100
+#: yast3/qt6/flatpak/runtime_manager.py:64 yast3/qt6/flatpak/window.py:57
+#: yast3/qt6/services/window.py:75 yast3/tui/services/window.py:100
 msgid "Search"
 msgstr "搜尋"
 
 #: yast3/gtk4/flatpak/package_manager.py:98
-#: yast3/gtk4/flatpak/runtime_manager.py:47 yast3/gtk4/git/window.py:76
+#: yast3/gtk4/flatpak/runtime_manager.py:47 yast3/gtk4/git/window.py:75
 #: yast3/qt6/flatpak/package_manager.py:127
 #: yast3/qt6/flatpak/package_manager.py:199
-#: yast3/qt6/flatpak/runtime_manager.py:68 yast3/qt6/git/window.py:83
+#: yast3/qt6/flatpak/runtime_manager.py:68 yast3/qt6/git/window.py:82
 #: yast3/tui/git/window.py:82
 msgid "Reset"
 msgstr "重置"
@@ -636,16 +591,16 @@ msgstr "重置"
 #: yast3/gtk4/flatpak/package_manager.py:102
 #: yast3/gtk4/flatpak/package_manager.py:180
 #: yast3/gtk4/flatpak/remote_manager.py:40
-#: yast3/gtk4/flatpak/runtime_manager.py:51 yast3/gtk4/services/window.py:81
-#: yast3/gtk4/snapshots/window.py:59 yast3/gtk4/snapshots/window.py:179
-#: yast3/gtk4/snapshots/window.py:194 yast3/gtk4/ssh/keys/tab.py:47
+#: yast3/gtk4/flatpak/runtime_manager.py:51 yast3/gtk4/services/window.py:80
+#: yast3/gtk4/snapshots/window.py:58 yast3/gtk4/snapshots/window.py:178
+#: yast3/gtk4/snapshots/window.py:193 yast3/gtk4/ssh/keys/tab.py:47
 #: yast3/qt6/flatpak/package_manager.py:131
 #: yast3/qt6/flatpak/package_manager.py:203
 #: yast3/qt6/flatpak/package_manager.py:277
 #: yast3/qt6/flatpak/remote_manager.py:49
-#: yast3/qt6/flatpak/runtime_manager.py:72 yast3/qt6/services/window.py:82
-#: yast3/qt6/snapshots/window.py:56 yast3/qt6/snapshots/window.py:103
-#: yast3/qt6/snapshots/window.py:118 yast3/qt6/ssh/keys/tab.py:50
+#: yast3/qt6/flatpak/runtime_manager.py:72 yast3/qt6/services/window.py:81
+#: yast3/qt6/snapshots/window.py:55 yast3/qt6/snapshots/window.py:102
+#: yast3/qt6/snapshots/window.py:117 yast3/qt6/ssh/keys/tab.py:50
 #: yast3/tui/services/window.py:102 yast3/tui/snapshots/window.py:73
 #: yast3/tui/snapshots/window.py:135
 msgid "Refresh"
@@ -667,11 +622,11 @@ msgstr "下一頁"
 #: yast3/gtk4/flatpak/package_manager.py:141
 #: yast3/gtk4/flatpak/runtime_manager.py:65
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:34
-#: yast3/gtk4/snapshots/window.py:85 yast3/qt6/flatpak/package_manager.py:141
+#: yast3/gtk4/snapshots/window.py:84 yast3/qt6/flatpak/package_manager.py:141
 #: yast3/qt6/flatpak/package_manager.py:213
 #: yast3/qt6/flatpak/runtime_manager.py:82
 #: yast3/qt6/repositories/repo_edit_dialog.py:31
-#: yast3/qt6/snapshots/window.py:78 yast3/tui/snapshots/window.py:83
+#: yast3/qt6/snapshots/window.py:77 yast3/tui/snapshots/window.py:83
 msgid "ID"
 msgstr "ID"
 
@@ -682,14 +637,14 @@ msgstr "ID"
 #: yast3/gtk4/flatpak/remote_manager.py:257
 #: yast3/gtk4/flatpak/runtime_manager.py:66
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:36
-#: yast3/gtk4/repositories/window.py:81 yast3/gtk4/services/window.py:122
+#: yast3/gtk4/repositories/window.py:80 yast3/gtk4/services/window.py:121
 #: yast3/gtk4/ssh/keys/tab.py:68 yast3/qt6/flatpak/package_manager.py:142
 #: yast3/qt6/flatpak/package_manager.py:214
 #: yast3/qt6/flatpak/remote_dialog.py:42 yast3/qt6/flatpak/remote_dialog.py:45
 #: yast3/qt6/flatpak/remote_manager.py:58
 #: yast3/qt6/flatpak/runtime_manager.py:83
 #: yast3/qt6/repositories/repo_edit_dialog.py:37
-#: yast3/qt6/repositories/window.py:71 yast3/qt6/services/window.py:117
+#: yast3/qt6/repositories/window.py:70 yast3/qt6/services/window.py:116
 #: yast3/qt6/ssh/keys/tab.py:61 yast3/tui/repositories/window.py:80
 #: yast3/tui/repositories/window.py:328 yast3/tui/services/window.py:123
 #: yast3/tui/ssh/window.py:293 yast3/tui/ssh/window.py:613
@@ -698,12 +653,12 @@ msgstr "名稱"
 
 #: yast3/gtk4/flatpak/package_manager.py:130
 #: yast3/gtk4/flatpak/package_manager.py:143
-#: yast3/gtk4/flatpak/runtime_manager.py:67 yast3/gtk4/services/window.py:146
-#: yast3/gtk4/snapshots/window.py:55 yast3/gtk4/snapshots/window.py:105
+#: yast3/gtk4/flatpak/runtime_manager.py:67 yast3/gtk4/services/window.py:145
+#: yast3/gtk4/snapshots/window.py:54 yast3/gtk4/snapshots/window.py:104
 #: yast3/qt6/flatpak/package_manager.py:143
 #: yast3/qt6/flatpak/package_manager.py:215
-#: yast3/qt6/flatpak/runtime_manager.py:84 yast3/qt6/services/window.py:117
-#: yast3/qt6/snapshots/window.py:78 yast3/qt6/snapshots/window.py:169
+#: yast3/qt6/flatpak/runtime_manager.py:84 yast3/qt6/services/window.py:116
+#: yast3/qt6/snapshots/window.py:77 yast3/qt6/snapshots/window.py:168
 #: yast3/tui/services/window.py:127 yast3/tui/snapshots/window.py:70
 #: yast3/tui/snapshots/window.py:87
 #, fuzzy
@@ -747,19 +702,19 @@ msgstr "遠端"
 #: yast3/gtk4/flatpak/remote_manager.py:54
 #: yast3/gtk4/flatpak/remote_manager.py:196
 #: yast3/gtk4/flatpak/remote_manager.py:261
-#: yast3/gtk4/flatpak/runtime_manager.py:72 yast3/gtk4/services/window.py:65
-#: yast3/gtk4/services/window.py:128 yast3/qt6/flatpak/package_manager.py:148
+#: yast3/gtk4/flatpak/runtime_manager.py:72 yast3/gtk4/services/window.py:64
+#: yast3/gtk4/services/window.py:127 yast3/qt6/flatpak/package_manager.py:148
 #: yast3/qt6/flatpak/package_manager.py:220
 #: yast3/qt6/flatpak/remote_dialog.py:53 yast3/qt6/flatpak/remote_dialog.py:59
 #: yast3/qt6/flatpak/remote_manager.py:58
-#: yast3/qt6/flatpak/runtime_manager.py:89 yast3/qt6/services/window.py:68
-#: yast3/qt6/services/window.py:117 yast3/tui/services/window.py:90
+#: yast3/qt6/flatpak/runtime_manager.py:89 yast3/qt6/services/window.py:67
+#: yast3/qt6/services/window.py:116 yast3/tui/services/window.py:90
 #: yast3/tui/services/window.py:124
 msgid "Scope"
 msgstr "範圍"
 
-#: yast3/gtk4/flatpak/package_manager.py:136 yast3/gtk4/flatpak/window.py:55
-#: yast3/qt6/flatpak/package_manager.py:149 yast3/qt6/flatpak/window.py:59
+#: yast3/gtk4/flatpak/package_manager.py:136 yast3/gtk4/flatpak/window.py:54
+#: yast3/qt6/flatpak/package_manager.py:149 yast3/qt6/flatpak/window.py:58
 msgid "Installed"
 msgstr "已安裝"
 
@@ -770,9 +725,9 @@ msgstr "已安裝"
 msgid "Installed Size"
 msgstr "已安裝大小"
 
-#: yast3/gtk4/flatpak/package_manager.py:180 yast3/gtk4/snapshots/window.py:176
-#: yast3/gtk4/snapshots/window.py:180 yast3/qt6/flatpak/package_manager.py:275
-#: yast3/qt6/snapshots/window.py:100 yast3/qt6/snapshots/window.py:104
+#: yast3/gtk4/flatpak/package_manager.py:180 yast3/gtk4/snapshots/window.py:175
+#: yast3/gtk4/snapshots/window.py:179 yast3/qt6/flatpak/package_manager.py:275
+#: yast3/qt6/snapshots/window.py:99 yast3/qt6/snapshots/window.py:103
 #: yast3/tui/snapshots/window.py:109
 msgid "Loading..."
 msgstr "載入中..."
@@ -852,10 +807,10 @@ msgstr "否"
 #: yast3/gtk4/flatpak/remote_manager.py:194
 #: yast3/gtk4/flatpak/remote_manager.py:259
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:59
-#: yast3/gtk4/repositories/window.py:88 yast3/qt6/flatpak/remote_dialog.py:49
+#: yast3/gtk4/repositories/window.py:87 yast3/qt6/flatpak/remote_dialog.py:49
 #: yast3/qt6/flatpak/remote_manager.py:58
 #: yast3/qt6/repositories/repo_edit_dialog.py:58
-#: yast3/qt6/repositories/window.py:71 yast3/tui/repositories/window.py:80
+#: yast3/qt6/repositories/window.py:70 yast3/tui/repositories/window.py:80
 msgid "URL"
 msgstr "URL"
 
@@ -901,24 +856,6 @@ msgstr "刪除軟體來源失敗：%s"
 msgid "Add Remote"
 msgstr "新增軟體來源"
 
-#: yast3/gtk4/flatpak/remote_manager.py:188 yast3/gtk4/services/window.py:68
-#: yast3/gtk4/services/window.py:226 yast3/qt6/flatpak/remote_dialog.py:57
-#: yast3/qt6/services/window.py:71 yast3/qt6/services/window.py:189
-#: yast3/tui/services/window.py:94 yast3/tui/services/window.py:188
-msgid "System"
-msgstr "系統"
-
-#: yast3/gtk4/flatpak/remote_manager.py:189 yast3/gtk4/git/window.py:47
-#: yast3/gtk4/services/window.py:69 yast3/gtk4/services/window.py:226
-#: yast3/gtk4/snapshots/window.py:100 yast3/qt6/flatpak/remote_dialog.py:58
-#: yast3/qt6/git/window.py:51 yast3/qt6/services/window.py:72
-#: yast3/qt6/services/window.py:189 yast3/qt6/snapshots/window.py:78
-#: yast3/tui/git/window.py:70 yast3/tui/services/window.py:95
-#: yast3/tui/services/window.py:188 yast3/tui/snapshots/window.py:86
-#: yast3/tui/ssh/window.py:519
-msgid "User"
-msgstr "使用者"
-
 #: yast3/gtk4/flatpak/remote_manager.py:220
 #: yast3/qt6/flatpak/remote_manager.py:94
 msgid "Remote added successfully."
@@ -952,7 +889,7 @@ msgid "Removing Flatpak..."
 msgstr "正在移除 Flatpak..."
 
 #: yast3/gtk4/flatpak/remove_action.py:24 yast3/gtk4/flatpak/settings.py:44
-#: yast3/qt6/flatpak/remove_action.py:21 yast3/qt6/flatpak/window.py:101
+#: yast3/qt6/flatpak/remove_action.py:21 yast3/qt6/flatpak/window.py:100
 msgid "Flatpak removed successfully."
 msgstr "Flatpak 移除成功。"
 
@@ -989,370 +926,364 @@ msgstr "金鑰刪除成功。"
 msgid "Failed to remove runtime: {0}"
 msgstr "讀取公鑰失敗：{0}"
 
-#: yast3/gtk4/flatpak/settings.py:51 yast3/qt6/flatpak/window.py:107
+#: yast3/gtk4/flatpak/settings.py:51 yast3/qt6/flatpak/window.py:106
 #, fuzzy, python-brace-format
 msgid "Failed to remove Flatpak: {0}"
 msgstr "產生金鑰失敗：{0}"
 
-#: yast3/gtk4/flatpak/window.py:34
+#: yast3/gtk4/flatpak/window.py:33
 #, fuzzy
 msgid "Flatpak is not installed"
 msgstr "系統未安裝 Git。"
 
-#: yast3/gtk4/flatpak/window.py:56 yast3/qt6/flatpak/window.py:60
+#: yast3/gtk4/flatpak/window.py:55 yast3/qt6/flatpak/window.py:59
 msgid "Runtimes"
 msgstr "執行時間"
 
-#: yast3/gtk4/flatpak/window.py:57 yast3/qt6/flatpak/window.py:61
+#: yast3/gtk4/flatpak/window.py:56 yast3/qt6/flatpak/window.py:60
 #, fuzzy
 msgid "Remotes"
 msgstr "軟體來源"
 
-#: yast3/gtk4/flatpak/window.py:58 yast3/qt6/flatpak/window.py:62
+#: yast3/gtk4/flatpak/window.py:57 yast3/qt6/flatpak/window.py:61
 #, fuzzy
 msgid "Settings"
 msgstr "建议"
 
-#: yast3/gtk4/flatpak/window.py:93 yast3/qt6/flatpak/window.py:96
+#: yast3/gtk4/flatpak/window.py:92 yast3/qt6/flatpak/window.py:95
 #, fuzzy, python-brace-format
 msgid "Failed to install Flatpak: {0}"
 msgstr "產生金鑰失敗：{0}"
 
-#: yast3/gtk4/git/__init__.py:18 yast3/gtk4/git/window.py:24
-#: yast3/qt6/git/__init__.py:12 yast3/qt6/git/window.py:33
+#: yast3/gtk4/git/__init__.py:16 yast3/qt6/git/__init__.py:10
 #: yast3/tui/git/__init__.py:12
 msgid "Git"
 msgstr "Git"
 
-#: yast3/gtk4/git/window.py:34 yast3/qt6/git/window.py:40
+#: yast3/gtk4/git/window.py:33 yast3/qt6/git/window.py:39
 msgid "Git is not installed on this system."
 msgstr "系統未安裝 Git。"
 
-#: yast3/gtk4/git/window.py:51 yast3/qt6/git/window.py:56
+#: yast3/gtk4/git/window.py:50 yast3/qt6/git/window.py:55
 #: yast3/tui/git/window.py:72
 msgid "Core"
 msgstr "核心"
 
-#: yast3/gtk4/git/window.py:55 yast3/qt6/git/window.py:61
+#: yast3/gtk4/git/window.py:54 yast3/qt6/git/window.py:60
 #: yast3/tui/git/window.py:74
 msgid "Commit"
 msgstr "提交"
 
-#: yast3/gtk4/git/window.py:59 yast3/qt6/git/window.py:66
+#: yast3/gtk4/git/window.py:58 yast3/qt6/git/window.py:65
 #: yast3/tui/git/window.py:76
 msgid "Merge"
 msgstr "合并"
 
-#: yast3/gtk4/git/window.py:63 yast3/qt6/git/window.py:71
+#: yast3/gtk4/git/window.py:62 yast3/qt6/git/window.py:70
 #: yast3/tui/git/window.py:78
 msgid "Other"
 msgstr "其他"
 
-#: yast3/gtk4/git/window.py:94 yast3/qt6/git/window.py:96
+#: yast3/gtk4/git/window.py:93 yast3/qt6/git/window.py:95
 #: yast3/tui/git/window.py:88
 msgid "User Name"
 msgstr "使用者名"
 
-#: yast3/gtk4/git/window.py:94 yast3/qt6/git/window.py:98
+#: yast3/gtk4/git/window.py:93 yast3/qt6/git/window.py:97
 #: yast3/tui/git/window.py:89
 msgid "Enter your Git user name"
 msgstr "输入您的 Git 使用者名"
 
-#: yast3/gtk4/git/window.py:97 yast3/qt6/git/window.py:104
+#: yast3/gtk4/git/window.py:96 yast3/qt6/git/window.py:103
 #: yast3/tui/git/window.py:91
 msgid "Email Address"
 msgstr "邮箱地址"
 
-#: yast3/gtk4/git/window.py:97 yast3/qt6/git/window.py:106
+#: yast3/gtk4/git/window.py:96 yast3/qt6/git/window.py:105
 #: yast3/tui/git/window.py:92
 msgid "Enter your Git email address"
 msgstr "输入您的 Git 邮箱地址"
 
-#: yast3/gtk4/git/window.py:100 yast3/qt6/git/window.py:112
+#: yast3/gtk4/git/window.py:99 yast3/qt6/git/window.py:111
 #: yast3/tui/git/window.py:94
 msgid "GPG Signing Key"
 msgstr "GPG 签名金鑰"
 
-#: yast3/gtk4/git/window.py:100 yast3/qt6/git/window.py:114
+#: yast3/gtk4/git/window.py:99 yast3/qt6/git/window.py:113
 #: yast3/tui/git/window.py:95
 msgid "Enter GPG key ID"
 msgstr "输入 GPG 金鑰 ID"
 
-#: yast3/gtk4/git/window.py:113 yast3/qt6/git/window.py:127
+#: yast3/gtk4/git/window.py:112 yast3/qt6/git/window.py:126
 #: yast3/tui/git/window.py:100
 msgid "Default Editor"
 msgstr "默认編輯器"
 
-#: yast3/gtk4/git/window.py:113 yast3/qt6/git/window.py:129
+#: yast3/gtk4/git/window.py:112 yast3/qt6/git/window.py:128
 #: yast3/tui/git/window.py:101
 msgid "e.g., vim, nano, code"
 msgstr "例如：vim, nano, code"
 
-#: yast3/gtk4/git/window.py:116 yast3/qt6/git/window.py:135
+#: yast3/gtk4/git/window.py:115 yast3/qt6/git/window.py:134
 #: yast3/tui/git/window.py:103
 msgid "Auto CRLF"
 msgstr "自動 CRLF"
 
-#: yast3/gtk4/git/window.py:119 yast3/qt6/git/window.py:144
+#: yast3/gtk4/git/window.py:118 yast3/qt6/git/window.py:143
 #: yast3/tui/git/window.py:110
 msgid "Safe CRLF"
 msgstr "安全 CRLF"
 
-#: yast3/gtk4/git/window.py:133 yast3/qt6/git/window.py:160
+#: yast3/gtk4/git/window.py:132 yast3/qt6/git/window.py:159
 #: yast3/tui/git/window.py:120
 msgid "Commit Template"
 msgstr "提交模板"
 
-#: yast3/gtk4/git/window.py:139 yast3/tui/git/window.py:121
+#: yast3/gtk4/git/window.py:138 yast3/tui/git/window.py:121
 msgid "Path to commit template"
 msgstr "提交模板路徑"
 
-#: yast3/gtk4/git/window.py:144 yast3/qt6/git/window.py:163
+#: yast3/gtk4/git/window.py:143 yast3/qt6/git/window.py:162
 msgid "Browse"
 msgstr "浏览"
 
-#: yast3/gtk4/git/window.py:151 yast3/qt6/git/window.py:169
+#: yast3/gtk4/git/window.py:150 yast3/qt6/git/window.py:168
 #: yast3/tui/git/window.py:122
 msgid "Sign commits with GPG"
 msgstr "使用 GPG 签名提交"
 
-#: yast3/gtk4/git/window.py:166 yast3/qt6/git/window.py:182
+#: yast3/gtk4/git/window.py:165 yast3/qt6/git/window.py:181
 #: yast3/tui/git/window.py:127
 msgid "Conflict Style"
 msgstr "冲突样式"
 
-#: yast3/gtk4/git/window.py:169 yast3/qt6/git/window.py:191
+#: yast3/gtk4/git/window.py:168 yast3/qt6/git/window.py:190
 #: yast3/tui/git/window.py:134
 msgid "Pull Rebase"
 msgstr "拉取時變基"
 
-#: yast3/gtk4/git/window.py:182 yast3/qt6/git/window.py:206
+#: yast3/gtk4/git/window.py:181 yast3/qt6/git/window.py:205
 #: yast3/tui/git/window.py:143
 msgid "Enable color output"
 msgstr "启用彩色输出"
 
-#: yast3/gtk4/git/window.py:187 yast3/qt6/git/window.py:212
+#: yast3/gtk4/git/window.py:186 yast3/qt6/git/window.py:211
 #: yast3/tui/git/window.py:145
 msgid "Default Branch Name"
 msgstr "默认分支名称"
 
-#: yast3/gtk4/git/window.py:187 yast3/qt6/git/window.py:214
+#: yast3/gtk4/git/window.py:186 yast3/qt6/git/window.py:213
 #: yast3/tui/git/window.py:146
 msgid "e.g., main, master"
 msgstr "例如：main, master"
 
-#: yast3/gtk4/git/window.py:190 yast3/qt6/git/window.py:220
+#: yast3/gtk4/git/window.py:189 yast3/qt6/git/window.py:219
 #: yast3/tui/git/window.py:148
 msgid "Credential Helper"
 msgstr "凭据助手"
 
-#: yast3/gtk4/git/window.py:236 yast3/qt6/git/window.py:234
+#: yast3/gtk4/git/window.py:235 yast3/qt6/git/window.py:233
 msgid "Select Commit Template"
 msgstr "選擇提交模板"
 
-#: yast3/gtk4/git/window.py:257 yast3/qt6/git/window.py:249
+#: yast3/gtk4/git/window.py:256 yast3/qt6/git/window.py:248
 msgid "User name and email are required."
 msgstr "使用者名和邮箱為必填项。"
 
-#: yast3/gtk4/git/window.py:276 yast3/qt6/git/window.py:270
+#: yast3/gtk4/git/window.py:275 yast3/qt6/git/window.py:269
 msgid "Git configuration saved successfully."
 msgstr "Git 設定儲存成功。"
 
-#: yast3/gtk4/git/window.py:278 yast3/qt6/git/window.py:275
+#: yast3/gtk4/git/window.py:277 yast3/qt6/git/window.py:274
 msgid "Failed to save Git configuration."
 msgstr "儲存 Git 設定失敗。"
 
-#: yast3/gtk4/hostname/__init__.py:18 yast3/gtk4/hostname/window.py:21
-#: yast3/gtk4/hostname/window.py:33 yast3/gtk4/hosts/window.py:91
-#: yast3/qt6/hostname/__init__.py:12 yast3/qt6/hostname/window.py:30
-#: yast3/qt6/hostname/window.py:40 yast3/qt6/hosts/window.py:64
+#: yast3/gtk4/hostname/__init__.py:16 yast3/gtk4/hostname/window.py:32
+#: yast3/gtk4/hosts/window.py:90 yast3/qt6/hostname/__init__.py:10
+#: yast3/qt6/hostname/window.py:38 yast3/qt6/hosts/window.py:63
 #: yast3/tui/hostname/__init__.py:12 yast3/tui/hostname/window.py:66
 #: yast3/tui/hosts/window.py:79 yast3/tui/hosts/window.py:266
 msgid "Hostname"
 msgstr "主機名"
 
-#: yast3/gtk4/hostname/window.py:39 yast3/qt6/hostname/window.py:44
+#: yast3/gtk4/hostname/window.py:38 yast3/qt6/hostname/window.py:42
 #: yast3/tui/hostname/window.py:67
 msgid "Enter hostname"
 msgstr "输入主機名"
 
-#: yast3/gtk4/hostname/window.py:67 yast3/qt6/hostname/window.py:68
+#: yast3/gtk4/hostname/window.py:66 yast3/qt6/hostname/window.py:66
 msgid "/etc/hostname not found."
 msgstr "/etc/hostname 未找到。"
 
-#: yast3/gtk4/hostname/window.py:69 yast3/qt6/hostname/window.py:73
+#: yast3/gtk4/hostname/window.py:68 yast3/qt6/hostname/window.py:71
 msgid "Cannot read /etc/hostname. Root permission required."
 msgstr "无法讀取 /etc/hostname。需要 root 權限。"
 
-#: yast3/gtk4/hostname/window.py:71 yast3/qt6/hostname/window.py:77
+#: yast3/gtk4/hostname/window.py:70 yast3/qt6/hostname/window.py:75
 #, python-brace-format
 msgid "Failed to load hostname: {0}"
 msgstr "加载主機名失敗：{0}"
 
-#: yast3/gtk4/hostname/window.py:78 yast3/qt6/hostname/window.py:85
+#: yast3/gtk4/hostname/window.py:77 yast3/qt6/hostname/window.py:83
 msgid "Hostname cannot be empty."
 msgstr "主機名不能為空。"
 
-#: yast3/gtk4/hostname/window.py:83 yast3/qt6/hostname/window.py:91
+#: yast3/gtk4/hostname/window.py:82 yast3/qt6/hostname/window.py:89
 msgid "Hostname is too long (maximum 253 characters)."
 msgstr "主機名過長（最多 253 個字符）。"
 
-#: yast3/gtk4/hostname/window.py:89 yast3/qt6/hostname/window.py:99
+#: yast3/gtk4/hostname/window.py:88 yast3/qt6/hostname/window.py:97
 msgid "Hostname contains invalid characters."
 msgstr "主機名套件含无效字符。"
 
-#: yast3/gtk4/hostname/window.py:99 yast3/qt6/hostname/window.py:113
+#: yast3/gtk4/hostname/window.py:98 yast3/qt6/hostname/window.py:111
 #, python-brace-format
 msgid "Are you sure you want to change the hostname from '{0}' to '{1}'?"
 msgstr "您確定要将主機名從 '{0}' 改為 '{1}' 吗？"
 
-#: yast3/gtk4/hostname/window.py:106 yast3/qt6/hostname/window.py:127
+#: yast3/gtk4/hostname/window.py:105 yast3/qt6/hostname/window.py:125
 #, python-brace-format
 msgid "Hostname changed successfully to '{0}'."
 msgstr "主機名已成功更改為 '{0}'。"
 
-#: yast3/gtk4/hostname/window.py:113 yast3/qt6/hostname/window.py:140
+#: yast3/gtk4/hostname/window.py:112 yast3/qt6/hostname/window.py:138
 #, python-brace-format
 msgid "Failed to set hostname: {0}"
 msgstr "设置主機名失敗：{0}"
 
-#: yast3/gtk4/hosts/__init__.py:18 yast3/gtk4/hosts/window.py:22
-#: yast3/gtk4/ssh/window.py:33 yast3/qt6/hosts/__init__.py:12
-#: yast3/qt6/hosts/window.py:32 yast3/qt6/ssh/window.py:36
+#: yast3/gtk4/hosts/__init__.py:16 yast3/gtk4/ssh/window.py:32
+#: yast3/qt6/hosts/__init__.py:10 yast3/qt6/ssh/window.py:36
 #: yast3/tui/hosts/__init__.py:12 yast3/tui/ssh/window.py:250
 msgid "Hosts"
 msgstr "主機"
 
-#: yast3/gtk4/hosts/window.py:84 yast3/qt6/hosts/window.py:64
+#: yast3/gtk4/hosts/window.py:83 yast3/qt6/hosts/window.py:63
 #: yast3/tui/hosts/window.py:79 yast3/tui/hosts/window.py:263
 msgid "IP Address"
 msgstr "IP 地址"
 
-#: yast3/gtk4/hosts/window.py:120 yast3/gtk4/proxy/window.py:90
-#: yast3/qt6/hosts/window.py:105 yast3/qt6/proxy/window.py:89
+#: yast3/gtk4/hosts/window.py:119 yast3/gtk4/proxy/window.py:89
+#: yast3/qt6/hosts/window.py:104 yast3/qt6/proxy/window.py:88
 #, python-brace-format
 msgid "Cannot read {0}. Root permission required."
 msgstr "无法讀取 {0}。需要 root 權限。"
 
-#: yast3/gtk4/hosts/window.py:123 yast3/gtk4/proxy/window.py:84
-#: yast3/qt6/hosts/window.py:110 yast3/qt6/proxy/window.py:84
+#: yast3/gtk4/hosts/window.py:122 yast3/gtk4/proxy/window.py:83
+#: yast3/qt6/hosts/window.py:109 yast3/qt6/proxy/window.py:83
 #, python-brace-format
 msgid "{0} not found."
 msgstr "{0} 未找到。"
 
-#: yast3/gtk4/hosts/window.py:177 yast3/gtk4/hosts/window.py:213
-#: yast3/qt6/hosts/window.py:180 yast3/qt6/hosts/window.py:217
+#: yast3/gtk4/hosts/window.py:176 yast3/gtk4/hosts/window.py:212
+#: yast3/qt6/hosts/window.py:179 yast3/qt6/hosts/window.py:216
 msgid "IP address and hostname are required."
 msgstr "IP 地址和主機名是必要的。"
 
-#: yast3/gtk4/hosts/window.py:184 yast3/gtk4/ssh/hosts/tab.py:159
-#: yast3/qt6/hosts/window.py:188 yast3/qt6/ssh/hosts/tab.py:148
+#: yast3/gtk4/hosts/window.py:183 yast3/gtk4/ssh/hosts/tab.py:159
+#: yast3/qt6/hosts/window.py:187 yast3/qt6/ssh/hosts/tab.py:148
 #: yast3/tui/hosts/window.py:130
 msgid "Please select a host entry to edit."
 msgstr "請選擇要編輯的主機項目。"
 
-#: yast3/gtk4/hosts/window.py:220 yast3/gtk4/ssh/hosts/tab.py:187
-#: yast3/qt6/hosts/window.py:225 yast3/qt6/ssh/hosts/tab.py:169
+#: yast3/gtk4/hosts/window.py:219 yast3/gtk4/ssh/hosts/tab.py:187
+#: yast3/qt6/hosts/window.py:224 yast3/qt6/ssh/hosts/tab.py:169
 #: yast3/tui/hosts/window.py:149
 msgid "Please select a host entry to delete."
 msgstr "請選擇要刪除的主機項目。"
 
-#: yast3/gtk4/hosts/window.py:231 yast3/gtk4/ssh/hosts/tab.py:206
-#: yast3/qt6/hosts/window.py:230 yast3/qt6/ssh/hosts/tab.py:181
+#: yast3/gtk4/hosts/window.py:230 yast3/gtk4/ssh/hosts/tab.py:206
+#: yast3/qt6/hosts/window.py:229 yast3/qt6/ssh/hosts/tab.py:181
 msgid "Are you sure you want to delete this entry?"
 msgstr "您確定要刪除此項目吗？"
 
-#: yast3/gtk4/hosts/window.py:249 yast3/qt6/hosts/window.py:265
+#: yast3/gtk4/hosts/window.py:248 yast3/qt6/hosts/window.py:264
 msgid "Hosts file saved successfully."
 msgstr "主機檔案儲存成功。"
 
-#: yast3/gtk4/hosts/window.py:251 yast3/qt6/hosts/window.py:272
+#: yast3/gtk4/hosts/window.py:250 yast3/qt6/hosts/window.py:271
 #, python-brace-format
 msgid "Cannot write to {0}. Root permission required."
 msgstr "无法寫入 {0}。需要 root 權限。"
 
-#: yast3/gtk4/hosts/window.py:255 yast3/qt6/hosts/window.py:279
+#: yast3/gtk4/hosts/window.py:254 yast3/qt6/hosts/window.py:278
 msgid "Failed to save hosts file."
 msgstr "儲存主機檔案失敗。"
 
-#: yast3/gtk4/hosts/window.py:276 yast3/qt6/hosts/dialogs.py:29
+#: yast3/gtk4/hosts/window.py:275 yast3/qt6/hosts/dialogs.py:29
 msgid "Add/Edit Host Entry"
 msgstr "新增/編輯主機項目"
 
-#: yast3/gtk4/hosts/window.py:296 yast3/qt6/hosts/dialogs.py:36
+#: yast3/gtk4/hosts/window.py:295 yast3/qt6/hosts/dialogs.py:36
 msgid "IP Address:"
 msgstr "IP 地址："
 
-#: yast3/gtk4/hosts/window.py:308 yast3/qt6/hosts/dialogs.py:45
+#: yast3/gtk4/hosts/window.py:307 yast3/qt6/hosts/dialogs.py:45
 msgid "Hostname:"
 msgstr "主機名："
 
-#: yast3/gtk4/hosts/window.py:320 yast3/qt6/hosts/dialogs.py:52
+#: yast3/gtk4/hosts/window.py:319 yast3/qt6/hosts/dialogs.py:52
 #: yast3/qt6/ssh/keys/generate_dialog.py:123
 msgid "Comment:"
 msgstr "備註："
 
-#: yast3/gtk4/packages/__init__.py:18 yast3/gtk4/packages/window.py:17
-#: yast3/qt6/packages/__init__.py:12 yast3/qt6/packages/window.py:13
-#: yast3/qt6/packages/window.py:18 yast3/tui/packages/__init__.py:12
+#: yast3/gtk4/packages/__init__.py:16 yast3/qt6/packages/__init__.py:10
+#: yast3/qt6/packages/window.py:17 yast3/tui/packages/__init__.py:12
 msgid "Packages"
 msgstr "軟體套件"
 
-#: yast3/gtk4/packages/window.py:27
+#: yast3/gtk4/packages/window.py:26
 msgid "Packages module is not yet implemented."
 msgstr "軟體套件模块尚未实现。"
 
-#: yast3/gtk4/proxy/__init__.py:18 yast3/gtk4/proxy/window.py:22
-#: yast3/qt6/proxy/__init__.py:12 yast3/qt6/proxy/window.py:31
+#: yast3/gtk4/proxy/__init__.py:16 yast3/qt6/proxy/__init__.py:10
 #: yast3/tui/proxy/__init__.py:12
 msgid "Proxy"
 msgstr "代理"
 
-#: yast3/gtk4/proxy/window.py:30 yast3/qt6/proxy/window.py:39
+#: yast3/gtk4/proxy/window.py:29 yast3/qt6/proxy/window.py:38
 msgid "Enable Proxy"
 msgstr "啟用代理"
 
-#: yast3/gtk4/proxy/window.py:33 yast3/qt6/proxy/window.py:42
+#: yast3/gtk4/proxy/window.py:32 yast3/qt6/proxy/window.py:41
 #: yast3/tui/proxy/window.py:73
 msgid "HTTP Proxy"
 msgstr "HTTP 代理"
 
-#: yast3/gtk4/proxy/window.py:34 yast3/qt6/proxy/window.py:43
+#: yast3/gtk4/proxy/window.py:33 yast3/qt6/proxy/window.py:42
 #: yast3/tui/proxy/window.py:76
 msgid "HTTPS Proxy"
 msgstr "HTTPS 代理"
 
-#: yast3/gtk4/proxy/window.py:35 yast3/qt6/proxy/window.py:44
+#: yast3/gtk4/proxy/window.py:34 yast3/qt6/proxy/window.py:43
 #: yast3/tui/proxy/window.py:79
 msgid "FTP Proxy"
 msgstr "FTP 代理"
 
-#: yast3/gtk4/proxy/window.py:36 yast3/qt6/proxy/window.py:45
+#: yast3/gtk4/proxy/window.py:35 yast3/qt6/proxy/window.py:44
 #: yast3/tui/proxy/window.py:82
 msgid "SOCKS Proxy"
 msgstr "SOCKS 代理"
 
-#: yast3/gtk4/proxy/window.py:38 yast3/qt6/proxy/window.py:48
+#: yast3/gtk4/proxy/window.py:37 yast3/qt6/proxy/window.py:47
 #: yast3/tui/proxy/window.py:85
 msgid "No Proxy"
 msgstr "不使用代理"
 
-#: yast3/gtk4/proxy/window.py:96 yast3/qt6/proxy/window.py:95
+#: yast3/gtk4/proxy/window.py:95 yast3/qt6/proxy/window.py:94
 #, python-brace-format
 msgid "Failed to load proxy configuration: {0}"
 msgstr "載入代理設定失敗：{0}"
 
-#: yast3/gtk4/proxy/window.py:112 yast3/qt6/proxy/window.py:111
+#: yast3/gtk4/proxy/window.py:111 yast3/qt6/proxy/window.py:110
 msgid "Proxy configuration saved successfully."
 msgstr "代理設定已成功儲存。"
 
-#: yast3/gtk4/proxy/window.py:125 yast3/qt6/proxy/window.py:124
+#: yast3/gtk4/proxy/window.py:124 yast3/qt6/proxy/window.py:123
 #, python-brace-format
 msgid "Failed to save proxy configuration: {0}"
 msgstr "儲存代理設定失敗：{0}"
 
-#: yast3/gtk4/repositories/__init__.py:19 yast3/gtk4/repositories/window.py:28
-#: yast3/qt6/repositories/__init__.py:13 yast3/qt6/repositories/window.py:37
+#: yast3/gtk4/repositories/__init__.py:17 yast3/qt6/repositories/__init__.py:11
 #: yast3/tui/repositories/__init__.py:12
 msgid "Repositories"
 msgstr "軟體來源"
@@ -1364,74 +1295,74 @@ msgid "Import"
 msgstr "連接埠"
 
 #: yast3/gtk4/repositories/dialogs/switch_mirror.py:17
-#: yast3/gtk4/repositories/window.py:55
+#: yast3/gtk4/repositories/window.py:54
 #: yast3/qt6/repositories/switch_mirror_dialog.py:21
-#: yast3/qt6/repositories/window.py:61 yast3/tui/repositories/window.py:73
+#: yast3/qt6/repositories/window.py:60 yast3/tui/repositories/window.py:73
 #: yast3/tui/repositories/window.py:473
 msgid "Switch Mirror"
 msgstr "切換鏡像"
 
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:88
-#: yast3/gtk4/repositories/window.py:94
+#: yast3/gtk4/repositories/window.py:93
 #: yast3/qt6/repositories/repo_edit_dialog.py:94
-#: yast3/qt6/repositories/window.py:71 yast3/tui/repositories/window.py:80
+#: yast3/qt6/repositories/window.py:70 yast3/tui/repositories/window.py:80
 #: yast3/tui/repositories/window.py:337
 msgid "Priority"
 msgstr "優先順序"
 
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:42
-#: yast3/gtk4/repositories/window.py:110
+#: yast3/gtk4/repositories/window.py:109
 #: yast3/qt6/repositories/repo_edit_dialog.py:46
-#: yast3/qt6/repositories/window.py:71 yast3/tui/repositories/window.py:80
+#: yast3/qt6/repositories/window.py:70 yast3/tui/repositories/window.py:80
 #: yast3/tui/repositories/window.py:350
 msgid "Auto Refresh"
 msgstr "自動刷新"
 
-#: yast3/gtk4/repositories/window.py:133 yast3/qt6/repositories/window.py:136
+#: yast3/gtk4/repositories/window.py:132 yast3/qt6/repositories/window.py:135
 msgid "Cannot read repository directory. Root permission required."
 msgstr "無法讀取軟體來源目錄。需要 root 權限。"
 
-#: yast3/gtk4/repositories/window.py:195 yast3/gtk4/repositories/window.py:276
-#: yast3/qt6/repositories/window.py:185 yast3/qt6/repositories/window.py:232
+#: yast3/gtk4/repositories/window.py:194 yast3/gtk4/repositories/window.py:275
+#: yast3/qt6/repositories/window.py:184 yast3/qt6/repositories/window.py:231
 msgid "Repository ID is required."
 msgstr "軟體來源 ID 是必要的。"
 
-#: yast3/gtk4/repositories/window.py:199 yast3/gtk4/repositories/window.py:280
-#: yast3/qt6/repositories/window.py:188 yast3/qt6/repositories/window.py:235
+#: yast3/gtk4/repositories/window.py:198 yast3/gtk4/repositories/window.py:279
+#: yast3/qt6/repositories/window.py:187 yast3/qt6/repositories/window.py:234
 msgid "URL is required."
 msgstr "URL 是必要的。"
 
-#: yast3/gtk4/repositories/window.py:233 yast3/qt6/repositories/window.py:108
+#: yast3/gtk4/repositories/window.py:232 yast3/qt6/repositories/window.py:107
 #, fuzzy, python-brace-format
 msgid "Repository '{}' already exists."
 msgstr "選項已存在。"
 
-#: yast3/gtk4/repositories/window.py:242 yast3/qt6/repositories/window.py:115
+#: yast3/gtk4/repositories/window.py:241 yast3/qt6/repositories/window.py:114
 #, fuzzy, python-format
 msgid "Failed to import repository: %s"
 msgstr "刪除軟體來源失敗：%s"
 
-#: yast3/gtk4/repositories/window.py:249 yast3/qt6/repositories/window.py:122
+#: yast3/gtk4/repositories/window.py:248 yast3/qt6/repositories/window.py:121
 #, fuzzy, python-brace-format
 msgid "Repository '{}' imported successfully."
 msgstr "金鑰產生成功。"
 
-#: yast3/gtk4/repositories/window.py:257 yast3/qt6/repositories/window.py:220
+#: yast3/gtk4/repositories/window.py:256 yast3/qt6/repositories/window.py:219
 #: yast3/tui/repositories/window.py:139
 msgid "Please select a repository to edit."
 msgstr "請選擇要編輯的軟體來源。"
 
-#: yast3/gtk4/repositories/window.py:311 yast3/qt6/repositories/window.py:263
+#: yast3/gtk4/repositories/window.py:310 yast3/qt6/repositories/window.py:262
 #: yast3/tui/repositories/window.py:156
 msgid "Please select a repository to delete."
 msgstr "請選擇要刪除的軟體來源。"
 
-#: yast3/gtk4/repositories/window.py:327 yast3/qt6/repositories/window.py:271
+#: yast3/gtk4/repositories/window.py:326 yast3/qt6/repositories/window.py:270
 #, python-brace-format
 msgid "Are you sure you want to delete repository '{}'?"
 msgstr "您確定要刪除軟體來源 '{}' 嗎？"
 
-#: yast3/gtk4/repositories/window.py:366 yast3/qt6/repositories/window.py:291
+#: yast3/gtk4/repositories/window.py:365 yast3/qt6/repositories/window.py:290
 #, python-brace-format
 msgid ""
 "Are you sure you want to switch mirrors?\n"
@@ -1444,16 +1375,16 @@ msgstr ""
 "openSUSE 鏡像：{}\n"
 "Packman 鏡像：{}"
 
-#: yast3/gtk4/repositories/window.py:379 yast3/qt6/repositories/window.py:303
+#: yast3/gtk4/repositories/window.py:378 yast3/qt6/repositories/window.py:302
 #: yast3/tui/repositories/window.py:176
 msgid "Mirror switching completed successfully."
 msgstr "鏡像切換已成功完成。"
 
-#: yast3/gtk4/repositories/window.py:388
+#: yast3/gtk4/repositories/window.py:387
 msgid "Cannot write to repository directory. Root permission required."
 msgstr "無法寫入軟體來源目錄。需要 root 權限。"
 
-#: yast3/gtk4/repositories/window.py:392
+#: yast3/gtk4/repositories/window.py:391
 msgid "Failed to save repository configuration."
 msgstr "儲存軟體來源設定失敗。"
 
@@ -1492,9 +1423,9 @@ msgid "Path"
 msgstr "路徑"
 
 #: yast3/gtk4/repositories/dialogs/repo_edit.py:64
-#: yast3/gtk4/snapshots/window.py:90
+#: yast3/gtk4/snapshots/window.py:89
 #: yast3/qt6/repositories/repo_edit_dialog.py:74
-#: yast3/qt6/snapshots/window.py:78 yast3/tui/repositories/window.py:340
+#: yast3/qt6/snapshots/window.py:77 yast3/tui/repositories/window.py:340
 #: yast3/tui/snapshots/window.py:84 yast3/tui/ssh/window.py:293
 #: yast3/tui/ssh/window.py:616
 msgid "Type"
@@ -1527,140 +1458,138 @@ msgstr "openSUSE"
 msgid "Packman"
 msgstr "Packman"
 
-#: yast3/gtk4/services/__init__.py:18 yast3/gtk4/services/window.py:35
-#: yast3/qt6/services/__init__.py:12 yast3/qt6/services/window.py:41
+#: yast3/gtk4/services/__init__.py:16 yast3/qt6/services/__init__.py:10
 #: yast3/tui/services/__init__.py:12
 msgid "Services"
 msgstr "服務"
 
-#: yast3/gtk4/services/window.py:54 yast3/gtk4/services/window.py:134
-#: yast3/qt6/services/window.py:58 yast3/qt6/services/window.py:117
+#: yast3/gtk4/services/window.py:53 yast3/gtk4/services/window.py:133
+#: yast3/qt6/services/window.py:57 yast3/qt6/services/window.py:116
 #: yast3/tui/services/window.py:78 yast3/tui/services/window.py:125
 msgid "Status"
 msgstr "狀態"
 
-#: yast3/gtk4/services/window.py:56 yast3/gtk4/services/window.py:67
-#: yast3/qt6/services/window.py:60 yast3/qt6/services/window.py:70
+#: yast3/gtk4/services/window.py:55 yast3/gtk4/services/window.py:66
+#: yast3/qt6/services/window.py:59 yast3/qt6/services/window.py:69
 #: yast3/tui/services/window.py:81 yast3/tui/services/window.py:93
 msgid "All"
 msgstr "全部"
 
-#: yast3/gtk4/services/window.py:57 yast3/qt6/services/window.py:61
+#: yast3/gtk4/services/window.py:56 yast3/qt6/services/window.py:60
 #: yast3/tui/services/window.py:82
 msgid "Active"
 msgstr "作用中"
 
-#: yast3/gtk4/services/window.py:58 yast3/qt6/services/window.py:62
+#: yast3/gtk4/services/window.py:57 yast3/qt6/services/window.py:61
 #: yast3/tui/services/window.py:83
 msgid "Inactive"
 msgstr "非作用中"
 
-#: yast3/gtk4/services/window.py:59 yast3/qt6/services/window.py:63
+#: yast3/gtk4/services/window.py:58 yast3/qt6/services/window.py:62
 #: yast3/tui/services/window.py:84
 msgid "Failed"
 msgstr "失敗"
 
-#: yast3/gtk4/services/window.py:60 yast3/qt6/services/window.py:64
+#: yast3/gtk4/services/window.py:59 yast3/qt6/services/window.py:63
 #: yast3/tui/services/window.py:85
 msgid "Activating"
 msgstr "啟動中"
 
-#: yast3/gtk4/services/window.py:76 yast3/qt6/services/window.py:78
+#: yast3/gtk4/services/window.py:75 yast3/qt6/services/window.py:77
 #: yast3/tui/services/window.py:101
 msgid "Service name or description"
 msgstr "服務名稱或描述"
 
-#: yast3/gtk4/services/window.py:90 yast3/gtk4/services/window.py:278
-#: yast3/qt6/services/window.py:91 yast3/qt6/services/window.py:232
+#: yast3/gtk4/services/window.py:89 yast3/gtk4/services/window.py:277
+#: yast3/qt6/services/window.py:90 yast3/qt6/services/window.py:231
 #: yast3/tui/services/window.py:105
 msgid "Start"
 msgstr "啟動"
 
-#: yast3/gtk4/services/window.py:94 yast3/gtk4/services/window.py:279
-#: yast3/qt6/services/window.py:95 yast3/qt6/services/window.py:233
+#: yast3/gtk4/services/window.py:93 yast3/gtk4/services/window.py:278
+#: yast3/qt6/services/window.py:94 yast3/qt6/services/window.py:232
 #: yast3/tui/services/window.py:106
 msgid "Stop"
 msgstr "停止"
 
-#: yast3/gtk4/services/window.py:98 yast3/gtk4/services/window.py:280
-#: yast3/qt6/services/window.py:99 yast3/qt6/services/window.py:234
+#: yast3/gtk4/services/window.py:97 yast3/gtk4/services/window.py:279
+#: yast3/qt6/services/window.py:98 yast3/qt6/services/window.py:233
 #: yast3/tui/services/window.py:107
 msgid "Enable"
 msgstr "啟用"
 
-#: yast3/gtk4/services/window.py:102 yast3/gtk4/services/window.py:281
-#: yast3/qt6/services/window.py:103 yast3/qt6/services/window.py:235
+#: yast3/gtk4/services/window.py:101 yast3/gtk4/services/window.py:280
+#: yast3/qt6/services/window.py:102 yast3/qt6/services/window.py:234
 #: yast3/tui/services/window.py:108
 msgid "Disable"
 msgstr "停用"
 
-#: yast3/gtk4/services/window.py:106 yast3/gtk4/services/window.py:311
-#: yast3/qt6/services/window.py:107 yast3/qt6/services/window.py:261
+#: yast3/gtk4/services/window.py:105 yast3/gtk4/services/window.py:310
+#: yast3/qt6/services/window.py:106 yast3/qt6/services/window.py:260
 #: yast3/tui/services/window.py:109
 msgid "Logs"
 msgstr "記錄"
 
-#: yast3/gtk4/services/window.py:185 yast3/qt6/services/window.py:142
+#: yast3/gtk4/services/window.py:184 yast3/qt6/services/window.py:141
 #, python-brace-format
 msgid "Failed to load services: {0}"
 msgstr "載入服務失敗：{0}"
 
-#: yast3/gtk4/services/window.py:273 yast3/gtk4/services/window.py:306
-#: yast3/qt6/services/window.py:228 yast3/qt6/services/window.py:257
+#: yast3/gtk4/services/window.py:272 yast3/gtk4/services/window.py:305
+#: yast3/qt6/services/window.py:227 yast3/qt6/services/window.py:256
 #: yast3/tui/services/window.py:263 yast3/tui/services/window.py:302
 msgid "Please select a service."
 msgstr "請選擇一項服務。"
 
-#: yast3/gtk4/services/window.py:284 yast3/qt6/services/window.py:238
+#: yast3/gtk4/services/window.py:283 yast3/qt6/services/window.py:237
 #: yast3/tui/services/window.py:288
 msgid "started"
 msgstr "已啟動"
 
-#: yast3/gtk4/services/window.py:285 yast3/qt6/services/window.py:239
+#: yast3/gtk4/services/window.py:284 yast3/qt6/services/window.py:238
 #: yast3/tui/services/window.py:291
 msgid "stopped"
 msgstr "已停止"
 
-#: yast3/gtk4/services/window.py:286 yast3/qt6/services/window.py:240
+#: yast3/gtk4/services/window.py:285 yast3/qt6/services/window.py:239
 #: yast3/tui/services/window.py:294
 msgid "enabled"
 msgstr "已啟用"
 
-#: yast3/gtk4/services/window.py:287 yast3/qt6/services/window.py:241
+#: yast3/gtk4/services/window.py:286 yast3/qt6/services/window.py:240
 #: yast3/tui/services/window.py:297
 msgid "disabled"
 msgstr "已停用"
 
-#: yast3/gtk4/services/window.py:292 yast3/qt6/services/window.py:246
+#: yast3/gtk4/services/window.py:291 yast3/qt6/services/window.py:245
 msgid "Working..."
 msgstr "處理中..."
 
-#: yast3/gtk4/services/window.py:293 yast3/qt6/services/window.py:247
+#: yast3/gtk4/services/window.py:292 yast3/qt6/services/window.py:246
 #, python-brace-format
 msgid "{0} Service"
 msgstr "{0} 服務"
 
-#: yast3/gtk4/services/window.py:295 yast3/qt6/services/window.py:249
+#: yast3/gtk4/services/window.py:294 yast3/qt6/services/window.py:248
 #, python-brace-format
 msgid "Service '{0}' {1} successfully."
 msgstr "服務 '{0}' {1} 成功。"
 
-#: yast3/gtk4/services/window.py:312 yast3/qt6/services/window.py:262
+#: yast3/gtk4/services/window.py:311 yast3/qt6/services/window.py:261
 msgid "Loading logs..."
 msgstr "載入記錄..."
 
-#: yast3/gtk4/services/window.py:313 yast3/qt6/services/window.py:263
+#: yast3/gtk4/services/window.py:312 yast3/qt6/services/window.py:262
 #: yast3/tui/services/window.py:358
 #, python-brace-format
 msgid "Journal Logs: {0}"
 msgstr "系統記錄：{0}"
 
-#: yast3/gtk4/services/window.py:315 yast3/qt6/services/window.py:265
+#: yast3/gtk4/services/window.py:314 yast3/qt6/services/window.py:264
 msgid "End of journal output."
 msgstr "日誌輸出結束。"
 
-#: yast3/gtk4/snapshots/__init__.py:18 yast3/gtk4/snapshots/window.py:36
-#: yast3/qt6/snapshots/__init__.py:12 yast3/qt6/snapshots/window.py:40
+#: yast3/gtk4/snapshots/__init__.py:16 yast3/qt6/snapshots/__init__.py:10
 #: yast3/tui/snapshots/__init__.py:12
 msgid "Snapshots"
 msgstr "快照"
@@ -1787,99 +1716,99 @@ msgstr "設定儲存成功。"
 msgid "Failed to write config: {0}"
 msgstr "寫入設定失敗：{0}"
 
-#: yast3/gtk4/snapshots/window.py:63 yast3/gtk4/snapshots/window.py:256
-#: yast3/qt6/snapshots/window.py:60 yast3/qt6/snapshots/window.py:180
+#: yast3/gtk4/snapshots/window.py:62 yast3/gtk4/snapshots/window.py:255
+#: yast3/qt6/snapshots/window.py:59 yast3/qt6/snapshots/window.py:179
 #: yast3/tui/snapshots/window.py:71
 msgid "Create"
 msgstr "建立"
 
-#: yast3/gtk4/snapshots/window.py:71 yast3/qt6/snapshots/window.py:68
+#: yast3/gtk4/snapshots/window.py:70 yast3/qt6/snapshots/window.py:67
 #: yast3/tui/snapshots/window.py:74
 msgid "Configure"
 msgstr "設定"
 
-#: yast3/gtk4/snapshots/window.py:95 yast3/qt6/snapshots/window.py:78
+#: yast3/gtk4/snapshots/window.py:94 yast3/qt6/snapshots/window.py:77
 #: yast3/tui/snapshots/window.py:85
 msgid "Date"
 msgstr "日期"
 
-#: yast3/gtk4/snapshots/window.py:109 yast3/qt6/snapshots/window.py:78
+#: yast3/gtk4/snapshots/window.py:108 yast3/qt6/snapshots/window.py:77
 #: yast3/tui/snapshots/window.py:88
 msgid "Cleanup"
 msgstr "清理"
 
-#: yast3/gtk4/snapshots/window.py:144 yast3/gtk4/snapshots/window.py:281
-#: yast3/qt6/snapshots/window.py:197 yast3/qt6/snapshots/window.py:206
+#: yast3/gtk4/snapshots/window.py:143 yast3/gtk4/snapshots/window.py:280
+#: yast3/qt6/snapshots/window.py:196 yast3/qt6/snapshots/window.py:205
 msgid "Delete Snapshot"
 msgstr "刪除快照"
 
-#: yast3/gtk4/snapshots/window.py:148 yast3/qt6/snapshots/window.py:198
+#: yast3/gtk4/snapshots/window.py:147 yast3/qt6/snapshots/window.py:197
 #, python-brace-format
 msgid "Delete snapshot #{0}? This action cannot be undone."
 msgstr "刪除快照 #{0}？此操作無法撤銷。"
 
-#: yast3/gtk4/snapshots/window.py:181 yast3/qt6/snapshots/window.py:105
+#: yast3/gtk4/snapshots/window.py:180 yast3/qt6/snapshots/window.py:104
 msgid "Load Snapshots"
 msgstr "載入快照"
 
-#: yast3/gtk4/snapshots/window.py:183 yast3/qt6/snapshots/window.py:107
+#: yast3/gtk4/snapshots/window.py:182 yast3/qt6/snapshots/window.py:106
 msgid "Snapshots loaded successfully."
 msgstr "快照載入成功。"
 
-#: yast3/gtk4/snapshots/window.py:204 yast3/qt6/snapshots/window.py:128
+#: yast3/gtk4/snapshots/window.py:203 yast3/qt6/snapshots/window.py:127
 #, python-brace-format
 msgid "Failed to parse snapshot data: {0}"
 msgstr "解析快照資料失敗：{0}"
 
-#: yast3/gtk4/snapshots/window.py:210 yast3/qt6/snapshots/window.py:134
+#: yast3/gtk4/snapshots/window.py:209 yast3/qt6/snapshots/window.py:133
 #, python-brace-format
 msgid "Failed to load snapshots: {0}"
 msgstr "載入快照失敗：{0}"
 
-#: yast3/gtk4/snapshots/window.py:251 yast3/qt6/snapshots/window.py:176
+#: yast3/gtk4/snapshots/window.py:250 yast3/qt6/snapshots/window.py:175
 #: yast3/tui/snapshots/window.py:193
 msgid "Description cannot be empty."
 msgstr "描述不能為空。"
 
-#: yast3/gtk4/snapshots/window.py:257 yast3/qt6/snapshots/window.py:181
+#: yast3/gtk4/snapshots/window.py:256 yast3/qt6/snapshots/window.py:180
 msgid "Creating..."
 msgstr "建立中..."
 
-#: yast3/gtk4/snapshots/window.py:258 yast3/qt6/snapshots/window.py:168
-#: yast3/qt6/snapshots/window.py:182
+#: yast3/gtk4/snapshots/window.py:257 yast3/qt6/snapshots/window.py:167
+#: yast3/qt6/snapshots/window.py:181
 msgid "Create Snapshot"
 msgstr "建立快照"
 
-#: yast3/gtk4/snapshots/window.py:260 yast3/qt6/snapshots/window.py:184
+#: yast3/gtk4/snapshots/window.py:259 yast3/qt6/snapshots/window.py:183
 #: yast3/tui/snapshots/window.py:208
 msgid "Snapshot created successfully."
 msgstr "快照建立成功。"
 
-#: yast3/gtk4/snapshots/window.py:271 yast3/qt6/snapshots/window.py:192
+#: yast3/gtk4/snapshots/window.py:270 yast3/qt6/snapshots/window.py:191
 #: yast3/tui/snapshots/window.py:218
 msgid "Please select a snapshot."
 msgstr "請選擇一個快照。"
 
-#: yast3/gtk4/snapshots/window.py:280 yast3/qt6/snapshots/window.py:205
+#: yast3/gtk4/snapshots/window.py:279 yast3/qt6/snapshots/window.py:204
 msgid "Deleting..."
 msgstr "刪除中..."
 
-#: yast3/gtk4/snapshots/window.py:283 yast3/qt6/snapshots/window.py:208
+#: yast3/gtk4/snapshots/window.py:282 yast3/qt6/snapshots/window.py:207
 #: yast3/tui/snapshots/window.py:233
 #, python-brace-format
 msgid "Snapshot #{0} deleted successfully."
 msgstr "快照 #{0} 刪除成功。"
 
-#: yast3/gtk4/ssh/__init__.py:22 yast3/qt6/ssh/__init__.py:18
+#: yast3/gtk4/ssh/__init__.py:20 yast3/qt6/ssh/__init__.py:16
 #: yast3/tui/ssh/__init__.py:12
 msgid "SSH Client"
 msgstr "SSH 用戶端"
 
-#: yast3/gtk4/ssh/__init__.py:57 yast3/qt6/ssh/__init__.py:51
+#: yast3/gtk4/ssh/__init__.py:48 yast3/qt6/ssh/__init__.py:41
 msgid "SSH Permission Warning"
 msgstr "SSH 權限警告"
 
-#: yast3/gtk4/ssh/__init__.py:61 yast3/qt6/ssh/__init__.py:53
+#: yast3/gtk4/ssh/__init__.py:52 yast3/qt6/ssh/__init__.py:43
 #, python-brace-format
 msgid ""
 "The following SSH items have insecure permissions:\n"
@@ -1894,7 +1823,7 @@ msgstr ""
 "\n"
 "您要現在修復它們嗎？"
 
-#: yast3/gtk4/ssh/__init__.py:86 yast3/qt6/ssh/__init__.py:71
+#: yast3/gtk4/ssh/__init__.py:76 yast3/qt6/ssh/__init__.py:61
 #, python-brace-format
 msgid ""
 "Failed to fix permissions for the following items:\n"
@@ -1905,7 +1834,7 @@ msgstr ""
 "\n"
 "{0}"
 
-#: yast3/gtk4/ssh/__init__.py:99 yast3/qt6/ssh/__init__.py:78
+#: yast3/gtk4/ssh/__init__.py:89 yast3/qt6/ssh/__init__.py:68
 msgid "SSH permissions have been fixed successfully."
 msgstr "SSH 權限已成功修復。"
 
@@ -1950,11 +1879,7 @@ msgstr "選項：{0}"
 msgid "No options set"
 msgstr "未設定選項"
 
-#: yast3/gtk4/ssh/window.py:19
-msgid "SSH"
-msgstr "SSH"
-
-#: yast3/gtk4/ssh/window.py:37 yast3/qt6/ssh/window.py:40
+#: yast3/gtk4/ssh/window.py:36 yast3/qt6/ssh/window.py:40
 #: yast3/tui/ssh/window.py:252
 msgid "Keys"
 msgstr "金鑰"
@@ -2092,6 +2017,24 @@ msgstr ""
 msgid "Key deleted successfully."
 msgstr "金鑰刪除成功。"
 
+#: yast3/qt6/datetime/window.py:154
+#, fuzzy, python-brace-format
+msgid "Failed to load hardware clock setting: {0}"
+msgstr "載入軟體套件目錄失敗：{0}"
+
+#: yast3/qt6/datetime/window.py:162 yast3/tui/datetime/window.py:151
+msgid "NTP synchronized"
+msgstr "NTP已同步"
+
+#: yast3/qt6/datetime/window.py:164 yast3/tui/datetime/window.py:153
+msgid "NTP not synchronized"
+msgstr "NTP未同步"
+
+#: yast3/qt6/datetime/window.py:166
+#, fuzzy, python-brace-format
+msgid "Failed to load NTP status: {0}"
+msgstr "載入快照失敗：{0}"
+
 #: yast3/qt6/flatpak/package_manager.py:79
 msgid "Installing package..."
 msgstr "安裝軟體套件中..."
@@ -2120,38 +2063,38 @@ msgstr "移除執行時間中..."
 msgid "Remove Flatpak Runtime"
 msgstr "移除 Flatpak 執行時間"
 
-#: yast3/qt6/flatpak/window.py:114
+#: yast3/qt6/flatpak/window.py:113
 msgid "Please wait"
 msgstr "請稍候"
 
-#: yast3/qt6/flatpak/window.py:115
+#: yast3/qt6/flatpak/window.py:114
 msgid "A Flatpak operation is still running. Please wait for it to finish."
 msgstr "Flatpak 操作仍在執行中。請等待其完成。"
 
-#: yast3/qt6/git/window.py:234
+#: yast3/qt6/git/window.py:233
 msgid "All Files (*)"
 msgstr "所有檔案 (*)"
 
-#: yast3/qt6/git/window.py:272 yast3/qt6/hosts/window.py:267
+#: yast3/qt6/git/window.py:271 yast3/qt6/hosts/window.py:266
 msgid "Saved successfully"
 msgstr "儲存成功"
 
-#: yast3/qt6/git/window.py:303 yast3/tui/git/window.py:219
+#: yast3/qt6/git/window.py:302 yast3/tui/git/window.py:219
 msgid "Reset to original values"
 msgstr "重設為原始值"
 
-#: yast3/qt6/repositories/window.py:214 yast3/qt6/repositories/window.py:257
-#: yast3/qt6/repositories/window.py:322
+#: yast3/qt6/repositories/window.py:213 yast3/qt6/repositories/window.py:256
+#: yast3/qt6/repositories/window.py:321
 #, python-format
 msgid "Failed to save repository: %s"
 msgstr "儲存軟體來源失敗：%s"
 
-#: yast3/qt6/repositories/window.py:279
+#: yast3/qt6/repositories/window.py:278
 #, python-format
 msgid "Failed to delete repository: %s"
 msgstr "刪除軟體來源失敗：%s"
 
-#: yast3/qt6/repositories/window.py:307
+#: yast3/qt6/repositories/window.py:306
 #, python-format
 msgid "Failed to switch mirrors: %s"
 msgstr "切換鏡像失敗：%s"
@@ -2215,44 +2158,28 @@ msgstr "讀取公鑰失敗：{0}"
 msgid "Failed to generate SSH key: {0}"
 msgstr "產生 SSH 金鑰失敗：{0}"
 
-#: yast3/tui/cron/window.py:100
-#, python-brace-format
-msgid "User cron error: {0}"
-msgstr "使用者排程工作錯誤：{0}"
-
-#: yast3/tui/cron/window.py:102
-#, python-brace-format
-msgid "Root cron error: {0}"
-msgstr "系統排程工作錯誤：{0}"
-
-#: yast3/tui/cron/window.py:189
+#: yast3/tui/cron/window.py:194
 msgid "Cron job deleted."
 msgstr "排程工作已刪除。"
 
-#: yast3/tui/cron/window.py:198
+#: yast3/tui/cron/window.py:205
 msgid "Success: Cron jobs saved successfully."
 msgstr "成功：排程工作儲存成功。"
 
-#: yast3/tui/cron/window.py:200 yast3/tui/datetime/window.py:240
-#: yast3/tui/datetime/window.py:254 yast3/tui/datetime/window.py:276
-#: yast3/tui/datetime/window.py:286 yast3/tui/datetime/window.py:299
+#: yast3/tui/cron/window.py:207 yast3/tui/datetime/window.py:262
 #: yast3/tui/hostname/window.py:135 yast3/tui/proxy/window.py:158
 msgid "Error: Permission denied. Root permission required."
 msgstr "錯誤：權限遭拒。需要 root 權限。"
 
-#: yast3/tui/cron/window.py:202
-msgid "Error: Failed to save cron jobs."
-msgstr "錯誤：儲存排程工作失敗。"
-
-#: yast3/tui/cron/window.py:209
+#: yast3/tui/cron/window.py:217
 msgid "Cron job added."
 msgstr "排程工作已新增。"
 
-#: yast3/tui/cron/window.py:216
+#: yast3/tui/cron/window.py:229
 msgid "Cron job updated."
 msgstr "排程工作已更新。"
 
-#: yast3/tui/cron/window.py:316
+#: yast3/tui/cron/window.py:327
 msgid "Error: Command is required."
 msgstr "錯誤：命令是必要的。"
 
@@ -2265,61 +2192,34 @@ msgstr "主機名設定"
 msgid "Type to search..."
 msgstr "輸入搜尋..."
 
-#: yast3/tui/datetime/window.py:114
+#: yast3/tui/datetime/window.py:110
 #, fuzzy
 msgid "Enter NTP servers"
 msgstr "NTP伺服器"
 
-#: yast3/tui/datetime/window.py:116
-#, fuzzy
-msgid "Save NTP"
-msgstr "儲存"
-
-#: yast3/tui/datetime/window.py:138
+#: yast3/tui/datetime/window.py:136
 #, fuzzy, python-brace-format
 msgid "Error loading timezone: {0}"
 msgstr "載入時區失敗"
 
-#: yast3/tui/datetime/window.py:144
+#: yast3/tui/datetime/window.py:142
 #, fuzzy, python-brace-format
 msgid "Error loading hardware clock: {0}"
 msgstr "載入硬體時鐘設定失敗"
 
-#: yast3/tui/datetime/window.py:153
-msgid "NTP synchronized"
-msgstr "NTP已同步"
-
 #: yast3/tui/datetime/window.py:155
-msgid "NTP not synchronized"
-msgstr "NTP未同步"
-
-#: yast3/tui/datetime/window.py:157
 #, fuzzy, python-brace-format
 msgid "Error loading NTP status: {0}"
 msgstr "載入NTP狀態失敗"
 
-#: yast3/tui/datetime/window.py:225
-#, fuzzy
-msgid "Error: Please select a timezone."
-msgstr "請選擇一個時區"
-
-#: yast3/tui/datetime/window.py:230
-#, fuzzy
-msgid "Error: Invalid timezone selected."
-msgstr "選擇了無效的時區"
-
-#: yast3/tui/datetime/window.py:242 yast3/tui/datetime/window.py:256
-#: yast3/tui/datetime/window.py:278 yast3/tui/datetime/window.py:288
-#: yast3/tui/datetime/window.py:301 yast3/tui/hostname/window.py:140
+#: yast3/tui/datetime/window.py:264 yast3/tui/hostname/window.py:140
 #: yast3/tui/hosts/window.py:169 yast3/tui/repositories/window.py:264
 msgid "Error: Authentication failed or pkexec not available."
 msgstr "錯誤：認證失敗或 pkexec 不可用。"
 
-#: yast3/tui/datetime/window.py:244 yast3/tui/datetime/window.py:258
-#: yast3/tui/datetime/window.py:274 yast3/tui/datetime/window.py:280
-#: yast3/tui/datetime/window.py:290 yast3/tui/datetime/window.py:303
-#: yast3/tui/hostname/window.py:86 yast3/tui/hostname/window.py:144
-#: yast3/tui/ssh/window.py:415 yast3/tui/ssh/window.py:451
+#: yast3/tui/datetime/window.py:266 yast3/tui/hostname/window.py:86
+#: yast3/tui/hostname/window.py:144 yast3/tui/ssh/window.py:415
+#: yast3/tui/ssh/window.py:451
 #, python-brace-format
 msgid "Error: {0}"
 msgstr "錯誤：{0}"
@@ -2722,4 +2622,55 @@ msgstr "金鑰位数"
 
 #~ msgid "Failed to load NTP status: {0}"
 #~ msgstr "載入NTP狀態失敗"
+
+#~ msgid "YaST3"
+#~ msgstr "YaST3"
+
+#~ msgid "Validation Error"
+#~ msgstr "驗證錯誤"
+
+#~ msgid "Failed to save cron jobs."
+#~ msgstr "儲存排程工作失敗。"
+
+#~ msgid "User Cron Jobs"
+#~ msgstr "使用者排程工作"
+
+#~ msgid "Root Cron Jobs"
+#~ msgstr "系統排程工作"
+
+#~ msgid "Save Timezone"
+#~ msgstr "儲存時區"
+
+#~ msgid "Save Hardware Clock"
+#~ msgstr "儲存硬體時鐘設定"
+
+#~ msgid "Save NTP Settings"
+#~ msgstr "儲存NTP設定"
+
+#~ msgid "Please select a timezone."
+#~ msgstr "請選擇一個時區"
+
+#~ msgid "Invalid timezone selected."
+#~ msgstr "選擇了無效的時區"
+
+#~ msgid "SSH"
+#~ msgstr "SSH"
+
+#~ msgid "User cron error: {0}"
+#~ msgstr "使用者排程工作錯誤：{0}"
+
+#~ msgid "Root cron error: {0}"
+#~ msgstr "系統排程工作錯誤：{0}"
+
+#~ msgid "Error: Failed to save cron jobs."
+#~ msgstr "錯誤：儲存排程工作失敗。"
+
+#~ msgid "Save NTP"
+#~ msgstr "儲存"
+
+#~ msgid "Error: Please select a timezone."
+#~ msgstr "請選擇一個時區"
+
+#~ msgid "Error: Invalid timezone selected."
+#~ msgstr "選擇了無效的時區"
 

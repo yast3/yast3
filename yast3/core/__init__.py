@@ -3,7 +3,6 @@
 import importlib.metadata
 
 from yast3.core.i18n import _, init_i18n
-from yast3.core.module import Module
 
 try:
     __version__ = importlib.metadata.version("yast3")
@@ -12,4 +11,4 @@ except importlib.metadata.PackageNotFoundError:
 
 GITHUB_URL = "https://github.com/yast3/yast3"
 
-__all__ = ["_", "init_i18n", "Module", "__version__", "GITHUB_URL"]
+__all__ = ["_", "init_i18n", "__version__", "GITHUB_URL"]

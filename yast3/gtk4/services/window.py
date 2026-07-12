@@ -32,7 +32,6 @@ class ServicesWindow(Gtk.ApplicationWindow):
         self.log_action: CommandAction | None = None
 
         self.set_default_size(1280, 720)
-        self.set_title(_("{} — YaST3").format(_("Services")))
 
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         self.main_box.set_margin_top(8)

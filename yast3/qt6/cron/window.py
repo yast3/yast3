@@ -20,8 +20,6 @@ class CronWindow(QMainWindow):
         super().__init__()
         self.resize(960, 640)
 
-        self.setWindowTitle(_("{} — YaST3").format(_("Cron")))
-
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         layout = QVBoxLayout(central_widget)

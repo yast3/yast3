@@ -6,37 +6,27 @@ import stat
 from PySide6.QtWidgets import QMessageBox
 
 from yast3.core.i18n import _
-from yast3.core.module import Module
 from yast3.core.ssh import check_ssh_permissions, fix_ssh_permissions
+from yast3.qt6.module import Module
 from yast3.qt6.ssh.window import SSHWindow
 
 
 class SSHClientModule(Module):
-    window: SSHWindow | None = None
-
     def __init__(self):
         super().__init__(_("SSH Client"), ("network-server", "network"), "🔐", experimental=True)
 
-    def launch(self) -> None:
-        """Launch the SSH client module window."""
-        if self.window is None:
-            self.window = SSHWindow()
-            self.window.setWindowTitle(self.name + " — " + _("YaST3"))
-            self.window.closed.connect(self._on_window_closed)
+    def _create_window(self):
+        return SSHWindow()
 
-        # Check SSH permissions before showing the window
+    def launch(self, parent=None) -> None:
+        super().launch(parent)
         self._check_and_fix_permissions()
 
-        self.window.show()
-        self.window.activateWindow()
-
     def _check_and_fix_permissions(self) -> None:
-        """Check SSH directory permissions and prompt user to fix insecure ones."""
         issues = check_ssh_permissions()
         if not issues:
             return
 
-        # Build detail message showing each issue
         lines = []
         for issue in issues:
             name = os.path.basename(issue.path) or ".ssh"
@@ -77,10 +67,6 @@ class SSHClientModule(Module):
                     _("Success"),
                     _("SSH permissions have been fixed successfully."),
                 )
-
-    def _on_window_closed(self) -> None:
-        """Handle window closed signal."""
-        self.window = None
 
 
 __all__ = ["SSHClientModule"]

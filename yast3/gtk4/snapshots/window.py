@@ -33,7 +33,6 @@ class SnapshotsWindow(Gtk.ApplicationWindow):
         self._list_action: CommandAction | None = None
 
         self.set_default_size(1280, 720)
-        self.set_title(_("{} — YaST3").format(_("Snapshots")))
 
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         self.main_box.set_margin_top(8)

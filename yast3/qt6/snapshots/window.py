@@ -37,7 +37,6 @@ class SnapshotsWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.setWindowTitle(_("{} — YaST3").format(_("Snapshots")))
         self.resize(1280, 720)
 
         self.snapshots: list[SnapshotEntry] = []

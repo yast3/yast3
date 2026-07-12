@@ -7,7 +7,7 @@ from typing import Protocol, cast
 from gi.repository import Gtk
 
 from yast3.core.i18n import _
-from yast3.core.module import Module
+from yast3.gtk4.module import Module
 
 
 class _GtkLaunchableModule(Protocol):

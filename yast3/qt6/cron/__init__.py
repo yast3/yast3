@@ -1,27 +1,19 @@
 """Cron job management module package - Qt6 GUI."""
 
+from PySide6.QtWidgets import QMainWindow
+
 from yast3.core.i18n import _
-from yast3.core.module import Module
+from yast3.qt6.module import Module
 from yast3.qt6.cron.window import CronWindow
 
 
 class CronModule(Module):
-    window: CronWindow | None = None
-
     def __init__(self):
         super().__init__(_("Cron"), ("preferences-system-time", "chronometer", "clock"), "⏰")
 
-    def launch(self) -> None:
-        if self.window is None:
-            self.window = CronWindow()
-            self.window.setWindowTitle(_("{} — YaST3").format(self.name))
-            self.window.closed.connect(self._on_window_closed)
-
-        self.window.show()
-        self.window.activateWindow()
-
-    def _on_window_closed(self) -> None:
-        self.window = None
+    def _create_window(self) -> QMainWindow:
+        """Create the cron module window."""
+        return CronWindow()
 
 
 __all__ = ["CronModule"]

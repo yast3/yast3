@@ -15,7 +15,6 @@ class CronWindow(Gtk.ApplicationWindow):
         super().__init__(**kwargs)
 
         self.set_default_size(960, 640)
-        self.set_title(_("{} — YaST3").format(_("Cron")))
 
         # Main container
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)

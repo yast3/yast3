@@ -37,8 +37,6 @@ class DateTimeWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-
-        self.setWindowTitle(_("{} — YaST3").format(_("Date & Time")))
         self.resize(600, 500)
 
         central_widget = QWidget()

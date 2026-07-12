@@ -34,7 +34,6 @@ class RepositoriesWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.setWindowTitle(_("{} — YaST3").format(_("Repositories")))
         self.resize(1200, 600)
 
         central_widget = QWidget()

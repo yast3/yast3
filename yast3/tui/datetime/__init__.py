@@ -1,7 +1,7 @@
 """Date and Time module package - TUI."""
 
 from yast3.core.i18n import _
-from yast3.core.module import Module
+from yast3.tui.module import Module
 from yast3.tui.datetime.window import DateTimeWindow
 
 

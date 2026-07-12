@@ -27,7 +27,6 @@ class DateTimeWindow(Gtk.ApplicationWindow):
         super().__init__(**kwargs)
 
         self.set_default_size(600, 500)
-        self.set_title(_("{} — YaST3").format(_("Date & Time")))
 
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16)
         self.main_box.set_margin_top(16)
