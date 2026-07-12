@@ -88,18 +88,13 @@ class CronTabTab(QWidget):
         self.table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
         layout.addWidget(self.table)
 
-        self.load_jobs()
-
-    def load_jobs(self) -> None:
-        self.jobs.clear()
-        self.table.setRowCount(0)
-
         self.populate_table()
 
     def populate_table(self) -> None:
         self.table.setRowCount(len(self.jobs))
 
-        for row, job in enumerate(self.jobs):
+        for row, job in enumerate(self.cron.crons or []):
+            print(job)
             enabled_widget = QWidget()
             enabled_layout = QHBoxLayout(enabled_widget)
             enabled_layout.setContentsMargins(0, 0, 0, 0)
@@ -110,11 +105,11 @@ class CronTabTab(QWidget):
             enabled_layout.addWidget(checkbox)
             self.table.setCellWidget(row, 0, enabled_widget)
 
-            self.table.setItem(row, 1, QTableWidgetItem(job.minute))
-            self.table.setItem(row, 2, QTableWidgetItem(job.hour))
-            self.table.setItem(row, 3, QTableWidgetItem(job.day))
-            self.table.setItem(row, 4, QTableWidgetItem(job.month))
-            self.table.setItem(row, 5, QTableWidgetItem(job.dow))
+            self.table.setItem(row, 1, QTableWidgetItem(str(job.minute)))
+            self.table.setItem(row, 2, QTableWidgetItem(str(job.hour)))
+            self.table.setItem(row, 3, QTableWidgetItem(str(job.day)))
+            self.table.setItem(row, 4, QTableWidgetItem(str(job.month)))
+            self.table.setItem(row, 5, QTableWidgetItem(str(job.dow)))
 
             command_text = job.command or ""
             if job.comment:

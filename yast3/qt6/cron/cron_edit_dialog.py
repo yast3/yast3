@@ -103,11 +103,13 @@ class CronEditDialog(QDialog):
             comment=self.comment_edit.text().strip(),
         )
 
-        job.minute = int(self.minute_edit.text().strip())
-        job.hour = int(self.hour_edit.text().strip())
-        job.day = int(self.day_edit.text().strip())
-        job.month = int(self.month_edit.text().strip())
-        job.dow = int(self.weekday_edit.text().strip())
+        job.setall(
+            self.minute_edit.text().strip(),
+            self.hour_edit.text().strip(),
+            self.day_edit.text().strip(),
+            self.month_edit.text().strip(),
+            self.weekday_edit.text().strip(),
+        )
 
         self.job = job
         self.accept()
