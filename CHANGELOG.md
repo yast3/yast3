@@ -1,9 +1,10 @@
 # Change Log
 
-## 0.0.18 - 2026-07-11
+## 0.0.18 - 2026-07-12
 
-- feat(snapshots): added snapshots module to list, create, and delete snapper snapshots.
+- feat(cron): added cron module to manage cron jobs.
 - feat(datetime): added datetime module to manage timezone and ntp servers.
+- feat(snapshots): added snapshots module to list, create, and delete snapper snapshots.
 
 ## 0.0.17 - 2026-07-10
 
