@@ -96,58 +96,23 @@ def _get_user_cron_path(username: str) -> str:
     """Get the cron file path for a user."""
     return os.path.join(USER_CRON_DIR, username)
 
-
-def load_cron_jobs(user_mode: bool = True) -> tuple[list[CronJob], str | None]:
-    """Load cron jobs from file.
-
-    Args:
-        user_mode: True for user cron, False for root cron.
+def load_root_cron() -> CronTab:
+    """Load root cron jobs.
 
     Returns:
-        Tuple of (list of CronJob, error message or None).
+        CronTab object.
     """
-    jobs: list[CronJob] = []
-
-    if user_mode:
-        username = os.getlogin()
-        cron_path = _get_user_cron_path(username)
-    else:
-        cron_path = _get_user_cron_path("root")
-
     result = subprocess.run(
-        ["pkexec", "cat", cron_path],
+        ["pkexec", "crontab", "-l"],
         capture_output=True,
         text=True,
     )
     if result.returncode != 0:
-        return jobs, None
+        raise Exception("Failed to load root cron jobs.")
+    
+    cron = CronTab(user='root', tab=result.stdout)
 
-    content = result.stdout
-    lines = content.splitlines() if content else []
-
-    lines = lines[3:]
-
-    pending_comment = ""
-
-    for line in lines:
-        line = line.rstrip("\n\r")
-        job, comment = _parse_cron_line(line)
-
-        if comment is not None:
-            if pending_comment:
-                pending_comment += "\n" + comment
-            else:
-                pending_comment = comment
-            continue
-
-        if job is not None:
-            if pending_comment:
-                job.comment = pending_comment + (" " + job.comment if job.comment else "")
-                pending_comment = ""
-            jobs.append(job)
-
-    return jobs, None
-
+    return cron
 
 def save_cron_jobs(jobs: list[CronJob], user_mode: bool = True) -> Literal["ok", "permission_denied", "error"]:
     """Save cron jobs to file.
@@ -229,3 +194,4 @@ def get_suggestions(field_type: str) -> list[str]:
         "weekday": ["*", "0", "1-5", "6"],
     }
     return suggestions.get(field_type, [])
+

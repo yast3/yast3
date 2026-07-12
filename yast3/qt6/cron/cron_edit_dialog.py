@@ -14,15 +14,16 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
+from crontab import CronItem
 
 from yast3.core.i18n import _
-from yast3.core.cron import CronJob, validate_cron_job, get_suggestions
+from yast3.core.cron import validate_cron_job, get_suggestions
 
 
 class CronEditDialog(QDialog):
     """Dialog for editing or adding a cron job."""
 
-    def __init__(self, parent: QWidget | None = None, job: CronJob | None = None):
+    def __init__(self, parent: QWidget | None = None, job: CronItem | None = None):
         super().__init__(parent)
         self.job = job
         self._setup_ui()
@@ -75,11 +76,11 @@ class CronEditDialog(QDialog):
         layout.addWidget(button_box)
 
         if self.job:
-            self.minute_edit.setText(self.job.minute)
-            self.hour_edit.setText(self.job.hour)
-            self.day_edit.setText(self.job.day)
-            self.month_edit.setText(self.job.month)
-            self.weekday_edit.setText(self.job.weekday)
+            self.minute_edit.setText(str(self.job.minute))
+            self.hour_edit.setText(str(self.job.hour))
+            self.day_edit.setText(str(self.job.day))
+            self.month_edit.setText(str(self.job.month))
+            self.weekday_edit.setText(str(self.job.dow))
             self.command_edit.setText(self.job.command)
             self.comment_edit.setText(self.job.comment)
 
@@ -97,24 +98,19 @@ class CronEditDialog(QDialog):
         QMessageBox.information(self, _("Suggestions"), text)
 
     def _on_ok(self) -> None:
-        job = CronJob(
-            minute=self.minute_edit.text().strip(),
-            hour=self.hour_edit.text().strip(),
-            day=self.day_edit.text().strip(),
-            month=self.month_edit.text().strip(),
-            weekday=self.weekday_edit.text().strip(),
+        job = CronItem(
             command=self.command_edit.text().strip(),
             comment=self.comment_edit.text().strip(),
-            enabled=True,
         )
 
-        valid, msg = validate_cron_job(job)
-        if not valid:
-            QMessageBox.warning(self, _("Validation Error"), msg)
-            return
+        job.minute = int(self.minute_edit.text().strip())
+        job.hour = int(self.hour_edit.text().strip())
+        job.day = int(self.day_edit.text().strip())
+        job.month = int(self.month_edit.text().strip())
+        job.dow = int(self.weekday_edit.text().strip())
 
         self.job = job
         self.accept()
 
-    def get_job(self) -> CronJob | None:
+    def get_job(self) -> CronItem | None:
         return self.job

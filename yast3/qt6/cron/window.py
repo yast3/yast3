@@ -11,8 +11,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.qt6.cron.cron_tab import CronTab
-
+from yast3.qt6.cron.tab import CronTabTab
 
 class CronWindow(QMainWindow):
     closed = Signal()
@@ -30,11 +29,11 @@ class CronWindow(QMainWindow):
         self.tab_widget = QTabWidget()
         layout.addWidget(self.tab_widget)
 
-        self.user_tab = CronTab(user_mode=True)
+        self.user_tab = CronTabTab(user_mode=True)
         self.tab_widget.addTab(self.user_tab, _("User Cron Jobs"))
 
-        self.root_tab = CronTab(user_mode=False)
-        self.tab_widget.addTab(self.root_tab, _("Root Cron Jobs"))
+        self.root_tab = CronTabTab(user_mode=False)
+        self.tab_widget.addTab(self.root_tab, _("System Cron Jobs"))
 
     def closeEvent(self, event) -> None:
         self.closed.emit()

@@ -14,19 +14,22 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
+from crontab import CronTab, CronItem
 
 from yast3.core.i18n import _
-from yast3.core.cron import CronJob, load_cron_jobs, save_cron_jobs
+from yast3.core.cron import save_cron_jobs, load_root_cron
 from yast3.qt6.cron.cron_edit_dialog import CronEditDialog
 
 
-class CronTab(QWidget):
+class CronTabTab(QWidget):
     """Tab for managing cron jobs."""
 
     def __init__(self, user_mode: bool, parent: QWidget | None = None):
         super().__init__(parent)
         self.user_mode = user_mode
-        self.jobs: list[CronJob] = []
+        self.jobs: list[CronItem] = []
+        self.cron: CronTab = user_mode and CronTab(user=True) or load_root_cron()
+        self.jobs = self.cron.crons or []
         self._setup_ui()
 
     def _setup_ui(self) -> None:
@@ -91,12 +94,6 @@ class CronTab(QWidget):
         self.jobs.clear()
         self.table.setRowCount(0)
 
-        jobs, error = load_cron_jobs(self.user_mode)
-        if error:
-            QMessageBox.warning(self, _("Error"), _(error))
-            return
-
-        self.jobs = jobs
         self.populate_table()
 
     def populate_table(self) -> None:
@@ -117,9 +114,9 @@ class CronTab(QWidget):
             self.table.setItem(row, 2, QTableWidgetItem(job.hour))
             self.table.setItem(row, 3, QTableWidgetItem(job.day))
             self.table.setItem(row, 4, QTableWidgetItem(job.month))
-            self.table.setItem(row, 5, QTableWidgetItem(job.weekday))
+            self.table.setItem(row, 5, QTableWidgetItem(job.dow))
 
-            command_text = job.command
+            command_text = job.command or ""
             if job.comment:
                 command_text += f"  {job.comment}"
             cmd_item = QTableWidgetItem(command_text)
