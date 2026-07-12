@@ -34,7 +34,17 @@ class CronWindow(Gtk.ApplicationWindow):
         self.root_tab = Manager(user_mode=False)
         self.notebook.append_page(self.root_tab, Gtk.Label(label=_("System")))
 
+        self.notebook.connect("switch-page", self._on_switch_page)
+        self.user_tab.load_cron()
+
         self.main_box.append(self.notebook)
 
         self.set_child(self.main_box)
         self.present()
+
+    def _on_switch_page(self, notebook, page, page_num) -> None:
+        """Load cron jobs when switching tabs."""
+        if page_num == 0:
+            self.user_tab.load_cron()
+        else:
+            self.root_tab.load_cron()

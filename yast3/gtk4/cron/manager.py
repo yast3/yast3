@@ -19,8 +19,14 @@ class Manager(Gtk.Box):
     def __init__(self, user_mode: bool):
         super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         self.user_mode = user_mode
-        self.cron = CronTab(user=True) if user_mode else load_root_cron()
+        self.cron: CronTab | None = None
         self._setup_ui()
+
+    def load_cron(self) -> None:
+        """Load cron jobs when tab is activated."""
+        if self.cron is None:
+            self.cron = CronTab(user=True) if self.user_mode else load_root_cron()
+            self._populate_list()
 
     def _setup_ui(self) -> None:
         """Setup the UI components."""
@@ -120,8 +126,6 @@ class Manager(Gtk.Box):
         scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         scrolled.set_child(self.tree_view)
         self.append(scrolled)
-
-        self._populate_list()
 
     def _on_selection_changed(self, selection) -> None:
         """Handle selection change."""

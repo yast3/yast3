@@ -28,9 +28,14 @@ class Manager(QWidget):
     def __init__(self, user_mode: bool, parent: QWidget | None = None):
         super().__init__(parent)
         self.user_mode = user_mode
-        self.crontab: CronTab = CronTab(user=True) if user_mode else load_root_cron()
+        self.crontab: CronTab | None = None
         self._setup_ui()
-        self.populate_table()
+
+    def load_cron(self) -> None:
+        """Load cron jobs when tab is activated."""
+        if self.crontab is None:
+            self.crontab = CronTab(user=True) if self.user_mode else load_root_cron()
+            self.populate_table()
 
     def _setup_ui(self) -> None:
         layout = QVBoxLayout(self)

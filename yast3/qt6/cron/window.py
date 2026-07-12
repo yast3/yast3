@@ -33,6 +33,16 @@ class CronWindow(QMainWindow):
         self.root_tab = Manager(user_mode=False)
         self.tab_widget.addTab(self.root_tab, _("System"))
 
+        self.tab_widget.currentChanged.connect(self._on_tab_changed)
+        self.user_tab.load_cron()
+
+    def _on_tab_changed(self, index: int) -> None:
+        """Load cron jobs when switching tabs."""
+        if index == 0:
+            self.user_tab.load_cron()
+        else:
+            self.root_tab.load_cron()
+
     def closeEvent(self, event) -> None:
         self.closed.emit()
         self.deleteLater()

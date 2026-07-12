@@ -60,8 +60,8 @@ class CronWindow(Screen):
 
     def __init__(self) -> None:
         super().__init__()
-        self.user_cron: CronTab = CronTab(user=True)
-        self.root_cron: CronTab = load_root_cron()
+        self.user_cron: CronTab | None = None
+        self.root_cron: CronTab | None = None
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -83,10 +83,19 @@ class CronWindow(Screen):
             yield DataTable(id=f"{mode}-table")
 
     def on_mount(self) -> None:
-        """Load cron jobs on mount."""
+        """Setup tables on mount."""
         self._setup_table("user")
         self._setup_table("root")
-        self.populate_tables()
+        self._load_cron("user")
+
+    def _load_cron(self, mode: str) -> None:
+        """Load cron jobs for specified mode."""
+        if mode == "user" and self.user_cron is None:
+            self.user_cron = CronTab(user=True)
+            self._populate_table("user")
+        elif mode == "root" and self.root_cron is None:
+            self.root_cron = load_root_cron()
+            self._populate_table("root")
 
     def on_data_table_cursor_changed(self, event: DataTable.CursorChanged) -> None:
         """Handle cursor change in data table."""
@@ -152,6 +161,14 @@ class CronWindow(Screen):
     def _get_cron(self, mode: str) -> CronTab:
         """Get CronTab for mode."""
         return self.user_cron if mode == "user" else self.root_cron
+
+    def on_tabbed_content_tab_selected(self, event: TabbedContent.TabSelected) -> None:
+        """Load cron jobs when switching tabs."""
+        tab_id = event.tab.id
+        if tab_id == "user-tab":
+            self._load_cron("user")
+        elif tab_id == "root-tab":
+            self._load_cron("root")
 
     def _get_jobs(self, mode: str) -> list[CronItem]:
         """Get jobs list for mode."""
