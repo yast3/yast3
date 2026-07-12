@@ -18,7 +18,7 @@ from PySide6.QtWidgets import (
 from crontab import CronItem
 
 from yast3.core.i18n import _
-from yast3.core.cron import validate_cron_job, get_suggestions
+from yast3.core.cron import get_suggestions
 
 
 class CronEditDialog(QDialog):
@@ -113,11 +113,6 @@ class CronEditDialog(QDialog):
 
         job = CronItem(command=command, comment=comment)
         job.setall(minute, hour, day, month, weekday)
-
-        valid, msg = validate_cron_job(job)
-        if not valid:
-            QMessageBox.warning(self, _("Validation Error"), msg)
-            return
 
         self.job = job
         self.accept()

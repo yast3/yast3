@@ -9,7 +9,7 @@ from gi.repository import Gtk
 from crontab import CronItem
 
 from yast3.core.i18n import _
-from yast3.core.cron import validate_cron_job, get_suggestions
+from yast3.core.cron import get_suggestions
 
 
 class CronEditDialog(Gtk.Dialog):
@@ -134,20 +134,6 @@ class CronEditDialog(Gtk.Dialog):
 
         job = CronItem(command=command, comment=comment)
         job.setall(minute, hour, day, month, weekday)
-
-        valid, msg = validate_cron_job(job)
-        if not valid:
-            dialog = Gtk.MessageDialog(
-                transient_for=self,
-                modal=True,
-                message_type=Gtk.MessageType.WARNING,
-                buttons=Gtk.ButtonsType.OK,
-                text=_("Validation Error"),
-            )
-            dialog.set_property("secondary-text", msg)
-            dialog.connect("response", lambda d, r: d.destroy())
-            dialog.present()
-            return
 
         self.result_job = job
         self.response(Gtk.ResponseType.OK)

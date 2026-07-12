@@ -89,23 +89,6 @@ def save_cron_jobs(jobs: list[CronItem], user_mode: bool = True) -> Literal["ok"
         return "error"
 
 
-def validate_cron_job(job: CronItem) -> tuple[bool, str]:
-    """Validate a complete cron job using crontab package.
-
-    Returns:
-        Tuple of (is_valid, error_message).
-    """
-    try:
-        CronTab(f"{job.minute} {job.hour} {job.day} {job.month} {job.dow}")
-    except Exception as e:
-        return False, str(e)
-
-    if not job.command.strip():
-        return False, "Command cannot be empty"
-
-    return True, ""
-
-
 def get_suggestions(field_type: str) -> list[str]:
     """Get common values for a cron field."""
     suggestions = {
