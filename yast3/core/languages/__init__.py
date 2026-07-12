@@ -1,0 +1,43 @@
+"""Language management module."""
+
+from yast3.core.languages.languages import (
+    DEFAULT_FALLBACK_LANGUAGE,
+    LanguageInfo,
+    LanguageSettings,
+    remove_suffix,
+    is_cjk_language,
+    main_language,
+    get_locales,
+    read_locale_conf,
+    read_sysconfig_language,
+    get_current_language,
+    get_use_utf8,
+    build_languages_map,
+    get_locale_string,
+    get_language_country,
+    is_supported_by_fbiterm,
+    is_fbiterm,
+    is_supported_language,
+    save_language_settings,
+)
+
+__all__ = [
+    "DEFAULT_FALLBACK_LANGUAGE",
+    "LanguageInfo",
+    "LanguageSettings",
+    "remove_suffix",
+    "is_cjk_language",
+    "main_language",
+    "get_locales",
+    "read_locale_conf",
+    "read_sysconfig_language",
+    "get_current_language",
+    "get_use_utf8",
+    "build_languages_map",
+    "get_locale_string",
+    "get_language_country",
+    "is_supported_by_fbiterm",
+    "is_fbiterm",
+    "is_supported_language",
+    "save_language_settings",
+]

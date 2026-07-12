@@ -6,6 +6,7 @@ from yast3.gtk4.flatpak import FlatpakModule
 from yast3.gtk4.git import GitModule
 from yast3.gtk4.hostname import HostnameModule
 from yast3.gtk4.hosts import HostsModule
+from yast3.gtk4.languages import LanguagesModule
 from yast3.gtk4.packages import PackagesModule
 from yast3.gtk4.proxy import ProxyModule
 from yast3.gtk4.repositories import RepositoriesModule
@@ -20,6 +21,7 @@ __all__ = [
     "GitModule",
     "HostnameModule",
     "HostsModule",
+    "LanguagesModule",
     "PackagesModule",
     "ProxyModule",
     "RepositoriesModule",
