@@ -10,14 +10,12 @@ class Module:
 
     name: str
     icon_names: tuple[str, ...]
-    emoji: str
     experimental: bool = False
     window: QMainWindow | None = None
 
-    def __init__(self, name: str, icon_names: tuple[str, ...], emoji: str = "⚙️", experimental: bool = False) -> None:
+    def __init__(self, name: str, icon_names: tuple[str, ...], experimental: bool = False) -> None:
         self.name = name
         self.icon_names = icon_names
-        self.emoji = emoji
         self.experimental = experimental
 
     def _create_window(self) -> QMainWindow:

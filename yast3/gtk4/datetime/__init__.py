@@ -13,7 +13,7 @@ from yast3.gtk4.datetime.window import DateTimeWindow
 
 class DateTimeModule(Module):
     def __init__(self):
-        super().__init__(_("Date & Time"), ("clock", "preferences-system-time"), "🕐")
+        super().__init__(_("Date & Time"), ("clock", "preferences-system-time"))
 
     def _create_window(self) -> Gtk.Window:
         """Create the date & time module window."""

@@ -7,7 +7,7 @@ from yast3.qt6.hosts.window import HostsWindow
 
 class HostsModule(Module):
     def __init__(self):
-        super().__init__(_("Hosts"), ("network", "network-workgroup"), "🌐")
+        super().__init__(_("Hosts"), ("network", "network-workgroup"))
 
     def _create_window(self):
         return HostsWindow()

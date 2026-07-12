@@ -8,7 +8,7 @@ from yast3.qt6.repositories.window import RepositoriesWindow
 class RepositoriesModule(Module):
     def __init__(self):
         super().__init__(
-            _("Repositories"), ("system-software-install", "package-x-generic"), "📦"
+            _("Repositories"), ("system-software-install", "package-x-generic")
         )
 
     def _create_window(self):

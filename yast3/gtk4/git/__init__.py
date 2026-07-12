@@ -13,7 +13,7 @@ from yast3.gtk4.git.window import GitWindow
 
 class GitModule(Module):
     def __init__(self):
-        super().__init__(_("Git"), ("preferences-git", "settings"), "📝", experimental=True)
+        super().__init__(_("Git"), ("preferences-git", "settings"), experimental=True)
 
     def _create_window(self) -> Gtk.Window:
         return GitWindow()

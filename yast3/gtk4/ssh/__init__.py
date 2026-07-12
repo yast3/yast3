@@ -17,7 +17,7 @@ from yast3.gtk4.ssh.window import SSHWindow
 
 class SSHClientModule(Module):
     def __init__(self):
-        super().__init__(_("SSH Client"), ("network-server", "network"), "🔐", experimental=True)
+        super().__init__(_("SSH Client"), ("network-server", "network"), experimental=True)
 
     def _create_window(self) -> Gtk.Window:
         return SSHWindow()

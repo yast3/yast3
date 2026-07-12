@@ -7,7 +7,7 @@ from yast3.qt6.snapshots.window import SnapshotsWindow
 
 class SnapshotsModule(Module):
     def __init__(self):
-        super().__init__(_("Snapshots"), ("camera-photo", "document-save"), "📸")
+        super().__init__(_("Snapshots"), ("camera-photo", "document-save"))
 
     def _create_window(self):
         return SnapshotsWindow()

@@ -7,7 +7,7 @@ from yast3.qt6.services.window import ServicesWindow
 
 class ServicesModule(Module):
     def __init__(self):
-        super().__init__(_("Services"), ("preferences-system-services", "system-run"), "🧰")
+        super().__init__(_("Services"), ("preferences-system-services", "system-run"))
 
     def _create_window(self):
         return ServicesWindow()

@@ -13,7 +13,7 @@ from yast3.gtk4.hostname.window import HostnameWindow
 
 class HostnameModule(Module):
     def __init__(self):
-        super().__init__(_("Hostname"), ("computer", "preferences-system-network"), "💻")
+        super().__init__(_("Hostname"), ("computer", "preferences-system-network"))
 
     def _create_window(self) -> Gtk.Window:
         return HostnameWindow()
