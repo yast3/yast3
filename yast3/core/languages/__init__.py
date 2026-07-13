@@ -30,6 +30,7 @@ from yast3.core.languages.locale_manager import (
     build_locale_remove_command,
     install_locale,
     uninstall_locale,
+    refresh_locale_cache,
 )
 
 __all__ = [
@@ -59,4 +60,5 @@ __all__ = [
     "build_locale_remove_command",
     "install_locale",
     "uninstall_locale",
+    "refresh_locale_cache",
 ]

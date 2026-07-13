@@ -6,7 +6,6 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QHBoxLayout,
     QHeaderView,
-    QLabel,
     QLineEdit,
     QMessageBox,
     QPushButton,
@@ -17,7 +16,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.core.languages import LocaleItem, get_locales_with_status, build_locale_install_command, build_locale_remove_command
+from yast3.core.languages import LocaleItem, get_locales_with_status, build_locale_install_command, build_locale_remove_command, refresh_locale_cache
 from yast3.qt6.command.action import CommandAction
 
 
@@ -31,16 +30,11 @@ class LocaleManager(QWidget):
         layout = QVBoxLayout(self)
         layout.setSpacing(8)
 
-        search_layout = QHBoxLayout()
-        search_label = QLabel(_("Search:"))
-        search_layout.addWidget(search_label)
-
         self.search_edit = QLineEdit()
-        self.search_edit.setPlaceholderText(_("Search by code or name..."))
+        self.search_edit.setPlaceholderText("Search")
+        self.search_edit.setClearButtonEnabled(True)
         self.search_edit.textChanged.connect(self._on_search_changed)
-        search_layout.addWidget(self.search_edit)
-
-        layout.addLayout(search_layout)
+        layout.addWidget(self.search_edit)
 
         button_layout = QHBoxLayout()
 
@@ -53,12 +47,6 @@ class LocaleManager(QWidget):
         self.uninstall_btn.clicked.connect(self.uninstall_selected)
         self.uninstall_btn.setEnabled(False)
         button_layout.addWidget(self.uninstall_btn)
-
-        button_layout.addStretch()
-
-        self.refresh_btn = QPushButton(_("Refresh"))
-        self.refresh_btn.clicked.connect(self.refresh_locales)
-        button_layout.addWidget(self.refresh_btn)
 
         layout.addLayout(button_layout)
 
@@ -135,6 +123,7 @@ class LocaleManager(QWidget):
 
     def _reload_after_action(self, success: bool, _error: str, _stdout: str) -> None:
         if success:
+            refresh_locale_cache()
             self.refresh_locales()
 
     def install_selected(self) -> None:

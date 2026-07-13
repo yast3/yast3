@@ -7,7 +7,7 @@ from yast3.tui.languages.window import LanguagesWindow
 
 class LanguagesModule(Module):
     def __init__(self):
-        super().__init__(_("Language"), "🌐")
+        super().__init__(_("Languages"), "🌐")
 
     def create_window(self):
         return LanguagesWindow()

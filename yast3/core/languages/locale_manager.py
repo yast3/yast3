@@ -4,15 +4,7 @@ from __future__ import annotations
 
 import subprocess
 from dataclasses import dataclass
-from pathlib import Path
 from typing import Literal
-
-import dotenv
-
-from yast3.core.languages import read_sysconfig_language
-
-
-SYSCONFIG_LANGUAGE_FILE = "/etc/sysconfig/language"
 
 
 @dataclass
@@ -161,37 +153,59 @@ ALL_LOCALES = [
 ]
 
 
+_installed_cache: set[str] | None = None
+
+
 def _read_installed_languages() -> set[str]:
-    """Read INSTALLED_LANGUAGES from /etc/sysconfig/language."""
+    """Read installed languages using 'zypper --no-refresh --non-interactive locales'."""
+    global _installed_cache
+    if _installed_cache is not None:
+        return _installed_cache
+    
     installed = set()
-    languages_str = read_sysconfig_language()
-    for lang in languages_str.replace(",", " ").split():
-        lang = lang.strip()
-        if lang:
-            installed.add(lang)
+    try:
+        result = subprocess.run(
+            ["zypper", "--no-refresh", "--non-interactive", "locales"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        if result.returncode == 0:
+            for line in result.stdout.strip().split("\n"):
+                if "|" in line and not line.startswith("---"):
+                    parts = line.split("|")
+                    if len(parts) >= 1:
+                        code = parts[0].strip()
+                        if code and code != "Code":
+                            installed.add(code)
+    except (FileNotFoundError, TimeoutError):
+        pass
+    
+    _installed_cache = installed
     return installed
 
 
-def _update_installed_languages(locale_code: str, add: bool) -> None:
-    """Update INSTALLED_LANGUAGES in /etc/sysconfig/language."""
-    installed = _read_installed_languages()
-    if add:
-        installed.add(locale_code)
-    else:
-        installed.discard(locale_code)
-    languages_str = " ".join(sorted(installed))
-    if Path(SYSCONFIG_LANGUAGE_FILE).exists():
-        try:
-            dotenv.set_key(SYSCONFIG_LANGUAGE_FILE, "INSTALLED_LANGUAGES", languages_str, quote_mode="always")
-        except (PermissionError, IOError):
-            pass
+def _invalidate_cache() -> None:
+    """Invalidate the installed languages cache."""
+    global _installed_cache
+    _installed_cache = None
+
+
+def refresh_locale_cache() -> None:
+    """Refresh the locale cache by invalidating it."""
+    _invalidate_cache()
+
+
+def _is_locale_installed(locale_code: str, installed_codes: set[str]) -> bool:
+    """Check if a locale is installed using exact matching."""
+    return locale_code in installed_codes
 
 
 def get_all_locales() -> list[LocaleItem]:
     """Get all available locales from the predefined list."""
     installed_codes = _read_installed_languages()
     locales = [
-        LocaleItem(code=code, name=name, installed=code in installed_codes)
+        LocaleItem(code=code, name=name, installed=_is_locale_installed(code, installed_codes))
         for code, name in ALL_LOCALES
     ]
     return sorted(locales, key=lambda x: (not x.installed, x.name))
@@ -203,7 +217,7 @@ def get_installed_locales() -> list[LocaleItem]:
     return [
         LocaleItem(code=code, name=name, installed=True)
         for code, name in ALL_LOCALES
-        if code in installed_codes
+        if _is_locale_installed(code, installed_codes)
     ]
 
 
@@ -233,7 +247,7 @@ def install_locale(locale_code: str) -> tuple[Literal["ok", "permission_denied",
         )
         
         if result.returncode == 0:
-            _update_installed_languages(locale_code, add=True)
+            _invalidate_cache()
             return ("ok", f"Locale '{locale_code}' installed successfully")
         elif result.returncode == 126 or result.returncode == 127:
             return ("pkexec_failed", "Authentication failed")
@@ -257,7 +271,7 @@ def uninstall_locale(locale_code: str) -> tuple[Literal["ok", "permission_denied
         )
         
         if result.returncode == 0:
-            _update_installed_languages(locale_code, add=False)
+            _invalidate_cache()
             return ("ok", f"Locale '{locale_code}' uninstalled successfully")
         elif result.returncode == 126 or result.returncode == 127:
             return ("pkexec_failed", "Authentication failed")

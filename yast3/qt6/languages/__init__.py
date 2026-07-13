@@ -7,7 +7,7 @@ from yast3.qt6.languages.window import LanguagesWindow
 
 class LanguagesModule(Module):
     def __init__(self):
-        super().__init__(_("Language"), ("language", "preferences-desktop-locale"))
+        super().__init__(_("Languages"), ("language", "preferences-desktop-locale"))
 
     def _create_window(self):
         return LanguagesWindow()
