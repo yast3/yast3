@@ -10,6 +10,7 @@ from PySide6.QtWidgets import (
     QMainWindow,
     QMessageBox,
     QPushButton,
+    QTabWidget,
     QVBoxLayout,
     QWidget,
     QCheckBox,
@@ -23,17 +24,13 @@ from yast3.core.languages import (
     save_language_settings,
     LanguageInfo,
 )
+from yast3.qt6.languages.locale_manager import LocaleManager
 
 
-class LanguagesWindow(QMainWindow):
-    closed = Signal()
-
-    def __init__(self):
-        super().__init__()
-
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
-        layout = QVBoxLayout(central_widget)
+class LanguageSettingsTab(QWidget):
+    def __init__(self, parent: QWidget | None = None):
+        super().__init__(parent)
+        layout = QVBoxLayout(self)
         layout.setSpacing(8)
 
         language_layout = QHBoxLayout()
@@ -65,7 +62,6 @@ class LanguagesWindow(QMainWindow):
         self._load_languages()
 
     def _load_languages(self) -> None:
-        """Load available languages and current settings."""
         try:
             languages_map = build_languages_map()
             self._language_info: dict[str, LanguageInfo] = languages_map
@@ -88,7 +84,6 @@ class LanguagesWindow(QMainWindow):
             QMessageBox.warning(self, _("Error"), _("Failed to load languages: {0}").format(str(e)))
 
     def save_language(self) -> None:
-        """Save the language settings."""
         lang_code = self.language_combo.currentData()
         use_utf8 = self.utf8_checkbox.isChecked()
 
@@ -106,7 +101,9 @@ class LanguagesWindow(QMainWindow):
                 _("Success"),
                 _("Language changed successfully to '{0}'. Changes will take effect after logout.").format(lang_name),
             )
-            self.close()
+            window = self.window()
+            if window:
+                window.close()
         elif status == "permission_denied":
             QMessageBox.critical(
                 self, _("Error"), _("Permission denied. Root permission required.")
@@ -120,7 +117,28 @@ class LanguagesWindow(QMainWindow):
                 self, _("Error"), _("Failed to set language: {0}").format(message)
             )
 
+
+class LanguagesWindow(QMainWindow):
+    closed = Signal()
+
+    def __init__(self):
+        super().__init__()
+
+        self.resize(640, 480)
+
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+        layout = QVBoxLayout(central_widget)
+
+        self.tab_widget = QTabWidget()
+        layout.addWidget(self.tab_widget)
+
+        self.settings_tab = LanguageSettingsTab()
+        self.tab_widget.addTab(self.settings_tab, _("Language"))
+
+        self.locale_tab = LocaleManager()
+        self.tab_widget.addTab(self.locale_tab, _("Locale Management"))
+
     def closeEvent(self, _event) -> None:
-        """Handle window close event to destroy the window."""
         self.closed.emit()
         self.deleteLater()

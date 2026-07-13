@@ -3,85 +3,30 @@
 from textual.app import ComposeResult
 from textual.containers import Horizontal, Vertical
 from textual.screen import Screen
-from textual.widgets import Button, Header, Label, Static, Select
-
-from yast3.core.i18n import _
-from yast3.core.languages import (
-    get_current_language,
-    get_use_utf8,
-    build_languages_map,
-    save_language_settings,
-    LanguageInfo,
-)
+from textual.widgets import Button, DataTable, Header, Input, Label, Static, Select, TabbedContent, TabPane
 
 
-class LanguagesWindow(Screen):
-    """TUI window for language configuration."""
-
-    CSS = """
-    Screen {
-        align: center middle;
-    }
-
-    .container {
-        width: 70;
-        height: auto;
-        padding: 2;
-        border: solid green;
-    }
-
-    .input-label {
-        width: 12;
-        content-align: right middle;
-        padding-right: 1;
-    }
-
-    .button-row {
-        align: right middle;
-        margin-top: 1;
-    }
-
-    .message {
-        margin-top: 1;
-        color: yellow;
-    }
-
-    .error {
-        color: red;
-    }
-
-    .success {
-        color: green;
-    }
-
-    Select {
-        width: 40;
-    }
-    """
-
-    BINDINGS = [
-        ("escape", "app.pop_screen", "Back"),
-        ("q", "app.pop_screen", "Back"),
-        ("ctrl+s", "save", "Save"),
-    ]
+class LanguageSettingsPane(TabPane):
+    def __init__(self):
+        super().__init__("Language", id="language-tab")
 
     def compose(self) -> ComposeResult:
-        yield Header()
-        with Vertical(classes="container"):
-            yield Label(_("Language Configuration"), classes="title")
+        with Vertical():
             with Horizontal():
-                yield Label(_("Language"), classes="input-label")
+                yield Label("Language", classes="input-label")
                 yield Select([], id="language-select")
             with Horizontal():
-                yield Label(_("Use UTF-8"), classes="input-label")
-                yield Static(_("Yes"), id="utf8-status")
+                yield Label("Use UTF-8", classes="input-label")
+                yield Static("Yes", id="utf8-status")
             with Horizontal(classes="button-row"):
-                yield Button(_("Save"), id="save-btn", variant="primary")
-                yield Button(_("Cancel"), id="cancel-btn")
+                yield Button("Save", id="save-btn", variant="primary")
+                yield Button("Cancel", id="cancel-btn")
             yield Static("", id="message", classes="message")
 
     def on_mount(self) -> None:
-        """Load current language settings on mount."""
+        from yast3.core.i18n import _
+        from yast3.core.languages import get_current_language, get_use_utf8, build_languages_map, LanguageInfo
+
         try:
             languages_map = build_languages_map()
             self._language_info: dict[str, LanguageInfo] = languages_map
@@ -101,10 +46,9 @@ class LanguagesWindow(Screen):
             utf8_status = get_use_utf8()
             self.query_one("#utf8-status", Static).update(_("Yes") if utf8_status else _("No"))
         except Exception as e:
-            self.show_message(_("Error: {0}").format(str(e)), error=True)
+            self.show_message(f"Error: {str(e)}", error=True)
 
     def show_message(self, message: str, error: bool = False, success: bool = False) -> None:
-        """Display a message to the user."""
         msg_widget = self.query_one("#message", Static)
         msg_widget.update(message)
         msg_widget.remove_class("error", "success")
@@ -114,14 +58,15 @@ class LanguagesWindow(Screen):
             msg_widget.add_class("success")
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
-        """Handle button press."""
         if event.button.id == "save-btn":
-            self.action_save()
+            self.save_language()
         elif event.button.id == "cancel-btn":
             self.app.pop_screen()
 
-    def action_save(self) -> None:
-        """Save the language settings."""
+    def save_language(self) -> None:
+        from yast3.core.i18n import _
+        from yast3.core.languages import save_language_settings
+
         lang_code = self.query_one("#language-select", Select).value
 
         if not lang_code:
@@ -150,3 +95,203 @@ class LanguagesWindow(Screen):
             )
         else:
             self.show_message(_("Error: {0}").format(message), error=True)
+
+
+class LocaleManagementPane(TabPane):
+    def __init__(self):
+        super().__init__("Locale Management", id="locale-tab")
+
+    def compose(self) -> ComposeResult:
+        with Vertical():
+            with Horizontal():
+                yield Label("Search:", classes="input-label")
+                yield Input(placeholder="Search by code or name...", id="search-input")
+            with Horizontal(classes="button-row"):
+                yield Button("Install", id="install-btn", variant="primary")
+                yield Button("Uninstall", id="uninstall-btn", variant="error")
+                yield Button("Refresh", id="refresh-btn")
+            yield DataTable(id="locale-table")
+            yield Static("", id="message", classes="message")
+
+    def on_mount(self) -> None:
+        self.refresh_locales()
+
+    def _filter_locales(self, search_text: str) -> None:
+        search_text = search_text.lower().strip()
+
+        if not search_text:
+            filtered = self._all_locales
+        else:
+            filtered = [
+                loc for loc in self._all_locales
+                if search_text in loc.code.lower() or search_text in loc.name.lower()
+            ]
+
+        self._locales = filtered
+        table = self.query_one("#locale-table", DataTable)
+        table.clear()
+        table.add_columns("Code", "Name", "Status")
+
+        for loc in filtered:
+            status = "Installed" if loc.installed else "Not Installed"
+            table.add_row(loc.code, loc.name, status)
+
+        self.query_one("#message", Static).update("")
+
+    def on_input_changed(self, event: Input.Changed) -> None:
+        if event.input.id == "search-input":
+            self._filter_locales(event.value)
+
+    def refresh_locales(self) -> None:
+        from yast3.core.languages import get_locales_with_status
+
+        try:
+            self._all_locales = get_locales_with_status()
+            search_input = self.query_one("#search-input", Input)
+            self._filter_locales(search_input.value)
+        except Exception as e:
+            self.show_message(f"Error: {str(e)}", error=True)
+
+    def show_message(self, message: str, error: bool = False, success: bool = False) -> None:
+        msg_widget = self.query_one("#message", Static)
+        msg_widget.update(message)
+        msg_widget.remove_class("error", "success")
+        if error:
+            msg_widget.add_class("error")
+        elif success:
+            msg_widget.add_class("success")
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        if event.button.id == "install-btn":
+            self.install_selected()
+        elif event.button.id == "uninstall-btn":
+            self.uninstall_selected()
+        elif event.button.id == "refresh-btn":
+            self.refresh_locales()
+
+    def install_selected(self) -> None:
+        table = self.query_one("#locale-table", DataTable)
+        selected_rows = table.cursor_row
+
+        if selected_rows is None:
+            self.show_message("Error: Please select a locale to install.", error=True)
+            return
+
+        loc = self._locales[selected_rows]
+        if loc.installed:
+            self.show_message("Error: Locale is already installed.", error=True)
+            return
+
+        self._perform_install(loc)
+
+    def uninstall_selected(self) -> None:
+        table = self.query_one("#locale-table", DataTable)
+        selected_rows = table.cursor_row
+
+        if selected_rows is None:
+            self.show_message("Error: Please select a locale to uninstall.", error=True)
+            return
+
+        loc = self._locales[selected_rows]
+        if not loc.installed:
+            self.show_message("Error: Locale is not installed.", error=True)
+            return
+
+        self._perform_uninstall(loc)
+
+    def _perform_install(self, loc) -> None:
+        from yast3.core.languages import install_locale
+
+        status, message = install_locale(loc.code)
+
+        if status == "ok":
+            self.show_message(f"Success: {message}", success=True)
+            self.refresh_locales()
+        elif status == "pkexec_failed":
+            self.show_message("Error: Authentication failed.", error=True)
+        else:
+            self.show_message(f"Error: {message}", error=True)
+
+    def _perform_uninstall(self, loc) -> None:
+        from yast3.core.languages import uninstall_locale
+
+        status, message = uninstall_locale(loc.code)
+
+        if status == "ok":
+            self.show_message(f"Success: {message}", success=True)
+            self.refresh_locales()
+        elif status == "pkexec_failed":
+            self.show_message("Error: Authentication failed.", error=True)
+        else:
+            self.show_message(f"Error: {message}", error=True)
+
+
+class LanguagesWindow(Screen):
+    CSS = """
+    Screen {
+        align: center middle;
+    }
+
+    .container {
+        width: 80;
+        height: 40;
+        padding: 2;
+        border: solid green;
+    }
+
+    .input-label {
+        width: 12;
+        content-align: right middle;
+        padding-right: 1;
+    }
+
+    .button-row {
+        align: right middle;
+        margin-top: 1;
+    }
+
+    .message {
+        margin-top: 1;
+        color: yellow;
+        height: 3;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .success {
+        color: green;
+    }
+
+    Select {
+        width: 40;
+    }
+
+    Input {
+        width: 40;
+    }
+
+    DataTable {
+        height: 100%;
+    }
+
+    TabbedContent {
+        height: 100%;
+        width: 100%;
+    }
+    """
+
+    BINDINGS = [
+        ("escape", "app.pop_screen", "Back"),
+        ("q", "app.pop_screen", "Back"),
+    ]
+
+    def compose(self) -> ComposeResult:
+        yield Header()
+        with Vertical(classes="container"):
+            yield Label("Language Configuration", classes="title")
+            yield TabbedContent(
+                LanguageSettingsPane(),
+                LocaleManagementPane(),
+            )

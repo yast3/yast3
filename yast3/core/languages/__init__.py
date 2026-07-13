@@ -21,6 +21,15 @@ from yast3.core.languages.languages import (
     save_language_settings,
 )
 
+from yast3.core.languages.locale_manager import (
+    LocaleItem,
+    get_all_locales,
+    get_installed_locales,
+    get_locales_with_status,
+    install_locale,
+    uninstall_locale,
+)
+
 __all__ = [
     "DEFAULT_FALLBACK_LANGUAGE",
     "LanguageInfo",
@@ -40,4 +49,10 @@ __all__ = [
     "is_fbiterm",
     "is_supported_language",
     "save_language_settings",
+    "LocaleItem",
+    "get_all_locales",
+    "get_installed_locales",
+    "get_locales_with_status",
+    "install_locale",
+    "uninstall_locale",
 ]
