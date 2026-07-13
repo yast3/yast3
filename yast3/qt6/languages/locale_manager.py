@@ -17,7 +17,7 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.core.languages import LocaleItem, get_locales_with_status
+from yast3.core.languages import LocaleItem, get_locales_with_status, build_locale_install_command, build_locale_remove_command
 from yast3.qt6.command.action import CommandAction
 
 
@@ -158,7 +158,7 @@ class LocaleManager(QWidget):
             text=_("Install"),
             running_text=_("Installing..."),
             dialog_title=_("Install Locale"),
-            command=["pkexec", "zypper", "--no-refresh", "addlocale", locale_code],
+            command=build_locale_install_command(locale_code),
             success_output=_("Locale '{0}' installed successfully.").format(locale_name),
             parent=self,
         )
@@ -186,7 +186,7 @@ class LocaleManager(QWidget):
             text=_("Uninstall"),
             running_text=_("Uninstalling..."),
             dialog_title=_("Uninstall Locale"),
-            command=["pkexec", "zypper", "--no-refresh", "removelocale", locale_code],
+            command=build_locale_remove_command(locale_code),
             success_output=_("Locale '{0}' uninstalled successfully.").format(locale_name),
             parent=self,
         )

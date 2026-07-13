@@ -212,11 +212,21 @@ def get_locales_with_status() -> list[LocaleItem]:
     return get_all_locales()
 
 
+def build_locale_install_command(locale_code: str) -> list[str]:
+    """Build command for installing a locale."""
+    return ["pkexec", "zypper", "--no-refresh", "--non-interactive", "addlocale", locale_code]
+
+
+def build_locale_remove_command(locale_code: str) -> list[str]:
+    """Build command for removing a locale."""
+    return ["pkexec", "zypper", "--no-refresh", "--non-interactive", "removelocale", locale_code]
+
+
 def install_locale(locale_code: str) -> tuple[Literal["ok", "permission_denied", "pkexec_failed", "error"], str]:
     """Install a locale using 'pkexec zypper addlocale'."""
     try:
         result = subprocess.run(
-            ["pkexec", "zypper", "--no-refresh", "addlocale", locale_code],
+            build_locale_install_command(locale_code),
             capture_output=True,
             text=True,
             timeout=120,
@@ -240,7 +250,7 @@ def uninstall_locale(locale_code: str) -> tuple[Literal["ok", "permission_denied
     """Uninstall a locale using 'pkexec zypper removelocale'."""
     try:
         result = subprocess.run(
-            ["pkexec", "zypper", "--no-refresh", "removelocale", locale_code],
+            build_locale_remove_command(locale_code),
             capture_output=True,
             text=True,
             timeout=120,

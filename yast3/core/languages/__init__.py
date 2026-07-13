@@ -26,6 +26,8 @@ from yast3.core.languages.locale_manager import (
     get_all_locales,
     get_installed_locales,
     get_locales_with_status,
+    build_locale_install_command,
+    build_locale_remove_command,
     install_locale,
     uninstall_locale,
 )
@@ -53,6 +55,8 @@ __all__ = [
     "get_all_locales",
     "get_installed_locales",
     "get_locales_with_status",
+    "build_locale_install_command",
+    "build_locale_remove_command",
     "install_locale",
     "uninstall_locale",
 ]
