@@ -11,8 +11,8 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.qt6.ssh.hosts import HostsTab
-from yast3.qt6.ssh.keys import KeysTab
+from yast3.qt6.ssh.hosts_tab import HostsTab
+from yast3.qt6.ssh.keys_tab import KeysTab
 
 
 class SSHWindow(QMainWindow):

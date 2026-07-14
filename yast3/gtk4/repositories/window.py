@@ -15,7 +15,8 @@ from yast3.core.repositories import (
     switch_mirror,
 )
 from yast3.gtk4.repositories.import_repo_button import ImportRepoButton
-from yast3.gtk4.repositories.dialogs import RepoEditDialog, SwitchMirrorDialog
+from yast3.gtk4.repositories.repo_edit_dialog import RepoEditDialog
+from yast3.gtk4.repositories.switch_mirror_dialog import SwitchMirrorDialog
 
 
 class RepositoriesWindow(Gtk.ApplicationWindow):

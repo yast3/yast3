@@ -7,8 +7,8 @@ gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk
 
 from yast3.core.i18n import _
-from yast3.gtk4.ssh.keys.generate_dialog import GenerateKeyDialog
-from yast3.gtk4.ssh.keys.manager import KeyInfo, KeyManager
+from yast3.gtk4.ssh.keys_generate_dialog import GenerateKeyDialog
+from yast3.gtk4.ssh.keys_manager import KeyInfo, KeyManager
 
 
 class KeysTab(Gtk.Box):

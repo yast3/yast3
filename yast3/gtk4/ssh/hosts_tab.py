@@ -9,7 +9,7 @@ from gi.repository import Gtk
 from yast3.core.i18n import _
 from yast3.core.ssh import SSHConfigEntry
 from yast3.gtk4.ssh.dialogs import SSHEditDialog
-from yast3.gtk4.ssh.hosts.manager import HostManager
+from yast3.gtk4.ssh.hosts_manager import HostManager
 
 
 class HostsTab(Gtk.Box):

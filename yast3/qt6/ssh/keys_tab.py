@@ -15,8 +15,8 @@ from PySide6.QtWidgets import (
 )
 
 from yast3.core.i18n import _
-from yast3.qt6.ssh.keys.generate_dialog import GenerateKeyDialog
-from yast3.qt6.ssh.keys.manager import KeyInfo, KeyManager
+from yast3.qt6.ssh.keys_generate_dialog import GenerateKeyDialog
+from yast3.qt6.ssh.keys_manager import KeyInfo, KeyManager
 
 
 class KeysTab(QWidget):

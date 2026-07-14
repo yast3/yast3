@@ -7,8 +7,8 @@ gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk
 
 from yast3.core.i18n import _
-from yast3.gtk4.ssh.hosts import HostsTab
-from yast3.gtk4.ssh.keys import KeysTab
+from yast3.gtk4.ssh.hosts_tab import HostsTab
+from yast3.gtk4.ssh.keys_tab import KeysTab
 
 
 class SSHWindow(Gtk.ApplicationWindow):
