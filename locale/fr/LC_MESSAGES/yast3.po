@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-14 04:10+0000\n"
+"POT-Creation-Date: 2026-07-14 06:39+0000\n"
 "PO-Revision-Date: 2026-06-27 00:51+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -17,6 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
+
+#: yast3/gtk4/about_dialog.py:22
+#, fuzzy
+msgid "GitHub"
+msgstr "Git"
+
+#: yast3/gtk4/main_window.py:87 yast3/qt6/main_window.py:56
+#: yast3/tui/main_window.py:125
+msgid "About"
+msgstr ""
 
 #: yast3/gtk4/module.py:33 yast3/qt6/module.py:29
 #, fuzzy, python-brace-format
@@ -91,8 +101,8 @@ msgstr "Annuler"
 #: yast3/gtk4/repositories/switch_mirror_dialog.py:25
 #: yast3/gtk4/snapshots/config_dialog.py:186 yast3/gtk4/ssh/dialogs.py:28
 #: yast3/gtk4/ssh/dialogs.py:146 yast3/tui/cron/window.py:323
-#: yast3/tui/hosts/window.py:272 yast3/tui/repositories/window.py:354
-#: yast3/tui/repositories/window.py:483
+#: yast3/tui/hosts/window.py:272 yast3/tui/main_window.py:74
+#: yast3/tui/repositories/window.py:354 yast3/tui/repositories/window.py:483
 #: yast3/tui/snapshots/config_screen.py:111 yast3/tui/ssh/window.py:525
 #: yast3/tui/ssh/window.py:625
 msgid "OK"
@@ -2123,6 +2133,24 @@ msgstr "Key deleted successfully."
 msgid "Keys"
 msgstr "Keys"
 
+#: yast3/qt6/about_dialog.py:14 yast3/tui/main_window.py:68
+#, fuzzy, python-brace-format
+msgid "Version: {}"
+msgstr "Version"
+
+#: yast3/qt6/about_dialog.py:15 yast3/tui/main_window.py:69
+#, fuzzy, python-brace-format
+msgid "License: {}"
+msgstr "Fuseau horaire"
+
+#: yast3/qt6/about_dialog.py:19 yast3/tui/main_window.py:65
+msgid "About YaST3"
+msgstr ""
+
+#: yast3/qt6/main_window.py:55
+msgid "Help"
+msgstr ""
+
 #: yast3/qt6/datetime/window.py:154
 #, fuzzy, python-brace-format
 msgid "Failed to load hardware clock setting: {0}"
@@ -2270,6 +2298,15 @@ msgstr "Échec de la lecture de la clé publique : {0}"
 #, python-brace-format
 msgid "Failed to generate SSH key: {0}"
 msgstr "Échec de la génération de la clé SSH : {0}"
+
+#: yast3/tui/main_window.py:63
+#, fuzzy, python-brace-format
+msgid "License file not found."
+msgstr "La langue '{0}' n'a pas été trouvée."
+
+#: yast3/tui/main_window.py:71
+msgid "License Text:"
+msgstr ""
 
 #: yast3/tui/cron/window.py:211
 msgid "Cron job deleted."

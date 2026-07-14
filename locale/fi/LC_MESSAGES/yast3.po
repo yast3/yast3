@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-14 04:10+0000\n"
+"POT-Creation-Date: 2026-07-14 06:39+0000\n"
 "PO-Revision-Date: 2026-07-14 11:53+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fi\n"
@@ -18,31 +18,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
+#: yast3/gtk4/about_dialog.py:22
+msgid "GitHub"
+msgstr "GitHub"
+
+#: yast3/gtk4/main_window.py:87 yast3/qt6/main_window.py:56
+#: yast3/tui/main_window.py:125
+msgid "About"
+msgstr "Tietoja"
+
 #: yast3/gtk4/module.py:33 yast3/qt6/module.py:29
 #, python-brace-format
 msgid "{name} — YaST3"
-msgstr ""
+msgstr "{name} — YaST3"
 
 #: yast3/gtk4/module_button.py:51 yast3/qt6/module_button.py:43
 msgid "Experimental"
-msgstr ""
+msgstr "Kokeellinen"
 
 #: yast3/gtk4/command/dialog.py:30 yast3/qt6/command/dialog.py:30
 msgid "Running command, please wait..."
-msgstr ""
+msgstr "Suoritetaan komentoa, odota..."
 
 #: yast3/gtk4/command/dialog.py:53 yast3/qt6/command/dialog.py:44
 #: yast3/tui/packages/window.py:42 yast3/tui/services/window.py:362
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 
 #: yast3/gtk4/command/dialog.py:80 yast3/qt6/command/dialog.py:60
 msgid "Command completed successfully."
-msgstr ""
+msgstr "Komento suoritettiin onnistuneesti."
 
 #: yast3/gtk4/command/dialog.py:82 yast3/qt6/command/dialog.py:62
 msgid "Command failed. See output for details."
-msgstr ""
+msgstr "Komento epäonnistui. Katso tulosteet lisätiedoille."
 
 #: yast3/gtk4/command/worker.py:55 yast3/gtk4/flatpak/settings.py:51
 #: yast3/gtk4/flatpak/window.py:92 yast3/gtk4/snapshots/window.py:209
@@ -51,22 +60,22 @@ msgstr ""
 #: yast3/tui/services/window.py:284 yast3/tui/snapshots/window.py:120
 #: yast3/tui/snapshots/window.py:212 yast3/tui/snapshots/window.py:239
 msgid "Unknown error"
-msgstr ""
+msgstr "Tuntematon virhe"
 
 #: yast3/gtk4/cron/__init__.py:16 yast3/qt6/cron/__init__.py:12
 #: yast3/tui/cron/__init__.py:12
 msgid "Cron"
-msgstr ""
+msgstr "Cron"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:20 yast3/qt6/cron/cron_edit_dialog.py:33
 #: yast3/tui/cron/window.py:193
 msgid "Edit Cron Job"
-msgstr ""
+msgstr "Muokkaa Cron-tehtävää"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:20 yast3/qt6/cron/cron_edit_dialog.py:33
 #: yast3/tui/cron/window.py:179
 msgid "Add Cron Job"
-msgstr ""
+msgstr "Lisää Cron-tehtävä"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:29
 #: yast3/gtk4/flatpak/remote_manager.py:172
@@ -82,7 +91,7 @@ msgstr ""
 #: yast3/tui/snapshots/config_screen.py:110 yast3/tui/ssh/window.py:526
 #: yast3/tui/ssh/window.py:626
 msgid "Cancel"
-msgstr ""
+msgstr "Peru"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:30
 #: yast3/gtk4/flatpak/remote_manager.py:173
@@ -91,73 +100,73 @@ msgstr ""
 #: yast3/gtk4/repositories/switch_mirror_dialog.py:25
 #: yast3/gtk4/snapshots/config_dialog.py:186 yast3/gtk4/ssh/dialogs.py:28
 #: yast3/gtk4/ssh/dialogs.py:146 yast3/tui/cron/window.py:323
-#: yast3/tui/hosts/window.py:272 yast3/tui/repositories/window.py:354
-#: yast3/tui/repositories/window.py:483
+#: yast3/tui/hosts/window.py:272 yast3/tui/main_window.py:74
+#: yast3/tui/repositories/window.py:354 yast3/tui/repositories/window.py:483
 #: yast3/tui/snapshots/config_screen.py:111 yast3/tui/ssh/window.py:525
 #: yast3/tui/ssh/window.py:625
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:43 yast3/gtk4/cron/manager.py:82
 #: yast3/qt6/cron/cron_edit_dialog.py:42 yast3/qt6/cron/manager.py:71
 #: yast3/tui/cron/window.py:117 yast3/tui/cron/window.py:295
 msgid "Minute"
-msgstr ""
+msgstr "Minuutti"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:43 yast3/qt6/cron/cron_edit_dialog.py:41
 msgid "0-59 or *"
-msgstr ""
+msgstr "0-59 tai *"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:44 yast3/gtk4/cron/manager.py:88
 #: yast3/qt6/cron/cron_edit_dialog.py:46 yast3/qt6/cron/manager.py:72
 #: yast3/tui/cron/window.py:117 yast3/tui/cron/window.py:299
 msgid "Hour"
-msgstr ""
+msgstr "Tunti"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:44 yast3/qt6/cron/cron_edit_dialog.py:45
 msgid "0-23 or *"
-msgstr ""
+msgstr "0-23 tai *"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:45 yast3/gtk4/cron/manager.py:94
 #: yast3/qt6/cron/cron_edit_dialog.py:50 yast3/qt6/cron/manager.py:73
 #: yast3/tui/cron/window.py:117 yast3/tui/cron/window.py:303
 msgid "Day"
-msgstr ""
+msgstr "Päivä"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:45 yast3/qt6/cron/cron_edit_dialog.py:49
 msgid "1-31 or *"
-msgstr ""
+msgstr "1-31 tai *"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:46 yast3/gtk4/cron/manager.py:100
 #: yast3/qt6/cron/cron_edit_dialog.py:54 yast3/qt6/cron/manager.py:74
 #: yast3/tui/cron/window.py:117 yast3/tui/cron/window.py:307
 msgid "Month"
-msgstr ""
+msgstr "Kuukausi"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:46 yast3/qt6/cron/cron_edit_dialog.py:53
 msgid "1-12 or *"
-msgstr ""
+msgstr "1-12 tai *"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:47 yast3/gtk4/cron/manager.py:106
 #: yast3/qt6/cron/cron_edit_dialog.py:58 yast3/qt6/cron/manager.py:75
 #: yast3/tui/cron/window.py:117 yast3/tui/cron/window.py:311
 msgid "Weekday"
-msgstr ""
+msgstr "Viikonpäivä"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:47 yast3/qt6/cron/cron_edit_dialog.py:57
 msgid "0-7 or *"
-msgstr ""
+msgstr "0-7 tai *"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:49 yast3/gtk4/cron/manager.py:112
 #: yast3/qt6/cron/cron_edit_dialog.py:62 yast3/qt6/cron/manager.py:76
 #: yast3/tui/cron/window.py:117 yast3/tui/cron/window.py:315
 msgid "Command"
-msgstr ""
+msgstr "Komento"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:53 yast3/qt6/cron/cron_edit_dialog.py:61
 #: yast3/tui/cron/window.py:317
 msgid "Command to execute"
-msgstr ""
+msgstr "Suoritettava komento"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:57 yast3/gtk4/cron/manager.py:117
 #: yast3/gtk4/hosts/window.py:97 yast3/gtk4/ssh/keys_generate_dialog.py:65
@@ -168,18 +177,18 @@ msgstr ""
 #: yast3/tui/hosts/window.py:269 yast3/tui/ssh/window.py:293
 #: yast3/tui/ssh/window.py:622
 msgid "Comment"
-msgstr ""
+msgstr "Kommentti"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:61 yast3/qt6/cron/cron_edit_dialog.py:66
 #: yast3/tui/cron/window.py:321 yast3/tui/ssh/window.py:623
 msgid "Optional comment"
-msgstr ""
+msgstr "Vapaaehtoinen kommentti"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:91
 #: yast3/gtk4/cron/cron_edit_dialog.py:106
 #: yast3/qt6/cron/cron_edit_dialog.py:93 yast3/qt6/cron/cron_edit_dialog.py:99
 msgid "Suggestions"
-msgstr ""
+msgstr "Ehdotukset"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:128 yast3/gtk4/cron/manager.py:251
 #: yast3/gtk4/datetime/window.py:178 yast3/gtk4/datetime/window.py:227
@@ -270,12 +279,12 @@ msgstr ""
 #: yast3/qt6/ssh/keys_generate_dialog.py:242 yast3/qt6/ssh/keys_tab.py:177
 #: yast3/qt6/ssh/keys_tab.py:217
 msgid "Error"
-msgstr ""
+msgstr "Virhe"
 
 #: yast3/gtk4/cron/cron_edit_dialog.py:130
 #: yast3/qt6/cron/cron_edit_dialog.py:111
 msgid "Command cannot be empty"
-msgstr ""
+msgstr "Komento ei voi olla tyhjä"
 
 #: yast3/gtk4/cron/manager.py:40 yast3/gtk4/flatpak/remote_manager.py:28
 #: yast3/gtk4/hosts/window.py:33 yast3/gtk4/repositories/window.py:40
@@ -287,7 +296,7 @@ msgstr ""
 #: yast3/tui/cron/window.py:79 yast3/tui/hosts/window.py:69
 #: yast3/tui/repositories/window.py:70 yast3/tui/ssh/window.py:259
 msgid "Add"
-msgstr ""
+msgstr "Lisää"
 
 #: yast3/gtk4/cron/manager.py:44 yast3/gtk4/flatpak/remote_manager.py:32
 #: yast3/gtk4/flatpak/remote_manager.py:233 yast3/gtk4/hosts/window.py:37
@@ -298,7 +307,7 @@ msgstr ""
 #: yast3/tui/cron/window.py:80 yast3/tui/hosts/window.py:70
 #: yast3/tui/repositories/window.py:71 yast3/tui/ssh/window.py:260
 msgid "Edit"
-msgstr ""
+msgstr "Muokkaa"
 
 #: yast3/gtk4/cron/manager.py:49 yast3/gtk4/flatpak/remote_manager.py:36
 #: yast3/gtk4/hosts/window.py:41 yast3/gtk4/repositories/window.py:51
@@ -313,7 +322,7 @@ msgstr ""
 #: yast3/tui/snapshots/window.py:72 yast3/tui/ssh/window.py:261
 #: yast3/tui/ssh/window.py:269
 msgid "Delete"
-msgstr ""
+msgstr "Poista"
 
 #: yast3/gtk4/cron/manager.py:57 yast3/gtk4/datetime/window.py:157
 #: yast3/gtk4/git/window.py:70 yast3/gtk4/hostname/window.py:48
@@ -328,7 +337,7 @@ msgstr ""
 #: yast3/tui/hosts/window.py:72 yast3/tui/proxy/window.py:91
 #: yast3/tui/ssh/window.py:262
 msgid "Save"
-msgstr ""
+msgstr "Tallenna"
 
 #: yast3/gtk4/cron/manager.py:76 yast3/gtk4/hosts/window.py:76
 #: yast3/gtk4/repositories/repo_edit_dialog.py:38
@@ -340,7 +349,7 @@ msgstr ""
 #: yast3/tui/repositories/window.py:349 yast3/tui/services/window.py:126
 #: yast3/tui/ssh/window.py:288
 msgid "Enabled"
-msgstr ""
+msgstr "Käytössä"
 
 #: yast3/gtk4/cron/manager.py:187 yast3/gtk4/cron/manager.py:217
 #: yast3/gtk4/flatpak/package_manager.py:299
@@ -369,17 +378,17 @@ msgstr ""
 #: yast3/qt6/snapshots/window.py:175 yast3/qt6/snapshots/window.py:191
 #: yast3/qt6/ssh/hosts_tab.py:148 yast3/qt6/ssh/hosts_tab.py:169
 msgid "Information"
-msgstr ""
+msgstr "Informaatio"
 
 #: yast3/gtk4/cron/manager.py:187 yast3/qt6/cron/manager.py:161
 #: yast3/tui/cron/window.py:186
 msgid "Please select a cron job to edit."
-msgstr ""
+msgstr "Valitse muokattava cron-tehtävä."
 
 #: yast3/gtk4/cron/manager.py:217 yast3/qt6/cron/manager.py:179
 #: yast3/tui/cron/window.py:205
 msgid "Please select a cron job to delete."
-msgstr ""
+msgstr "Valitse poistettava cron-tehtävä."
 
 #: yast3/gtk4/cron/manager.py:225 yast3/gtk4/flatpak/package_manager.py:338
 #: yast3/gtk4/flatpak/remote_manager.py:132
@@ -397,11 +406,11 @@ msgstr ""
 #: yast3/qt6/repositories/window.py:289 yast3/qt6/ssh/hosts_tab.py:181
 #: yast3/qt6/ssh/keys_generate_dialog.py:184
 msgid "Confirm"
-msgstr ""
+msgstr "Vahvista"
 
 #: yast3/gtk4/cron/manager.py:227 yast3/qt6/cron/manager.py:183
 msgid "Are you sure you want to delete this cron job?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa tämän cron-tehtävän?"
 
 #: yast3/gtk4/cron/manager.py:249 yast3/gtk4/datetime/window.py:229
 #: yast3/gtk4/datetime/window.py:235 yast3/gtk4/flatpak/package_manager.py:314
@@ -429,11 +438,11 @@ msgstr ""
 #: yast3/qt6/ssh/hosts_tab.py:222 yast3/qt6/ssh/keys_generate_dialog.py:232
 #: yast3/qt6/ssh/keys_tab.py:174 yast3/qt6/ssh/keys_tab.py:221
 msgid "Success"
-msgstr ""
+msgstr "Onnistui"
 
 #: yast3/gtk4/cron/manager.py:249 yast3/qt6/cron/manager.py:229
 msgid "Cron jobs saved successfully."
-msgstr ""
+msgstr "Cron-tehtävät tallennettiin onnistuneesti."
 
 #: yast3/gtk4/cron/manager.py:251 yast3/gtk4/datetime/window.py:238
 #: yast3/gtk4/hostname/window.py:108 yast3/gtk4/languages/settings.py:145
@@ -441,7 +450,7 @@ msgstr ""
 #: yast3/qt6/datetime/window.py:211 yast3/qt6/hostname/window.py:130
 #: yast3/qt6/languages/settings.py:144 yast3/qt6/proxy/window.py:117
 msgid "Permission denied. Root permission required."
-msgstr ""
+msgstr "Ei oikeuksia. Tarvitaan root-oikeudet."
 
 #: yast3/gtk4/cron/window.py:31 yast3/gtk4/flatpak/remote_manager.py:189
 #: yast3/gtk4/git/window.py:46 yast3/gtk4/services/window.py:68
@@ -453,7 +462,7 @@ msgstr ""
 #: yast3/tui/services/window.py:95 yast3/tui/services/window.py:188
 #: yast3/tui/snapshots/window.py:86 yast3/tui/ssh/window.py:519
 msgid "User"
-msgstr ""
+msgstr "Käyttäjä"
 
 #: yast3/gtk4/cron/window.py:35 yast3/gtk4/flatpak/remote_manager.py:188
 #: yast3/gtk4/services/window.py:67 yast3/gtk4/services/window.py:225
@@ -462,70 +471,70 @@ msgstr ""
 #: yast3/tui/cron/window.py:72 yast3/tui/services/window.py:94
 #: yast3/tui/services/window.py:188
 msgid "System"
-msgstr ""
+msgstr "Järjestelmä"
 
 #: yast3/gtk4/datetime/__init__.py:16 yast3/qt6/datetime/__init__.py:12
 #: yast3/tui/datetime/__init__.py:10
 msgid "Date & Time"
-msgstr ""
+msgstr "Päivämäärä ja aika"
 
 #: yast3/gtk4/datetime/window.py:47 yast3/gtk4/datetime/window.py:58
 #: yast3/qt6/datetime/window.py:63 yast3/tui/datetime/window.py:97
 msgid "Timezone"
-msgstr ""
+msgstr "Aikavyöhyke"
 
 #: yast3/gtk4/datetime/window.py:73
 msgid "Search timezone..."
-msgstr ""
+msgstr "Etsi aikavyöhyke..."
 
 #: yast3/gtk4/datetime/window.py:84 yast3/tui/datetime/window.py:102
 msgid "Hardware Clock"
-msgstr ""
+msgstr "Koneaika"
 
 #: yast3/gtk4/datetime/window.py:97 yast3/qt6/datetime/window.py:83
 #: yast3/tui/datetime/window.py:103
 msgid "Set hardware clock to UTC"
-msgstr ""
+msgstr "Aseta koneaika UTC:ksi"
 
 #: yast3/gtk4/datetime/window.py:108 yast3/tui/datetime/window.py:106
 msgid "NTP Synchronization"
-msgstr ""
+msgstr "NTP-synkronointi"
 
 #: yast3/gtk4/datetime/window.py:119 yast3/qt6/datetime/window.py:97
 #: yast3/tui/datetime/window.py:107
 msgid "Enable NTP synchronization"
-msgstr ""
+msgstr "Ota NTP-synkronointi käyttöön"
 
 #: yast3/gtk4/datetime/window.py:126 yast3/qt6/datetime/window.py:105
 #: yast3/tui/datetime/window.py:109
 msgid "NTP Servers"
-msgstr ""
+msgstr "NTP-palvelimet"
 
 #: yast3/gtk4/datetime/window.py:132 yast3/qt6/datetime/window.py:110
 msgid "Enter NTP servers separated by spaces"
-msgstr ""
+msgstr "Syötä NTP-palvelimet välilyönnein eroteltuna"
 
 #: yast3/gtk4/datetime/window.py:139 yast3/qt6/datetime/window.py:118
 #: yast3/tui/datetime/window.py:112
 msgid "Sync Now"
-msgstr ""
+msgstr "Synkronoi nyt"
 
 #: yast3/gtk4/datetime/window.py:178 yast3/qt6/datetime/window.py:148
 #, python-brace-format
 msgid "Failed to load timezone: {0}"
-msgstr ""
+msgstr "Aikavyöhykkeen lataaminen epäonnistui: {0}"
 
 #: yast3/gtk4/datetime/window.py:202 yast3/qt6/datetime/window.py:175
 #: yast3/tui/datetime/window.py:226
 #, python-brace-format
 msgid "Timezone: {0}"
-msgstr ""
+msgstr "Aikavyöhyke: {0}"
 
 #: yast3/gtk4/datetime/window.py:207 yast3/qt6/datetime/window.py:180
 #: yast3/tui/datetime/window.py:231
 #, python-brace-format
 msgid "Hardware clock: {0}"
-msgstr ""
+msgstr "Koneaika: {0}"
 
 #: yast3/gtk4/datetime/window.py:218 yast3/gtk4/datetime/window.py:220
 #: yast3/gtk4/datetime/window.py:224 yast3/qt6/datetime/window.py:191
@@ -534,12 +543,12 @@ msgstr ""
 #: yast3/tui/datetime/window.py:248
 #, python-brace-format
 msgid "NTP: {0}"
-msgstr ""
+msgstr "NTP: {0}"
 
 #: yast3/gtk4/datetime/window.py:229 yast3/qt6/datetime/window.py:202
 #: yast3/tui/datetime/window.py:253
 msgid "All settings saved successfully."
-msgstr ""
+msgstr "Kaikki asetukset tallennettiin onnistuneesti."
 
 #: yast3/gtk4/datetime/window.py:240 yast3/gtk4/hostname/window.py:110
 #: yast3/gtk4/hosts/window.py:252 yast3/gtk4/languages/settings.py:147
@@ -547,41 +556,41 @@ msgstr ""
 #: yast3/qt6/hostname/window.py:134 yast3/qt6/hosts/window.py:275
 #: yast3/qt6/languages/settings.py:148
 msgid "Authentication failed or pkexec not available."
-msgstr ""
+msgstr "Tunnistautuminen epäonnistui tai pkexec ei ole saatavilla."
 
 #: yast3/gtk4/flatpak/__init__.py:16 yast3/qt6/flatpak/__init__.py:10
 msgid "Flatpak"
-msgstr ""
+msgstr "Flatpak"
 
 #: yast3/gtk4/flatpak/install_action.py:20
 #: yast3/gtk4/flatpak/install_action.py:22
 #: yast3/qt6/flatpak/install_action.py:16
 #: yast3/qt6/flatpak/install_action.py:18
 msgid "Install Flatpak"
-msgstr ""
+msgstr "Asenna Flatpak"
 
 #: yast3/gtk4/flatpak/install_action.py:21
 #: yast3/qt6/flatpak/install_action.py:17
 msgid "Installing Flatpak..."
-msgstr ""
+msgstr "Asennetään Flatpak..."
 
 #: yast3/gtk4/flatpak/install_action.py:24 yast3/gtk4/flatpak/window.py:86
 #: yast3/qt6/flatpak/install_action.py:20 yast3/qt6/flatpak/window.py:89
 msgid "Flatpak installed successfully."
-msgstr ""
+msgstr "Flatpak asennettiin onnistuneesti."
 
 #: yast3/gtk4/flatpak/package_manager.py:79 yast3/gtk4/languages/manager.py:32
 #: yast3/gtk4/languages/manager.py:168 yast3/gtk4/languages/settings.py:113
 #: yast3/qt6/flatpak/package_manager.py:78 yast3/qt6/languages/manager.py:41
 #: yast3/qt6/languages/manager.py:147 yast3/qt6/languages/settings.py:107
 msgid "Install"
-msgstr ""
+msgstr "Asenna"
 
 #: yast3/gtk4/flatpak/package_manager.py:82
 #: yast3/gtk4/flatpak/runtime_manager.py:31
 #: yast3/qt6/flatpak/runtime_manager.py:36
 msgid "Remove"
-msgstr ""
+msgstr "Poista"
 
 #: yast3/gtk4/flatpak/package_manager.py:94
 #: yast3/gtk4/flatpak/runtime_manager.py:43 yast3/gtk4/flatpak/window.py:53
@@ -592,7 +601,7 @@ msgstr ""
 #: yast3/qt6/languages/manager.py:34 yast3/qt6/services/window.py:75
 #: yast3/tui/services/window.py:100
 msgid "Search"
-msgstr ""
+msgstr "Etsi"
 
 #: yast3/gtk4/flatpak/package_manager.py:98
 #: yast3/gtk4/flatpak/runtime_manager.py:47 yast3/gtk4/git/window.py:75
@@ -601,7 +610,7 @@ msgstr ""
 #: yast3/qt6/flatpak/runtime_manager.py:68 yast3/qt6/git/window.py:82
 #: yast3/tui/git/window.py:82
 msgid "Reset"
-msgstr ""
+msgstr "Nollaa"
 
 #: yast3/gtk4/flatpak/package_manager.py:102
 #: yast3/gtk4/flatpak/package_manager.py:180
@@ -619,19 +628,19 @@ msgstr ""
 #: yast3/tui/services/window.py:102 yast3/tui/snapshots/window.py:73
 #: yast3/tui/snapshots/window.py:135
 msgid "Refresh"
-msgstr ""
+msgstr "Päivitä"
 
 #: yast3/gtk4/flatpak/package_manager.py:111
 #: yast3/qt6/flatpak/package_manager.py:166
 #: yast3/qt6/flatpak/package_manager.py:236
 msgid "Prev"
-msgstr ""
+msgstr "Edellinen"
 
 #: yast3/gtk4/flatpak/package_manager.py:118
 #: yast3/qt6/flatpak/package_manager.py:174
 #: yast3/qt6/flatpak/package_manager.py:244
 msgid "Next"
-msgstr ""
+msgstr "Seuraava"
 
 #: yast3/gtk4/flatpak/package_manager.py:128
 #: yast3/gtk4/flatpak/package_manager.py:141
@@ -643,7 +652,7 @@ msgstr ""
 #: yast3/qt6/repositories/repo_edit_dialog.py:31
 #: yast3/qt6/snapshots/window.py:77 yast3/tui/snapshots/window.py:83
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: yast3/gtk4/flatpak/package_manager.py:129
 #: yast3/gtk4/flatpak/package_manager.py:142
@@ -664,7 +673,7 @@ msgstr ""
 #: yast3/tui/repositories/window.py:328 yast3/tui/services/window.py:123
 #: yast3/tui/ssh/window.py:293 yast3/tui/ssh/window.py:613
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: yast3/gtk4/flatpak/package_manager.py:130
 #: yast3/gtk4/flatpak/package_manager.py:143
@@ -677,7 +686,7 @@ msgstr ""
 #: yast3/tui/services/window.py:127 yast3/tui/snapshots/window.py:70
 #: yast3/tui/snapshots/window.py:87
 msgid "Description"
-msgstr ""
+msgstr "Kuvaus"
 
 #: yast3/gtk4/flatpak/package_manager.py:131
 #: yast3/gtk4/flatpak/package_manager.py:144
@@ -686,12 +695,12 @@ msgstr ""
 #: yast3/qt6/flatpak/package_manager.py:216
 #: yast3/qt6/flatpak/runtime_manager.py:85
 msgid "Version"
-msgstr ""
+msgstr "Versio"
 
 #: yast3/gtk4/flatpak/package_manager.py:132
 #: yast3/qt6/flatpak/package_manager.py:145
 msgid "Download Size"
-msgstr ""
+msgstr "Latauskoko"
 
 #: yast3/gtk4/flatpak/package_manager.py:133
 #: yast3/gtk4/flatpak/package_manager.py:146
@@ -700,7 +709,7 @@ msgstr ""
 #: yast3/qt6/flatpak/package_manager.py:218
 #: yast3/qt6/flatpak/runtime_manager.py:86
 msgid "Branch"
-msgstr ""
+msgstr "Haara"
 
 #: yast3/gtk4/flatpak/package_manager.py:134
 #: yast3/gtk4/flatpak/package_manager.py:147
@@ -709,7 +718,7 @@ msgstr ""
 #: yast3/qt6/flatpak/package_manager.py:219
 #: yast3/qt6/flatpak/runtime_manager.py:88
 msgid "Remote"
-msgstr ""
+msgstr "Etäpalvelin"
 
 #: yast3/gtk4/flatpak/package_manager.py:135
 #: yast3/gtk4/flatpak/package_manager.py:148
@@ -725,83 +734,83 @@ msgstr ""
 #: yast3/qt6/services/window.py:116 yast3/tui/services/window.py:90
 #: yast3/tui/services/window.py:124
 msgid "Scope"
-msgstr ""
+msgstr "Kieli"
 
 #: yast3/gtk4/flatpak/package_manager.py:136 yast3/gtk4/flatpak/window.py:54
 #: yast3/gtk4/languages/manager.py:89 yast3/gtk4/languages/manager.py:120
 #: yast3/qt6/flatpak/package_manager.py:149 yast3/qt6/flatpak/window.py:58
 #: yast3/qt6/languages/manager.py:78 yast3/qt6/languages/manager.py:105
 msgid "Installed"
-msgstr ""
+msgstr "Asennettu"
 
 #: yast3/gtk4/flatpak/package_manager.py:145
 #: yast3/gtk4/flatpak/runtime_manager.py:70
 #: yast3/qt6/flatpak/package_manager.py:217
 #: yast3/qt6/flatpak/runtime_manager.py:87
 msgid "Installed Size"
-msgstr ""
+msgstr "Asennettu koko"
 
 #: yast3/gtk4/flatpak/package_manager.py:180 yast3/gtk4/snapshots/window.py:175
 #: yast3/gtk4/snapshots/window.py:179 yast3/qt6/flatpak/package_manager.py:275
 #: yast3/qt6/snapshots/window.py:99 yast3/qt6/snapshots/window.py:103
 #: yast3/tui/snapshots/window.py:109
 msgid "Loading..."
-msgstr ""
+msgstr "Ladataan..."
 
 #: yast3/gtk4/flatpak/package_manager.py:221
 #: yast3/qt6/flatpak/package_manager.py:475
 #, python-brace-format
 msgid "Failed to load package catalog: {0}"
-msgstr ""
+msgstr "Pakettikatalogin lataaminen epäonnistui: {0}"
 
 #: yast3/gtk4/flatpak/package_manager.py:242
 #: yast3/qt6/flatpak/package_manager.py:491
 #, python-brace-format
 msgid "Failed to load Flatpak packages: {0}"
-msgstr ""
+msgstr "Flatpak-pakettien lataaminen epäonnistui: {0}"
 
 #: yast3/gtk4/flatpak/package_manager.py:300
 #: yast3/qt6/flatpak/package_manager.py:347
 msgid "Please select a package from the list to install."
-msgstr ""
+msgstr "Valitse asennettava paketti listasta."
 
 #: yast3/gtk4/flatpak/package_manager.py:308
 #: yast3/qt6/flatpak/package_manager.py:351
 msgid "The selected package is already installed."
-msgstr ""
+msgstr "Valittu paketti on jo asennettu."
 
 #: yast3/gtk4/flatpak/package_manager.py:314
 #: yast3/qt6/flatpak/package_manager.py:82
 msgid "Package installed successfully."
-msgstr ""
+msgstr "Paketti asennettiin onnistuneesti."
 
 #: yast3/gtk4/flatpak/package_manager.py:320
 #: yast3/qt6/flatpak/package_manager.py:387
 #, python-brace-format
 msgid "Failed to install package: {0}"
-msgstr ""
+msgstr "Paketin asentaminen epäonnistui: {0}"
 
 #: yast3/gtk4/flatpak/package_manager.py:329
 #: yast3/qt6/flatpak/package_manager.py:364
 msgid "Please select an installed package from the list."
-msgstr ""
+msgstr "Valitse asennettu paketti listasta."
 
 #: yast3/gtk4/flatpak/package_manager.py:342
 #: yast3/qt6/flatpak/package_manager.py:370
 #, python-brace-format
 msgid "Are you sure you want to remove package '{0}'?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa paketin '{0}'?"
 
 #: yast3/gtk4/flatpak/package_manager.py:354
 #: yast3/qt6/flatpak/package_manager.py:96
 msgid "Package removed successfully."
-msgstr ""
+msgstr "Paketti poistettiin onnistuneesti."
 
 #: yast3/gtk4/flatpak/package_manager.py:360
 #: yast3/qt6/flatpak/package_manager.py:398
 #, python-brace-format
 msgid "Failed to remove package: {0}"
-msgstr ""
+msgstr "Paketin poistaminen epäonnistui: {0}"
 
 #: yast3/gtk4/flatpak/package_manager.py:401 yast3/gtk4/ssh/keys_tab.py:147
 #: yast3/gtk4/ssh/keys_tab.py:148 yast3/gtk4/ssh/keys_tab.py:149
@@ -809,7 +818,7 @@ msgstr ""
 #: yast3/qt6/ssh/keys_tab.py:140 yast3/qt6/ssh/keys_tab.py:143
 #: yast3/tui/languages/window.py:53 yast3/tui/ssh/window.py:336
 msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
 #: yast3/gtk4/flatpak/package_manager.py:401 yast3/gtk4/ssh/keys_tab.py:147
 #: yast3/gtk4/ssh/keys_tab.py:148 yast3/gtk4/ssh/keys_tab.py:149
@@ -817,7 +826,7 @@ msgstr ""
 #: yast3/qt6/ssh/keys_tab.py:140 yast3/qt6/ssh/keys_tab.py:143
 #: yast3/tui/languages/window.py:53 yast3/tui/ssh/window.py:336
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 #: yast3/gtk4/flatpak/remote_manager.py:53
 #: yast3/gtk4/flatpak/remote_manager.py:194
@@ -828,283 +837,283 @@ msgstr ""
 #: yast3/qt6/repositories/repo_edit_dialog.py:58
 #: yast3/qt6/repositories/window.py:70 yast3/tui/repositories/window.py:80
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: yast3/gtk4/flatpak/remote_manager.py:81
 #: yast3/qt6/flatpak/remote_manager.py:74
 #, python-brace-format
 msgid "Failed to load Flatpak remotes: {0}"
-msgstr ""
+msgstr "Flatpak-etäpalvelinten lataaminen epäonnistui: {0}"
 
 #: yast3/gtk4/flatpak/remote_manager.py:112
 #: yast3/qt6/flatpak/remote_manager.py:102
 msgid "Please select a remote to edit."
-msgstr ""
+msgstr "Valitse muokattava etäpalvelin."
 
 #: yast3/gtk4/flatpak/remote_manager.py:123
 #: yast3/qt6/flatpak/remote_manager.py:121
 msgid "Please select a remote to delete."
-msgstr ""
+msgstr "Valitse poistettava etäpalvelin."
 
 #: yast3/gtk4/flatpak/remote_manager.py:136
 #: yast3/qt6/flatpak/remote_manager.py:128
 #, python-brace-format
 msgid "Are you sure you want to delete remote '{0}'?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa etäpalvelimen '{0}'?"
 
 #: yast3/gtk4/flatpak/remote_manager.py:156
 #: yast3/qt6/flatpak/remote_manager.py:135
 msgid "Remote deleted successfully."
-msgstr ""
+msgstr "Etäpalvelin poistettiin onnistuneesti."
 
 #: yast3/gtk4/flatpak/remote_manager.py:163
 #: yast3/qt6/flatpak/remote_manager.py:138
 #, python-brace-format
 msgid "Failed to delete remote: {0}"
-msgstr ""
+msgstr "Etäpalvelimen poistaminen epäonnistui: {0}"
 
 #: yast3/gtk4/flatpak/remote_manager.py:168
 #: yast3/qt6/flatpak/remote_manager.py:87
 msgid "Add Remote"
-msgstr ""
+msgstr "Lisää etäpalvelin"
 
 #: yast3/gtk4/flatpak/remote_manager.py:220
 #: yast3/qt6/flatpak/remote_manager.py:94
 msgid "Remote added successfully."
-msgstr ""
+msgstr "Etäpalvelin lisättiin onnistuneesti."
 
 #: yast3/gtk4/flatpak/remote_manager.py:227
 #: yast3/qt6/flatpak/remote_manager.py:97
 #, python-brace-format
 msgid "Failed to add remote: {0}"
-msgstr ""
+msgstr "Etäpalvelimen lisääminen epäonnistui: {0}"
 
 #: yast3/gtk4/flatpak/remote_manager.py:282
 #: yast3/qt6/flatpak/remote_manager.py:113
 msgid "Remote URL updated successfully."
-msgstr ""
+msgstr "Etäpalvelimen URL päivitettiin onnistuneesti."
 
 #: yast3/gtk4/flatpak/remote_manager.py:289
 #: yast3/qt6/flatpak/remote_manager.py:116
 #, python-brace-format
 msgid "Failed to update remote URL: {0}"
-msgstr ""
+msgstr "Etäpalvelimen URL:n päivitys epäonnistui: {0}"
 
 #: yast3/gtk4/flatpak/remove_action.py:20
 #: yast3/gtk4/flatpak/remove_action.py:22 yast3/qt6/flatpak/remove_action.py:17
 #: yast3/qt6/flatpak/remove_action.py:19
 msgid "Remove Flatpak"
-msgstr ""
+msgstr "Poista Flatpak"
 
 #: yast3/gtk4/flatpak/remove_action.py:21 yast3/qt6/flatpak/remove_action.py:18
 msgid "Removing Flatpak..."
-msgstr ""
+msgstr "Poistetaan Flatpak..."
 
 #: yast3/gtk4/flatpak/remove_action.py:24 yast3/gtk4/flatpak/settings.py:44
 #: yast3/qt6/flatpak/remove_action.py:21 yast3/qt6/flatpak/window.py:100
 msgid "Flatpak removed successfully."
-msgstr ""
+msgstr "Flatpak poistettiin onnistuneesti."
 
 #: yast3/gtk4/flatpak/remove_action.py:40 yast3/qt6/flatpak/remove_action.py:38
 msgid "Are you sure you want to remove Flatpak?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa Flatpak?"
 
 #: yast3/gtk4/flatpak/runtime_manager.py:91
 #: yast3/qt6/flatpak/runtime_manager.py:160
 #, python-brace-format
 msgid "Failed to load Flatpak runtimes: {0}"
-msgstr ""
+msgstr "Flatpak-runtimejen lataaminen epäonnistui: {0}"
 
 #: yast3/gtk4/flatpak/runtime_manager.py:115
 #: yast3/qt6/flatpak/runtime_manager.py:134
 msgid "Please select an installed runtime from the list."
-msgstr ""
+msgstr "Valitse asennettu runtime listasta."
 
 #: yast3/gtk4/flatpak/runtime_manager.py:128
 #: yast3/qt6/flatpak/runtime_manager.py:140
 #, python-brace-format
 msgid "Are you sure you want to remove runtime '{0}'?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa runtime '{0}'?"
 
 #: yast3/gtk4/flatpak/runtime_manager.py:140
 #: yast3/qt6/flatpak/runtime_manager.py:40
 msgid "Runtime removed successfully."
-msgstr ""
+msgstr "Runtime poistettiin onnistuneesti."
 
 #: yast3/gtk4/flatpak/runtime_manager.py:146
 #: yast3/qt6/flatpak/runtime_manager.py:154
 #, python-brace-format
 msgid "Failed to remove runtime: {0}"
-msgstr ""
+msgstr "Runtimen poistaminen epäonnistui: {0}"
 
 #: yast3/gtk4/flatpak/settings.py:51 yast3/qt6/flatpak/window.py:106
 #, python-brace-format
 msgid "Failed to remove Flatpak: {0}"
-msgstr ""
+msgstr "Flatpak:n poistaminen epäonnistui: {0}"
 
 #: yast3/gtk4/flatpak/window.py:33
 msgid "Flatpak is not installed"
-msgstr ""
+msgstr "Flatpak ei ole asennettu"
 
 #: yast3/gtk4/flatpak/window.py:55 yast3/qt6/flatpak/window.py:59
 msgid "Runtimes"
-msgstr ""
+msgstr "Runtimet"
 
 #: yast3/gtk4/flatpak/window.py:56 yast3/qt6/flatpak/window.py:60
 msgid "Remotes"
-msgstr ""
+msgstr "Etäpalvelimet"
 
 #: yast3/gtk4/flatpak/window.py:57 yast3/qt6/flatpak/window.py:61
 msgid "Settings"
-msgstr ""
+msgstr "Asetukset"
 
 #: yast3/gtk4/flatpak/window.py:92 yast3/qt6/flatpak/window.py:95
 #, python-brace-format
 msgid "Failed to install Flatpak: {0}"
-msgstr ""
+msgstr "Flatpak:n asentaminen epäonnistui: {0}"
 
 #: yast3/gtk4/git/__init__.py:16 yast3/qt6/git/__init__.py:10
 #: yast3/tui/git/__init__.py:12
 msgid "Git"
-msgstr ""
+msgstr "Git"
 
 #: yast3/gtk4/git/window.py:33 yast3/qt6/git/window.py:39
 msgid "Git is not installed on this system."
-msgstr ""
+msgstr "Git ei ole asennettu tässä järjestelmässä."
 
 #: yast3/gtk4/git/window.py:50 yast3/qt6/git/window.py:55
 #: yast3/tui/git/window.py:72
 msgid "Core"
-msgstr ""
+msgstr "Perusasetukset"
 
 #: yast3/gtk4/git/window.py:54 yast3/qt6/git/window.py:60
 #: yast3/tui/git/window.py:74
 msgid "Commit"
-msgstr ""
+msgstr "Commit"
 
 #: yast3/gtk4/git/window.py:58 yast3/qt6/git/window.py:65
 #: yast3/tui/git/window.py:76
 msgid "Merge"
-msgstr ""
+msgstr "Merge"
 
 #: yast3/gtk4/git/window.py:62 yast3/qt6/git/window.py:70
 #: yast3/tui/git/window.py:78
 msgid "Other"
-msgstr ""
+msgstr "Muut"
 
 #: yast3/gtk4/git/window.py:93 yast3/qt6/git/window.py:95
 #: yast3/tui/git/window.py:88
 msgid "User Name"
-msgstr ""
+msgstr "Käyttäjänimi"
 
 #: yast3/gtk4/git/window.py:93 yast3/qt6/git/window.py:97
 #: yast3/tui/git/window.py:89
 msgid "Enter your Git user name"
-msgstr ""
+msgstr "Syötä Git-käyttäjänimesi"
 
 #: yast3/gtk4/git/window.py:96 yast3/qt6/git/window.py:103
 #: yast3/tui/git/window.py:91
 msgid "Email Address"
-msgstr ""
+msgstr "Sähköpostiosoite"
 
 #: yast3/gtk4/git/window.py:96 yast3/qt6/git/window.py:105
 #: yast3/tui/git/window.py:92
 msgid "Enter your Git email address"
-msgstr ""
+msgstr "Syötä Git-sähköpostiosoitteesi"
 
 #: yast3/gtk4/git/window.py:99 yast3/qt6/git/window.py:111
 #: yast3/tui/git/window.py:94
 msgid "GPG Signing Key"
-msgstr ""
+msgstr "GPG-allkirjoitusavain"
 
 #: yast3/gtk4/git/window.py:99 yast3/qt6/git/window.py:113
 #: yast3/tui/git/window.py:95
 msgid "Enter GPG key ID"
-msgstr ""
+msgstr "Syötä GPG-avain-ID"
 
 #: yast3/gtk4/git/window.py:112 yast3/qt6/git/window.py:126
 #: yast3/tui/git/window.py:100
 msgid "Default Editor"
-msgstr ""
+msgstr "Oletuseditori"
 
 #: yast3/gtk4/git/window.py:112 yast3/qt6/git/window.py:128
 #: yast3/tui/git/window.py:101
 msgid "e.g., vim, nano, code"
-msgstr ""
+msgstr "esim. vim, nano, code"
 
 #: yast3/gtk4/git/window.py:115 yast3/qt6/git/window.py:134
 #: yast3/tui/git/window.py:103
 msgid "Auto CRLF"
-msgstr ""
+msgstr "Auto CRLF"
 
 #: yast3/gtk4/git/window.py:118 yast3/qt6/git/window.py:143
 #: yast3/tui/git/window.py:110
 msgid "Safe CRLF"
-msgstr ""
+msgstr "Safe CRLF"
 
 #: yast3/gtk4/git/window.py:132 yast3/qt6/git/window.py:159
 #: yast3/tui/git/window.py:120
 msgid "Commit Template"
-msgstr ""
+msgstr "Commit-malli"
 
 #: yast3/gtk4/git/window.py:138 yast3/tui/git/window.py:121
 msgid "Path to commit template"
-msgstr ""
+msgstr "Polku commit-mallille"
 
 #: yast3/gtk4/git/window.py:143 yast3/qt6/git/window.py:162
 msgid "Browse"
-msgstr ""
+msgstr "Selaa"
 
 #: yast3/gtk4/git/window.py:150 yast3/qt6/git/window.py:168
 #: yast3/tui/git/window.py:122
 msgid "Sign commits with GPG"
-msgstr ""
+msgstr "Allkirjoita commitit GPG:llä"
 
 #: yast3/gtk4/git/window.py:165 yast3/qt6/git/window.py:181
 #: yast3/tui/git/window.py:127
 msgid "Conflict Style"
-msgstr ""
+msgstr "Konfliktityyli"
 
 #: yast3/gtk4/git/window.py:168 yast3/qt6/git/window.py:190
 #: yast3/tui/git/window.py:134
 msgid "Pull Rebase"
-msgstr ""
+msgstr "Pull Rebase"
 
 #: yast3/gtk4/git/window.py:181 yast3/qt6/git/window.py:205
 #: yast3/tui/git/window.py:143
 msgid "Enable color output"
-msgstr ""
+msgstr "Ota värioutput käyttöön"
 
 #: yast3/gtk4/git/window.py:186 yast3/qt6/git/window.py:211
 #: yast3/tui/git/window.py:145
 msgid "Default Branch Name"
-msgstr ""
+msgstr "Oletus-haaranimi"
 
 #: yast3/gtk4/git/window.py:186 yast3/qt6/git/window.py:213
 #: yast3/tui/git/window.py:146
 msgid "e.g., main, master"
-msgstr ""
+msgstr "esim. main, master"
 
 #: yast3/gtk4/git/window.py:189 yast3/qt6/git/window.py:219
 #: yast3/tui/git/window.py:148
 msgid "Credential Helper"
-msgstr ""
+msgstr "Vastuuhenkilöapu"
 
 #: yast3/gtk4/git/window.py:235 yast3/qt6/git/window.py:233
 msgid "Select Commit Template"
-msgstr ""
+msgstr "Valitse Commit-malli"
 
 #: yast3/gtk4/git/window.py:256 yast3/qt6/git/window.py:248
 msgid "User name and email are required."
-msgstr ""
+msgstr "Käyttäjänimi ja sähköposti ovat pakollisia."
 
 #: yast3/gtk4/git/window.py:275 yast3/qt6/git/window.py:269
 msgid "Git configuration saved successfully."
-msgstr ""
+msgstr "Git-asetukset tallennettiin onnistuneesti."
 
 #: yast3/gtk4/git/window.py:277 yast3/qt6/git/window.py:274
 msgid "Failed to save Git configuration."
-msgstr ""
+msgstr "Git-asetusten tallentaminen epäonnistui."
 
 #: yast3/gtk4/hostname/__init__.py:16 yast3/gtk4/hostname/window.py:32
 #: yast3/gtk4/hosts/window.py:90 yast3/qt6/hostname/__init__.py:10
@@ -1112,226 +1121,226 @@ msgstr ""
 #: yast3/tui/hostname/__init__.py:12 yast3/tui/hostname/window.py:66
 #: yast3/tui/hosts/window.py:79 yast3/tui/hosts/window.py:266
 msgid "Hostname"
-msgstr ""
+msgstr "Isäntänimi"
 
 #: yast3/gtk4/hostname/window.py:38 yast3/qt6/hostname/window.py:42
 #: yast3/tui/hostname/window.py:67
 msgid "Enter hostname"
-msgstr ""
+msgstr "Syötä isäntänimi"
 
 #: yast3/gtk4/hostname/window.py:66 yast3/qt6/hostname/window.py:66
 msgid "/etc/hostname not found."
-msgstr ""
+msgstr "/etc/hostname ei löydy."
 
 #: yast3/gtk4/hostname/window.py:68 yast3/qt6/hostname/window.py:71
 msgid "Cannot read /etc/hostname. Root permission required."
-msgstr ""
+msgstr "Ei voida lukea /etc/hostname. Tarvitaan root-oikeudet."
 
 #: yast3/gtk4/hostname/window.py:70 yast3/qt6/hostname/window.py:75
 #, python-brace-format
 msgid "Failed to load hostname: {0}"
-msgstr ""
+msgstr "Isäntänimen lataaminen epäonnistui: {0}"
 
 #: yast3/gtk4/hostname/window.py:77 yast3/qt6/hostname/window.py:83
 msgid "Hostname cannot be empty."
-msgstr ""
+msgstr "Isäntänimi ei voi olla tyhjä."
 
 #: yast3/gtk4/hostname/window.py:82 yast3/qt6/hostname/window.py:89
 msgid "Hostname is too long (maximum 253 characters)."
-msgstr ""
+msgstr "Isäntänimi on liian pitkä (enintään 253 merkkiä)."
 
 #: yast3/gtk4/hostname/window.py:88 yast3/qt6/hostname/window.py:97
 msgid "Hostname contains invalid characters."
-msgstr ""
+msgstr "Isäntänimi sisältää virheellisiä merkkejä."
 
 #: yast3/gtk4/hostname/window.py:98 yast3/qt6/hostname/window.py:111
 #, python-brace-format
 msgid "Are you sure you want to change the hostname from '{0}' to '{1}'?"
-msgstr ""
+msgstr "Haluatko varmasti muuttaa isäntänimen '{0}' -> '{1}'?"
 
 #: yast3/gtk4/hostname/window.py:105 yast3/qt6/hostname/window.py:125
 #, python-brace-format
 msgid "Hostname changed successfully to '{0}'."
-msgstr ""
+msgstr "Isäntänimi muutettiin onnistuneesti '{0}'."
 
 #: yast3/gtk4/hostname/window.py:112 yast3/qt6/hostname/window.py:138
 #, python-brace-format
 msgid "Failed to set hostname: {0}"
-msgstr ""
+msgstr "Isäntänimen asettaminen epäonnistui: {0}"
 
 #: yast3/gtk4/hosts/__init__.py:16 yast3/gtk4/ssh/window.py:32
 #: yast3/qt6/hosts/__init__.py:10 yast3/qt6/ssh/window.py:36
 #: yast3/tui/hosts/__init__.py:12 yast3/tui/ssh/window.py:250
 msgid "Hosts"
-msgstr ""
+msgstr "Isännät"
 
 #: yast3/gtk4/hosts/window.py:83 yast3/qt6/hosts/window.py:63
 #: yast3/tui/hosts/window.py:79 yast3/tui/hosts/window.py:263
 msgid "IP Address"
-msgstr ""
+msgstr "IP-osoite"
 
 #: yast3/gtk4/hosts/window.py:119 yast3/gtk4/proxy/window.py:89
 #: yast3/qt6/hosts/window.py:104 yast3/qt6/proxy/window.py:88
 #, python-brace-format
 msgid "Cannot read {0}. Root permission required."
-msgstr ""
+msgstr "Ei voida lukea {0}. Tarvitaan root-oikeudet."
 
 #: yast3/gtk4/hosts/window.py:122 yast3/gtk4/proxy/window.py:83
 #: yast3/qt6/hosts/window.py:109 yast3/qt6/proxy/window.py:83
 #, python-brace-format
 msgid "{0} not found."
-msgstr ""
+msgstr "{0} ei löydy."
 
 #: yast3/gtk4/hosts/window.py:176 yast3/gtk4/hosts/window.py:212
 #: yast3/qt6/hosts/window.py:179 yast3/qt6/hosts/window.py:216
 msgid "IP address and hostname are required."
-msgstr ""
+msgstr "IP-osoite ja isäntänimi ovat pakollisia."
 
 #: yast3/gtk4/hosts/window.py:183 yast3/gtk4/ssh/hosts_tab.py:159
 #: yast3/qt6/hosts/window.py:187 yast3/qt6/ssh/hosts_tab.py:148
 #: yast3/tui/hosts/window.py:130
 msgid "Please select a host entry to edit."
-msgstr ""
+msgstr "Valitse muokattava isäntämerkintä."
 
 #: yast3/gtk4/hosts/window.py:219 yast3/gtk4/ssh/hosts_tab.py:187
 #: yast3/qt6/hosts/window.py:224 yast3/qt6/ssh/hosts_tab.py:169
 #: yast3/tui/hosts/window.py:149
 msgid "Please select a host entry to delete."
-msgstr ""
+msgstr "Valitse poistettava isäntämerkintä."
 
 #: yast3/gtk4/hosts/window.py:230 yast3/gtk4/ssh/hosts_tab.py:206
 #: yast3/qt6/hosts/window.py:229 yast3/qt6/ssh/hosts_tab.py:181
 msgid "Are you sure you want to delete this entry?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa tämän merkinnän?"
 
 #: yast3/gtk4/hosts/window.py:248 yast3/qt6/hosts/window.py:264
 msgid "Hosts file saved successfully."
-msgstr ""
+msgstr "Hosts-tiedosto tallennettiin onnistuneesti."
 
 #: yast3/gtk4/hosts/window.py:250 yast3/qt6/hosts/window.py:271
 #, python-brace-format
 msgid "Cannot write to {0}. Root permission required."
-msgstr ""
+msgstr "Ei voida kirjoittaa {0}:ään. Tarvitaan root-oikeudet."
 
 #: yast3/gtk4/hosts/window.py:254 yast3/qt6/hosts/window.py:278
 msgid "Failed to save hosts file."
-msgstr ""
+msgstr "Hosts-tiedoston tallentaminen epäonnistui."
 
 #: yast3/gtk4/hosts/window.py:275 yast3/qt6/hosts/dialogs.py:29
 msgid "Add/Edit Host Entry"
-msgstr ""
+msgstr "Lisää/Muokkaa Isäntämerkintää"
 
 #: yast3/gtk4/hosts/window.py:295 yast3/qt6/hosts/dialogs.py:36
 msgid "IP Address:"
-msgstr ""
+msgstr "IP-osoite:"
 
 #: yast3/gtk4/hosts/window.py:307 yast3/qt6/hosts/dialogs.py:45
 msgid "Hostname:"
-msgstr ""
+msgstr "Isäntänimi:"
 
 #: yast3/gtk4/hosts/window.py:319 yast3/qt6/hosts/dialogs.py:52
 #: yast3/qt6/ssh/keys_generate_dialog.py:123
 msgid "Comment:"
-msgstr ""
+msgstr "Kommentti:"
 
 #: yast3/gtk4/languages/__init__.py:16 yast3/qt6/languages/__init__.py:10
 #: yast3/tui/languages/__init__.py:10
 msgid "Languages"
-msgstr ""
+msgstr "Kielet"
 
 #: yast3/gtk4/languages/manager.py:37 yast3/gtk4/languages/manager.py:202
 #: yast3/qt6/languages/manager.py:46 yast3/qt6/languages/manager.py:175
 msgid "Uninstall"
-msgstr ""
+msgstr "Poista asennus"
 
 #: yast3/gtk4/languages/manager.py:57 yast3/qt6/languages/manager.py:56
 msgid "Code"
-msgstr ""
+msgstr "Koodi"
 
 #: yast3/gtk4/languages/manager.py:68 yast3/gtk4/services/window.py:53
 #: yast3/gtk4/services/window.py:133 yast3/qt6/languages/manager.py:58
 #: yast3/qt6/services/window.py:57 yast3/qt6/services/window.py:116
 #: yast3/tui/services/window.py:78 yast3/tui/services/window.py:125
 msgid "Status"
-msgstr ""
+msgstr "Tila"
 
 #: yast3/gtk4/languages/manager.py:120 yast3/qt6/languages/manager.py:105
 msgid "Not Installed"
-msgstr ""
+msgstr "Ei asennettu"
 
 #: yast3/gtk4/languages/manager.py:131 yast3/qt6/languages/manager.py:123
 #, python-brace-format
 msgid "Failed to load locales: {0}"
-msgstr ""
+msgstr "Lokaalien lataaminen epäonnistui: {0}"
 
 #: yast3/gtk4/languages/manager.py:148 yast3/qt6/languages/manager.py:132
 msgid "Please select a locale to install."
-msgstr ""
+msgstr "Valitse asennettava kieli."
 
 #: yast3/gtk4/languages/manager.py:161
 #, python-brace-format
 msgid "Are you sure you want to install language '{0}' ({1})?"
-msgstr ""
+msgstr "Haluatko varmasti asentaa kielen '{0}' ({1})?"
 
 #: yast3/gtk4/languages/manager.py:169 yast3/gtk4/languages/settings.py:114
 #: yast3/qt6/languages/manager.py:148 yast3/qt6/languages/settings.py:108
 msgid "Installing..."
-msgstr ""
+msgstr "Asennetaan..."
 
 #: yast3/gtk4/languages/manager.py:170 yast3/gtk4/languages/settings.py:115
 #: yast3/qt6/languages/manager.py:149 yast3/qt6/languages/settings.py:109
 msgid "Install Language"
-msgstr ""
+msgstr "Asenna kieli"
 
 #: yast3/gtk4/languages/manager.py:172 yast3/gtk4/languages/settings.py:117
 #: yast3/qt6/languages/manager.py:151 yast3/qt6/languages/settings.py:111
 #, python-brace-format
 msgid "Language '{0}' installed successfully."
-msgstr ""
+msgstr "Kieli '{0}' asennettiin onnistuneesti."
 
 #: yast3/gtk4/languages/manager.py:182 yast3/qt6/languages/manager.py:160
 msgid "Please select a language to uninstall."
-msgstr ""
+msgstr "Valitse poistettava kieli."
 
 #: yast3/gtk4/languages/manager.py:195 yast3/qt6/languages/manager.py:169
 #, python-brace-format
 msgid "Are you sure you want to uninstall language '{0}' ({1})?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa kielen '{0}' ({1})?"
 
 #: yast3/gtk4/languages/manager.py:203 yast3/qt6/languages/manager.py:176
 msgid "Uninstalling..."
-msgstr ""
+msgstr "Poistetaan..."
 
 #: yast3/gtk4/languages/manager.py:204 yast3/qt6/languages/manager.py:177
 msgid "Uninstall Language"
-msgstr ""
+msgstr "Poista kieli"
 
 #: yast3/gtk4/languages/manager.py:206 yast3/qt6/languages/manager.py:179
 #, python-brace-format
 msgid "Language '{0}' uninstalled successfully."
-msgstr ""
+msgstr "Kieli '{0}' poistettiin onnistuneesti."
 
 #: yast3/gtk4/languages/settings.py:39 yast3/qt6/languages/settings.py:47
 msgid "Language"
-msgstr ""
+msgstr "Kieli"
 
 #: yast3/gtk4/languages/settings.py:52 yast3/qt6/languages/settings.py:50
 msgid "Use UTF-8"
-msgstr ""
+msgstr "Käytä UTF-8"
 
 #: yast3/gtk4/languages/settings.py:88 yast3/qt6/languages/settings.py:82
 #, python-brace-format
 msgid "Failed to load languages: {0}"
-msgstr ""
+msgstr "Kielien lataaminen epäonnistui: {0}"
 
 #: yast3/gtk4/languages/settings.py:98 yast3/qt6/languages/settings.py:92
 msgid "Please select a language."
-msgstr ""
+msgstr "Valitse kieli."
 
 #: yast3/gtk4/languages/settings.py:106 yast3/qt6/languages/settings.py:100
 #, python-brace-format
 msgid "Language '{0}' not found."
-msgstr ""
+msgstr "Kieltä '{0}' ei löydy."
 
 #: yast3/gtk4/languages/settings.py:140 yast3/qt6/languages/settings.py:137
 #, python-brace-format
@@ -1339,98 +1348,100 @@ msgid ""
 "Language changed successfully to '{0}'. Changes will take effect after "
 "logout."
 msgstr ""
+"Kieli muutettiin onnistuneesti '{0}'. Muutokset tulevat voimaan uloskirjautumisen "
+"jälkeen."
 
 #: yast3/gtk4/languages/settings.py:149 yast3/qt6/languages/settings.py:152
 #, python-brace-format
 msgid "Failed to set language: {0}"
-msgstr ""
+msgstr "Kielen asettaminen epäonnistui: {0}"
 
 #: yast3/gtk4/languages/window.py:33 yast3/qt6/languages/window.py:38
 msgid "System Language"
-msgstr ""
+msgstr "Järjestelmäkieli"
 
 #: yast3/gtk4/languages/window.py:36 yast3/qt6/languages/window.py:41
 msgid "Language Management"
-msgstr ""
+msgstr "Kielenhallinta"
 
 #: yast3/gtk4/packages/__init__.py:16 yast3/qt6/packages/__init__.py:10
 #: yast3/qt6/packages/window.py:17 yast3/tui/packages/__init__.py:12
 msgid "Packages"
-msgstr ""
+msgstr "Paketit"
 
 #: yast3/gtk4/packages/window.py:26
 msgid "Packages module is not yet implemented."
-msgstr ""
+msgstr "Pakettimoduuli ei ole vielä toteutettu."
 
 #: yast3/gtk4/proxy/__init__.py:16 yast3/qt6/proxy/__init__.py:10
 #: yast3/tui/proxy/__init__.py:12
 msgid "Proxy"
-msgstr ""
+msgstr "Proxy"
 
 #: yast3/gtk4/proxy/window.py:29 yast3/qt6/proxy/window.py:38
 msgid "Enable Proxy"
-msgstr ""
+msgstr "Ota proxy käyttöön"
 
 #: yast3/gtk4/proxy/window.py:32 yast3/qt6/proxy/window.py:41
 #: yast3/tui/proxy/window.py:73
 msgid "HTTP Proxy"
-msgstr ""
+msgstr "HTTP-proxy"
 
 #: yast3/gtk4/proxy/window.py:33 yast3/qt6/proxy/window.py:42
 #: yast3/tui/proxy/window.py:76
 msgid "HTTPS Proxy"
-msgstr ""
+msgstr "HTTPS-proxy"
 
 #: yast3/gtk4/proxy/window.py:34 yast3/qt6/proxy/window.py:43
 #: yast3/tui/proxy/window.py:79
 msgid "FTP Proxy"
-msgstr ""
+msgstr "FTP-proxy"
 
 #: yast3/gtk4/proxy/window.py:35 yast3/qt6/proxy/window.py:44
 #: yast3/tui/proxy/window.py:82
 msgid "SOCKS Proxy"
-msgstr ""
+msgstr "SOCKS-proxy"
 
 #: yast3/gtk4/proxy/window.py:37 yast3/qt6/proxy/window.py:47
 #: yast3/tui/proxy/window.py:85
 msgid "No Proxy"
-msgstr ""
+msgstr "Ei proxyä"
 
 #: yast3/gtk4/proxy/window.py:95 yast3/qt6/proxy/window.py:94
 #, python-brace-format
 msgid "Failed to load proxy configuration: {0}"
-msgstr ""
+msgstr "Proxy-asetusten lataaminen epäonnistui: {0}"
 
 #: yast3/gtk4/proxy/window.py:111 yast3/qt6/proxy/window.py:110
 msgid "Proxy configuration saved successfully."
-msgstr ""
+msgstr "Proxy-asetukset tallennettiin onnistuneesti."
 
 #: yast3/gtk4/proxy/window.py:124 yast3/qt6/proxy/window.py:123
 #, python-brace-format
 msgid "Failed to save proxy configuration: {0}"
-msgstr ""
+msgstr "Proxy-asetusten tallentaminen epäonnistui: {0}"
 
 #: yast3/gtk4/repositories/__init__.py:17 yast3/qt6/repositories/__init__.py:11
 #: yast3/tui/repositories/__init__.py:12
 msgid "Repositories"
-msgstr ""
+msgstr "Repositoryt"
 
 #: yast3/gtk4/repositories/import_repo_button.py:22
 #: yast3/qt6/repositories/import_repo_button.py:21
 msgid "Import"
-msgstr ""
+msgstr "Tuo"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:16
 #: yast3/qt6/repositories/repo_edit_dialog.py:24
 #: yast3/tui/repositories/window.py:133
 msgid "Add Repository"
-msgstr ""
+msgstr "Lisää Repository"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:16
 #: yast3/qt6/repositories/repo_edit_dialog.py:24
 #: yast3/tui/repositories/window.py:146
 msgid "Edit Repository"
-msgstr ""
+msgstr "Muokkaa Repositoryä"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:42
 #: yast3/gtk4/repositories/window.py:110
@@ -1438,29 +1449,29 @@ msgstr ""
 #: yast3/qt6/repositories/window.py:70 yast3/tui/repositories/window.py:80
 #: yast3/tui/repositories/window.py:350
 msgid "Auto Refresh"
-msgstr ""
+msgstr "Automaattinen päivittäminen"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:47
 #: yast3/qt6/repositories/repo_edit_dialog.py:51
 msgid "URL Type"
-msgstr ""
+msgstr "URL-tyyppi"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:52
 #: yast3/qt6/repositories/repo_edit_dialog.py:53
 #: yast3/tui/repositories/window.py:331 yast3/tui/repositories/window.py:332
 msgid "Base URL"
-msgstr ""
+msgstr "Perus URL"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:53
 #: yast3/qt6/repositories/repo_edit_dialog.py:53
 #: yast3/tui/repositories/window.py:334
 msgid "Mirror List"
-msgstr ""
+msgstr "Peili-luettelo"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:61
 #: yast3/qt6/repositories/repo_edit_dialog.py:68
 msgid "Path"
-msgstr ""
+msgstr "Polku"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:64
 #: yast3/gtk4/snapshots/window.py:89
@@ -1469,17 +1480,17 @@ msgstr ""
 #: yast3/tui/snapshots/window.py:84 yast3/tui/ssh/window.py:293
 #: yast3/tui/ssh/window.py:616
 msgid "Type"
-msgstr ""
+msgstr "Tyyppi"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:81
 #: yast3/qt6/repositories/repo_edit_dialog.py:83
 msgid "Check GPG signature"
-msgstr ""
+msgstr "Tarkista GPG-allkirjoitus"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:85
 #: yast3/qt6/repositories/repo_edit_dialog.py:88
 msgid "GPG Key URL"
-msgstr ""
+msgstr "GPG-avaimen URL"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:88
 #: yast3/gtk4/repositories/window.py:94
@@ -1487,12 +1498,12 @@ msgstr ""
 #: yast3/qt6/repositories/window.py:70 yast3/tui/repositories/window.py:80
 #: yast3/tui/repositories/window.py:337
 msgid "Priority"
-msgstr ""
+msgstr "Prioriteetti"
 
 #: yast3/gtk4/repositories/repo_edit_dialog.py:99
 #: yast3/qt6/repositories/repo_edit_dialog.py:101
 msgid "Keep packages"
-msgstr ""
+msgstr "Pidä paketit"
 
 #: yast3/gtk4/repositories/switch_mirror_dialog.py:17
 #: yast3/gtk4/repositories/window.py:55
@@ -1500,63 +1511,63 @@ msgstr ""
 #: yast3/qt6/repositories/window.py:60 yast3/tui/repositories/window.py:73
 #: yast3/tui/repositories/window.py:473
 msgid "Switch Mirror"
-msgstr ""
+msgstr "Vaihda peili"
 
 #: yast3/gtk4/repositories/switch_mirror_dialog.py:35
 #: yast3/qt6/repositories/switch_mirror_dialog.py:28
 #: yast3/tui/repositories/window.py:475
 msgid "openSUSE"
-msgstr ""
+msgstr "openSUSE"
 
 #: yast3/gtk4/repositories/switch_mirror_dialog.py:58
 #: yast3/qt6/repositories/switch_mirror_dialog.py:48
 #: yast3/tui/repositories/window.py:479
 msgid "Packman"
-msgstr ""
+msgstr "Packman"
 
 #: yast3/gtk4/repositories/window.py:133 yast3/qt6/repositories/window.py:135
 msgid "Cannot read repository directory. Root permission required."
-msgstr ""
+msgstr "Ei voida lukea repository-kansiota. Tarvitaan root-oikeudet."
 
 #: yast3/gtk4/repositories/window.py:195 yast3/gtk4/repositories/window.py:276
 #: yast3/qt6/repositories/window.py:184 yast3/qt6/repositories/window.py:231
 msgid "Repository ID is required."
-msgstr ""
+msgstr "Repository-ID on pakollinen."
 
 #: yast3/gtk4/repositories/window.py:199 yast3/gtk4/repositories/window.py:280
 #: yast3/qt6/repositories/window.py:187 yast3/qt6/repositories/window.py:234
 msgid "URL is required."
-msgstr ""
+msgstr "URL on pakollinen."
 
 #: yast3/gtk4/repositories/window.py:233 yast3/qt6/repositories/window.py:107
 #, python-brace-format
 msgid "Repository '{}' already exists."
-msgstr ""
+msgstr "Repository '{}' on jo olemassa."
 
 #: yast3/gtk4/repositories/window.py:242 yast3/qt6/repositories/window.py:114
 #, python-format
 msgid "Failed to import repository: %s"
-msgstr ""
+msgstr "Repositoryn tuonti epäonnistui: %s"
 
 #: yast3/gtk4/repositories/window.py:249 yast3/qt6/repositories/window.py:121
 #, python-brace-format
 msgid "Repository '{}' imported successfully."
-msgstr ""
+msgstr "Repository '{}' tuotiin onnistuneesti."
 
 #: yast3/gtk4/repositories/window.py:257 yast3/qt6/repositories/window.py:219
 #: yast3/tui/repositories/window.py:139
 msgid "Please select a repository to edit."
-msgstr ""
+msgstr "Valitse muokattava repository."
 
 #: yast3/gtk4/repositories/window.py:311 yast3/qt6/repositories/window.py:262
 #: yast3/tui/repositories/window.py:156
 msgid "Please select a repository to delete."
-msgstr ""
+msgstr "Valitse poistettava repository."
 
 #: yast3/gtk4/repositories/window.py:327 yast3/qt6/repositories/window.py:270
 #, python-brace-format
 msgid "Are you sure you want to delete repository '{}'?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa repositoryn '{}'?"
 
 #: yast3/gtk4/repositories/window.py:366 yast3/qt6/repositories/window.py:290
 #, python-brace-format
@@ -1566,363 +1577,367 @@ msgid ""
 "openSUSE mirror: {}\n"
 "Packman mirror: {}"
 msgstr ""
+"Haluatko varmasti vaihtaa peiliä?\n"
+"\n"
+"openSUSE-peili: {}\n"
+"Packman-peili: {}"
 
 #: yast3/gtk4/repositories/window.py:379 yast3/qt6/repositories/window.py:302
 #: yast3/tui/repositories/window.py:176
 msgid "Mirror switching completed successfully."
-msgstr ""
+msgstr "Peilien vaihto suoritettiin onnistuneesti."
 
 #: yast3/gtk4/repositories/window.py:388
 msgid "Cannot write to repository directory. Root permission required."
-msgstr ""
+msgstr "Ei voida kirjoittaa repository-kansioon. Tarvitaan root-oikeudet."
 
 #: yast3/gtk4/repositories/window.py:392
 msgid "Failed to save repository configuration."
-msgstr ""
+msgstr "Repository-asetusten tallentaminen epäonnistui."
 
 #: yast3/gtk4/services/__init__.py:16 yast3/qt6/services/__init__.py:10
 #: yast3/tui/services/__init__.py:12
 msgid "Services"
-msgstr ""
+msgstr "Palvelut"
 
 #: yast3/gtk4/services/window.py:55 yast3/gtk4/services/window.py:66
 #: yast3/qt6/services/window.py:59 yast3/qt6/services/window.py:69
 #: yast3/tui/services/window.py:81 yast3/tui/services/window.py:93
 msgid "All"
-msgstr ""
+msgstr "Kaikki"
 
 #: yast3/gtk4/services/window.py:56 yast3/qt6/services/window.py:60
 #: yast3/tui/services/window.py:82
 msgid "Active"
-msgstr ""
+msgstr "Aktiivinen"
 
 #: yast3/gtk4/services/window.py:57 yast3/qt6/services/window.py:61
 #: yast3/tui/services/window.py:83
 msgid "Inactive"
-msgstr ""
+msgstr "Ei-aktiivinen"
 
 #: yast3/gtk4/services/window.py:58 yast3/qt6/services/window.py:62
 #: yast3/tui/services/window.py:84
 msgid "Failed"
-msgstr ""
+msgstr "Epäonnistunut"
 
 #: yast3/gtk4/services/window.py:59 yast3/qt6/services/window.py:63
 #: yast3/tui/services/window.py:85
 msgid "Activating"
-msgstr ""
+msgstr "Aktiivoidaan"
 
 #: yast3/gtk4/services/window.py:75 yast3/qt6/services/window.py:77
 #: yast3/tui/services/window.py:101
 msgid "Service name or description"
-msgstr ""
+msgstr "Palvelun nimi tai kuvaus"
 
 #: yast3/gtk4/services/window.py:89 yast3/gtk4/services/window.py:277
 #: yast3/qt6/services/window.py:90 yast3/qt6/services/window.py:231
 #: yast3/tui/services/window.py:105
 msgid "Start"
-msgstr ""
+msgstr "Käynnistä"
 
 #: yast3/gtk4/services/window.py:93 yast3/gtk4/services/window.py:278
 #: yast3/qt6/services/window.py:94 yast3/qt6/services/window.py:232
 #: yast3/tui/services/window.py:106
 msgid "Stop"
-msgstr ""
+msgstr "Pysäytä"
 
 #: yast3/gtk4/services/window.py:97 yast3/gtk4/services/window.py:279
 #: yast3/qt6/services/window.py:98 yast3/qt6/services/window.py:233
 #: yast3/tui/services/window.py:107
 msgid "Enable"
-msgstr ""
+msgstr "Ota käyttöön"
 
 #: yast3/gtk4/services/window.py:101 yast3/gtk4/services/window.py:280
 #: yast3/qt6/services/window.py:102 yast3/qt6/services/window.py:234
 #: yast3/tui/services/window.py:108
 msgid "Disable"
-msgstr ""
+msgstr "Poista käytöstä"
 
 #: yast3/gtk4/services/window.py:105 yast3/gtk4/services/window.py:310
 #: yast3/qt6/services/window.py:106 yast3/qt6/services/window.py:260
 #: yast3/tui/services/window.py:109
 msgid "Logs"
-msgstr ""
+msgstr "Logit"
 
 #: yast3/gtk4/services/window.py:184 yast3/qt6/services/window.py:141
 #, python-brace-format
 msgid "Failed to load services: {0}"
-msgstr ""
+msgstr "Palvelujen lataaminen epäonnistui: {0}"
 
 #: yast3/gtk4/services/window.py:272 yast3/gtk4/services/window.py:305
 #: yast3/qt6/services/window.py:227 yast3/qt6/services/window.py:256
 #: yast3/tui/services/window.py:263 yast3/tui/services/window.py:302
 msgid "Please select a service."
-msgstr ""
+msgstr "Valitse palvelu."
 
 #: yast3/gtk4/services/window.py:283 yast3/qt6/services/window.py:237
 #: yast3/tui/services/window.py:288
 msgid "started"
-msgstr ""
+msgstr "käynnistetty"
 
 #: yast3/gtk4/services/window.py:284 yast3/qt6/services/window.py:238
 #: yast3/tui/services/window.py:291
 msgid "stopped"
-msgstr ""
+msgstr "pysäytetty"
 
 #: yast3/gtk4/services/window.py:285 yast3/qt6/services/window.py:239
 #: yast3/tui/services/window.py:294
 msgid "enabled"
-msgstr ""
+msgstr "käytössä"
 
 #: yast3/gtk4/services/window.py:286 yast3/qt6/services/window.py:240
 #: yast3/tui/services/window.py:297
 msgid "disabled"
-msgstr ""
+msgstr "poistettu käytöstä"
 
 #: yast3/gtk4/services/window.py:291 yast3/qt6/services/window.py:245
 msgid "Working..."
-msgstr ""
+msgstr "Työskytään..."
 
 #: yast3/gtk4/services/window.py:292 yast3/qt6/services/window.py:246
 #, python-brace-format
 msgid "{0} Service"
-msgstr ""
+msgstr "{0} Palvelu"
 
 #: yast3/gtk4/services/window.py:294 yast3/qt6/services/window.py:248
 #, python-brace-format
 msgid "Service '{0}' {1} successfully."
-msgstr ""
+msgstr "Palvelu '{0}' {1} onnistuneesti."
 
 #: yast3/gtk4/services/window.py:311 yast3/qt6/services/window.py:261
 msgid "Loading logs..."
-msgstr ""
+msgstr "Ladataan logeja..."
 
 #: yast3/gtk4/services/window.py:312 yast3/qt6/services/window.py:262
 #: yast3/tui/services/window.py:358
 #, python-brace-format
 msgid "Journal Logs: {0}"
-msgstr ""
+msgstr "Journal-lokit: {0}"
 
 #: yast3/gtk4/services/window.py:314 yast3/qt6/services/window.py:264
 msgid "End of journal output."
-msgstr ""
+msgstr "Journal-outputin loppu."
 
 #: yast3/gtk4/snapshots/__init__.py:16 yast3/qt6/snapshots/__init__.py:10
 #: yast3/tui/snapshots/__init__.py:12
 msgid "Snapshots"
-msgstr ""
+msgstr "Snapshottit"
 
 #: yast3/gtk4/snapshots/config_dialog.py:20
 #: yast3/qt6/snapshots/config_dialog.py:24
 #: yast3/tui/snapshots/config_screen.py:22
 msgid "Snapper Configuration"
-msgstr ""
+msgstr "Snapper-asetukset"
 
 #: yast3/gtk4/snapshots/config_dialog.py:47
 #: yast3/qt6/snapshots/config_dialog.py:38
 #, python-brace-format
 msgid "Failed to read config: {0}"
-msgstr ""
+msgstr "Asetusten lukeminen epäonnistui: {0}"
 
 #: yast3/gtk4/snapshots/config_dialog.py:53
 #: yast3/qt6/snapshots/config_dialog.py:44
 msgid "Space Limit (fraction or absolute size)"
-msgstr ""
+msgstr "Tilakorkeus (osuus tai absoluuttinen koko)"
 
 #: yast3/gtk4/snapshots/config_dialog.py:61
 #: yast3/qt6/snapshots/config_dialog.py:49
 msgid "Free Limit (fraction or absolute size)"
-msgstr ""
+msgstr "Vapaan tilan rajoitus (osuus tai absoluuttinen koko)"
 
 #: yast3/gtk4/snapshots/config_dialog.py:69
 #: yast3/qt6/snapshots/config_dialog.py:54
 #: yast3/tui/snapshots/config_screen.py:34
 msgid "Allow Users"
-msgstr ""
+msgstr "Salli käyttäjät"
 
 #: yast3/gtk4/snapshots/config_dialog.py:77
 #: yast3/qt6/snapshots/config_dialog.py:59
 #: yast3/tui/snapshots/config_screen.py:39
 msgid "Allow Groups"
-msgstr ""
+msgstr "Salli ryhmät"
 
 #: yast3/gtk4/snapshots/config_dialog.py:85
 #: yast3/qt6/snapshots/config_dialog.py:64
 #: yast3/tui/snapshots/config_screen.py:44
 msgid "Sync ACL"
-msgstr ""
+msgstr "Synkronoi ACL"
 
 #: yast3/gtk4/snapshots/config_dialog.py:90
 #: yast3/qt6/snapshots/config_dialog.py:69
 #: yast3/tui/snapshots/config_screen.py:48
 msgid "Background Comparison"
-msgstr ""
+msgstr "Taustavertailu"
 
 #: yast3/gtk4/snapshots/config_dialog.py:95
 #: yast3/qt6/snapshots/config_dialog.py:74
 #: yast3/tui/snapshots/config_screen.py:52
 msgid "Number Cleanup"
-msgstr ""
+msgstr "Numeropuhdistus"
 
 #: yast3/gtk4/snapshots/config_dialog.py:100
 #: yast3/qt6/snapshots/config_dialog.py:79
 msgid "Number Min Age (seconds)"
-msgstr ""
+msgstr "Numerominimi-ikä (sekuntia)"
 
 #: yast3/gtk4/snapshots/config_dialog.py:108
 #: yast3/qt6/snapshots/config_dialog.py:84
 #: yast3/tui/snapshots/config_screen.py:61
 msgid "Number Limit"
-msgstr ""
+msgstr "Numerorajoitus"
 
 #: yast3/gtk4/snapshots/config_dialog.py:116
 #: yast3/qt6/snapshots/config_dialog.py:89
 #: yast3/tui/snapshots/config_screen.py:66
 msgid "Number Limit Important"
-msgstr ""
+msgstr "Numerorajoitus Tärkeät"
 
 #: yast3/gtk4/snapshots/config_dialog.py:124
 #: yast3/qt6/snapshots/config_dialog.py:94
 #: yast3/tui/snapshots/config_screen.py:71
 msgid "Timeline Create"
-msgstr ""
+msgstr "Luoda aikajana"
 
 #: yast3/gtk4/snapshots/config_dialog.py:129
 #: yast3/qt6/snapshots/config_dialog.py:99
 #: yast3/tui/snapshots/config_screen.py:75
 msgid "Timeline Cleanup"
-msgstr ""
+msgstr "Aikajanapuhdistus"
 
 #: yast3/gtk4/snapshots/config_dialog.py:134
 #: yast3/qt6/snapshots/config_dialog.py:104
 msgid "Timeline Min Age (seconds)"
-msgstr ""
+msgstr "Aikajanaminimi-ikä (sekuntia)"
 
 #: yast3/gtk4/snapshots/config_dialog.py:142
 #: yast3/qt6/snapshots/config_dialog.py:109
 msgid "Timeline Limit Hourly"
-msgstr ""
+msgstr "Aikajanarajoitus Tunti"
 
 #: yast3/gtk4/snapshots/config_dialog.py:150
 #: yast3/qt6/snapshots/config_dialog.py:114
 msgid "Timeline Limit Daily"
-msgstr ""
+msgstr "Aikajanarajoitus Päivä"
 
 #: yast3/gtk4/snapshots/config_dialog.py:158
 #: yast3/qt6/snapshots/config_dialog.py:119
 msgid "Timeline Limit Weekly"
-msgstr ""
+msgstr "Aikajanarajoitus Viikko"
 
 #: yast3/gtk4/snapshots/config_dialog.py:166
 #: yast3/qt6/snapshots/config_dialog.py:124
 msgid "Timeline Limit Monthly"
-msgstr ""
+msgstr "Aikajanarajoitus Kuukausi"
 
 #: yast3/gtk4/snapshots/config_dialog.py:174
 #: yast3/qt6/snapshots/config_dialog.py:129
 msgid "Timeline Limit Yearly"
-msgstr ""
+msgstr "Aikajanarajoitus Vuosi"
 
 #: yast3/gtk4/snapshots/config_dialog.py:221
 #: yast3/qt6/snapshots/config_dialog.py:168 yast3/tui/snapshots/window.py:245
 msgid "Configuration saved successfully."
-msgstr ""
+msgstr "Asetukset tallennettiin onnistuneesti."
 
 #: yast3/gtk4/snapshots/config_dialog.py:228
 #: yast3/qt6/snapshots/config_dialog.py:171
 #, python-brace-format
 msgid "Failed to write config: {0}"
-msgstr ""
+msgstr "Asetusten kirjoittaminen epäonnistui: {0}"
 
 #: yast3/gtk4/snapshots/window.py:62 yast3/gtk4/snapshots/window.py:255
 #: yast3/qt6/snapshots/window.py:59 yast3/qt6/snapshots/window.py:179
 #: yast3/tui/snapshots/window.py:71
 msgid "Create"
-msgstr ""
+msgstr "Luo"
 
 #: yast3/gtk4/snapshots/window.py:70 yast3/qt6/snapshots/window.py:67
 #: yast3/tui/snapshots/window.py:74
 msgid "Configure"
-msgstr ""
+msgstr "Muokkaa asetuksia"
 
 #: yast3/gtk4/snapshots/window.py:94 yast3/qt6/snapshots/window.py:77
 #: yast3/tui/snapshots/window.py:85
 msgid "Date"
-msgstr ""
+msgstr "Päivä"
 
 #: yast3/gtk4/snapshots/window.py:108 yast3/qt6/snapshots/window.py:77
 #: yast3/tui/snapshots/window.py:88
 msgid "Cleanup"
-msgstr ""
+msgstr "Puhdistus"
 
 #: yast3/gtk4/snapshots/window.py:143 yast3/gtk4/snapshots/window.py:280
 #: yast3/qt6/snapshots/window.py:196 yast3/qt6/snapshots/window.py:205
 msgid "Delete Snapshot"
-msgstr ""
+msgstr "Poista Snapshot"
 
 #: yast3/gtk4/snapshots/window.py:147 yast3/qt6/snapshots/window.py:197
 #, python-brace-format
 msgid "Delete snapshot #{0}? This action cannot be undone."
-msgstr ""
+msgstr "Poistaa snapshotti #{0}? Tätä toimintoa ei voi peruuttaa."
 
 #: yast3/gtk4/snapshots/window.py:180 yast3/qt6/snapshots/window.py:104
 msgid "Load Snapshots"
-msgstr ""
+msgstr "Lataa Snapshottit"
 
 #: yast3/gtk4/snapshots/window.py:182 yast3/qt6/snapshots/window.py:106
 msgid "Snapshots loaded successfully."
-msgstr ""
+msgstr "Snapshottit ladattiin onnistuneesti."
 
 #: yast3/gtk4/snapshots/window.py:203 yast3/qt6/snapshots/window.py:127
 #, python-brace-format
 msgid "Failed to parse snapshot data: {0}"
-msgstr ""
+msgstr "Snapshot-tietojen jäsentäminen epäonnistui: {0}"
 
 #: yast3/gtk4/snapshots/window.py:209 yast3/qt6/snapshots/window.py:133
 #, python-brace-format
 msgid "Failed to load snapshots: {0}"
-msgstr ""
+msgstr "Snapshottien lataaminen epäonnistui: {0}"
 
 #: yast3/gtk4/snapshots/window.py:250 yast3/qt6/snapshots/window.py:175
 #: yast3/tui/snapshots/window.py:193
 msgid "Description cannot be empty."
-msgstr ""
+msgstr "Kuvaus ei voi olla tyhjä."
 
 #: yast3/gtk4/snapshots/window.py:256 yast3/qt6/snapshots/window.py:180
 msgid "Creating..."
-msgstr ""
+msgstr "Luodaan..."
 
 #: yast3/gtk4/snapshots/window.py:257 yast3/qt6/snapshots/window.py:167
 #: yast3/qt6/snapshots/window.py:181
 msgid "Create Snapshot"
-msgstr ""
+msgstr "Luo Snapshot"
 
 #: yast3/gtk4/snapshots/window.py:259 yast3/qt6/snapshots/window.py:183
 #: yast3/tui/snapshots/window.py:208
 msgid "Snapshot created successfully."
-msgstr ""
+msgstr "Snapshot luotiin onnistuneesti."
 
 #: yast3/gtk4/snapshots/window.py:270 yast3/qt6/snapshots/window.py:191
 #: yast3/tui/snapshots/window.py:218
 msgid "Please select a snapshot."
-msgstr ""
+msgstr "Valitse snapshotti."
 
 #: yast3/gtk4/snapshots/window.py:279 yast3/qt6/snapshots/window.py:204
 msgid "Deleting..."
-msgstr ""
+msgstr "Poistetaan..."
 
 #: yast3/gtk4/snapshots/window.py:282 yast3/qt6/snapshots/window.py:207
 #: yast3/tui/snapshots/window.py:233
 #, python-brace-format
 msgid "Snapshot #{0} deleted successfully."
-msgstr ""
+msgstr "Snapshotti #{0} poistettiin onnistuneesti."
 
 #: yast3/gtk4/ssh/__init__.py:20 yast3/qt6/ssh/__init__.py:16
 #: yast3/tui/ssh/__init__.py:12
 msgid "SSH Client"
-msgstr ""
+msgstr "SSH-asiakas"
 
 #: yast3/gtk4/ssh/__init__.py:48 yast3/qt6/ssh/__init__.py:41
 msgid "SSH Permission Warning"
-msgstr ""
+msgstr "SSH-oikeusvaroitus"
 
 #: yast3/gtk4/ssh/__init__.py:52 yast3/qt6/ssh/__init__.py:43
 #, python-brace-format
@@ -1933,6 +1948,11 @@ msgid ""
 "\n"
 "Would you like to fix them now?"
 msgstr ""
+"Seuraavilla SSH-kohteilla on epäturvalliset oikeudet:\n"
+"\n"
+"{0}\n"
+"\n"
+"Haluatko korjata ne nyt?"
 
 #: yast3/gtk4/ssh/__init__.py:76 yast3/qt6/ssh/__init__.py:61
 #, python-brace-format
@@ -1941,158 +1961,161 @@ msgid ""
 "\n"
 "{0}"
 msgstr ""
+"Seuraavien kohtien oikeuksien korjaus epäonnistui:\n"
+"\n"
+"{0}"
 
 #: yast3/gtk4/ssh/__init__.py:89 yast3/qt6/ssh/__init__.py:68
 msgid "SSH permissions have been fixed successfully."
-msgstr ""
+msgstr "SSH-oikeudet korjattiin onnistuneesti."
 
 #: yast3/gtk4/ssh/dialogs.py:18 yast3/qt6/ssh/dialogs.py:26
 msgid "Edit SSH Options"
-msgstr ""
+msgstr "Muokkaa SSH-asetuksia"
 
 #: yast3/gtk4/ssh/dialogs.py:57 yast3/qt6/ssh/dialogs.py:55
 msgid "Option name"
-msgstr ""
+msgstr "Asetuksen nimi"
 
 #: yast3/gtk4/ssh/dialogs.py:59 yast3/qt6/ssh/dialogs.py:57
 msgid "Option value"
-msgstr ""
+msgstr "Asetuksen arvo"
 
 #: yast3/gtk4/ssh/dialogs.py:99 yast3/qt6/ssh/dialogs.py:86
 msgid "Option name is required."
-msgstr ""
+msgstr "Asetuksen nimi on pakollinen."
 
 #: yast3/gtk4/ssh/dialogs.py:105 yast3/qt6/ssh/dialogs.py:92
 msgid "Option already exists."
-msgstr ""
+msgstr "Asetus on jo olemassa."
 
 #: yast3/gtk4/ssh/dialogs.py:136 yast3/qt6/ssh/dialogs.py:119
 msgid "Add/Edit SSH Host"
-msgstr ""
+msgstr "Lisää/Muokkaa SSH-isäntää"
 
 #: yast3/gtk4/ssh/dialogs.py:158 yast3/qt6/ssh/dialogs.py:128
 msgid "Host Pattern:"
-msgstr ""
+msgstr "Isäntä-pattern:"
 
 #: yast3/gtk4/ssh/dialogs.py:169 yast3/qt6/ssh/dialogs.py:134
 msgid "Edit Options"
-msgstr ""
+msgstr "Muokkaa asetuksia"
 
 #: yast3/gtk4/ssh/dialogs.py:195 yast3/qt6/ssh/dialogs.py:162
 #, python-brace-format
 msgid "Options: {0}"
-msgstr ""
+msgstr "Asetukset: {0}"
 
 #: yast3/gtk4/ssh/dialogs.py:197 yast3/qt6/ssh/dialogs.py:164
 msgid "No options set"
-msgstr ""
+msgstr "Ei asetuksia"
 
 #: yast3/gtk4/ssh/hosts_tab.py:81 yast3/qt6/ssh/hosts_tab.py:61
 #: yast3/tui/ssh/window.py:288
 msgid "Host Pattern"
-msgstr ""
+msgstr "Isäntä-pattern"
 
 #: yast3/gtk4/ssh/hosts_tab.py:88 yast3/qt6/ssh/hosts_tab.py:61
 #: yast3/tui/ssh/window.py:288
 msgid "Options"
-msgstr ""
+msgstr "Asetukset"
 
 #: yast3/gtk4/ssh/hosts_tab.py:122 yast3/qt6/ssh/hosts_tab.py:122
 #: yast3/qt6/ssh/hosts_tab.py:213 yast3/tui/ssh/window.py:327
 #, python-brace-format
 msgid " and {0} more"
-msgstr ""
+msgstr " ja {0} lisää"
 
 #: yast3/gtk4/ssh/hosts_tab.py:152 yast3/gtk4/ssh/hosts_tab.py:180
 #: yast3/qt6/ssh/hosts_tab.py:141 yast3/qt6/ssh/hosts_tab.py:162
 msgid "Host pattern is required."
-msgstr ""
+msgstr "Isäntä-pattern on pakollinen."
 
 #: yast3/gtk4/ssh/hosts_tab.py:195 yast3/qt6/ssh/hosts_tab.py:176
 #: yast3/tui/ssh/window.py:383
 msgid "Cannot delete the default host entry."
-msgstr ""
+msgstr "Ei voida poistaa oletus-isäntämerkintää."
 
 #: yast3/gtk4/ssh/hosts_tab.py:224 yast3/qt6/ssh/hosts_tab.py:222
 msgid "SSH config saved successfully."
-msgstr ""
+msgstr "SSH-asetukset tallennettiin onnistuneesti."
 
 #: yast3/gtk4/ssh/hosts_tab.py:226 yast3/qt6/ssh/hosts_tab.py:226
 msgid "Cannot write to SSH config. Check permissions."
-msgstr ""
+msgstr "Ei voida kirjoittaa SSH-asetuksiin. Tarkista oikeudet."
 
 #: yast3/gtk4/ssh/hosts_tab.py:228 yast3/qt6/ssh/hosts_tab.py:229
 msgid "Failed to save SSH config."
-msgstr ""
+msgstr "SSH-asetusten tallentaminen epäonnistui."
 
 #: yast3/gtk4/ssh/keys_generate_dialog.py:18
 #: yast3/qt6/ssh/keys_generate_dialog.py:80 yast3/tui/ssh/window.py:611
 msgid "Generate SSH Key"
-msgstr ""
+msgstr "Generoi SSH-avain"
 
 #: yast3/gtk4/ssh/keys_generate_dialog.py:27
 #: yast3/qt6/ssh/keys_generate_dialog.py:159 yast3/tui/ssh/window.py:268
 msgid "Generate"
-msgstr ""
+msgstr "Generoi"
 
 #: yast3/gtk4/ssh/keys_generate_dialog.py:39 yast3/gtk4/ssh/keys_tab.py:75
 #: yast3/qt6/ssh/keys_tab.py:62
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritmi"
 
 #: yast3/gtk4/ssh/keys_generate_dialog.py:52
 msgid "Key Size"
-msgstr ""
+msgstr "Avainkoko"
 
 #: yast3/gtk4/ssh/keys_generate_dialog.py:70
 msgid "Optional comment (e.g., user@host)"
-msgstr ""
+msgstr "Vapaaehtoinen kommentti (esim. käyttäjä@isäntä)"
 
 #: yast3/gtk4/ssh/keys_generate_dialog.py:77 yast3/gtk4/ssh/keys_tab.py:102
 #: yast3/qt6/ssh/keys_tab.py:66 yast3/tui/ssh/window.py:293
 msgid "Passphrase"
-msgstr ""
+msgstr "Salasana"
 
 #: yast3/gtk4/ssh/keys_generate_dialog.py:82
 msgid "Optional passphrase"
-msgstr ""
+msgstr "Vapaaehtoinen salasana"
 
 #: yast3/gtk4/ssh/keys_generate_dialog.py:112
 #, python-brace-format
 msgid "Failed to generate key: {0}"
-msgstr ""
+msgstr "Avainten generointi epäonnistui: {0}"
 
 #: yast3/gtk4/ssh/keys_tab.py:37 yast3/qt6/ssh/keys_tab.py:40
 msgid "Copy Public Key"
-msgstr ""
+msgstr "Kopioi julkinen avain"
 
 #: yast3/gtk4/ssh/keys_tab.py:82 yast3/qt6/ssh/keys_tab.py:63
 msgid "Size"
-msgstr ""
+msgstr "Koko"
 
 #: yast3/gtk4/ssh/keys_tab.py:89 yast3/qt6/ssh/keys_tab.py:64
 msgid "Fingerprint"
-msgstr ""
+msgstr "Tunniste"
 
 #: yast3/gtk4/ssh/keys_tab.py:109 yast3/qt6/ssh/keys_tab.py:67
 msgid "Public"
-msgstr ""
+msgstr "Julkinen"
 
 #: yast3/gtk4/ssh/keys_tab.py:116 yast3/qt6/ssh/keys_tab.py:68
 msgid "Private"
-msgstr ""
+msgstr "Yksityinen"
 
 #: yast3/gtk4/ssh/keys_tab.py:194 yast3/qt6/ssh/keys_tab.py:174
 msgid "Public key copied to clipboard."
-msgstr ""
+msgstr "Julkinen avain kopioitu leikepöydälle."
 
 #: yast3/gtk4/ssh/keys_tab.py:196 yast3/qt6/ssh/keys_tab.py:177
 msgid "Cannot read public key file."
-msgstr ""
+msgstr "Ei voida lukea julkista avaintiedostoa."
 
 #: yast3/gtk4/ssh/keys_tab.py:223 yast3/qt6/ssh/keys_tab.py:200
 msgid "Confirm Delete"
-msgstr ""
+msgstr "Vahvista poisto"
 
 #: yast3/gtk4/ssh/keys_tab.py:226 yast3/qt6/ssh/keys_tab.py:201
 #, python-brace-format
@@ -2101,6 +2124,9 @@ msgid ""
 "\n"
 "{0}"
 msgstr ""
+"Haluatko varmasti poistaa seuraavat avaimet?\n"
+"\n"
+"{0}"
 
 #: yast3/gtk4/ssh/keys_tab.py:243 yast3/qt6/ssh/keys_tab.py:218
 #, python-brace-format
@@ -2109,626 +2135,655 @@ msgid ""
 "\n"
 "{0}"
 msgstr ""
+"Joidenkin tiedostojen poistaminen epäonnistui:\n"
+"\n"
+"{0}"
 
 #: yast3/gtk4/ssh/keys_tab.py:246 yast3/qt6/ssh/keys_tab.py:221
 msgid "Key deleted successfully."
-msgstr ""
+msgstr "Avain poistettiin onnistuneesti."
 
 #: yast3/gtk4/ssh/window.py:36 yast3/qt6/ssh/window.py:40
 #: yast3/tui/ssh/window.py:252
 msgid "Keys"
-msgstr ""
+msgstr "Avainten"
+
+#: yast3/qt6/about_dialog.py:14 yast3/tui/main_window.py:68
+#, python-brace-format
+msgid "Version: {}"
+msgstr "Versio: {}"
+
+#: yast3/qt6/about_dialog.py:15 yast3/tui/main_window.py:69
+#, python-brace-format
+msgid "License: {}"
+msgstr "Lisenssi: {}"
+
+#: yast3/qt6/about_dialog.py:19 yast3/tui/main_window.py:65
+msgid "About YaST3"
+msgstr "Tietoja YaST3:sta"
+
+#: yast3/qt6/main_window.py:55
+msgid "Help"
+msgstr "Ohje"
 
 #: yast3/qt6/datetime/window.py:154
 #, python-brace-format
 msgid "Failed to load hardware clock setting: {0}"
-msgstr ""
+msgstr "Koneajan asetuksen lataaminen epäonnistui: {0}"
 
 #: yast3/qt6/datetime/window.py:162 yast3/tui/datetime/window.py:151
 msgid "NTP synchronized"
-msgstr ""
+msgstr "NTP-synkronoitu"
 
 #: yast3/qt6/datetime/window.py:164 yast3/tui/datetime/window.py:153
 msgid "NTP not synchronized"
-msgstr ""
+msgstr "NTP ei synkronoitu"
 
 #: yast3/qt6/datetime/window.py:166
 #, python-brace-format
 msgid "Failed to load NTP status: {0}"
-msgstr ""
+msgstr "NTP-tilan lataaminen epäonnistui: {0}"
 
 #: yast3/qt6/flatpak/package_manager.py:79
 msgid "Installing package..."
-msgstr ""
+msgstr "Asennetaan pakettia..."
 
 #: yast3/qt6/flatpak/package_manager.py:80
 msgid "Install Flatpak Package"
-msgstr ""
+msgstr "Asenna Flatpak-paketti"
 
 #: yast3/qt6/flatpak/package_manager.py:92
 msgid "Remove Package"
-msgstr ""
+msgstr "Poista paketti"
 
 #: yast3/qt6/flatpak/package_manager.py:93
 msgid "Removing package..."
-msgstr ""
+msgstr "Poistetaan pakettia..."
 
 #: yast3/qt6/flatpak/package_manager.py:94
 msgid "Remove Flatpak Package"
-msgstr ""
+msgstr "Poista Flatpak-paketti"
 
 #: yast3/qt6/flatpak/runtime_manager.py:37
 msgid "Removing runtime..."
-msgstr ""
+msgstr "Poistetaan runtimea..."
 
 #: yast3/qt6/flatpak/runtime_manager.py:38
 msgid "Remove Flatpak Runtime"
-msgstr ""
+msgstr "Poista Flatpak-runtime"
 
 #: yast3/qt6/flatpak/window.py:113
 msgid "Please wait"
-msgstr ""
+msgstr "Odota"
 
 #: yast3/qt6/flatpak/window.py:114
 msgid "A Flatpak operation is still running. Please wait for it to finish."
-msgstr ""
+msgstr "Flatpak-toiminto on vielä käynnissä. Odota sen päättymistä."
 
 #: yast3/qt6/git/window.py:233
 msgid "All Files (*)"
-msgstr ""
+msgstr "Kaikki tiedostot (*)"
 
 #: yast3/qt6/git/window.py:271 yast3/qt6/hosts/window.py:266
 msgid "Saved successfully"
-msgstr ""
+msgstr "Tallennettu onnistuneesti"
 
 #: yast3/qt6/git/window.py:302 yast3/tui/git/window.py:219
 msgid "Reset to original values"
-msgstr ""
+msgstr "Palauta alkuperäiset arvot"
 
 #: yast3/qt6/languages/manager.py:141
 #, python-brace-format
 msgid "Are you sure you want to install locale '{0}' ({1})?"
-msgstr ""
+msgstr "Haluatko varmasti asentaa lokalit '{0}' ({1})?"
 
 #: yast3/qt6/repositories/window.py:213 yast3/qt6/repositories/window.py:256
 #: yast3/qt6/repositories/window.py:321
 #, python-format
 msgid "Failed to save repository: %s"
-msgstr ""
+msgstr "Repositoryn tallentaminen epäonnistui: %s"
 
 #: yast3/qt6/repositories/window.py:278
 #, python-format
 msgid "Failed to delete repository: %s"
-msgstr ""
+msgstr "Repositoryn poistaminen epäonnistui: %s"
 
 #: yast3/qt6/repositories/window.py:306
 #, python-format
 msgid "Failed to switch mirrors: %s"
-msgstr ""
+msgstr "Peilien vaihtaminen epäonnistui: %s"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:90
 msgid "Key Name:"
-msgstr ""
+msgstr "Avainnimi:"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:92
 msgid "e.g., id_ed25519"
-msgstr ""
+msgstr "esim. id_ed25519"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:98
 msgid "Key Type:"
-msgstr ""
+msgstr "Avaintyyppi:"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:110
 msgid "Key Size:"
-msgstr ""
+msgstr "Avainkoko:"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:125
 msgid "e.g., user@hostname"
-msgstr ""
+msgstr "esim. käyttäjä@isäntänimi"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:131
 msgid "Passphrase:"
-msgstr ""
+msgstr "Salasana:"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:138
 #, python-brace-format
 msgid "The key will be saved to {0}"
-msgstr ""
+msgstr "Avain tallennetaan {0}"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:143
 msgid "Public Key:"
-msgstr ""
+msgstr "Julkinen avain:"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:177
 msgid "Key name is required."
-msgstr ""
+msgstr "Avainnimi on pakollinen."
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:185
 msgid "Key names starting with 'id_' are recommended. Continue anyway?"
-msgstr ""
+msgstr "Avainnimien tulee aloittaa 'id_':lla. Jatketaanko silti?"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:195
 msgid "A key with this name already exists."
-msgstr ""
+msgstr "Avain tällä nimellä on jo olemassa."
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:232
 msgid "SSH key generated successfully."
-msgstr ""
+msgstr "SSH-avain generoitiin onnistuneesti."
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:237
 #, python-brace-format
 msgid "Failed to read public key: {0}"
-msgstr ""
+msgstr "Julkisen avaimen lukeminen epäonnistui: {0}"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:242
 #, python-brace-format
 msgid "Failed to generate SSH key: {0}"
-msgstr ""
+msgstr "SSH-avainten generointi epäonnistui: {0}"
+
+#: yast3/tui/main_window.py:63
+msgid "License file not found."
+msgstr "Lisenssitiedostoa ei löydy."
+
+#: yast3/tui/main_window.py:71
+msgid "License Text:"
+msgstr "Lisenssiteksti:"
 
 #: yast3/tui/cron/window.py:211
 msgid "Cron job deleted."
-msgstr ""
+msgstr "Cron-tehtävä poistettiin."
 
 #: yast3/tui/cron/window.py:222
 msgid "Success: Cron jobs saved successfully."
-msgstr ""
+msgstr "Onnistui: Cron-tehtävät tallennettiin onnistuneesti."
 
 #: yast3/tui/cron/window.py:224 yast3/tui/datetime/window.py:262
 #: yast3/tui/hostname/window.py:135 yast3/tui/languages/window.py:120
 #: yast3/tui/proxy/window.py:158
 msgid "Error: Permission denied. Root permission required."
-msgstr ""
+msgstr "Virhe: Ei oikeuksia. Tarvitaan root-oikeudet."
 
 #: yast3/tui/cron/window.py:234
 msgid "Cron job added."
-msgstr ""
+msgstr "Cron-tehtävä lisättiin."
 
 #: yast3/tui/cron/window.py:246
 msgid "Cron job updated."
-msgstr ""
+msgstr "Cron-tehtävä päivitettiin."
 
 #: yast3/tui/cron/window.py:344
 msgid "Error: Command is required."
-msgstr ""
+msgstr "Virhe: Komento on pakollinen."
 
 #: yast3/tui/datetime/window.py:94
 msgid "Date & Time Configuration"
-msgstr ""
+msgstr "Päivämäärä ja Aika -asetukset"
 
 #: yast3/tui/datetime/window.py:98
 msgid "Type to search..."
-msgstr ""
+msgstr "Kirjoita hakuun..."
 
 #: yast3/tui/datetime/window.py:110
 msgid "Enter NTP servers"
-msgstr ""
+msgstr "Syötä NTP-palvelimet"
 
 #: yast3/tui/datetime/window.py:136
 #, python-brace-format
 msgid "Error loading timezone: {0}"
-msgstr ""
+msgstr "Virhe aikavyöhykkeen lataamisessa: {0}"
 
 #: yast3/tui/datetime/window.py:142
 #, python-brace-format
 msgid "Error loading hardware clock: {0}"
-msgstr ""
+msgstr "Virhe koneajan lataamisessa: {0}"
 
 #: yast3/tui/datetime/window.py:155
 #, python-brace-format
 msgid "Error loading NTP status: {0}"
-msgstr ""
+msgstr "Virhe NTP-tilan lataamisessa: {0}"
 
 #: yast3/tui/datetime/window.py:264 yast3/tui/hostname/window.py:140
 #: yast3/tui/hosts/window.py:169 yast3/tui/languages/window.py:125
 #: yast3/tui/repositories/window.py:264
 msgid "Error: Authentication failed or pkexec not available."
-msgstr ""
+msgstr "Virhe: Autentikointi epäonnistui tai pkexec ei ole saatavilla."
 
 #: yast3/tui/datetime/window.py:266 yast3/tui/hostname/window.py:86
 #: yast3/tui/hostname/window.py:144 yast3/tui/languages/window.py:129
 #: yast3/tui/ssh/window.py:415 yast3/tui/ssh/window.py:451
 #, python-brace-format
 msgid "Error: {0}"
-msgstr ""
+msgstr "Virhe: {0}"
 
 #: yast3/tui/git/window.py:158
 msgid "Error: Git is not installed on this system."
-msgstr ""
+msgstr "Virhe: Git ei ole asennettu tässä järjestelmässä."
 
 #: yast3/tui/git/window.py:239
 msgid "Error: User name and email are required."
-msgstr ""
+msgstr "Virhe: Käyttäjänimi ja sähköposti ovat pakollisia."
 
 #: yast3/tui/git/window.py:258
 msgid "Success: Git configuration saved successfully."
-msgstr ""
+msgstr "Onnistui: Git-asetukset tallennettiin onnistuneesti."
 
 #: yast3/tui/git/window.py:260
 msgid "Error: Failed to save Git configuration."
-msgstr ""
+msgstr "Virhe: Git-asetusten tallentaminen epäonnistui."
 
 #: yast3/tui/hostname/window.py:64
 msgid "Hostname Configuration"
-msgstr ""
+msgstr "Isäntänimi -asetukset"
 
 #: yast3/tui/hostname/window.py:79
 msgid "Error: /etc/hostname not found."
-msgstr ""
+msgstr "Virhe: /etc/hostname ei löydy."
 
 #: yast3/tui/hostname/window.py:82
 msgid "Error: Cannot read /etc/hostname. Root permission required."
-msgstr ""
+msgstr "Virhe: Ei voida lukea /etc/hostname. Tarvitaan root-oikeudet."
 
 #: yast3/tui/hostname/window.py:110
 msgid "Error: Hostname cannot be empty."
-msgstr ""
+msgstr "Virhe: Isäntänimi ei voi olla tyhjä."
 
 #: yast3/tui/hostname/window.py:115
 msgid "Error: Hostname is too long (maximum 253 characters)."
-msgstr ""
+msgstr "Virhe: Isäntänimi on liian pitkä (enintään 253 merkkiä)."
 
 #: yast3/tui/hostname/window.py:122
 msgid "Error: Hostname contains invalid characters."
-msgstr ""
+msgstr "Virhe: Isäntänimi sisältää virheellisiä merkkejä."
 
 #: yast3/tui/hostname/window.py:129
 #, python-brace-format
 msgid "Success: Hostname changed successfully to '{0}'."
-msgstr ""
+msgstr "Onnistui: Isäntänimi muutettiin onnistuneesti '{0}'."
 
 #: yast3/tui/hosts/window.py:92 yast3/tui/proxy/window.py:109
 #, python-brace-format
 msgid "Error: Cannot read {0}. Root permission required."
-msgstr ""
+msgstr "Virhe: Ei voida lukea {0}. Tarvitaan root-oikeudet."
 
 #: yast3/tui/hosts/window.py:97 yast3/tui/proxy/window.py:106
 #, python-brace-format
 msgid "Error: {0} not found."
-msgstr ""
+msgstr "Virhe: {0} ei löydy."
 
 #: yast3/tui/hosts/window.py:124 yast3/tui/ssh/window.py:508
 msgid "Add Host Entry"
-msgstr ""
+msgstr "Lisää Isäntämerkintä"
 
 #: yast3/tui/hosts/window.py:137 yast3/tui/ssh/window.py:508
 msgid "Edit Host Entry"
-msgstr ""
+msgstr "Muokkaa Isäntämerkintää"
 
 #: yast3/tui/hosts/window.py:154
 msgid "Entry deleted."
-msgstr ""
+msgstr "Merkintä poistettiin."
 
 #: yast3/tui/hosts/window.py:161
 msgid "Success: Hosts file saved successfully."
-msgstr ""
+msgstr "Onnistui: Hosts-tiedosto tallennettiin onnistuneesti."
 
 #: yast3/tui/hosts/window.py:164
 #, python-brace-format
 msgid "Error: Cannot write to {0}. Root permission required."
-msgstr ""
+msgstr "Virhe: Ei voida kirjoittaa {0}:ään. Tarvitaan root-oikeudet."
 
 #: yast3/tui/hosts/window.py:173
 msgid "Error: Failed to save hosts file."
-msgstr ""
+msgstr "Virhe: Hosts-tiedoston tallentaminen epäonnistui."
 
 #: yast3/tui/hosts/window.py:191
 msgid "Entry added."
-msgstr ""
+msgstr "Merkintä lisättiin."
 
 #: yast3/tui/hosts/window.py:193 yast3/tui/hosts/window.py:212
 msgid "Error: IP address and hostname are required."
-msgstr ""
+msgstr "Virhe: IP-osoite ja isäntänimi ovat pakollisia."
 
 #: yast3/tui/hosts/window.py:210
 msgid "Entry updated."
-msgstr ""
+msgstr "Merkintä päivitettiin."
 
 #: yast3/tui/languages/window.py:79
 msgid "Error: Please select a language."
-msgstr ""
+msgstr "Virhe: Valitse kieli."
 
 #: yast3/tui/languages/window.py:87
 #, python-brace-format
 msgid "Error: Language '{0}' not found."
-msgstr ""
+msgstr "Virhe: Kieltä '{0}' ei löydy."
 
 #: yast3/tui/languages/window.py:114
 #, python-brace-format
 msgid "Success: Language changed to '{0}'. Changes take effect after logout."
-msgstr ""
+msgstr "Onnistui: Kieli muutettiin '{0}'. Muutokset tulevat voimaan uloskirjautumisen jälkeen."
 
 #: yast3/tui/packages/window.py:39
 msgid "Packages Management"
-msgstr ""
+msgstr "Pakettien hallinta"
 
 #: yast3/tui/packages/window.py:40
 msgid "Package management functionality is not yet implemented in TUI mode."
-msgstr ""
+msgstr "Pakettienhallinta-toiminto ei ole vielä toteutettu TUI-tilassa."
 
 #: yast3/tui/packages/window.py:41
 msgid "Please use the Qt6 GUI version for full package management features."
-msgstr ""
+msgstr "Käytä Qt6 GUI-versiota täysillä pakettienhallinta-toiminnoilla."
 
 #: yast3/tui/proxy/window.py:69
 msgid "Proxy Configuration"
-msgstr ""
+msgstr "Proxy-asetukset"
 
 #: yast3/tui/proxy/window.py:114
 #, python-brace-format
 msgid "Error: Failed to load proxy configuration: {0}"
-msgstr ""
+msgstr "Virhe: Proxy-asetusten lataaminen epäonnistui: {0}"
 
 #: yast3/tui/proxy/window.py:120
 msgid "Disabled"
-msgstr ""
+msgstr "Poistettu käytöstä"
 
 #: yast3/tui/proxy/window.py:121
 #, python-brace-format
 msgid "Proxy State: {0}"
-msgstr ""
+msgstr "Proxy-tila: {0}"
 
 #: yast3/tui/proxy/window.py:154
 msgid "Success: Proxy configuration saved successfully."
-msgstr ""
+msgstr "Onnistui: Proxy-asetukset tallennettiin onnistuneesti."
 
 #: yast3/tui/proxy/window.py:163
 #, python-brace-format
 msgid "Error: Failed to save proxy configuration: {0}"
-msgstr ""
+msgstr "Virhe: Proxy-asetusten tallentaminen epäonnistui: {0}"
 
 #: yast3/tui/repositories/window.py:93
 msgid "Error: Cannot read repository directory. Root permission required."
-msgstr ""
+msgstr "Virhe: Ei voida lukea repository-kansiota. Tarvitaan root-oikeudet."
 
 #: yast3/tui/repositories/window.py:164
 msgid "Repository deleted."
-msgstr ""
+msgstr "Repository poistettiin."
 
 #: yast3/tui/repositories/window.py:187 yast3/tui/repositories/window.py:225
 msgid "Error: Repository ID is required."
-msgstr ""
+msgstr "Virhe: Repository-ID on pakollinen."
 
 #: yast3/tui/repositories/window.py:190 yast3/tui/repositories/window.py:228
 msgid "Error: URL is required."
-msgstr ""
+msgstr "Virhe: URL on pakollinen."
 
 #: yast3/tui/repositories/window.py:214
 msgid "Repository added."
-msgstr ""
+msgstr "Repository lisättiin."
 
 #: yast3/tui/repositories/window.py:251
 msgid "Repository updated."
-msgstr ""
+msgstr "Repository päivitettiin."
 
 #: yast3/tui/repositories/window.py:259
 msgid "Error: Cannot write to repository directory. Root permission required."
-msgstr ""
+msgstr "Virhe: Ei voida kirjoittaa repository-kansioon. Tarvitaan root-oikeudet."
 
 #: yast3/tui/repositories/window.py:268
 msgid "Error: Failed to save repository configuration."
-msgstr ""
+msgstr "Virhe: Repository-asetusten tallentaminen epäonnistui."
 
 #: yast3/tui/repositories/window.py:325
 msgid "Repository ID"
-msgstr ""
+msgstr "Repository-ID"
 
 #: yast3/tui/repositories/window.py:326
 msgid "Unique repository ID"
-msgstr ""
+msgstr "Uniikki repository-ID"
 
 #: yast3/tui/repositories/window.py:329
 msgid "Display name"
-msgstr ""
+msgstr "Näytettävä nimi"
 
 #: yast3/tui/repositories/window.py:335
 msgid "Mirror list URL"
-msgstr ""
+msgstr "Peili-luettelon URL"
 
 #: yast3/tui/repositories/window.py:338
 msgid "Priority (default 99)"
-msgstr ""
+msgstr "Prioriteetti (oletus 99)"
 
 #: yast3/tui/repositories/window.py:347
 msgid "GPG Key"
-msgstr ""
+msgstr "GPG-avain"
 
 #: yast3/tui/repositories/window.py:348
 msgid "GPG key URL"
-msgstr ""
+msgstr "GPG-avaimen URL"
 
 #: yast3/tui/repositories/window.py:351
 msgid "GPG Check"
-msgstr ""
+msgstr "GPG-tarkistus"
 
 #: yast3/tui/repositories/window.py:352
 msgid "Keep Packages"
-msgstr ""
+msgstr "Pidä paketit"
 
 #: yast3/tui/services/window.py:157
 #, python-brace-format
 msgid "Error: Failed to load services: {0}"
-msgstr ""
+msgstr "Virhe: Palvelujen lataaminen epäonnistui: {0}"
 
 #: yast3/tui/services/window.py:271 yast3/tui/snapshots/window.py:201
 #: yast3/tui/snapshots/window.py:226
 #, python-brace-format
 msgid "Error: Failed to execute command: {0}"
-msgstr ""
+msgstr "Virhe: Komenton suorittaminen epäonnistui: {0}"
 
 #: yast3/tui/services/window.py:278
 #, python-brace-format
 msgid "Service '{0}' {1}."
-msgstr ""
+msgstr "Palvelu '{0}' {1}."
 
 #: yast3/tui/services/window.py:310
 #, python-brace-format
 msgid "Error: Failed to load logs: {0}"
-msgstr ""
+msgstr "Virhe: Logien lataaminen epäonnistui: {0}"
 
 #: yast3/tui/services/window.py:315
 msgid "No logs available."
-msgstr ""
+msgstr "Ei logejia saatavilla."
 
 #: yast3/tui/snapshots/config_screen.py:24
 msgid "Space Limit"
-msgstr ""
+msgstr "Tilakorkeus"
 
 #: yast3/tui/snapshots/config_screen.py:29
 msgid "Free Limit"
-msgstr ""
+msgstr "Vapaan tilan rajoitus"
 
 #: yast3/tui/snapshots/config_screen.py:56
 msgid "Number Min Age"
-msgstr ""
+msgstr "Numerominimi-ikä"
 
 #: yast3/tui/snapshots/config_screen.py:79
 msgid "Timeline Min Age"
-msgstr ""
+msgstr "Aikajanaminimi-ikä"
 
 #: yast3/tui/snapshots/config_screen.py:84
 msgid "Timeline Hourly"
-msgstr ""
+msgstr "Aikajana Tunti"
 
 #: yast3/tui/snapshots/config_screen.py:89
 msgid "Timeline Daily"
-msgstr ""
+msgstr "Aikajana Päivä"
 
 #: yast3/tui/snapshots/config_screen.py:94
 msgid "Timeline Weekly"
-msgstr ""
+msgstr "Aikajana Viikko"
 
 #: yast3/tui/snapshots/config_screen.py:99
 msgid "Timeline Monthly"
-msgstr ""
+msgstr "Aikajana Kuukausi"
 
 #: yast3/tui/snapshots/config_screen.py:104
 msgid "Timeline Yearly"
-msgstr ""
+msgstr "Aikajana Vuosi"
 
 #: yast3/tui/snapshots/config_screen.py:135
 #, python-brace-format
 msgid "Error: Failed to read config: {0}"
-msgstr ""
+msgstr "Virhe: Asetusten lukeminen epäonnistui: {0}"
 
 #: yast3/tui/snapshots/config_screen.py:164
 #, python-brace-format
 msgid "Error: Failed to write config: {0}"
-msgstr ""
+msgstr "Virhe: Asetusten kirjoittaminen epäonnistui: {0}"
 
 #: yast3/tui/snapshots/window.py:123
 msgid "Timeout waiting for snapshots"
-msgstr ""
+msgstr "Aikakatkaisu odottaessa snapshotteja"
 
 #: yast3/tui/snapshots/window.py:142
 #, python-brace-format
 msgid "Error: Failed to load snapshots: {0}"
-msgstr ""
+msgstr "Virhe: Snapshottien lataaminen epäonnistui: {0}"
 
 #: yast3/tui/ssh/window.py:283
 msgid "Warning: Some SSH files have insecure permissions."
-msgstr ""
+msgstr "Varoitus: Joidenkin SSH-tiedostojen oikeudet ovat epäturvalliset."
 
 #: yast3/tui/ssh/window.py:293 yast3/tui/ssh/window.py:619
 msgid "Bits"
-msgstr ""
+msgstr "Bittejä"
 
 #: yast3/tui/ssh/window.py:307
 msgid "Error: Cannot read SSH config."
-msgstr ""
+msgstr "Virhe: Ei voida lukea SSH-asetuksia."
 
 #: yast3/tui/ssh/window.py:368
 msgid "Please select a host to edit."
-msgstr ""
+msgstr "Valitse muokattava isäntä."
 
 #: yast3/tui/ssh/window.py:378
 msgid "Please select a host to delete."
-msgstr ""
+msgstr "Valitse poistettava isäntä."
 
 #: yast3/tui/ssh/window.py:388
 msgid "Host entry deleted."
-msgstr ""
+msgstr "Isäntämerkintä poistettiin."
 
 #: yast3/tui/ssh/window.py:395
 msgid "Success: SSH config saved successfully."
-msgstr ""
+msgstr "Onnistui: SSH-asetukset tallennettiin onnistuneesti."
 
 #: yast3/tui/ssh/window.py:397
 msgid "Error: Cannot write to SSH config."
-msgstr ""
+msgstr "Virhe: Ei voida kirjoittaa SSH-asetuksiin."
 
 #: yast3/tui/ssh/window.py:399
 msgid "Error: Failed to save SSH config."
-msgstr ""
+msgstr "Virhe: SSH-asetusten tallentaminen epäonnistui."
 
 #: yast3/tui/ssh/window.py:405
 msgid "Please select a key to delete."
-msgstr ""
+msgstr "Valitse poistettava avain."
 
 #: yast3/tui/ssh/window.py:413
 msgid "Key deleted."
-msgstr ""
+msgstr "Avain poistettiin."
 
 #: yast3/tui/ssh/window.py:420 yast3/tui/ssh/window.py:431
 msgid "Error: Host pattern is required."
-msgstr ""
+msgstr "Virhe: Isäntä-pattern on pakollinen."
 
 #: yast3/tui/ssh/window.py:426
 msgid "Host entry added."
-msgstr ""
+msgstr "Isäntämerkintä lisättiin."
 
 #: yast3/tui/ssh/window.py:442
 msgid "Host entry updated."
-msgstr ""
+msgstr "Isäntämerkintä päivitettiin."
 
 #: yast3/tui/ssh/window.py:449
 msgid "Key generated successfully."
-msgstr ""
+msgstr "Avain generoitiin onnistuneesti."
 
 #: yast3/tui/ssh/window.py:510
 msgid "Host"
-msgstr ""
+msgstr "Isäntä"
 
 #: yast3/tui/ssh/window.py:511
 msgid "Host pattern"
-msgstr ""
+msgstr "Isäntä-pattern"
 
 #: yast3/tui/ssh/window.py:513
 msgid "HostName"
-msgstr ""
+msgstr "HostName"
 
 #: yast3/tui/ssh/window.py:514
 msgid "Real hostname"
-msgstr ""
+msgstr "Todellinen isäntänimi"
 
 #: yast3/tui/ssh/window.py:516
 msgid "Port"
-msgstr ""
+msgstr "Portti"
 
 #: yast3/tui/ssh/window.py:517
 msgid "Port number"
-msgstr ""
+msgstr "Porttinumero"
 
 #: yast3/tui/ssh/window.py:520
 msgid "Username"
-msgstr ""
+msgstr "Käyttäjänimi"
 
 #: yast3/tui/ssh/window.py:522
 msgid "IdentityFile"
-msgstr ""
+msgstr "IdentityFile"
 
 #: yast3/tui/ssh/window.py:523
 msgid "Key file path"
-msgstr ""
+msgstr "Avaintiedoston polku"
 
 #: yast3/tui/ssh/window.py:614
 msgid "Key filename"
-msgstr ""
+msgstr "Avaintiedoston nimi"
 
 #: yast3/tui/ssh/window.py:617
 msgid "rsa, ed25519, ecdsa"
-msgstr ""
+msgstr "rsa, ed25519, ecdsa"
 
 #: yast3/tui/ssh/window.py:620
 msgid "Key bits"
-msgstr ""
+msgstr "Avainbittien määrä"
 

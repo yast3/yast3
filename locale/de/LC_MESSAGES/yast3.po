@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-14 04:10+0000\n"
+"POT-Creation-Date: 2026-07-14 06:39+0000\n"
 "PO-Revision-Date: 2026-06-27 00:51+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: de\n"
@@ -18,10 +18,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
+#: yast3/gtk4/about_dialog.py:22
+#, fuzzy
+msgid "GitHub"
+msgstr "GitHub"
+
+#: yast3/gtk4/main_window.py:87 yast3/qt6/main_window.py:56
+#: yast3/tui/main_window.py:125
+msgid "About"
+msgstr "Über"
+
 #: yast3/gtk4/module.py:33 yast3/qt6/module.py:29
 #, fuzzy, python-brace-format
 msgid "{name} — YaST3"
-msgstr "YaST3"
+msgstr "{name} — YaST3"
 
 #: yast3/gtk4/module_button.py:51 yast3/qt6/module_button.py:43
 msgid "Experimental"
@@ -51,7 +61,7 @@ msgstr "Befehl fehlgeschlagen. Siehe Ausgabe für Details."
 #: yast3/tui/services/window.py:284 yast3/tui/snapshots/window.py:120
 #: yast3/tui/snapshots/window.py:212 yast3/tui/snapshots/window.py:239
 msgid "Unknown error"
-msgstr "Unknown error"
+msgstr "Unbekannter Fehler"
 
 #: yast3/gtk4/cron/__init__.py:16 yast3/qt6/cron/__init__.py:12
 #: yast3/tui/cron/__init__.py:12
@@ -91,8 +101,8 @@ msgstr "Abbrechen"
 #: yast3/gtk4/repositories/switch_mirror_dialog.py:25
 #: yast3/gtk4/snapshots/config_dialog.py:186 yast3/gtk4/ssh/dialogs.py:28
 #: yast3/gtk4/ssh/dialogs.py:146 yast3/tui/cron/window.py:323
-#: yast3/tui/hosts/window.py:272 yast3/tui/repositories/window.py:354
-#: yast3/tui/repositories/window.py:483
+#: yast3/tui/hosts/window.py:272 yast3/tui/main_window.py:74
+#: yast3/tui/repositories/window.py:354 yast3/tui/repositories/window.py:483
 #: yast3/tui/snapshots/config_screen.py:111 yast3/tui/ssh/window.py:525
 #: yast3/tui/ssh/window.py:625
 msgid "OK"
@@ -276,7 +286,7 @@ msgstr "Fehler"
 #: yast3/qt6/cron/cron_edit_dialog.py:111
 #, fuzzy
 msgid "Command cannot be empty"
-msgstr "Hostname darf nicht leer sein."
+msgstr "Befehl darf nicht leer sein."
 
 #: yast3/gtk4/cron/manager.py:40 yast3/gtk4/flatpak/remote_manager.py:28
 #: yast3/gtk4/hosts/window.py:33 yast3/gtk4/repositories/window.py:40
@@ -693,7 +703,7 @@ msgstr "Version"
 #: yast3/gtk4/flatpak/package_manager.py:132
 #: yast3/qt6/flatpak/package_manager.py:145
 msgid "Download Size"
-msgstr "Download Size"
+msgstr "Download-Größe"
 
 #: yast3/gtk4/flatpak/package_manager.py:133
 #: yast3/gtk4/flatpak/package_manager.py:146
@@ -1570,6 +1580,10 @@ msgid ""
 "openSUSE mirror: {}\n"
 "Packman mirror: {}"
 msgstr ""
+"Sind Sie sicher, dass Sie die Mirror wechseln möchten?\n"
+"\n"
+"openSUSE-Mirror: {}\n"
+"Packman-Mirror: {}"
 
 #: yast3/gtk4/repositories/window.py:379 yast3/qt6/repositories/window.py:302
 #: yast3/tui/repositories/window.py:176
@@ -1593,27 +1607,27 @@ msgstr "Services"
 #: yast3/qt6/services/window.py:59 yast3/qt6/services/window.py:69
 #: yast3/tui/services/window.py:81 yast3/tui/services/window.py:93
 msgid "All"
-msgstr "Pakete"
+msgstr "Alle"
 
 #: yast3/gtk4/services/window.py:56 yast3/qt6/services/window.py:60
 #: yast3/tui/services/window.py:82
 msgid "Active"
-msgstr "Speichern"
+msgstr "Aktiv"
 
 #: yast3/gtk4/services/window.py:57 yast3/qt6/services/window.py:61
 #: yast3/tui/services/window.py:83
 msgid "Inactive"
-msgstr "Inactive"
+msgstr "Inaktiv"
 
 #: yast3/gtk4/services/window.py:58 yast3/qt6/services/window.py:62
 #: yast3/tui/services/window.py:84
 msgid "Failed"
-msgstr "Failed"
+msgstr "Fehlgeschlagen"
 
 #: yast3/gtk4/services/window.py:59 yast3/qt6/services/window.py:63
 #: yast3/tui/services/window.py:85
 msgid "Activating"
-msgstr "Activating"
+msgstr "Aktivierung"
 
 #: yast3/gtk4/services/window.py:75 yast3/qt6/services/window.py:77
 #: yast3/tui/services/window.py:101
@@ -1845,22 +1859,22 @@ msgstr "Repositories"
 #: yast3/gtk4/snapshots/window.py:70 yast3/qt6/snapshots/window.py:67
 #: yast3/tui/snapshots/window.py:74
 msgid "Configure"
-msgstr "Configure"
+msgstr "Konfigurieren"
 
 #: yast3/gtk4/snapshots/window.py:94 yast3/qt6/snapshots/window.py:77
 #: yast3/tui/snapshots/window.py:85
 msgid "Date"
-msgstr "Löschen"
+msgstr "Datum"
 
 #: yast3/gtk4/snapshots/window.py:108 yast3/qt6/snapshots/window.py:77
 #: yast3/tui/snapshots/window.py:88
 msgid "Cleanup"
-msgstr "Cleanup"
+msgstr "Bereinigung"
 
 #: yast3/gtk4/snapshots/window.py:143 yast3/gtk4/snapshots/window.py:280
 #: yast3/qt6/snapshots/window.py:196 yast3/qt6/snapshots/window.py:205
 msgid "Delete Snapshot"
-msgstr "Delete Snapshot"
+msgstr "Snapshot löschen"
 
 #: yast3/gtk4/snapshots/window.py:147 yast3/qt6/snapshots/window.py:197
 #, python-brace-format
@@ -1937,6 +1951,11 @@ msgid ""
 "\n"
 "Would you like to fix them now?"
 msgstr ""
+"Die folgenden SSH-Elemente haben unsichere Berechtigungen:\n"
+"\n"
+"{0}\n"
+"\n"
+"Möchten Sie sie jetzt beheben?"
 
 #: yast3/gtk4/ssh/__init__.py:76 yast3/qt6/ssh/__init__.py:61
 #, python-brace-format
@@ -1945,6 +1964,9 @@ msgid ""
 "\n"
 "{0}"
 msgstr ""
+"Berechtigungen für die folgenden Elemente konnten nicht behoben werden:\n"
+"\n"
+"{0}"
 
 #: yast3/gtk4/ssh/__init__.py:89 yast3/qt6/ssh/__init__.py:68
 msgid "SSH permissions have been fixed successfully."
@@ -1952,54 +1974,54 @@ msgstr "SSH permissions have been fixed successfully."
 
 #: yast3/gtk4/ssh/dialogs.py:18 yast3/qt6/ssh/dialogs.py:26
 msgid "Edit SSH Options"
-msgstr "Edit SSH Options"
+msgstr "SSH-Optionen bearbeiten"
 
 #: yast3/gtk4/ssh/dialogs.py:57 yast3/qt6/ssh/dialogs.py:55
 msgid "Option name"
-msgstr "Option name"
+msgstr "Optionsname"
 
 #: yast3/gtk4/ssh/dialogs.py:59 yast3/qt6/ssh/dialogs.py:57
 msgid "Option value"
-msgstr "Option value"
+msgstr "Optionswert"
 
 #: yast3/gtk4/ssh/dialogs.py:99 yast3/qt6/ssh/dialogs.py:86
 msgid "Option name is required."
-msgstr "Option name is required."
+msgstr "Ein Optionsname ist erforderlich."
 
 #: yast3/gtk4/ssh/dialogs.py:105 yast3/qt6/ssh/dialogs.py:92
 msgid "Option already exists."
-msgstr "Option already exists."
+msgstr "Option existiert bereits."
 
 #: yast3/gtk4/ssh/dialogs.py:136 yast3/qt6/ssh/dialogs.py:119
 msgid "Add/Edit SSH Host"
-msgstr "Add/Edit SSH Host"
+msgstr "SSH-Host hinzufügen/bearbeiten"
 
 #: yast3/gtk4/ssh/dialogs.py:158 yast3/qt6/ssh/dialogs.py:128
 msgid "Host Pattern:"
-msgstr "Host Pattern:"
+msgstr "Host-Muster:"
 
 #: yast3/gtk4/ssh/dialogs.py:169 yast3/qt6/ssh/dialogs.py:134
 msgid "Edit Options"
-msgstr "Edit Options"
+msgstr "Optionen bearbeiten"
 
 #: yast3/gtk4/ssh/dialogs.py:195 yast3/qt6/ssh/dialogs.py:162
 #, python-brace-format
 msgid "Options: {0}"
-msgstr "Options: {0}"
+msgstr "Optionen: {0}"
 
 #: yast3/gtk4/ssh/dialogs.py:197 yast3/qt6/ssh/dialogs.py:164
 msgid "No options set"
-msgstr "No options set"
+msgstr "Keine Optionen festgelegt"
 
 #: yast3/gtk4/ssh/hosts_tab.py:81 yast3/qt6/ssh/hosts_tab.py:61
 #: yast3/tui/ssh/window.py:288
 msgid "Host Pattern"
-msgstr "Host Pattern"
+msgstr "Host-Muster"
 
 #: yast3/gtk4/ssh/hosts_tab.py:88 yast3/qt6/ssh/hosts_tab.py:61
 #: yast3/tui/ssh/window.py:288
 msgid "Options"
-msgstr "Options"
+msgstr "Optionen"
 
 #: yast3/gtk4/ssh/hosts_tab.py:122 yast3/qt6/ssh/hosts_tab.py:122
 #: yast3/qt6/ssh/hosts_tab.py:213 yast3/tui/ssh/window.py:327
@@ -2042,7 +2064,7 @@ msgstr "Generate"
 #: yast3/gtk4/ssh/keys_generate_dialog.py:39 yast3/gtk4/ssh/keys_tab.py:75
 #: yast3/qt6/ssh/keys_tab.py:62
 msgid "Algorithm"
-msgstr "Algorithm"
+msgstr "Algorithmus"
 
 #: yast3/gtk4/ssh/keys_generate_dialog.py:52
 msgid "Key Size"
@@ -2064,39 +2086,39 @@ msgstr "Optionale Passphrase"
 #: yast3/gtk4/ssh/keys_generate_dialog.py:112
 #, python-brace-format
 msgid "Failed to generate key: {0}"
-msgstr "Failed to generate key: {0}"
+msgstr "Schlüssel konnte nicht erstellt werden: {0}"
 
 #: yast3/gtk4/ssh/keys_tab.py:37 yast3/qt6/ssh/keys_tab.py:40
 msgid "Copy Public Key"
-msgstr "Copy Public Key"
+msgstr "Öffentlichen Schlüssel kopieren"
 
 #: yast3/gtk4/ssh/keys_tab.py:82 yast3/qt6/ssh/keys_tab.py:63
 msgid "Size"
-msgstr "Size"
+msgstr "Größe"
 
 #: yast3/gtk4/ssh/keys_tab.py:89 yast3/qt6/ssh/keys_tab.py:64
 msgid "Fingerprint"
-msgstr "Fingerprint"
+msgstr "Fingerabdruck"
 
 #: yast3/gtk4/ssh/keys_tab.py:109 yast3/qt6/ssh/keys_tab.py:67
 msgid "Public"
-msgstr "Public"
+msgstr "Öffentlich"
 
 #: yast3/gtk4/ssh/keys_tab.py:116 yast3/qt6/ssh/keys_tab.py:68
 msgid "Private"
-msgstr "Private"
+msgstr "Privat"
 
 #: yast3/gtk4/ssh/keys_tab.py:194 yast3/qt6/ssh/keys_tab.py:174
 msgid "Public key copied to clipboard."
-msgstr "Public key copied to clipboard."
+msgstr "Öffentlicher Schlüssel in die Zwischenablage kopiert."
 
 #: yast3/gtk4/ssh/keys_tab.py:196 yast3/qt6/ssh/keys_tab.py:177
 msgid "Cannot read public key file."
-msgstr "Cannot read public key file."
+msgstr "Öffentliche Schlüsseldatei konnte nicht gelesen werden."
 
 #: yast3/gtk4/ssh/keys_tab.py:223 yast3/qt6/ssh/keys_tab.py:200
 msgid "Confirm Delete"
-msgstr "Confirm Delete"
+msgstr "Löschbestätigung"
 
 #: yast3/gtk4/ssh/keys_tab.py:226 yast3/qt6/ssh/keys_tab.py:201
 #, python-brace-format
@@ -2105,6 +2127,9 @@ msgid ""
 "\n"
 "{0}"
 msgstr ""
+"Sind Sie sicher, dass Sie die folgenden Schlüssel löschen möchten?\n"
+"\n"
+"{0}"
 
 #: yast3/gtk4/ssh/keys_tab.py:243 yast3/qt6/ssh/keys_tab.py:218
 #, python-brace-format
@@ -2113,15 +2138,36 @@ msgid ""
 "\n"
 "{0}"
 msgstr ""
+"Einige Dateien konnten nicht gelöscht werden:\n"
+"\n"
+"{0}"
 
 #: yast3/gtk4/ssh/keys_tab.py:246 yast3/qt6/ssh/keys_tab.py:221
 msgid "Key deleted successfully."
-msgstr "Key deleted successfully."
+msgstr "Schlüssel erfolgreich gelöscht."
 
 #: yast3/gtk4/ssh/window.py:36 yast3/qt6/ssh/window.py:40
 #: yast3/tui/ssh/window.py:252
 msgid "Keys"
-msgstr "Keys"
+msgstr "Schlüssel"
+
+#: yast3/qt6/about_dialog.py:14 yast3/tui/main_window.py:68
+#, fuzzy, python-brace-format
+msgid "Version: {}"
+msgstr "Version"
+
+#: yast3/qt6/about_dialog.py:15 yast3/tui/main_window.py:69
+#, fuzzy, python-brace-format
+msgid "License: {}"
+msgstr "Zeitzone"
+
+#: yast3/qt6/about_dialog.py:19 yast3/tui/main_window.py:65
+msgid "About YaST3"
+msgstr "Über YaST3"
+
+#: yast3/qt6/main_window.py:55
+msgid "Help"
+msgstr "Hilfe"
 
 #: yast3/qt6/datetime/window.py:154
 #, fuzzy, python-brace-format
@@ -2249,10 +2295,7 @@ msgstr "Ein Schlüsselname ist erforderlich."
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:185
 msgid "Key names starting with 'id_' are recommended. Continue anyway?"
-msgstr ""
-"Key names starting with 'id_' are recommended. Continue "
-"anyway?Schlüsselnamen, die mit 'id_' beginnen, werden empfohlen. Trotzdem"
-" fortfahren?"
+msgstr "Schlüsselnamen, die mit 'id_' beginnen, werden empfohlen. Trotzdem fortfahren?"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:195
 msgid "A key with this name already exists."
@@ -2271,6 +2314,15 @@ msgstr "Öffentlicher Schlüssel konnte nicht gelesen werden: {0}"
 #, python-brace-format
 msgid "Failed to generate SSH key: {0}"
 msgstr "SSH-Schlüssel konnte nicht erstellt werden: {0}"
+
+#: yast3/tui/main_window.py:63
+#, fuzzy, python-brace-format
+msgid "License file not found."
+msgstr "Sprache '{0}' nicht gefunden."
+
+#: yast3/tui/main_window.py:71
+msgid "License Text:"
+msgstr "Lizenztext:"
 
 #: yast3/tui/cron/window.py:211
 msgid "Cron job deleted."
@@ -2451,15 +2503,15 @@ msgstr ""
 
 #: yast3/tui/packages/window.py:39
 msgid "Packages Management"
-msgstr "Packages Management"
+msgstr "Paketverwaltung"
 
 #: yast3/tui/packages/window.py:40
 msgid "Package management functionality is not yet implemented in TUI mode."
-msgstr "Package management functionality is not yet implemented in TUI mode."
+msgstr "Paketverwaltungsfunktionalität ist im TUI-Modus noch nicht implementiert."
 
 #: yast3/tui/packages/window.py:41
 msgid "Please use the Qt6 GUI version for full package management features."
-msgstr "Please use the Qt6 GUI version for full package management features."
+msgstr "Bitte verwenden Sie die Qt6 GUI-Version für vollständige Paketverwaltungsfunktionen."
 
 #: yast3/tui/proxy/window.py:69
 msgid "Proxy Configuration"
@@ -2634,11 +2686,11 @@ msgstr "Timeout waiting for snapshots"
 #: yast3/tui/snapshots/window.py:142
 #, fuzzy, python-brace-format
 msgid "Error: Failed to load snapshots: {0}"
-msgstr "Fehler: Proxy-Konfiguration konnte nicht geladen werden: {0}"
+msgstr "Fehler: Snapshots konnten nicht geladen werden: {0}"
 
 #: yast3/tui/ssh/window.py:283
 msgid "Warning: Some SSH files have insecure permissions."
-msgstr "Warning: Some SSH files have insecure permissions."
+msgstr "Warnung: Einige SSH-Dateien haben unsichere Berechtigungen."
 
 #: yast3/tui/ssh/window.py:293 yast3/tui/ssh/window.py:619
 msgid "Bits"
@@ -2646,35 +2698,35 @@ msgstr "Bits"
 
 #: yast3/tui/ssh/window.py:307
 msgid "Error: Cannot read SSH config."
-msgstr "Error: Cannot read SSH config."
+msgstr "Fehler: SSH-Konfiguration konnte nicht gelesen werden."
 
 #: yast3/tui/ssh/window.py:368
 msgid "Please select a host to edit."
-msgstr "Please select a host to edit."
+msgstr "Bitte wählen Sie einen Host zum Bearbeiten aus."
 
 #: yast3/tui/ssh/window.py:378
 msgid "Please select a host to delete."
-msgstr "Please select a host to delete."
+msgstr "Bitte wählen Sie einen Host zum Löschen aus."
 
 #: yast3/tui/ssh/window.py:388
 msgid "Host entry deleted."
-msgstr "Host entry deleted."
+msgstr "Host-Eintrag gelöscht."
 
 #: yast3/tui/ssh/window.py:395
 msgid "Success: SSH config saved successfully."
-msgstr "Success: SSH config saved successfully."
+msgstr "Erfolg: SSH-Konfiguration erfolgreich gespeichert."
 
 #: yast3/tui/ssh/window.py:397
 msgid "Error: Cannot write to SSH config."
-msgstr "Error: Cannot write to SSH config."
+msgstr "Fehler: Kann nicht in SSH-Konfiguration schreiben."
 
 #: yast3/tui/ssh/window.py:399
 msgid "Error: Failed to save SSH config."
-msgstr "Error: Failed to save SSH config."
+msgstr "Fehler: SSH-Konfiguration konnte nicht gespeichert werden."
 
 #: yast3/tui/ssh/window.py:405
 msgid "Please select a key to delete."
-msgstr "Please select a key to delete."
+msgstr "Bitte wählen Sie einen Schlüssel zum Löschen aus."
 
 #: yast3/tui/ssh/window.py:413
 msgid "Key deleted."
@@ -2718,7 +2770,7 @@ msgstr "Port"
 
 #: yast3/tui/ssh/window.py:517
 msgid "Port number"
-msgstr "Port number"
+msgstr "Portnummer"
 
 #: yast3/tui/ssh/window.py:520
 msgid "Username"
@@ -2734,7 +2786,7 @@ msgstr "Schlüsseldateipfad"
 
 #: yast3/tui/ssh/window.py:614
 msgid "Key filename"
-msgstr "Key filename"
+msgstr "Schlüsseldateiname"
 
 #: yast3/tui/ssh/window.py:617
 msgid "rsa, ed25519, ecdsa"
