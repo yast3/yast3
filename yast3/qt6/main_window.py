@@ -5,15 +5,12 @@ from __future__ import annotations
 from PySide6.QtWidgets import (
     QFrame,
     QGridLayout,
-    QLabel,
     QMainWindow,
     QMenu,
     QScrollArea,
-    QStatusBar,
     QWidget,
 )
 
-from yast3.core import GITHUB_URL, __version__
 from yast3.core.i18n import _
 from yast3.qt6 import (
     CronModule,
@@ -77,14 +74,6 @@ class MainWindow(QMainWindow):
 
         scroll_area.setWidget(container)
         self.setCentralWidget(scroll_area)
-
-        status_bar = QStatusBar()
-        version_label = QLabel(f"v{__version__}")
-        github_label = QLabel(f'<a href="{GITHUB_URL}">GitHub</a>')
-        github_label.setOpenExternalLinks(True)
-        status_bar.addWidget(version_label)
-        status_bar.addPermanentWidget(github_label)
-        self.setStatusBar(status_bar)
 
     def _show_about(self) -> None:
         show_about_dialog(self)
