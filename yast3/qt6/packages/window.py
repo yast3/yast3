@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from PySide6.QtWidgets import QMainWindow, QPushButton, QVBoxLayout, QWidget
+import subprocess
+
+from PySide6.QtWidgets import QLabel, QMainWindow, QVBoxLayout, QWidget
 
 from yast3.core.i18n import _
 
@@ -11,11 +13,17 @@ class PackagesWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # 2. 必须创建一个 核心Widget 填充中央区域
+        self._launch_package_manager()
+
+    def _launch_package_manager(self) -> None:
+        try:
+            subprocess.Popen(["myrlyn-sudo"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            self.close()
+        except FileNotFoundError:
+            self._show_error(_("Failed to launch package manager."))
+
+    def _show_error(self, message: str) -> None:
         central_widget = QWidget()
         layout = QVBoxLayout(central_widget)
-        self.btn = QPushButton(_("Packages"))
-        layout.addWidget(self.btn)
-
-        # 3. 将其设为中心部件
+        layout.addWidget(QLabel(message))
         self.setCentralWidget(central_widget)

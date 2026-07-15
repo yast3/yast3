@@ -7,7 +7,7 @@ from yast3.qt6.packages.window import PackagesWindow
 
 class PackagesModule(Module):
     def __init__(self):
-        super().__init__(_("Packages"), ("package-manager", "package"), experimental=True)
+        super().__init__(_("Packages"), ("package-manager", "package"))
 
     def _create_window(self):
         return PackagesWindow()
