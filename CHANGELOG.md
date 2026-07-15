@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.20 - 2026-07-15
+
+- feat(packages): added package module to launch myrlyn-sudo package manager.
+
 ## 0.0.19 - 2026-07-14
 
 - feat(languages): added language module to manage installed languages.
