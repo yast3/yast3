@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-14 06:39+0000\n"
+"POT-Creation-Date: 2026-07-15 09:08+0000\n"
 "PO-Revision-Date: 2026-07-14 11:53+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: sv\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "GitHub"
 msgstr "GitHub"
 
-#: yast3/gtk4/main_window.py:87 yast3/qt6/main_window.py:56
+#: yast3/gtk4/main_window.py:89 yast3/qt6/main_window.py:58
 #: yast3/tui/main_window.py:125
 msgid "About"
 msgstr "Om"
@@ -1348,8 +1348,8 @@ msgid ""
 "Language changed successfully to '{0}'. Changes will take effect after "
 "logout."
 msgstr ""
-"Språk ändrat framgångsrikt till '{0}'. Förändringarna träder i kraft efter "
-"logga ut."
+"Språk ändrat framgångsrikt till '{0}'. Förändringarna träder i kraft "
+"efter logga ut."
 
 #: yast3/gtk4/languages/settings.py:149 yast3/qt6/languages/settings.py:152
 #, python-brace-format
@@ -1365,13 +1365,13 @@ msgid "Language Management"
 msgstr "Språkhantering"
 
 #: yast3/gtk4/packages/__init__.py:16 yast3/qt6/packages/__init__.py:10
-#: yast3/qt6/packages/window.py:17 yast3/tui/packages/__init__.py:12
+#: yast3/tui/packages/__init__.py:12
 msgid "Packages"
 msgstr "Paket"
 
-#: yast3/gtk4/packages/window.py:26
-msgid "Packages module is not yet implemented."
-msgstr "Paketmodulen är ännu inte implementerad."
+#: yast3/gtk4/packages/window.py:27 yast3/qt6/packages/window.py:23
+msgid "Failed to launch package manager."
+msgstr "Misslyckades att starta paketmanager."
 
 #: yast3/gtk4/proxy/__init__.py:16 yast3/qt6/proxy/__init__.py:10
 #: yast3/tui/proxy/__init__.py:12
@@ -2162,7 +2162,7 @@ msgstr "Licens: {}"
 msgid "About YaST3"
 msgstr "Om YaST3"
 
-#: yast3/qt6/main_window.py:55
+#: yast3/qt6/main_window.py:57
 msgid "Help"
 msgstr "Hjälp"
 
@@ -2490,7 +2490,9 @@ msgstr "Fel: Språket '{0}' hittades inte."
 #: yast3/tui/languages/window.py:114
 #, python-brace-format
 msgid "Success: Language changed to '{0}'. Changes take effect after logout."
-msgstr "Framgång: Språket ändrades till '{0}'. Ändringarna träder i kraft efter utloggning."
+msgstr ""
+"Framgång: Språket ändrades till '{0}'. Ändringarna träder i kraft efter "
+"utloggning."
 
 #: yast3/tui/packages/window.py:39
 msgid "Packages Management"
@@ -2786,4 +2788,7 @@ msgstr "rsa, ed25519, ecdsa"
 #: yast3/tui/ssh/window.py:620
 msgid "Key bits"
 msgstr "Nyckelbits"
+
+#~ msgid "Packages module is not yet implemented."
+#~ msgstr "Paketmodulen är ännu inte implementerad."
 

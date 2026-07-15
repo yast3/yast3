@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-14 04:10+0000\n"
+"POT-Creation-Date: 2026-07-15 09:08+0000\n"
 "PO-Revision-Date: 2026-07-14 11:53+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: da\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "GitHub"
 msgstr "GitHub"
 
-#: yast3/gtk4/main_window.py:87 yast3/qt6/main_window.py:56
+#: yast3/gtk4/main_window.py:89 yast3/qt6/main_window.py:58
 #: yast3/tui/main_window.py:125
 msgid "About"
 msgstr "Om"
@@ -100,8 +100,8 @@ msgstr "Annuller"
 #: yast3/gtk4/repositories/switch_mirror_dialog.py:25
 #: yast3/gtk4/snapshots/config_dialog.py:186 yast3/gtk4/ssh/dialogs.py:28
 #: yast3/gtk4/ssh/dialogs.py:146 yast3/tui/cron/window.py:323
-#: yast3/tui/hosts/window.py:272 yast3/tui/repositories/window.py:354
-#: yast3/tui/repositories/window.py:483
+#: yast3/tui/hosts/window.py:272 yast3/tui/main_window.py:74
+#: yast3/tui/repositories/window.py:354 yast3/tui/repositories/window.py:483
 #: yast3/tui/snapshots/config_screen.py:111 yast3/tui/ssh/window.py:525
 #: yast3/tui/ssh/window.py:625
 msgid "OK"
@@ -1365,13 +1365,13 @@ msgid "Language Management"
 msgstr "Sprogstyring"
 
 #: yast3/gtk4/packages/__init__.py:16 yast3/qt6/packages/__init__.py:10
-#: yast3/qt6/packages/window.py:17 yast3/tui/packages/__init__.py:12
+#: yast3/tui/packages/__init__.py:12
 msgid "Packages"
 msgstr "Pakker"
 
-#: yast3/gtk4/packages/window.py:26
-msgid "Packages module is not yet implemented."
-msgstr "Pakke-modulet er endnu ikke implementeret."
+#: yast3/gtk4/packages/window.py:27 yast3/qt6/packages/window.py:23
+msgid "Failed to launch package manager."
+msgstr "Kunne ikke starte pakkehåndtereren."
 
 #: yast3/gtk4/proxy/__init__.py:16 yast3/qt6/proxy/__init__.py:10
 #: yast3/tui/proxy/__init__.py:12
@@ -2148,6 +2148,25 @@ msgstr "Nøgle slettet succesfuldt."
 msgid "Keys"
 msgstr "Nøgler"
 
+#: yast3/qt6/about_dialog.py:14 yast3/tui/main_window.py:68
+#, fuzzy, python-brace-format
+msgid "Version: {}"
+msgstr "Version"
+
+#: yast3/qt6/about_dialog.py:15 yast3/tui/main_window.py:69
+#, fuzzy, python-brace-format
+msgid "License: {}"
+msgstr "Tidszone: {0}"
+
+#: yast3/qt6/about_dialog.py:19 yast3/tui/main_window.py:65
+#, fuzzy
+msgid "About YaST3"
+msgstr "Om"
+
+#: yast3/qt6/main_window.py:57
+msgid "Help"
+msgstr ""
+
 #: yast3/qt6/datetime/window.py:154
 #, python-brace-format
 msgid "Failed to load hardware clock setting: {0}"
@@ -2293,6 +2312,15 @@ msgstr "Kunne ikke læse offentlig nøgle: {0}"
 #, python-brace-format
 msgid "Failed to generate SSH key: {0}"
 msgstr "Kunne ikke generere SSH-nøgle: {0}"
+
+#: yast3/tui/main_window.py:63
+#, fuzzy, python-brace-format
+msgid "License file not found."
+msgstr "Sprog '{0}' ikke fundet."
+
+#: yast3/tui/main_window.py:71
+msgid "License Text:"
+msgstr ""
 
 #: yast3/tui/cron/window.py:211
 msgid "Cron job deleted."
@@ -2472,7 +2500,9 @@ msgstr "Pakkehåndtering"
 
 #: yast3/tui/packages/window.py:40
 msgid "Package management functionality is not yet implemented in TUI mode."
-msgstr "Pakkehåndteringsfunktionaliteten er endnu ikke implementeret i TUI-tilstand."
+msgstr ""
+"Pakkehåndteringsfunktionaliteten er endnu ikke implementeret i TUI-"
+"tilstand."
 
 #: yast3/tui/packages/window.py:41
 msgid "Please use the Qt6 GUI version for full package management features."
@@ -2760,4 +2790,7 @@ msgstr "rsa, ed25519, ecdsa"
 #: yast3/tui/ssh/window.py:620
 msgid "Key bits"
 msgstr "Nøglebits"
+
+#~ msgid "Packages module is not yet implemented."
+#~ msgstr "Pakke-modulet er endnu ikke implementeret."
 

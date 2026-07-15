@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-14 06:39+0000\n"
+"POT-Creation-Date: 2026-07-15 09:08+0000\n"
 "PO-Revision-Date: 2026-06-26 23:49+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hant_TW\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "GitHub"
 msgstr "Git"
 
-#: yast3/gtk4/main_window.py:87 yast3/qt6/main_window.py:56
+#: yast3/gtk4/main_window.py:89 yast3/qt6/main_window.py:58
 #: yast3/tui/main_window.py:125
 msgid "About"
 msgstr ""
@@ -1375,13 +1375,13 @@ msgid "Language Management"
 msgstr "語言管理"
 
 #: yast3/gtk4/packages/__init__.py:16 yast3/qt6/packages/__init__.py:10
-#: yast3/qt6/packages/window.py:17 yast3/tui/packages/__init__.py:12
+#: yast3/tui/packages/__init__.py:12
 msgid "Packages"
 msgstr "軟體套件"
 
-#: yast3/gtk4/packages/window.py:26
-msgid "Packages module is not yet implemented."
-msgstr "軟體套件模块尚未实现。"
+#: yast3/gtk4/packages/window.py:27 yast3/qt6/packages/window.py:23
+msgid "Failed to launch package manager."
+msgstr "啟動套件管理員失敗。"
 
 #: yast3/gtk4/proxy/__init__.py:16 yast3/qt6/proxy/__init__.py:10
 #: yast3/tui/proxy/__init__.py:12
@@ -2173,7 +2173,7 @@ msgstr "時區"
 msgid "About YaST3"
 msgstr ""
 
-#: yast3/qt6/main_window.py:55
+#: yast3/qt6/main_window.py:57
 msgid "Help"
 msgstr ""
 
@@ -2324,7 +2324,7 @@ msgid "Failed to generate SSH key: {0}"
 msgstr "產生 SSH 金鑰失敗：{0}"
 
 #: yast3/tui/main_window.py:63
-#, fuzzy, python-brace-format
+#, fuzzy
 msgid "License file not found."
 msgstr "語言 '{0}' 未找到。"
 
@@ -2867,4 +2867,7 @@ msgstr "金鑰位数"
 
 #~ msgid "Search by code or name..."
 #~ msgstr ""
+
+#~ msgid "Packages module is not yet implemented."
+#~ msgstr "軟體套件模块尚未实现。"
 

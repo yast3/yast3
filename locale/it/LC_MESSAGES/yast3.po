@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-14 06:39+0000\n"
+"POT-Creation-Date: 2026-07-15 09:08+0000\n"
 "PO-Revision-Date: 2026-06-27 00:51+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "GitHub"
 msgstr "Git"
 
-#: yast3/gtk4/main_window.py:87 yast3/qt6/main_window.py:56
+#: yast3/gtk4/main_window.py:89 yast3/qt6/main_window.py:58
 #: yast3/tui/main_window.py:125
 msgid "About"
 msgstr ""
@@ -1368,13 +1368,13 @@ msgid "Language Management"
 msgstr "Gestione delle lingue"
 
 #: yast3/gtk4/packages/__init__.py:16 yast3/qt6/packages/__init__.py:10
-#: yast3/qt6/packages/window.py:17 yast3/tui/packages/__init__.py:12
+#: yast3/tui/packages/__init__.py:12
 msgid "Packages"
 msgstr "Pacchetti"
 
-#: yast3/gtk4/packages/window.py:26
-msgid "Packages module is not yet implemented."
-msgstr "Il modulo Pacchetti non è ancora implementato."
+#: yast3/gtk4/packages/window.py:27 yast3/qt6/packages/window.py:23
+msgid "Failed to launch package manager."
+msgstr "Impossibile avviare il gestore dei pacchetti."
 
 #: yast3/gtk4/proxy/__init__.py:16 yast3/qt6/proxy/__init__.py:10
 #: yast3/tui/proxy/__init__.py:12
@@ -2147,7 +2147,7 @@ msgstr "Fuso orario"
 msgid "About YaST3"
 msgstr ""
 
-#: yast3/qt6/main_window.py:55
+#: yast3/qt6/main_window.py:57
 msgid "Help"
 msgstr ""
 
@@ -2301,7 +2301,7 @@ msgid "Failed to generate SSH key: {0}"
 msgstr "Impossibile generare la chiave SSH: {0}"
 
 #: yast3/tui/main_window.py:63
-#, fuzzy, python-brace-format
+#, fuzzy
 msgid "License file not found."
 msgstr "Lingua '{0}' non trovata."
 
@@ -2846,4 +2846,7 @@ msgstr "Bit chiave"
 
 #~ msgid "Search by code or name..."
 #~ msgstr ""
+
+#~ msgid "Packages module is not yet implemented."
+#~ msgstr "Il modulo Pacchetti non è ancora implementato."
 

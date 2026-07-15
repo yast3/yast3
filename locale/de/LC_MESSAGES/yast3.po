@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-14 06:39+0000\n"
+"POT-Creation-Date: 2026-07-15 09:08+0000\n"
 "PO-Revision-Date: 2026-06-27 00:51+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: de\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "GitHub"
 msgstr "GitHub"
 
-#: yast3/gtk4/main_window.py:87 yast3/qt6/main_window.py:56
+#: yast3/gtk4/main_window.py:89 yast3/qt6/main_window.py:58
 #: yast3/tui/main_window.py:125
 msgid "About"
 msgstr "Über"
@@ -1368,13 +1368,13 @@ msgid "Language Management"
 msgstr "Sprachverwaltung"
 
 #: yast3/gtk4/packages/__init__.py:16 yast3/qt6/packages/__init__.py:10
-#: yast3/qt6/packages/window.py:17 yast3/tui/packages/__init__.py:12
+#: yast3/tui/packages/__init__.py:12
 msgid "Packages"
 msgstr "Pakete"
 
-#: yast3/gtk4/packages/window.py:26
-msgid "Packages module is not yet implemented."
-msgstr "Das Paketmodul ist noch nicht implementiert."
+#: yast3/gtk4/packages/window.py:27 yast3/qt6/packages/window.py:23
+msgid "Failed to launch package manager."
+msgstr "Paketmanager konnte nicht gestartet werden."
 
 #: yast3/gtk4/proxy/__init__.py:16 yast3/qt6/proxy/__init__.py:10
 #: yast3/tui/proxy/__init__.py:12
@@ -2165,7 +2165,7 @@ msgstr "Zeitzone"
 msgid "About YaST3"
 msgstr "Über YaST3"
 
-#: yast3/qt6/main_window.py:55
+#: yast3/qt6/main_window.py:57
 msgid "Help"
 msgstr "Hilfe"
 
@@ -2295,7 +2295,9 @@ msgstr "Ein Schlüsselname ist erforderlich."
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:185
 msgid "Key names starting with 'id_' are recommended. Continue anyway?"
-msgstr "Schlüsselnamen, die mit 'id_' beginnen, werden empfohlen. Trotzdem fortfahren?"
+msgstr ""
+"Schlüsselnamen, die mit 'id_' beginnen, werden empfohlen. Trotzdem "
+"fortfahren?"
 
 #: yast3/qt6/ssh/keys_generate_dialog.py:195
 msgid "A key with this name already exists."
@@ -2316,7 +2318,7 @@ msgid "Failed to generate SSH key: {0}"
 msgstr "SSH-Schlüssel konnte nicht erstellt werden: {0}"
 
 #: yast3/tui/main_window.py:63
-#, fuzzy, python-brace-format
+#, fuzzy
 msgid "License file not found."
 msgstr "Sprache '{0}' nicht gefunden."
 
@@ -2511,7 +2513,9 @@ msgstr "Paketverwaltungsfunktionalität ist im TUI-Modus noch nicht implementier
 
 #: yast3/tui/packages/window.py:41
 msgid "Please use the Qt6 GUI version for full package management features."
-msgstr "Bitte verwenden Sie die Qt6 GUI-Version für vollständige Paketverwaltungsfunktionen."
+msgstr ""
+"Bitte verwenden Sie die Qt6 GUI-Version für vollständige "
+"Paketverwaltungsfunktionen."
 
 #: yast3/tui/proxy/window.py:69
 msgid "Proxy Configuration"
@@ -2861,4 +2865,7 @@ msgstr "Schlüsselbits"
 
 #~ msgid "Search by code or name..."
 #~ msgstr ""
+
+#~ msgid "Packages module is not yet implemented."
+#~ msgstr "Das Paketmodul ist noch nicht implementiert."
 
