@@ -13,6 +13,8 @@ license-files = ["LICENSE"]
 dependencies = [
     "python-crontab>=3.0.0",
     "configobj>=5.0.9",
+    "python-dotenv>=1.0.0",
+    "systemd>=235",
 ]
 classifiers = [
     "Environment :: X11 Applications :: Qt",

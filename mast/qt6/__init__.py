@@ -6,6 +6,7 @@ from mast.qt6.flatpak import FlatpakModule
 from mast.qt6.git import GitModule
 from mast.qt6.hostname import HostnameModule
 from mast.qt6.hosts import HostsModule
+from mast.qt6.journal import JournalModule
 from mast.qt6.languages import LanguagesModule
 from mast.qt6.packages import PackagesModule
 from mast.qt6.proxy import ProxyModule
@@ -21,6 +22,7 @@ __all__ = [
     "GitModule",
     "HostnameModule",
     "HostsModule",
+    "JournalModule",
     "LanguagesModule",
     "PackagesModule",
     "ProxyModule",
