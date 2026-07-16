@@ -1,9 +1,10 @@
 """Unit tests for the switch_mirror module."""
 
+import sys
 import unittest
 from unittest.mock import MagicMock, patch
 
-from yast3.core.repositories.switch_mirror import (
+from mast.core.repositories.switch_mirror import (
     _replace_opensuse_mirror_prefix,
     _replace_packman_mirror_prefix,
     _status_to_exit_code,
@@ -196,7 +197,7 @@ class TestStatusToExitCode(unittest.TestCase):
 class TestSwitchMirrorPkexec(unittest.TestCase):
     """Tests for switch_mirror_pkexec function."""
 
-    @patch("yast3.core.repositories.switch_mirror.subprocess.run")
+    @patch("mast.core.repositories.switch_mirror.subprocess.run")
     def test_pkexec_success(self, mock_run: MagicMock) -> None:
         """Should return ok when pkexec succeeds with exit code 0."""
         mock_run.return_value.returncode = 0
@@ -206,7 +207,7 @@ class TestSwitchMirrorPkexec(unittest.TestCase):
         )
         self.assertEqual(result, "ok")
 
-    @patch("yast3.core.repositories.switch_mirror.subprocess.run")
+    @patch("mast.core.repositories.switch_mirror.subprocess.run")
     def test_pkexec_permission_denied(self, mock_run: MagicMock) -> None:
         """Should return permission_denied when pkexec returns exit code 1."""
         mock_run.return_value.returncode = 1
@@ -216,7 +217,7 @@ class TestSwitchMirrorPkexec(unittest.TestCase):
         )
         self.assertEqual(result, "permission_denied")
 
-    @patch("yast3.core.repositories.switch_mirror.subprocess.run")
+    @patch("mast.core.repositories.switch_mirror.subprocess.run")
     def test_pkexec_failed(self, mock_run: MagicMock) -> None:
         """Should return pkexec_failed when pkexec returns exit code 2."""
         mock_run.return_value.returncode = 2
@@ -226,7 +227,7 @@ class TestSwitchMirrorPkexec(unittest.TestCase):
         )
         self.assertEqual(result, "pkexec_failed")
 
-    @patch("yast3.core.repositories.switch_mirror.subprocess.run")
+    @patch("mast.core.repositories.switch_mirror.subprocess.run")
     def test_pkexec_error(self, mock_run: MagicMock) -> None:
         """Should return error when pkexec returns other exit codes."""
         mock_run.return_value.returncode = 3
@@ -236,7 +237,7 @@ class TestSwitchMirrorPkexec(unittest.TestCase):
         )
         self.assertEqual(result, "error")
 
-    @patch("yast3.core.repositories.switch_mirror.subprocess.run")
+    @patch("mast.core.repositories.switch_mirror.subprocess.run")
     def test_pkexec_calls_correct_command(self, mock_run: MagicMock) -> None:
         """Should call pkexec with the correct wrapper script and arguments."""
         mock_run.return_value.returncode = 0
@@ -247,10 +248,13 @@ class TestSwitchMirrorPkexec(unittest.TestCase):
         mock_run.assert_called_once_with(
             [
                 "pkexec",
-                "/usr/libexec/yast3-switch-mirror",
-                "--opensuse-url",
+                '--keep-cwd',
+                sys.executable,
+                '-m',
+                'mast.core.repositories.switch_mirror',
+                '--opensuse',
                 "https://mirror.example.com/opensuse/",
-                "--packman-url",
+                '--packman',
                 "https://mirror.example.com/packman/",
             ],
             capture_output=True,

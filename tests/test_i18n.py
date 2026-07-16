@@ -4,7 +4,7 @@ import os
 import unittest
 from unittest.mock import patch
 
-from yast3.core import i18n
+from mast.core import i18n
 
 
 class TestFindLocaleDir(unittest.TestCase):
@@ -99,7 +99,7 @@ class TestTranslationsWork(unittest.TestCase):
     def test_translation_wrapper_preserves_singleton(self) -> None:
         """Importing _ from i18n module should give the singleton wrapper."""
         # This tests that the wrapper approach works correctly
-        from yast3.core.i18n import _, init_i18n
+        from mast.core.i18n import _, init_i18n
 
         # Initially should be the wrapper
         self.assertIsInstance(_, i18n._TranslationWrapper)

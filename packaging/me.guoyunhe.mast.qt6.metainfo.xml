@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>me.guoyunhe.mast.qt6</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>MaST Qt6</name>
+  <summary>Desktop settings shell built with Python and Qt6</summary>
+
+  <developer id="me.guoyunhe">
+    <name>openSUSE Community</name>
+  </developer>
+
+  <url type="homepage">https://github.com/guoyunhe/mast</url>
+
+  <description>
+    <p>
+      MaST Qt6 is a desktop settings shell for Linux systems. It provides a
+      Python-based Qt6 interface for system modules such as repositories,
+      proxy, hostname, hosts, and other administration tasks.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">me.guoyunhe.mast.qt6.desktop</launchable>
+
+  <provides>
+    <binary>mast-qt6</binary>
+  </provides>
+
+  <categories>
+    <category>Settings</category>
+    <category>System</category>
+  </categories>
+
+  <content_rating type="oars-1.1" />
+
+  <icon type="stock">me.guoyunhe.mast.qt6</icon>
+</component>

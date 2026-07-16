@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MaST GTK4
+Comment=Desktop settings shell built with Python and GTK4
+Exec=mast-gtk4
+Icon=me.guoyunhe.mast.gtk4
+Terminal=false
+Categories=Settings;
+StartupWMClass=me.guoyunhe.mast.gtk4

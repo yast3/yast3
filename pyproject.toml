@@ -3,9 +3,9 @@ requires = ["setuptools>=78.1.1"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "yast3"
+name = "mast"
 version = "0.0.20"
-description = "YaST3 desktop settings shell built with Python 3 and Qt6 Widgets."
+description = "MaST desktop settings shell built with Python 3 and Qt6 Widgets."
 readme = "README.md"
 requires-python = ">=3.12"
 license = "GPL-3.0-or-later"
@@ -36,97 +36,97 @@ tui = [
 ]
 
 [project.gui-scripts]
-yast3-qt6 = "yast3.qt6.__main__:main"
-yast3-gtk4 = "yast3.gtk4.__main__:main"
+mast-qt6 = "mast.qt6.__main__:main"
+mast-gtk4 = "mast.gtk4.__main__:main"
 
 [project.scripts]
-yast3-tui = "yast3.tui.__main__:main"
+mast-tui = "mast.tui.__main__:main"
 
 [tool.setuptools]
 packages = [
-    "yast3.core",
-    "yast3.core.cron",
-    "yast3.core.datetime",
-    "yast3.core.distro",
-    "yast3.core.flatpak",
-    "yast3.core.git",
-    "yast3.core.hostname",
-    "yast3.core.hosts",
-    "yast3.core.languages",
-    "yast3.core.packages",
-    "yast3.core.proxy",
-    "yast3.core.repositories",
-    "yast3.core.services",
-    "yast3.core.snapshots",
-    "yast3.core.ssh",
-    "yast3.gtk4",
-    "yast3.gtk4.command",
-    "yast3.gtk4.cron",
-    "yast3.gtk4.datetime",
-    "yast3.gtk4.flatpak",
-    "yast3.gtk4.git",
-    "yast3.gtk4.hostname",
-    "yast3.gtk4.hosts",
-    "yast3.gtk4.languages",
-    "yast3.gtk4.packages",
-    "yast3.gtk4.proxy",
-    "yast3.gtk4.repositories",
-    "yast3.gtk4.services",
-    "yast3.gtk4.snapshots",
-    "yast3.gtk4.ssh",
-    "yast3.qt6",
-    "yast3.qt6.command",
-    "yast3.qt6.cron",
-    "yast3.qt6.datetime",
-    "yast3.qt6.flatpak",
-    "yast3.qt6.git",
-    "yast3.qt6.hostname",
-    "yast3.qt6.hosts",
-    "yast3.qt6.languages",
-    "yast3.qt6.packages",
-    "yast3.qt6.proxy",
-    "yast3.qt6.repositories",
-    "yast3.qt6.services",
-    "yast3.qt6.snapshots",
-    "yast3.qt6.ssh",
-    "yast3.tui",
-    "yast3.tui.cron",
-    "yast3.tui.datetime",
-    "yast3.tui.git",
-    "yast3.tui.hostname",
-    "yast3.tui.hosts",
-    "yast3.tui.languages",
-    "yast3.tui.packages",
-    "yast3.tui.proxy",
-    "yast3.tui.repositories",
-    "yast3.tui.services",
-    "yast3.tui.snapshots",
-    "yast3.tui.ssh",
+    "mast.core",
+    "mast.core.cron",
+    "mast.core.datetime",
+    "mast.core.distro",
+    "mast.core.flatpak",
+    "mast.core.git",
+    "mast.core.hostname",
+    "mast.core.hosts",
+    "mast.core.languages",
+    "mast.core.packages",
+    "mast.core.proxy",
+    "mast.core.repositories",
+    "mast.core.services",
+    "mast.core.snapshots",
+    "mast.core.ssh",
+    "mast.gtk4",
+    "mast.gtk4.command",
+    "mast.gtk4.cron",
+    "mast.gtk4.datetime",
+    "mast.gtk4.flatpak",
+    "mast.gtk4.git",
+    "mast.gtk4.hostname",
+    "mast.gtk4.hosts",
+    "mast.gtk4.languages",
+    "mast.gtk4.packages",
+    "mast.gtk4.proxy",
+    "mast.gtk4.repositories",
+    "mast.gtk4.services",
+    "mast.gtk4.snapshots",
+    "mast.gtk4.ssh",
+    "mast.qt6",
+    "mast.qt6.command",
+    "mast.qt6.cron",
+    "mast.qt6.datetime",
+    "mast.qt6.flatpak",
+    "mast.qt6.git",
+    "mast.qt6.hostname",
+    "mast.qt6.hosts",
+    "mast.qt6.languages",
+    "mast.qt6.packages",
+    "mast.qt6.proxy",
+    "mast.qt6.repositories",
+    "mast.qt6.services",
+    "mast.qt6.snapshots",
+    "mast.qt6.ssh",
+    "mast.tui",
+    "mast.tui.cron",
+    "mast.tui.datetime",
+    "mast.tui.git",
+    "mast.tui.hostname",
+    "mast.tui.hosts",
+    "mast.tui.languages",
+    "mast.tui.packages",
+    "mast.tui.proxy",
+    "mast.tui.repositories",
+    "mast.tui.services",
+    "mast.tui.snapshots",
+    "mast.tui.ssh",
 ]
 include-package-data = true
 
 [tool.setuptools.data-files]
-"share/applications" = ["packaging/org.opensuse.yast3.qt6.desktop", "packaging/org.opensuse.yast3.gtk4.desktop"]
-"share/metainfo" = ["packaging/org.opensuse.yast3.qt6.metainfo.xml", "packaging/org.opensuse.yast3.gtk4.metainfo.xml"]
-"share/icons/hicolor/64x64/apps" = ["packaging/org.opensuse.yast3.qt6.svg", "packaging/org.opensuse.yast3.gtk4.svg"]
-"share/locale/da/LC_MESSAGES" = ["locale/da/LC_MESSAGES/yast3.mo"]
-"share/locale/de/LC_MESSAGES" = ["locale/de/LC_MESSAGES/yast3.mo"]
-"share/locale/en/LC_MESSAGES" = ["locale/en/LC_MESSAGES/yast3.mo"]
-"share/locale/es/LC_MESSAGES" = ["locale/es/LC_MESSAGES/yast3.mo"]
-"share/locale/fi/LC_MESSAGES" = ["locale/fi/LC_MESSAGES/yast3.mo"]
-"share/locale/fr/LC_MESSAGES" = ["locale/fr/LC_MESSAGES/yast3.mo"]
-"share/locale/is/LC_MESSAGES" = ["locale/is/LC_MESSAGES/yast3.mo"]
-"share/locale/it/LC_MESSAGES" = ["locale/it/LC_MESSAGES/yast3.mo"]
-"share/locale/ja/LC_MESSAGES" = ["locale/ja/LC_MESSAGES/yast3.mo"]
-"share/locale/ko/LC_MESSAGES" = ["locale/ko/LC_MESSAGES/yast3.mo"]
-"share/locale/nl/LC_MESSAGES" = ["locale/nl/LC_MESSAGES/yast3.mo"]
-"share/locale/nb/LC_MESSAGES" = ["locale/nb/LC_MESSAGES/yast3.mo"]
-"share/locale/pl/LC_MESSAGES" = ["locale/pl/LC_MESSAGES/yast3.mo"]
-"share/locale/pt/LC_MESSAGES" = ["locale/pt/LC_MESSAGES/yast3.mo"]
-"share/locale/cs/LC_MESSAGES" = ["locale/cs/LC_MESSAGES/yast3.mo"]
-"share/locale/sv/LC_MESSAGES" = ["locale/sv/LC_MESSAGES/yast3.mo"]
-"share/locale/zh_CN/LC_MESSAGES" = ["locale/zh_CN/LC_MESSAGES/yast3.mo"]
-"share/locale/zh_TW/LC_MESSAGES" = ["locale/zh_TW/LC_MESSAGES/yast3.mo"]
+"share/applications" = ["packaging/me.guoyunhe.mast.qt6.desktop", "packaging/me.guoyunhe.mast.gtk4.desktop"]
+"share/metainfo" = ["packaging/me.guoyunhe.mast.qt6.metainfo.xml", "packaging/me.guoyunhe.mast.gtk4.metainfo.xml"]
+"share/icons/hicolor/64x64/apps" = ["packaging/me.guoyunhe.mast.qt6.svg", "packaging/me.guoyunhe.mast.gtk4.svg"]
+"share/locale/da/LC_MESSAGES" = ["locale/da/LC_MESSAGES/mast.mo"]
+"share/locale/de/LC_MESSAGES" = ["locale/de/LC_MESSAGES/mast.mo"]
+"share/locale/en/LC_MESSAGES" = ["locale/en/LC_MESSAGES/mast.mo"]
+"share/locale/es/LC_MESSAGES" = ["locale/es/LC_MESSAGES/mast.mo"]
+"share/locale/fi/LC_MESSAGES" = ["locale/fi/LC_MESSAGES/mast.mo"]
+"share/locale/fr/LC_MESSAGES" = ["locale/fr/LC_MESSAGES/mast.mo"]
+"share/locale/is/LC_MESSAGES" = ["locale/is/LC_MESSAGES/mast.mo"]
+"share/locale/it/LC_MESSAGES" = ["locale/it/LC_MESSAGES/mast.mo"]
+"share/locale/ja/LC_MESSAGES" = ["locale/ja/LC_MESSAGES/mast.mo"]
+"share/locale/ko/LC_MESSAGES" = ["locale/ko/LC_MESSAGES/mast.mo"]
+"share/locale/nl/LC_MESSAGES" = ["locale/nl/LC_MESSAGES/mast.mo"]
+"share/locale/nb/LC_MESSAGES" = ["locale/nb/LC_MESSAGES/mast.mo"]
+"share/locale/pl/LC_MESSAGES" = ["locale/pl/LC_MESSAGES/mast.mo"]
+"share/locale/pt/LC_MESSAGES" = ["locale/pt/LC_MESSAGES/mast.mo"]
+"share/locale/cs/LC_MESSAGES" = ["locale/cs/LC_MESSAGES/mast.mo"]
+"share/locale/sv/LC_MESSAGES" = ["locale/sv/LC_MESSAGES/mast.mo"]
+"share/locale/zh_CN/LC_MESSAGES" = ["locale/zh_CN/LC_MESSAGES/mast.mo"]
+"share/locale/zh_TW/LC_MESSAGES" = ["locale/zh_TW/LC_MESSAGES/mast.mo"]
 
 [tool.black]
 line-length = 88

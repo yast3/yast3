@@ -1,0 +1,1 @@
+"""MaST - System configuration tool."""

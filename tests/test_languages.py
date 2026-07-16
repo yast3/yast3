@@ -4,7 +4,7 @@ import os
 import unittest
 from unittest.mock import MagicMock, patch
 
-from yast3.core.languages import (
+from mast.core.languages import (
     DEFAULT_FALLBACK_LANGUAGE,
     LanguageInfo,
     LanguageSettings,
@@ -179,36 +179,36 @@ class TestIsFbiterm(unittest.TestCase):
 class TestIsSupportedLanguage(unittest.TestCase):
     """Tests for is_supported_language function."""
 
-    @patch("yast3.core.languages.languages._is_text_mode", return_value=False)
+    @patch("mast.core.languages.languages._is_text_mode", return_value=False)
     def test_gui_mode_all_supported(self, mock_text_mode: MagicMock) -> None:
         """In GUI mode, all languages should be supported."""
         self.assertTrue(is_supported_language("zh_CN"))
         self.assertTrue(is_supported_language("en_US"))
 
-    @patch("yast3.core.languages.languages._is_text_mode", return_value=True)
-    @patch("yast3.core.languages.languages.is_fbiterm", return_value=True)
-    @patch("yast3.core.languages.languages.is_supported_by_fbiterm", return_value=True)
+    @patch("mast.core.languages.languages._is_text_mode", return_value=True)
+    @patch("mast.core.languages.languages.is_fbiterm", return_value=True)
+    @patch("mast.core.languages.languages.is_supported_by_fbiterm", return_value=True)
     def test_fbiterm_supported(self, mock_supported: MagicMock, mock_fbiterm: MagicMock, mock_text: MagicMock) -> None:
         """In fbiterm mode, supported languages should be supported."""
         self.assertTrue(is_supported_language("en_US"))
 
-    @patch("yast3.core.languages.languages._is_text_mode", return_value=True)
-    @patch("yast3.core.languages.languages.is_fbiterm", return_value=True)
-    @patch("yast3.core.languages.languages.is_supported_by_fbiterm", return_value=False)
+    @patch("mast.core.languages.languages._is_text_mode", return_value=True)
+    @patch("mast.core.languages.languages.is_fbiterm", return_value=True)
+    @patch("mast.core.languages.languages.is_supported_by_fbiterm", return_value=False)
     def test_fbiterm_not_supported(self, mock_supported: MagicMock, mock_fbiterm: MagicMock, mock_text: MagicMock) -> None:
         """In fbiterm mode, unsupported languages should not be supported."""
         self.assertFalse(is_supported_language("ar_SA"))
 
-    @patch("yast3.core.languages.languages._is_text_mode", return_value=True)
-    @patch("yast3.core.languages.languages.is_fbiterm", return_value=False)
-    @patch("yast3.core.languages.languages.is_cjk_language", return_value=True)
+    @patch("mast.core.languages.languages._is_text_mode", return_value=True)
+    @patch("mast.core.languages.languages.is_fbiterm", return_value=False)
+    @patch("mast.core.languages.languages.is_cjk_language", return_value=True)
     def test_non_fbiterm_cjk_not_supported(self, mock_cjk: MagicMock, mock_fbiterm: MagicMock, mock_text: MagicMock) -> None:
         """In non-fbiterm text mode, CJK languages should not be supported."""
         self.assertFalse(is_supported_language("zh_CN"))
 
-    @patch("yast3.core.languages.languages._is_text_mode", return_value=True)
-    @patch("yast3.core.languages.languages.is_fbiterm", return_value=False)
-    @patch("yast3.core.languages.languages.is_cjk_language", return_value=False)
+    @patch("mast.core.languages.languages._is_text_mode", return_value=True)
+    @patch("mast.core.languages.languages.is_fbiterm", return_value=False)
+    @patch("mast.core.languages.languages.is_cjk_language", return_value=False)
     def test_non_fbiterm_non_cjk_supported(self, mock_cjk: MagicMock, mock_fbiterm: MagicMock, mock_text: MagicMock) -> None:
         """In non-fbiterm text mode, non-CJK languages should be supported."""
         self.assertTrue(is_supported_language("en_US"))

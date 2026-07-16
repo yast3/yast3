@@ -1,0 +1,32 @@
+from mast.core.distro import read_os_release
+from mast.core.repositories.repos import RepoEntry
+
+os_release = read_os_release()
+
+distro = os_release.get("PRETTY_NAME", "openSUSE Tumbleweed").replace(" ", "_")
+
+third_party_repos = [
+    # http://packman.links2linux.org/
+    RepoEntry(
+        filename="packman.repo",
+        id="packman",
+        name="Packman",
+        enabled=True,
+        autorefresh=True,
+        baseurl=f"https://ftp.gwdg.de/pub/linux/misc/packman/suse/{distro}/",
+        gpgkey=f"https://ftp.gwdg.de/pub/linux/misc/packman/suse/{distro}/repodata/repomd.xml.key",
+        gpgcheck=True,
+        priority=70, # opi project recommends 70 for packman repo
+    ),
+    RepoEntry(
+        filename="nvidia.repo",
+        id="nvidia",
+        name="NVIDIA",
+        enabled=True,
+        autorefresh=True,
+        baseurl=f"https://download.nvidia.com/{distro.replace("_", "/").lower()}/",
+        gpgkey=f"https://download.nvidia.com/{distro.replace("_", "/").lower()}/repodata/repomd.xml.key",
+        gpgcheck=True,
+        priority=120,
+    ),
+]

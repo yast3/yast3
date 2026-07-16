@@ -5,7 +5,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 from PySide6.QtWidgets import QApplication, QLabel, QToolButton
 
-from yast3.qt6.main_window import MainWindow
+from mast.qt6.main_window import MainWindow
 
 
 class MainWindowTest(unittest.TestCase):

@@ -5,7 +5,7 @@ import subprocess
 import unittest
 from unittest.mock import MagicMock, patch
 
-from yast3.core.services import (
+from mast.core.services import (
     ServiceEntry,
     build_service_action_command,
     build_service_logs_command,
@@ -14,7 +14,7 @@ from yast3.core.services import (
 
 
 class TestServices(unittest.TestCase):
-    @patch("yast3.core.services.services.subprocess.run")
+    @patch("mast.core.services.services.subprocess.run")
     def test_list_services_sorts_active_first(self, mock_run: MagicMock) -> None:
         responses = [
             [
@@ -57,7 +57,7 @@ class TestServices(unittest.TestCase):
         self.assertEqual(services[0].enabled_state, "enabled")
         self.assertEqual(services[2].scope, "system")
 
-    @patch("yast3.core.services.services.subprocess.run")
+    @patch("mast.core.services.services.subprocess.run")
     def test_list_services_skips_failing_scope(self, mock_run: MagicMock) -> None:
         mock_run.side_effect = [
             subprocess.CompletedProcess(

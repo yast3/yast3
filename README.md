@@ -1,6 +1,19 @@
-# YaST3
+# MaST
 
-Save YaST ♥️ with Python 3 & Qt6 Widgets.
+MaST (**M**aybe **a**nthoer **S**etup **T**ool) is continuous development of YaST with Python & Qt6 / GTK4 / TUI.
+
+## Install
+
+### openSUSE & SLE
+
+```bash
+# for KDE/LXQt users
+opi mast-qt6
+# for GNOME users
+opi mast-gtk4
+# for server users
+opi mast-tui
+```
 
 ## Modules
 
@@ -32,7 +45,7 @@ Save YaST ♥️ with Python 3 & Qt6 Widgets.
 
 ```bash
 sudo zypper install python3-pyside6 python3-gobject gtk4-devel python3-Babel python3-crontab python3-configobj python3-python-dotenv python3-pytest
-python3 -m yast3
+python3 -m mast
 ```
 
 ## Install on Linux
@@ -53,7 +66,7 @@ sudo make prefix=/usr/local install
 After installation, you can start the app from the application menu or by running:
 
 ```bash
-yast3
+mast
 ```
 
 ## Package

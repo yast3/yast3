@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from unittest.mock import MagicMock, patch
 
-from yast3.core.proxy import ProxyConfig
+from mast.core.proxy import ProxyConfig
 
 
 class TestProxyConfig(unittest.TestCase):
@@ -21,7 +21,7 @@ NO_PROXY=\"localhost,127.0.0.1\"
             f.flush()
             path = f.name
 
-        with patch("yast3.core.proxy.proxy.PROXY_CONFIG_FILE", path):
+        with patch("mast.core.proxy.proxy_config.PROXY_CONFIG_FILE", path):
             config = ProxyConfig()
 
         self.assertEqual(config.SOCKS_PROXY, "socks://127.0.0.1:1080")
@@ -32,6 +32,7 @@ PROXY_ENABLED=\"no\"
 HTTP_PROXY=\"\"
 HTTPS_PROXY=\"\"
 FTP_PROXY=\"\"
+SOCKS_PROXY=\"\"
 NO_PROXY=\"localhost\"
 """
         with tempfile.NamedTemporaryFile("w+", delete=False) as f:
@@ -39,7 +40,7 @@ NO_PROXY=\"localhost\"
             f.flush()
             path = f.name
 
-        with patch("yast3.core.proxy.proxy.PROXY_CONFIG_FILE", path):
+        with patch("mast.core.proxy.proxy_config.PROXY_CONFIG_FILE", path):
             config = ProxyConfig()
             config.SOCKS_PROXY = "socks://10.0.0.1:1080"
             config.write()
@@ -49,14 +50,14 @@ NO_PROXY=\"localhost\"
 
         self.assertIn('SOCKS_PROXY = socks://10.0.0.1:1080', updated)
 
-    @patch("yast3.core.proxy.proxy.subprocess.run")
+    @patch("mast.core.proxy.proxy_config.subprocess.run")
     def test_write_pkexec_calls_mv(self, mock_run: MagicMock) -> None:
         with tempfile.NamedTemporaryFile("w+", delete=False) as f:
-            f.write('PROXY_ENABLED="no"\n')
+            f.write('PROXY_ENABLED="no"\nHTTP_PROXY=""\nHTTPS_PROXY=""\nFTP_PROXY=""\nSOCKS_PROXY=""\nNO_PROXY="localhost"\n')
             f.flush()
             path = f.name
 
-        with patch("yast3.core.proxy.proxy.PROXY_CONFIG_FILE", path):
+        with patch("mast.core.proxy.proxy_config.PROXY_CONFIG_FILE", path):
             config = ProxyConfig()
             config.write_pkexec()
 

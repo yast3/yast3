@@ -4,13 +4,13 @@ import unittest
 from subprocess import CompletedProcess
 from unittest.mock import patch
 
-from yast3.core.flatpak.runtime import list_flatpak_runtimes, uninstall_flatpak_runtime
+from mast.core.flatpak.runtime import list_flatpak_runtimes, uninstall_flatpak_runtime
 
 
 class TestListFlatpakRuntimes(unittest.TestCase):
     """Tests for list_flatpak_runtimes function."""
 
-    @patch("yast3.core.flatpak.runtime.shutil.which")
+    @patch("mast.core.flatpak.runtime.shutil.which")
     def test_returns_empty_when_flatpak_missing(self, mock_which) -> None:
         mock_which.return_value = None
 
@@ -18,8 +18,8 @@ class TestListFlatpakRuntimes(unittest.TestCase):
 
         self.assertEqual(runtimes, [])
 
-    @patch("yast3.core.flatpak.runtime.subprocess.run")
-    @patch("yast3.core.flatpak.runtime.shutil.which")
+    @patch("mast.core.flatpak.runtime.subprocess.run")
+    @patch("mast.core.flatpak.runtime.shutil.which")
     def test_parses_runtime_list_output(self, mock_which, mock_run) -> None:
         mock_which.return_value = "/usr/bin/flatpak"
         mock_run.return_value = CompletedProcess(
@@ -47,7 +47,7 @@ class TestListFlatpakRuntimes(unittest.TestCase):
 class TestUninstallFlatpakRuntime(unittest.TestCase):
     """Tests for uninstall_flatpak_runtime function."""
 
-    @patch("yast3.core.flatpak.runtime.subprocess.run")
+    @patch("mast.core.flatpak.runtime.subprocess.run")
     def test_uninstall_uses_pkexec_for_system_scope(self, mock_run) -> None:
         mock_run.return_value = CompletedProcess(args=[], returncode=0, stdout="", stderr="")
 
@@ -59,7 +59,7 @@ class TestUninstallFlatpakRuntime(unittest.TestCase):
             text=True,
         )
 
-    @patch("yast3.core.flatpak.runtime.subprocess.run")
+    @patch("mast.core.flatpak.runtime.subprocess.run")
     def test_uninstall_without_pkexec_for_user_scope(self, mock_run) -> None:
         mock_run.return_value = CompletedProcess(args=[], returncode=0, stdout="", stderr="")
 

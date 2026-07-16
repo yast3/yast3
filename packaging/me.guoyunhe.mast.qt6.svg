@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>MaST Control Panel</title>
+  <desc>An industrial control panel icon with gauges, knobs, switches and levers for system configuration</desc>
+
+  <!-- Panel base - brushed metal frame -->
+  <rect x="2" y="2" width="60" height="60" rx="6" fill="#4A5568"/>
+  <rect x="3" y="3" width="58" height="58" rx="5" fill="#2D3748"/>
+  <!-- Inner panel -->
+  <rect x="6" y="6" width="52" height="52" rx="3" fill="#1A202C"/>
+
+  <!-- Corner screws -->
+  <circle cx="10" cy="10" r="1.5" fill="#718096"/>
+  <line x1="9" y1="10" x2="11" y2="10" stroke="#A0AEC0" stroke-width="0.5"/>
+  <circle cx="54" cy="10" r="1.5" fill="#718096"/>
+  <line x1="53" y1="10" x2="55" y2="10" stroke="#A0AEC0" stroke-width="0.5"/>
+  <circle cx="10" cy="54" r="1.5" fill="#718096"/>
+  <line x1="9" y1="54" x2="11" y2="54" stroke="#A0AEC0" stroke-width="0.5"/>
+  <circle cx="54" cy="54" r="1.5" fill="#718096"/>
+  <line x1="53" y1="54" x2="55" y2="54" stroke="#A0AEC0" stroke-width="0.5"/>
+
+  <!-- ============ TOP SECTION: LCD + Gauge (y=10-28) ============ -->
+  <!-- Digital LCD display (left) -->
+  <rect x="9" y="14" width="20" height="14" rx="1.5" fill="#0D1B0A" stroke="#4A5568" stroke-width="0.8"/>
+  <rect x="10" y="15" width="18" height="12" rx="1" fill="#1A2E0E"/>
+  <!-- LCD bezel screws -->
+  <circle cx="10.5" cy="15.5" r="0.4" fill="#718096"/>
+  <circle cx="27.5" cy="15.5" r="0.4" fill="#718096"/>
+  <circle cx="10.5" cy="26.5" r="0.4" fill="#718096"/>
+  <circle cx="27.5" cy="26.5" r="0.4" fill="#718096"/>
+  <!-- 7-segment digit definition (all segments lit = 8) -->
+  <defs>
+    <g id="seg8" fill="#48BB78">
+      <!-- a: top -->
+      <polygon points="0.4,0.4 0.8,0 3.2,0 3.6,0.4 3.2,0.8 0.8,0.8"/>
+      <!-- b: top-right -->
+      <polygon points="3.6,0.8 4,1.2 4,3.2 3.6,3.6 3.2,3.2 3.2,1.2"/>
+      <!-- c: bottom-right -->
+      <polygon points="3.6,4.4 4,4.8 4,6.8 3.6,7.2 3.2,6.8 3.2,4.8"/>
+      <!-- d: bottom -->
+      <polygon points="0.4,7.6 0.8,7.2 3.2,7.2 3.6,7.6 3.2,8 0.8,8"/>
+      <!-- e: bottom-left -->
+      <polygon points="0.4,4.4 0.8,4.8 0.8,6.8 0.4,7.2 0,6.8 0,4.8"/>
+      <!-- f: top-left -->
+      <polygon points="0.4,0.8 0.8,1.2 0.8,3.2 0.4,3.6 0,3.2 0,1.2"/>
+      <!-- g: middle -->
+      <polygon points="0.4,4 0.8,3.6 3.2,3.6 3.6,4 3.2,4.4 0.8,4.4"/>
+    </g>
+  </defs>
+  <!-- Dim background segments (off) for realism -->
+  <g fill="#0F1F08" opacity="0.5">
+    <use href="#seg8" x="12.5" y="17"/>
+    <use href="#seg8" x="17" y="17"/>
+    <use href="#seg8" x="21.5" y="17"/>
+  </g>
+  <!-- Bright lit segments showing "88.8" -->
+  <g fill="#5CFF5C">
+    <use href="#seg8" x="12.5" y="17"/>
+    <use href="#seg8" x="17" y="17"/>
+    <use href="#seg8" x="21.5" y="17"/>
+  </g>
+  <!-- Gauge outer ring (right) -->
+  <circle cx="44" cy="19" r="9" fill="#2D3748" stroke="#4A5568" stroke-width="1"/>
+  <circle cx="44" cy="19" r="7" fill="#0D1117"/>
+  <!-- Gauge tick marks - 11 ticks over 220° (from -110° to +110°, every 22°) -->
+  <!-- -110° (lower-left) -->
+  <line x1="37.9" y1="21.2" x2="39.3" y2="20.7" stroke="#718096" stroke-width="0.7" stroke-linecap="round"/>
+  <!-- -88° -->
+  <line x1="37.5" y1="18.8" x2="39.0" y2="18.8" stroke="#718096" stroke-width="0.7" stroke-linecap="round"/>
+  <!-- -66° -->
+  <line x1="38.1" y1="16.4" x2="39.4" y2="17.0" stroke="#718096" stroke-width="0.7" stroke-linecap="round"/>
+  <!-- -44° -->
+  <line x1="39.5" y1="14.3" x2="40.5" y2="15.4" stroke="#718096" stroke-width="0.7" stroke-linecap="round"/>
+  <!-- -22° -->
+  <line x1="41.6" y1="13.0" x2="42.1" y2="14.4" stroke="#718096" stroke-width="0.7" stroke-linecap="round"/>
+  <!-- 0° (top) - main tick, orange -->
+  <line x1="44" y1="12.5" x2="44" y2="14" stroke="#E85D04" stroke-width="1" stroke-linecap="round"/>
+  <!-- +22° -->
+  <line x1="46.4" y1="13.0" x2="45.9" y2="14.4" stroke="#718096" stroke-width="0.7" stroke-linecap="round"/>
+  <!-- +44° -->
+  <line x1="48.5" y1="14.3" x2="47.5" y2="15.4" stroke="#718096" stroke-width="0.7" stroke-linecap="round"/>
+  <!-- +66° -->
+  <line x1="49.9" y1="16.4" x2="48.6" y2="17.0" stroke="#718096" stroke-width="0.7" stroke-linecap="round"/>
+  <!-- +88° -->
+  <line x1="50.5" y1="18.8" x2="49.0" y2="18.8" stroke="#718096" stroke-width="0.7" stroke-linecap="round"/>
+  <!-- +110° (lower-right) -->
+  <line x1="50.1" y1="21.2" x2="48.7" y2="20.7" stroke="#718096" stroke-width="0.7" stroke-linecap="round"/>
+  <!-- Gauge needle - thin, at 30° (between ticks, not overlapping) -->
+  <line x1="44" y1="19" x2="46.75" y2="14.24" stroke="#E85D04" stroke-width="0.8" stroke-linecap="round"/>
+  <circle cx="44" cy="19" r="1.2" fill="#E85D04"/>
+
+  <!-- Separator line -->
+  <line x1="10" y1="32" x2="54" y2="32" stroke="#2D3748" stroke-width="0.5"/>
+
+  <!-- ============ BOTTOM SECTION: Layout (y=35-53) ============ -->
+  <!-- 3 Sliders evenly distributed (x=14, 22, 30) -->
+  <!-- Slider 1 -->
+  <line x1="14" y1="36" x2="14" y2="50" stroke="#2D3748" stroke-width="0.5"/>
+  <line x1="13" y1="36" x2="13.8" y2="36" stroke="#718096" stroke-width="0.4"/>
+  <line x1="13" y1="38" x2="13.8" y2="38" stroke="#718096" stroke-width="0.4"/>
+  <line x1="13" y1="40" x2="13.8" y2="40" stroke="#718096" stroke-width="0.4"/>
+  <line x1="13" y1="42" x2="13.8" y2="42" stroke="#718096" stroke-width="0.4"/>
+  <line x1="13" y1="44" x2="13.8" y2="44" stroke="#718096" stroke-width="0.4"/>
+  <line x1="13" y1="46" x2="13.8" y2="46" stroke="#718096" stroke-width="0.4"/>
+  <line x1="13" y1="48" x2="13.8" y2="48" stroke="#718096" stroke-width="0.4"/>
+  <line x1="13" y1="50" x2="13.8" y2="50" stroke="#718096" stroke-width="0.4"/>
+  <line x1="14.2" y1="36" x2="15" y2="36" stroke="#718096" stroke-width="0.4"/>
+  <line x1="14.2" y1="38" x2="15" y2="38" stroke="#718096" stroke-width="0.4"/>
+  <line x1="14.2" y1="40" x2="15" y2="40" stroke="#718096" stroke-width="0.4"/>
+  <line x1="14.2" y1="42" x2="15" y2="42" stroke="#718096" stroke-width="0.4"/>
+  <line x1="14.2" y1="44" x2="15" y2="44" stroke="#718096" stroke-width="0.4"/>
+  <line x1="14.2" y1="46" x2="15" y2="46" stroke="#718096" stroke-width="0.4"/>
+  <line x1="14.2" y1="48" x2="15" y2="48" stroke="#718096" stroke-width="0.4"/>
+  <line x1="14.2" y1="50" x2="15" y2="50" stroke="#718096" stroke-width="0.4"/>
+  <rect x="11.5" y="45" width="5" height="5" rx="1" fill="#A0AEC0"/>
+  <line x1="12" y1="46" x2="16" y2="46" stroke="#718096" stroke-width="0.3"/>
+  <line x1="12" y1="47.5" x2="16" y2="47.5" stroke="#718096" stroke-width="0.3"/>
+  <line x1="12" y1="49" x2="16" y2="49" stroke="#718096" stroke-width="0.3"/>
+
+  <!-- Slider 2 -->
+  <line x1="22" y1="36" x2="22" y2="50" stroke="#2D3748" stroke-width="0.5"/>
+  <line x1="21" y1="36" x2="21.8" y2="36" stroke="#718096" stroke-width="0.4"/>
+  <line x1="21" y1="38" x2="21.8" y2="38" stroke="#718096" stroke-width="0.4"/>
+  <line x1="21" y1="40" x2="21.8" y2="40" stroke="#718096" stroke-width="0.4"/>
+  <line x1="21" y1="42" x2="21.8" y2="42" stroke="#718096" stroke-width="0.4"/>
+  <line x1="21" y1="44" x2="21.8" y2="44" stroke="#718096" stroke-width="0.4"/>
+  <line x1="21" y1="46" x2="21.8" y2="46" stroke="#718096" stroke-width="0.4"/>
+  <line x1="21" y1="48" x2="21.8" y2="48" stroke="#718096" stroke-width="0.4"/>
+  <line x1="21" y1="50" x2="21.8" y2="50" stroke="#718096" stroke-width="0.4"/>
+  <line x1="22.2" y1="36" x2="23" y2="36" stroke="#718096" stroke-width="0.4"/>
+  <line x1="22.2" y1="38" x2="23" y2="38" stroke="#718096" stroke-width="0.4"/>
+  <line x1="22.2" y1="40" x2="23" y2="40" stroke="#718096" stroke-width="0.4"/>
+  <line x1="22.2" y1="42" x2="23" y2="42" stroke="#718096" stroke-width="0.4"/>
+  <line x1="22.2" y1="44" x2="23" y2="44" stroke="#718096" stroke-width="0.4"/>
+  <line x1="22.2" y1="46" x2="23" y2="46" stroke="#718096" stroke-width="0.4"/>
+  <line x1="22.2" y1="48" x2="23" y2="48" stroke="#718096" stroke-width="0.4"/>
+  <line x1="22.2" y1="50" x2="23" y2="50" stroke="#718096" stroke-width="0.4"/>
+  <rect x="19.5" y="41" width="5" height="5" rx="1" fill="#A0AEC0"/>
+  <line x1="20" y1="41.7" x2="23" y2="41.7" stroke="#718096" stroke-width="0.3"/>
+  <line x1="20" y1="43.5" x2="23" y2="43.5" stroke="#718096" stroke-width="0.3"/>
+  <line x1="20" y1="45.3" x2="23" y2="45.3" stroke="#718096" stroke-width="0.3"/>
+
+  <!-- Slider 3 -->
+  <line x1="30" y1="36" x2="30" y2="50" stroke="#2D3748" stroke-width="0.5"/>
+  <line x1="29" y1="36" x2="29.8" y2="36" stroke="#718096" stroke-width="0.4"/>
+  <line x1="29" y1="38" x2="29.8" y2="38" stroke="#718096" stroke-width="0.4"/>
+  <line x1="29" y1="40" x2="29.8" y2="40" stroke="#718096" stroke-width="0.4"/>
+  <line x1="29" y1="42" x2="29.8" y2="42" stroke="#718096" stroke-width="0.4"/>
+  <line x1="29" y1="44" x2="29.8" y2="44" stroke="#718096" stroke-width="0.4"/>
+  <line x1="29" y1="46" x2="29.8" y2="46" stroke="#718096" stroke-width="0.4"/>
+  <line x1="29" y1="48" x2="29.8" y2="48" stroke="#718096" stroke-width="0.4"/>
+  <line x1="29" y1="50" x2="29.8" y2="50" stroke="#718096" stroke-width="0.4"/>
+  <line x1="30.2" y1="36" x2="31" y2="36" stroke="#718096" stroke-width="0.4"/>
+  <line x1="30.2" y1="38" x2="31" y2="38" stroke="#718096" stroke-width="0.4"/>
+  <line x1="30.2" y1="40" x2="31" y2="40" stroke="#718096" stroke-width="0.4"/>
+  <line x1="30.2" y1="42" x2="31" y2="42" stroke="#718096" stroke-width="0.4"/>
+  <line x1="30.2" y1="44" x2="31" y2="44" stroke="#718096" stroke-width="0.4"/>
+  <line x1="30.2" y1="46" x2="31" y2="46" stroke="#718096" stroke-width="0.4"/>
+  <line x1="30.2" y1="48" x2="31" y2="48" stroke="#718096" stroke-width="0.4"/>
+  <line x1="30.2" y1="50" x2="31" y2="50" stroke="#718096" stroke-width="0.4"/>
+  <rect x="27.5" y="38" width="5" height="5" rx="1" fill="#A0AEC0"/>
+  <line x1="28" y1="39" x2="32" y2="39" stroke="#718096" stroke-width="0.3"/>
+  <line x1="28" y1="40.5" x2="32" y2="40.5" stroke="#718096" stroke-width="0.3"/>
+  <line x1="28" y1="42" x2="32" y2="42" stroke="#718096" stroke-width="0.3"/>
+
+  <!-- Knobs (Column 3: x=39) - Round knobs with one-line handle at different angles -->
+  <!-- Knob 1 - tilted ~45° up-right -->
+  <circle cx="39" cy="38" r="4" fill="#4A5568" stroke="#718096" stroke-width="0.6"/>
+  <circle cx="39" cy="38" r="2.5" fill="#2D3748"/>
+  <line x1="37.2" y1="36.2" x2="40.8" y2="39.8" stroke="#A0AEC0" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="40.4" y1="39.4" x2="40.8" y2="39.8" stroke="#E85D04" stroke-width="0.5" stroke-linecap="round"/>
+
+  <!-- Knob 2 - tilted ~-30° down-left -->
+  <circle cx="39" cy="48" r="4" fill="#4A5568" stroke="#718096" stroke-width="0.6"/>
+  <circle cx="39" cy="48" r="2.5" fill="#2D3748"/>
+  <line x1="36.8" y1="49.2" x2="41.2" y2="46.8" stroke="#A0AEC0" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="40.8" y1="47.0" x2="41.2" y2="46.8" stroke="#E85D04" stroke-width="0.5" stroke-linecap="round"/>
+
+  <!-- Buttons (Column 4: x=52) -->
+  <!-- Red button -->
+  <circle cx="52" cy="38" r="3.5" fill="#C53030" stroke="#742A2A" stroke-width="0.6"/>
+  <circle cx="51" cy="37" r="1" fill="#EF5350" opacity="0.6"/>
+
+  <!-- Green button -->
+  <circle cx="52" cy="48" r="3.5" fill="#38A169" stroke="#276749" stroke-width="0.6"/>
+  <circle cx="51" cy="47" r="1" fill="#48BB78" opacity="0.6"/>
+</svg>

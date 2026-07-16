@@ -23,7 +23,7 @@ install_args += --prefix="$(prefix)"
 install_args += --disable-pip-version-check
 install_args += --upgrade
 
-PYTHON_DIRS = yast3
+PYTHON_DIRS = mast
 PYTHON_DIRS += tests
 
 .PHONY: install install-desktop-files install-system dist clean
@@ -47,8 +47,8 @@ clean::
 	$(FIND) $(PYTHON_DIRS) -name '*.py[cod]' -print0 | $(XARGS) -0 $(RM)
 
 po::
-	pybabel extract -F babel.cfg -o locale/template/LC_MESSAGES/yast3.pot yast3/
-	pybabel update -i locale/template/LC_MESSAGES/yast3.pot -d locale -D yast3
+	pybabel extract -F babel.cfg -o locale/template/LC_MESSAGES/mast.pot mast/
+	pybabel update -i locale/template/LC_MESSAGES/mast.pot -d locale -D mast
 
 mo::
-	pybabel compile -d locale -D yast3
+	pybabel compile -d locale -D mast

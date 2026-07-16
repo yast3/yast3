@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MaST Qt6
+Comment=Desktop settings shell built with Python and Qt6
+Exec=mast-qt6
+Icon=me.guoyunhe.mast.qt6
+Terminal=false
+Categories=Settings;
+StartupWMClass=me.guoyunhe.mast.qt6

@@ -4,13 +4,13 @@ import unittest
 from subprocess import CompletedProcess
 from unittest.mock import patch
 
-from yast3.core.flatpak.package import list_flatpak_packages, list_remote_flatpak_packages
+from mast.core.flatpak.package import list_flatpak_packages, list_remote_flatpak_packages
 
 
 class TestListFlatpakPackages(unittest.TestCase):
     """Tests for list_flatpak_packages function."""
 
-    @patch("yast3.core.flatpak.package.shutil.which")
+    @patch("mast.core.flatpak.package.shutil.which")
     def test_returns_empty_when_flatpak_missing(self, mock_which) -> None:
         mock_which.return_value = None
 
@@ -18,8 +18,8 @@ class TestListFlatpakPackages(unittest.TestCase):
 
         self.assertEqual(packages, [])
 
-    @patch("yast3.core.flatpak.package.subprocess.run")
-    @patch("yast3.core.flatpak.package.shutil.which")
+    @patch("mast.core.flatpak.package.subprocess.run")
+    @patch("mast.core.flatpak.package.shutil.which")
     def test_parses_installed_packages_with_installed_size(self, mock_which, mock_run) -> None:
         mock_which.return_value = "/usr/bin/flatpak"
         mock_run.return_value = CompletedProcess(
@@ -46,8 +46,8 @@ class TestListFlatpakPackages(unittest.TestCase):
 class TestListRemoteFlatpakPackages(unittest.TestCase):
     """Tests for list_remote_flatpak_packages function."""
 
-    @patch("yast3.core.flatpak.package.subprocess.run")
-    @patch("yast3.core.flatpak.package.shutil.which")
+    @patch("mast.core.flatpak.package.subprocess.run")
+    @patch("mast.core.flatpak.package.shutil.which")
     def test_parses_remote_packages_with_download_size(self, mock_which, mock_run) -> None:
         mock_which.return_value = "/usr/bin/flatpak"
         mock_run.return_value = CompletedProcess(

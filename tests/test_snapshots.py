@@ -5,7 +5,7 @@ import subprocess
 import unittest
 from unittest.mock import MagicMock, patch
 
-from yast3.core.snapshots import (
+from mast.core.snapshots import (
     SnapshotEntry,
     build_snapshot_create_command,
     build_snapshot_delete_command,
@@ -16,7 +16,7 @@ from yast3.core.snapshots import (
 
 
 class TestSnapshots(unittest.TestCase):
-    @patch("yast3.core.snapshots.snapshots.subprocess.run")
+    @patch("mast.core.snapshots.snapshots.subprocess.run")
     def test_list_snapshots_sorted_desc(self, mock_run: MagicMock) -> None:
         payload = [
             {
@@ -43,7 +43,7 @@ class TestSnapshots(unittest.TestCase):
         self.assertEqual([item.number for item in snapshots], [12, 10])
         self.assertEqual(snapshots[0].description, "After update")
 
-    @patch("yast3.core.snapshots.snapshots.subprocess.run")
+    @patch("mast.core.snapshots.snapshots.subprocess.run")
     def test_list_snapshots_supports_dict_payload(self, mock_run: MagicMock) -> None:
         payload = {
             "snapshots": [
