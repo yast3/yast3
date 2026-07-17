@@ -102,11 +102,11 @@ class GroupsManager(Gtk.Box):
         members_label.set_valign(Gtk.Align.START)
         grid.attach(members_label, 0, 2, 1, 1)
 
-        self.members_list = Gtk.ListBox()
-        self.members_list.set_selection_mode(Gtk.SelectionMode.NONE)
+        self.members_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+        self.members_checkbuttons: dict[str, Gtk.CheckButton] = {}
 
         members_scrolled = Gtk.ScrolledWindow()
-        members_scrolled.set_child(self.members_list)
+        members_scrolled.set_child(self.members_box)
         members_scrolled.set_vexpand(True)
         grid.attach(members_scrolled, 1, 2, 1, 1)
 
@@ -134,6 +134,7 @@ class GroupsManager(Gtk.Box):
             self._groups.sort(key=lambda g: g.gr_name)
             self._users = list_users()
             self._populate_group_tree()
+            self._populate_members_list()
         except Exception as e:
             dialog = Gtk.MessageDialog(
                 transient_for=self.get_root(),
@@ -160,6 +161,17 @@ class GroupsManager(Gtk.Box):
 
         self.group_tree.expand_all()
 
+    def _populate_members_list(self) -> None:
+        for cb in self.members_checkbuttons.values():
+            self.members_box.remove(cb)
+        self.members_checkbuttons.clear()
+
+        for user in self._users:
+            cb = Gtk.CheckButton(label=user.username)
+            cb.set_tooltip_text(user.full_name)
+            self.members_checkbuttons[user.username] = cb
+            self.members_box.append(cb)
+
     def _on_group_selected(self, selection) -> None:
         model, tree_iter = selection.get_selected()
         if tree_iter:
@@ -184,22 +196,16 @@ class GroupsManager(Gtk.Box):
         self.group_name_edit.set_editable(False)
         self.gid_label.set_label(str(group.gr_gid))
 
-        for row in self.members_list:
-            self.members_list.remove(row)
-
-        for user in self._users:
-            if user.primary_group == group.gr_name or user.username in group.gr_mem:
-                list_row = Gtk.ListBoxRow()
-                list_row.set_child(Gtk.Label(label=user.username))
-                list_row.user_data = user
-                self.members_list.append(list_row)
+        for username, cb in self.members_checkbuttons.items():
+            user = next(u for u in self._users if u.username == username)
+            cb.set_active(user.primary_group == group.gr_name or user.username in group.gr_mem)
 
     def _clear_form(self) -> None:
         self.group_name_edit.set_text("")
         self.group_name_edit.set_editable(True)
         self.gid_label.set_label("")
-        for row in self.members_list:
-            self.members_list.remove(row)
+        for cb in self.members_checkbuttons.values():
+            cb.set_active(False)
 
     def _on_add_group(self, _button) -> None:
         self._is_new_group = True
@@ -208,8 +214,8 @@ class GroupsManager(Gtk.Box):
         self.group_name_edit.set_editable(True)
         self.group_name_edit.set_text("")
         self.gid_label.set_label("")
-        for row in self.members_list:
-            self.members_list.remove(row)
+        for cb in self.members_checkbuttons.values():
+            cb.set_active(False)
         self.delete_btn.set_sensitive(False)
         self.save_btn.set_sensitive(True)
         self.group_name_edit.grab_focus()
@@ -273,9 +279,9 @@ class GroupsManager(Gtk.Box):
             return
 
         selected_users = []
-        for row in self.members_list:
-            if row.is_selected():
-                selected_users.append(row.get_child().get_text())
+        for username, cb in self.members_checkbuttons.items():
+            if cb.get_active():
+                selected_users.append(username)
 
         if self._is_new_group:
             cmd = build_add_group_command(group_name)

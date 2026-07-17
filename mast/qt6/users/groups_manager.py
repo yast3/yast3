@@ -97,7 +97,6 @@ class GroupsManager(QWidget):
         form_layout.addWidget(members_label, 2, 0)
 
         self.members_list = QListWidget()
-        self.members_list.setSelectionMode(QListWidget.SelectionMode.MultiSelection)
         form_layout.addWidget(self.members_list, 2, 1)
 
         right_layout.addLayout(form_layout)
@@ -148,6 +147,8 @@ class GroupsManager(QWidget):
         self.members_list.clear()
         for user in self._users:
             item = QListWidgetItem(user.username)
+            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
+            item.setCheckState(Qt.CheckState.Unchecked)
             item.setData(Qt.ItemDataRole.UserRole, user)
             self.members_list.addItem(item)
 
@@ -176,12 +177,14 @@ class GroupsManager(QWidget):
         for i in range(self.members_list.count()):
             item = self.members_list.item(i)
             user = item.data(Qt.ItemDataRole.UserRole)
-            item.setSelected(user.primary_group == group.gr_name or user.username in group.gr_mem)
+            checked = user.primary_group == group.gr_name or user.username in group.gr_mem
+            item.setCheckState(Qt.CheckState.Checked if checked else Qt.CheckState.Unchecked)
 
     def _clear_form(self) -> None:
         self.name_edit.clear()
         self.gid_edit.clear()
-        self.members_list.clearSelection()
+        for i in range(self.members_list.count()):
+            self.members_list.item(i).setCheckState(Qt.CheckState.Unchecked)
 
     def _on_add_group(self) -> None:
         self._is_new_group = True
@@ -190,7 +193,8 @@ class GroupsManager(QWidget):
         self.name_edit.setReadOnly(False)
         self.name_edit.clear()
         self.gid_edit.clear()
-        self.members_list.clearSelection()
+        for i in range(self.members_list.count()):
+            self.members_list.item(i).setCheckState(Qt.CheckState.Unchecked)
         self.delete_btn.setEnabled(False)
         self.save_btn.setEnabled(True)
         self.name_edit.setFocus()
@@ -227,8 +231,9 @@ class GroupsManager(QWidget):
 
         selected_members = []
         for i in range(self.members_list.count()):
-            if self.members_list.item(i).isSelected():
-                selected_members.append(self.members_list.item(i).text())
+            item = self.members_list.item(i)
+            if item.checkState() == Qt.CheckState.Checked:
+                selected_members.append(item.text())
 
         if self._is_new_group:
             cmd = build_add_group_command(
