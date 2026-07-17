@@ -131,8 +131,9 @@ class UsersWindow(Screen):
                 with Horizontal():
                     yield Label(_("Password:"), classes="label-right")
                     yield Input(id="password-input", password=True)
-                yield Static(_("Additional Groups (use space to toggle):"))
-                yield DataTable(id="user-groups-table")
+                with Horizontal():
+                    yield Label(_("Additional Groups:"), classes="label-right")
+                    yield DataTable(id="user-groups-table")
 
     def _compose_groups_tab(self) -> ComposeResult:
         with Vertical():

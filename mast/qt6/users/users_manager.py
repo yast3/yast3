@@ -123,14 +123,14 @@ class UsersManager(QWidget):
         self.password_edit.setPlaceholderText(_("Leave empty to skip"))
         form_layout.addWidget(self.password_edit, 7, 1)
 
-        right_layout.addLayout(form_layout)
-
         groups_label = QLabel(_("Additional Groups"))
-        right_layout.addWidget(groups_label)
-
+        groups_label.setAlignment(Qt.AlignmentFlag.AlignTop)
+        form_layout.addWidget(groups_label, 8, 0)
         self.groups_list = QListWidget()
         self.groups_list.setSelectionMode(QListWidget.SelectionMode.MultiSelection)
-        right_layout.addWidget(self.groups_list)
+        form_layout.addWidget(self.groups_list, 8, 1)
+
+        right_layout.addLayout(form_layout)
 
         save_layout = QHBoxLayout()
         save_layout.addStretch()

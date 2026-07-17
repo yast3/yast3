@@ -121,22 +121,19 @@ class UsersManager(Gtk.Box):
         self.password_edit.set_placeholder_text(_("Leave empty to skip"))
         grid.attach(self.password_edit, 1, 7, 1, 1)
 
-        right_panel.append(grid)
-
         groups_label = Gtk.Label(label=_("Additional Groups"))
-        groups_label.set_margin_start(8)
-        right_panel.append(groups_label)
-
+        groups_label.set_valign(Gtk.Align.START)
+        grid.attach(groups_label, 0, 8, 1, 1)
         self.groups_list = Gtk.ListBox()
         self.groups_list.set_selection_mode(Gtk.SelectionMode.MULTIPLE)
 
         groups_scrolled = Gtk.ScrolledWindow()
         groups_scrolled.set_child(self.groups_list)
         groups_scrolled.set_vexpand(True)
-        groups_scrolled.set_margin_start(8)
-        groups_scrolled.set_margin_end(8)
 
-        right_panel.append(groups_scrolled)
+        grid.attach(groups_scrolled, 1, 8, 1, 1)
+
+        right_panel.append(grid)
 
         save_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         save_box.set_halign(Gtk.Align.END)
