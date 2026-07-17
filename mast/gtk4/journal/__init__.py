@@ -13,7 +13,7 @@ from mast.gtk4.journal.window import JournalWindow
 
 class JournalModule(Module):
     def __init__(self):
-        super().__init__(_("Journal"), ("utilities-system-monitor", "system-log"))
+        super().__init__(_("Journal"), ("utilities-system-monitor", "system-log"), experimental=True)
 
     def _create_window(self) -> Gtk.Window:
         return JournalWindow()
