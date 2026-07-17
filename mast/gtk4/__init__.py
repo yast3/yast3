@@ -14,6 +14,7 @@ from mast.gtk4.repositories import RepositoriesModule
 from mast.gtk4.services import ServicesModule
 from mast.gtk4.snapshots import SnapshotsModule
 from mast.gtk4.ssh import SSHClientModule
+from mast.gtk4.users import UsersModule
 
 __all__ = [
     "CronModule",
@@ -30,4 +31,5 @@ __all__ = [
     "ServicesModule",
     "SnapshotsModule",
     "SSHClientModule",
+    "UsersModule",
 ]

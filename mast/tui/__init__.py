@@ -12,6 +12,7 @@ from mast.tui.repositories import RepositoriesModule
 from mast.tui.services import ServicesModule
 from mast.tui.snapshots import SnapshotsModule
 from mast.tui.ssh import SSHClientModule
+from mast.tui.users import UsersModule
 
 __all__ = [
     "CronModule",
@@ -26,4 +27,5 @@ __all__ = [
     "ServicesModule",
     "SnapshotsModule",
     "SSHClientModule",
+    "UsersModule",
 ]

@@ -21,6 +21,7 @@ from mast.tui import (
     ServicesModule,
     SnapshotsModule,
     SSHClientModule,
+    UsersModule,
 )
 
 
@@ -140,6 +141,7 @@ class MainWindow(App):
             SnapshotsModule(),
             SSHClientModule(),
             PackagesModule(),
+            UsersModule(),
         ]
 
     def compose(self) -> ComposeResult:

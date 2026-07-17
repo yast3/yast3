@@ -18,6 +18,7 @@ from mast.gtk4 import (
     ServicesModule,
     SnapshotsModule,
     SSHClientModule,
+    UsersModule,
 )
 from mast.gtk4.about_dialog import show_about_dialog
 from mast.gtk4.module_button import ModuleButton
@@ -42,6 +43,7 @@ class MainWindow(Gtk.ApplicationWindow):
             ServicesModule(),
             SnapshotsModule(),
             SSHClientModule(),
+            UsersModule(),
         )
 
         self.windows = {}  # Keep track of open module windows

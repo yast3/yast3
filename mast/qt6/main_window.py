@@ -27,6 +27,7 @@ from mast.qt6 import (
     ServicesModule,
     SnapshotsModule,
     SSHClientModule,
+    UsersModule,
 )
 from mast.qt6.about_dialog import show_about_dialog
 from mast.qt6.module_button import ModuleButton
@@ -50,6 +51,7 @@ class MainWindow(QMainWindow):
             ServicesModule(),
             SnapshotsModule(),
             SSHClientModule(),
+            UsersModule(),
         )
 
         self.setWindowTitle("MaST")  # DO NOT TRANSLATE

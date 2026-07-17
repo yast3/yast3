@@ -1,0 +1,312 @@
+"""Groups tab widget for GTK4."""
+
+from __future__ import annotations
+
+import grp
+import re
+
+import gi
+
+gi.require_version("Gtk", "4.0")
+
+from gi.repository import Gtk
+
+from mast.core.i18n import _
+from mast.core.users import (
+    UserEntry,
+    list_users,
+    build_add_group_command,
+    build_modify_group_command,
+    build_delete_group_command,
+    is_system_group,
+)
+from mast.gtk4.command.action import CommandAction
+
+
+class GroupsTab(Gtk.Box):
+    def __init__(self):
+        super().__init__(orientation=Gtk.Orientation.HORIZONTAL, spacing=16)
+        self._groups: list[grp.struct_group] = []
+        self._users: list[UserEntry] = []
+        self._selected_group: grp.struct_group | None = None
+        self._is_new_group = False
+        self._setup_ui()
+        self._load_data()
+
+    def _setup_ui(self) -> None:
+        left_panel = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+
+        left_group = Gtk.Frame(label=_("Groups"))
+        left_group.set_margin_start(8)
+        left_group.set_margin_top(8)
+
+        self.group_tree = Gtk.TreeView()
+        self.group_tree.set_headers_visible(False)
+        self.group_tree.set_selection_mode(Gtk.SelectionMode.SINGLE)
+
+        column = Gtk.TreeViewColumn()
+        renderer = Gtk.CellRendererText()
+        column.pack_start(renderer, True)
+        column.add_attribute(renderer, "text", 0)
+        self.group_tree.append_column(column)
+
+        self.group_store = Gtk.TreeStore(str, object)
+
+        self.group_tree.set_model(self.group_store)
+        self.group_tree.get_selection().connect("changed", self._on_group_selected)
+
+        scrolled = Gtk.ScrolledWindow()
+        scrolled.set_child(self.group_tree)
+        scrolled.set_vexpand(True)
+
+        left_group.set_child(scrolled)
+        left_panel.append(left_group)
+
+        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        button_box.set_margin_start(8)
+        button_box.set_margin_end(8)
+        button_box.set_margin_bottom(8)
+
+        self.add_btn = Gtk.Button(label=_("Add"))
+        self.add_btn.connect("clicked", self._on_add_group)
+        button_box.append(self.add_btn)
+
+        self.delete_btn = Gtk.Button(label=_("Delete"))
+        self.delete_btn.connect("clicked", self._on_delete_group)
+        self.delete_btn.set_sensitive(False)
+        button_box.append(self.delete_btn)
+
+        left_panel.append(button_box)
+
+        self.append(left_panel)
+
+        separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
+        self.append(separator)
+
+        right_panel = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+
+        right_group = Gtk.Frame(label=_("Group Details"))
+        right_group.set_margin_end(8)
+        right_group.set_margin_top(8)
+
+        grid = Gtk.Grid()
+        grid.set_column_spacing(8)
+        grid.set_row_spacing(8)
+        grid.set_margin_start(16)
+        grid.set_margin_end(16)
+        grid.set_margin_top(16)
+        grid.set_margin_bottom(16)
+
+        grid.attach(Gtk.Label(label=_("Group Name")), 0, 0, 1, 1)
+        self.group_name_edit = Gtk.Entry()
+        grid.attach(self.group_name_edit, 1, 0, 1, 1)
+
+        right_group.set_child(grid)
+        right_panel.append(right_group)
+
+        members_label = Gtk.Label(label=_("Members"))
+        members_label.set_margin_start(8)
+        right_panel.append(members_label)
+
+        self.members_list = Gtk.ListBox()
+        self.members_list.set_selection_mode(Gtk.SelectionMode.MULTIPLE)
+
+        members_scrolled = Gtk.ScrolledWindow()
+        members_scrolled.set_child(self.members_list)
+        members_scrolled.set_vexpand(True)
+        members_scrolled.set_margin_start(8)
+        members_scrolled.set_margin_end(8)
+
+        right_panel.append(members_scrolled)
+
+        save_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        save_box.set_halign(Gtk.Align.END)
+        save_box.set_margin_end(8)
+        save_box.set_margin_bottom(8)
+
+        self.save_btn = Gtk.Button(label=_("Save"))
+        self.save_btn.connect("clicked", self._on_save_group)
+        self.save_btn.set_sensitive(False)
+        save_box.append(self.save_btn)
+
+        right_panel.append(save_box)
+
+        right_panel.set_hexpand(True)
+        right_panel.set_vexpand(True)
+        self.append(right_panel)
+
+    def _load_data(self) -> None:
+        try:
+            self._groups = grp.getgrall()
+            self._groups.sort(key=lambda g: g.gr_name)
+            self._users = list_users()
+            self._populate_group_tree()
+            self._populate_members_list()
+        except Exception as e:
+            dialog = Gtk.MessageDialog(
+                transient_for=self.get_root(),
+                modal=True,
+                message_type=Gtk.MessageType.ERROR,
+                buttons=Gtk.ButtonsType.OK,
+                text=_("Error"),
+            )
+            dialog.set_property("secondary-text", _("Failed to load groups: {0}").format(str(e)))
+            dialog.connect("response", lambda d, r: d.destroy())
+            dialog.present()
+
+    def _populate_group_tree(self) -> None:
+        self.group_store.clear()
+
+        system_group_item = self.group_store.append(None, [_("System Groups"), None])
+        user_group_item = self.group_store.append(None, [_("User Groups"), None])
+
+        for group in self._groups:
+            if is_system_group(group):
+                self.group_store.append(system_group_item, [group.gr_name, group])
+            else:
+                self.group_store.append(user_group_item, [group.gr_name, group])
+
+        self.group_tree.expand_all()
+
+    def _populate_members_list(self) -> None:
+        for row in self.members_list:
+            self.members_list.remove(row)
+
+        for user in self._users:
+            list_row = Gtk.ListBoxRow()
+            list_row.set_child(Gtk.Label(label=user.username))
+            list_row.set_data("user", user)
+            self.members_list.append(list_row)
+
+    def _on_group_selected(self, selection) -> None:
+        model, tree_iter = selection.get_selected()
+        if tree_iter:
+            self._is_new_group = False
+            self._selected_group = model.get_value(tree_iter, 1)
+            if self._selected_group:
+                self._fill_group_form(self._selected_group)
+                self.delete_btn.set_sensitive(True)
+                self.save_btn.set_sensitive(True)
+            else:
+                self.delete_btn.set_sensitive(False)
+                self.save_btn.set_sensitive(False)
+        else:
+            self._selected_group = None
+            self._clear_form()
+            self.delete_btn.set_sensitive(False)
+            self.save_btn.set_sensitive(False)
+
+    def _fill_group_form(self, group: grp.struct_group) -> None:
+        self.group_name_edit.set_text(group.gr_name)
+        self.group_name_edit.set_editable(False)
+
+        for row in self.members_list:
+            username = row.get_child().get_text()
+            row.set_selected(username in group.gr_mem)
+
+    def _clear_form(self) -> None:
+        self.group_name_edit.set_text("")
+        self.group_name_edit.set_editable(True)
+        self.members_list.unselect_all()
+
+    def _on_add_group(self, _button) -> None:
+        self._is_new_group = True
+        self._selected_group = None
+        self.group_tree.get_selection().unselect_all()
+        self.group_name_edit.set_editable(True)
+        self.group_name_edit.set_text("")
+        self.members_list.unselect_all()
+        self.delete_btn.set_sensitive(False)
+        self.save_btn.set_sensitive(True)
+        self.group_name_edit.grab_focus()
+
+    def _on_delete_group(self, _button) -> None:
+        if not self._selected_group:
+            return
+
+        dialog = Gtk.MessageDialog(
+            transient_for=self.get_root(),
+            modal=True,
+            message_type=Gtk.MessageType.QUESTION,
+            buttons=Gtk.ButtonsType.YES_NO,
+            text=_("Confirm"),
+        )
+        dialog.set_property("secondary-text", _("Are you sure you want to delete group '{0}'?").format(self._selected_group.gr_name))
+        dialog.connect("response", self._on_delete_confirm, self._selected_group.gr_name)
+        dialog.present()
+
+    def _on_delete_confirm(self, dialog, response_id, group_name) -> None:
+        if response_id == Gtk.ResponseType.YES:
+            cmd = build_delete_group_command(group_name)
+            action = CommandAction(
+                text=_("Delete"),
+                running_text=_("Deleting..."),
+                dialog_title=_("Delete Group"),
+                command=cmd,
+                success_output=_("Group '{0}' deleted successfully.").format(group_name),
+                parent_window=self.get_root(),
+            )
+            action.connect_finished(self._on_action_finished)
+            action.start_action()
+        dialog.destroy()
+
+    def _on_save_group(self, _button) -> None:
+        group_name = self.group_name_edit.get_text().strip()
+        if not group_name:
+            dialog = Gtk.MessageDialog(
+                transient_for=self.get_root(),
+                modal=True,
+                message_type=Gtk.MessageType.WARNING,
+                buttons=Gtk.ButtonsType.OK,
+                text=_("Error"),
+            )
+            dialog.set_property("secondary-text", _("Group name cannot be empty"))
+            dialog.connect("response", lambda d, r: d.destroy())
+            dialog.present()
+            return
+
+        if self._is_new_group and not re.match(r"^[a-z][a-z0-9_-]*$", group_name):
+            dialog = Gtk.MessageDialog(
+                transient_for=self.get_root(),
+                modal=True,
+                message_type=Gtk.MessageType.WARNING,
+                buttons=Gtk.ButtonsType.OK,
+                text=_("Error"),
+            )
+            dialog.set_property("secondary-text", _("Group name must start with a lowercase letter and can only contain lowercase letters, digits, hyphens, and underscores."))
+            dialog.connect("response", lambda d, r: d.destroy())
+            dialog.present()
+            return
+
+        selected_users = []
+        for row in self.members_list:
+            if row.is_selected():
+                selected_users.append(row.get_child().get_text())
+
+        if self._is_new_group:
+            cmd = build_add_group_command(group_name)
+            success_msg = _("Group '{0}' created successfully.").format(group_name)
+            dialog_title = _("Create Group")
+        else:
+            cmd = build_modify_group_command(group_name, selected_users)
+            success_msg = _("Group '{0}' updated successfully.").format(group_name)
+            dialog_title = _("Update Group")
+
+        action = CommandAction(
+            text=_("Save"),
+            running_text=_("Saving..."),
+            dialog_title=dialog_title,
+            command=cmd,
+            success_output=success_msg,
+            parent_window=self.get_root(),
+        )
+        action.connect_finished(self._on_action_finished)
+        action.start_action()
+
+    def _on_action_finished(self, success: bool, _error: str, _stdout: str) -> None:
+        if success:
+            self._load_data()
+            self._clear_form()
+            self._is_new_group = False
+            self.save_btn.set_sensitive(False)
+            self.delete_btn.set_sensitive(False)

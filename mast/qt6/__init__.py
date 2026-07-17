@@ -14,6 +14,7 @@ from mast.qt6.repositories import RepositoriesModule
 from mast.qt6.services import ServicesModule
 from mast.qt6.snapshots import SnapshotsModule
 from mast.qt6.ssh import SSHClientModule
+from mast.qt6.users import UsersModule
 
 __all__ = [
     "CronModule",
@@ -30,4 +31,5 @@ __all__ = [
     "ServicesModule",
     "SnapshotsModule",
     "SSHClientModule",
+    "UsersModule",
 ]
