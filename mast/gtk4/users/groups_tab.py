@@ -185,8 +185,9 @@ class GroupsTab(Gtk.Box):
             self._selected_group = model.get_value(tree_iter, 1)
             if self._selected_group:
                 self._fill_group_form(self._selected_group)
-                self.delete_btn.set_sensitive(True)
-                self.save_btn.set_sensitive(True)
+                is_system = is_system_group(self._selected_group)
+                self.delete_btn.set_sensitive(not is_system)
+                self.save_btn.set_sensitive(not is_system)
             else:
                 self.delete_btn.set_sensitive(False)
                 self.save_btn.set_sensitive(False)

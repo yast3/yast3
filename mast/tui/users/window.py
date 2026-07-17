@@ -227,6 +227,8 @@ class UsersWindow(Screen):
             table.add_row(user.username, "")
 
     def _fill_user_form(self, user: UserEntry) -> None:
+        is_root = user.uid == 0
+
         self.query_one("#username-input", Input).value = user.username
         self.query_one("#username-input", Input).disabled = True
         self.query_one("#fullname-input", Input).value = user.full_name
@@ -240,6 +242,11 @@ class UsersWindow(Screen):
             group_name = groups_table.get_cell(row_key, 0)
             selected = "✓" if group_name in user.groups else ""
             groups_table.update_cell(row_key, 1, selected)
+
+        self.query_one("#fullname-input", Input).disabled = is_root
+        self.query_one("#homedir-input", Input).disabled = is_root
+        self.query_one("#shell-input", Input).disabled = is_root
+        self.query_one("#primary-group-input", Input).disabled = is_root
 
     def _clear_user_form(self) -> None:
         self.query_one("#username-input", Input).value = ""
@@ -310,13 +317,17 @@ class UsersWindow(Screen):
 
         delete_btn = self.query_one("#delete-group-btn", Button)
         save_btn = self.query_one("#save-group-btn", Button)
-        delete_btn.disabled = not selected
-        save_btn.disabled = not selected
 
         if selected:
             self._is_new_group = False
             self._selected_group = self._groups[table.cursor_row]
             self._fill_group_form(self._selected_group)
+            is_system = is_system_group(self._selected_group)
+            delete_btn.disabled = is_system
+            save_btn.disabled = is_system
+        else:
+            delete_btn.disabled = True
+            save_btn.disabled = True
 
     def _toggle_member_selection(self, table: DataTable) -> None:
         if table.cursor_row is not None:

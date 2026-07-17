@@ -224,6 +224,8 @@ class UsersTab(Gtk.Box):
             self.save_btn.set_sensitive(False)
 
     def _fill_user_form(self, user: UserEntry) -> None:
+        is_root = user.uid == 0
+
         self.username_edit.set_text(user.username)
         self.full_name_edit.set_text(user.full_name)
         self.home_dir_edit.set_text(user.home_dir)
@@ -239,6 +241,11 @@ class UsersTab(Gtk.Box):
         for row in self.groups_list:
             group_name = row.get_child().get_text()
             row.set_selected(group_name in user.groups)
+
+        self.full_name_edit.set_editable(not is_root)
+        self.home_dir_edit.set_editable(not is_root)
+        self.shell_edit.set_editable(not is_root)
+        self.primary_group_combo.set_sensitive(not is_root)
 
     def _clear_form(self) -> None:
         self.username_edit.set_text("")

@@ -201,6 +201,8 @@ class UsersTab(QWidget):
             self.save_btn.setEnabled(False)
 
     def _fill_user_form(self, user: UserEntry) -> None:
+        is_root = user.uid == 0
+
         self.username_edit.setText(user.username)
         self.full_name_edit.setText(user.full_name)
         self.home_dir_edit.setText(user.home_dir)
@@ -215,6 +217,11 @@ class UsersTab(QWidget):
             item = self.groups_list.item(i)
             group_name = item.text()
             item.setSelected(group_name in user.groups)
+
+        self.full_name_edit.setReadOnly(is_root)
+        self.home_dir_edit.setReadOnly(is_root)
+        self.shell_edit.setReadOnly(is_root)
+        self.primary_group_combo.setEnabled(not is_root)
 
     def _clear_form(self) -> None:
         self.username_edit.clear()

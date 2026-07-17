@@ -166,8 +166,9 @@ class GroupsTab(QWidget):
             self._selected_group = current.data(0, Qt.ItemDataRole.UserRole)
             if self._selected_group:
                 self._fill_group_form(self._selected_group)
-                self.delete_btn.setEnabled(True)
-                self.save_btn.setEnabled(True)
+                is_system = is_system_group(self._selected_group)
+                self.delete_btn.setEnabled(not is_system)
+                self.save_btn.setEnabled(not is_system)
             else:
                 self.delete_btn.setEnabled(False)
                 self.save_btn.setEnabled(False)
