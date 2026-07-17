@@ -259,12 +259,16 @@ class UsersWindow(Screen):
         self.query_one("#primary-group-input", Input).disabled = is_root
 
     def _clear_user_form(self) -> None:
+        self.query_one("#uid-input", Input).value = ""
+        self.query_one("#uid-input", Input).disabled = True
+        self.query_one("#gid-input", Input).value = ""
+        self.query_one("#gid-input", Input).disabled = True
         self.query_one("#username-input", Input).value = ""
         self.query_one("#username-input", Input).disabled = False
         self.query_one("#fullname-input", Input).value = ""
         self.query_one("#homedir-input", Input).value = ""
         self.query_one("#shell-input", Input).value = "/bin/bash"
-        self.query_one("#primary-group-input", Input).value = ""
+        self.query_one("#primary-group-input", Input).value = "users"
         self.query_one("#password-input", Input).value = ""
 
         groups_table = self.query_one("#user-groups-table", DataTable)

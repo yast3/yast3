@@ -268,11 +268,20 @@ class UsersManager(Gtk.Box):
         self._is_new_user = True
         self._selected_user = None
         self.user_list.unselect_all()
+        self.uid_edit.set_text("")
+        self.gid_edit.set_text("")
         self.username_edit.set_editable(True)
         self.username_edit.set_text("")
         self.full_name_edit.set_text("")
         self.home_dir_edit.set_text("")
         self.shell_edit.set_text("/bin/bash")
+        model = self.primary_group_combo.get_model()
+        for i in range(len(model)):
+            if model[i][0] == "users":
+                self.primary_group_combo.set_active(i)
+                break
+        else:
+            self.primary_group_combo.set_active(0)
         self.password_edit.set_text("")
         self.groups_list.unselect_all()
         self.delete_btn.set_sensitive(False)

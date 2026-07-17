@@ -238,11 +238,18 @@ class UsersManager(QWidget):
         self._is_new_user = True
         self._selected_user = None
         self.user_list.clearSelection()
+        self.uid_edit.clear()
+        self.gid_edit.clear()
         self.username_edit.setReadOnly(False)
         self.username_edit.clear()
         self.full_name_edit.clear()
         self.home_dir_edit.clear()
         self.shell_edit.setText("/bin/bash")
+        index = self.primary_group_combo.findText("users")
+        if index >= 0:
+            self.primary_group_combo.setCurrentIndex(index)
+        else:
+            self.primary_group_combo.setCurrentIndex(0)
         self.password_edit.clear()
         self.groups_list.clearSelection()
         self.delete_btn.setEnabled(False)
