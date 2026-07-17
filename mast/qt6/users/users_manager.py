@@ -83,35 +83,45 @@ class UsersManager(QWidget):
         form_layout = QGridLayout()
         form_layout.setSpacing(8)
 
-        form_layout.addWidget(QLabel(_("Username")), 0, 0)
+        form_layout.addWidget(QLabel(_("UID")), 0, 0)
+        self.uid_edit = QLineEdit()
+        self.uid_edit.setReadOnly(True)
+        form_layout.addWidget(self.uid_edit, 0, 1)
+
+        form_layout.addWidget(QLabel(_("GID")), 1, 0)
+        self.gid_edit = QLineEdit()
+        self.gid_edit.setReadOnly(True)
+        form_layout.addWidget(self.gid_edit, 1, 1)
+
+        form_layout.addWidget(QLabel(_("Username")), 2, 0)
         self.username_edit = QLineEdit()
         self.username_edit.setReadOnly(True)
-        form_layout.addWidget(self.username_edit, 0, 1)
+        form_layout.addWidget(self.username_edit, 2, 1)
 
-        form_layout.addWidget(QLabel(_("Display Name")), 1, 0)
+        form_layout.addWidget(QLabel(_("Display Name")), 3, 0)
         self.full_name_edit = QLineEdit()
         self.full_name_edit.setPlaceholderText(_("Full name"))
-        form_layout.addWidget(self.full_name_edit, 1, 1)
+        form_layout.addWidget(self.full_name_edit, 3, 1)
 
-        form_layout.addWidget(QLabel(_("Home Directory")), 2, 0)
+        form_layout.addWidget(QLabel(_("Home Directory")), 4, 0)
         self.home_dir_edit = QLineEdit()
         self.home_dir_edit.setPlaceholderText(_("/home/username"))
-        form_layout.addWidget(self.home_dir_edit, 2, 1)
+        form_layout.addWidget(self.home_dir_edit, 4, 1)
 
-        form_layout.addWidget(QLabel(_("Shell")), 3, 0)
+        form_layout.addWidget(QLabel(_("Shell")), 5, 0)
         self.shell_edit = QLineEdit()
         self.shell_edit.setPlaceholderText(_("/bin/bash"))
-        form_layout.addWidget(self.shell_edit, 3, 1)
+        form_layout.addWidget(self.shell_edit, 5, 1)
 
-        form_layout.addWidget(QLabel(_("Primary Group")), 4, 0)
+        form_layout.addWidget(QLabel(_("Primary Group")), 6, 0)
         self.primary_group_combo = QComboBox()
-        form_layout.addWidget(self.primary_group_combo, 4, 1)
+        form_layout.addWidget(self.primary_group_combo, 6, 1)
 
-        form_layout.addWidget(QLabel(_("Password")), 5, 0)
+        form_layout.addWidget(QLabel(_("Password")), 7, 0)
         self.password_edit = QLineEdit()
         self.password_edit.setEchoMode(QLineEdit.EchoMode.Password)
         self.password_edit.setPlaceholderText(_("Leave empty to skip"))
-        form_layout.addWidget(self.password_edit, 5, 1)
+        form_layout.addWidget(self.password_edit, 7, 1)
 
         right_layout.addLayout(form_layout)
 
@@ -192,6 +202,8 @@ class UsersManager(QWidget):
     def _fill_user_form(self, user: UserEntry) -> None:
         is_root = user.uid == 0
 
+        self.uid_edit.setText(str(user.uid))
+        self.gid_edit.setText(str(user.gid))
         self.username_edit.setText(user.username)
         self.full_name_edit.setText(user.full_name)
         self.home_dir_edit.setText(user.home_dir)

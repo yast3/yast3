@@ -108,6 +108,12 @@ class UsersWindow(Screen):
             yield DataTable(id="users-table")
             with Vertical():
                 with Horizontal():
+                    yield Label(_("UID:"), classes="label-right")
+                    yield Input(id="uid-input")
+                with Horizontal():
+                    yield Label(_("GID:"), classes="label-right")
+                    yield Input(id="gid-input")
+                with Horizontal():
                     yield Label(_("Username:"), classes="label-right")
                     yield Input(id="username-input")
                 with Horizontal():
@@ -229,6 +235,10 @@ class UsersWindow(Screen):
     def _fill_user_form(self, user: UserEntry) -> None:
         is_root = user.uid == 0
 
+        self.query_one("#uid-input", Input).value = str(user.uid)
+        self.query_one("#uid-input", Input).disabled = True
+        self.query_one("#gid-input", Input).value = str(user.gid)
+        self.query_one("#gid-input", Input).disabled = True
         self.query_one("#username-input", Input).value = user.username
         self.query_one("#username-input", Input).disabled = True
         self.query_one("#fullname-input", Input).value = user.full_name

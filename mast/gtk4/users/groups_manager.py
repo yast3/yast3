@@ -38,7 +38,7 @@ class GroupsManager(Gtk.Box):
 
         self.group_tree = Gtk.TreeView()
         self.group_tree.set_headers_visible(False)
-        self.group_tree.set_selection_mode(Gtk.SelectionMode.SINGLE)
+        self.group_tree.get_selection().set_mode(Gtk.SelectionMode.SINGLE)
         self.group_tree.set_margin_start(8)
         self.group_tree.set_margin_top(8)
 
