@@ -112,7 +112,7 @@ def build_add_user_command(
     primary_group: str = "",
 ) -> list[str]:
     """Build command to add a new user."""
-    cmd = ["pkexec", "useradd", "-m"]
+    cmd = ["pkexec", "/usr/sbin/useradd", "-m"]
 
     if full_name:
         cmd.extend(["-c", full_name])
@@ -138,7 +138,7 @@ def build_modify_user_command(
     primary_group: str = "",
 ) -> list[str]:
     """Build command to modify an existing user."""
-    cmd = ["pkexec", "usermod"]
+    cmd = ["pkexec", "/usr/sbin/usermod"]
 
     if full_name:
         cmd.extend(["-c", full_name])
@@ -157,7 +157,7 @@ def build_modify_user_command(
 
 def build_delete_user_command(username: str) -> list[str]:
     """Build command to delete a user."""
-    return ["pkexec", "userdel", "-r", username]
+    return ["pkexec", "/usr/sbin/userdel", "-r", username]
 
 
 def build_set_password_command(username: str, password: str) -> list[str]:
@@ -191,7 +191,7 @@ def is_user_deletable(user: UserEntry) -> bool:
 
 def build_add_group_command(name: str, members: list[str] | None = None) -> list[str]:
     """Build command to add a new group."""
-    cmd = ["pkexec", "groupadd"]
+    cmd = ["pkexec", "/usr/sbin/groupadd"]
 
     if members:
         cmd.extend(["-M", ",".join(members)])
@@ -202,7 +202,7 @@ def build_add_group_command(name: str, members: list[str] | None = None) -> list
 
 def build_modify_group_command(name: str, members: list[str] | None = None) -> list[str]:
     """Build command to modify a group."""
-    cmd = ["pkexec", "groupmod"]
+    cmd = ["pkexec", "/usr/sbin/groupmod"]
 
     if members is not None:
         cmd.extend(["-M", ",".join(members)])
@@ -213,4 +213,4 @@ def build_modify_group_command(name: str, members: list[str] | None = None) -> l
 
 def build_delete_group_command(name: str) -> list[str]:
     """Build command to delete a group."""
-    return ["pkexec", "groupdel", name]
+    return ["pkexec", "/usr/sbin/groupdel", name]
