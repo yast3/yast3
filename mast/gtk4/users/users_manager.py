@@ -124,11 +124,12 @@ class UsersManager(Gtk.Box):
         groups_label = Gtk.Label(label=_("Additional Groups"))
         groups_label.set_valign(Gtk.Align.START)
         grid.attach(groups_label, 0, 8, 1, 1)
-        self.groups_list = Gtk.ListBox()
-        self.groups_list.set_selection_mode(Gtk.SelectionMode.MULTIPLE)
+
+        self.groups_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+        self.groups_checkbuttons: dict[str, Gtk.CheckButton] = {}
 
         groups_scrolled = Gtk.ScrolledWindow()
-        groups_scrolled.set_child(self.groups_list)
+        groups_scrolled.set_child(self.groups_box)
         groups_scrolled.set_vexpand(True)
 
         grid.attach(groups_scrolled, 1, 8, 1, 1)
@@ -193,16 +194,16 @@ class UsersManager(Gtk.Box):
             self.user_list.select_row(selected_row)
 
     def _populate_groups_list(self) -> None:
-        for row in self.groups_list:
-            self.groups_list.remove(row)
+        for cb in self.groups_checkbuttons.values():
+            self.groups_box.remove(cb)
+        self.groups_checkbuttons.clear()
 
         self.primary_group_combo.remove_all()
 
         for group in self._groups:
-            list_row = Gtk.ListBoxRow()
-            list_row.set_child(Gtk.Label(label=group.gr_name))
-            list_row.group_data = group
-            self.groups_list.append(list_row)
+            cb = Gtk.CheckButton(label=group.gr_name)
+            self.groups_checkbuttons[group.gr_name] = cb
+            self.groups_box.append(cb)
 
             self.primary_group_combo.append_text(group.gr_name)
 
@@ -240,12 +241,8 @@ class UsersManager(Gtk.Box):
                 self.primary_group_combo.set_active(i)
                 break
 
-        for row in self.groups_list:
-            group_name = row.get_child().get_text()
-            if group_name in user.groups:
-                self.groups_list.select_row(row)
-            else:
-                self.groups_list.unselect_row(row)
+        for group_name, cb in self.groups_checkbuttons.items():
+            cb.set_active(group_name in user.groups)
 
         self.full_name_edit.set_editable(not is_root)
         self.home_dir_edit.set_editable(not is_root)
@@ -259,7 +256,8 @@ class UsersManager(Gtk.Box):
         self.shell_edit.set_text("/bin/bash")
         self.primary_group_combo.set_active(0)
         self.password_edit.set_text("")
-        self.groups_list.unselect_all()
+        for cb in self.groups_checkbuttons.values():
+            cb.set_active(False)
 
     def _on_add_user(self, _button) -> None:
         self._is_new_user = True
@@ -280,7 +278,8 @@ class UsersManager(Gtk.Box):
         else:
             self.primary_group_combo.set_active(0)
         self.password_edit.set_text("")
-        self.groups_list.unselect_all()
+        for cb in self.groups_checkbuttons.values():
+            cb.set_active(False)
         self.delete_btn.set_sensitive(False)
         self.save_btn.set_sensitive(True)
         self.username_edit.grab_focus()
@@ -364,9 +363,9 @@ class UsersManager(Gtk.Box):
         primary_group = self.primary_group_combo.get_active_text() or ""
 
         selected_groups = []
-        for row in self.groups_list:
-            if row.is_selected():
-                selected_groups.append(row.get_child().get_text())
+        for group_name, cb in self.groups_checkbuttons.items():
+            if cb.get_active():
+                selected_groups.append(group_name)
 
         if self._is_new_user:
             cmd = build_add_user_command(

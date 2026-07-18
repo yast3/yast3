@@ -127,7 +127,6 @@ class UsersManager(QWidget):
         groups_label.setAlignment(Qt.AlignmentFlag.AlignTop)
         form_layout.addWidget(groups_label, 8, 0)
         self.groups_list = QListWidget()
-        self.groups_list.setSelectionMode(QListWidget.SelectionMode.MultiSelection)
         form_layout.addWidget(self.groups_list, 8, 1)
 
         right_layout.addLayout(form_layout)
@@ -176,6 +175,8 @@ class UsersManager(QWidget):
         self.groups_list.clear()
         for group in self._groups:
             item = QListWidgetItem(group.gr_name)
+            item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
+            item.setCheckState(Qt.CheckState.Unchecked)
             item.setData(Qt.ItemDataRole.UserRole, group)
             self.groups_list.addItem(item)
 
@@ -218,7 +219,8 @@ class UsersManager(QWidget):
             item = self.groups_list.item(i)
             if item:
                 group_name = item.text()
-                item.setSelected(group_name in user.groups)
+                checked = group_name in user.groups
+                item.setCheckState(Qt.CheckState.Checked if checked else Qt.CheckState.Unchecked)
 
         self.full_name_edit.setReadOnly(is_root)
         self.home_dir_edit.setReadOnly(is_root)
@@ -232,7 +234,8 @@ class UsersManager(QWidget):
         self.shell_edit.setText("/bin/bash")
         self.primary_group_combo.setCurrentIndex(0)
         self.password_edit.clear()
-        self.groups_list.clearSelection()
+        for i in range(self.groups_list.count()):
+            self.groups_list.item(i).setCheckState(Qt.CheckState.Unchecked)
 
     def _on_add_user(self) -> None:
         self._is_new_user = True
@@ -251,7 +254,8 @@ class UsersManager(QWidget):
         else:
             self.primary_group_combo.setCurrentIndex(0)
         self.password_edit.clear()
-        self.groups_list.clearSelection()
+        for i in range(self.groups_list.count()):
+            self.groups_list.item(i).setCheckState(Qt.CheckState.Unchecked)
         self.delete_btn.setEnabled(False)
         self.save_btn.setEnabled(True)
         self.username_edit.setFocus()
@@ -306,7 +310,7 @@ class UsersManager(QWidget):
         selected_groups = []
         for i in range(self.groups_list.count()):
             item = self.groups_list.item(i)
-            if item and item.isSelected():
+            if item and item.checkState() == Qt.CheckState.Checked:
                 selected_groups.append(item.text())
 
         primary_group = self.primary_group_combo.currentText()
