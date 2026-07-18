@@ -91,6 +91,7 @@ class UsersManager(QWidget):
         form_layout.addWidget(QLabel(_("Username")), 1, 0)
         self.username_edit = QLineEdit()
         self.username_edit.setReadOnly(True)
+        self.username_edit.textChanged.connect(self._on_username_changed)
         form_layout.addWidget(self.username_edit, 1, 1)
 
         form_layout.addWidget(QLabel(_("Display Name")), 3, 0)
@@ -231,6 +232,11 @@ class UsersManager(QWidget):
         for i in range(self.groups_list.count()):
             self.groups_list.item(i).setCheckState(Qt.CheckState.Unchecked)
 
+    def _on_username_changed(self, username: str) -> None:
+        home_dir = self.home_dir_edit.text().strip()
+        if not home_dir or home_dir.startswith("/home/"):
+            self.home_dir_edit.setText(f"/home/{username}")
+
     def _on_add_user(self) -> None:
         self._is_new_user = True
         self._selected_user = None
@@ -369,15 +375,23 @@ class UsersManager(QWidget):
                     success_output=_("Password set successfully."),
                     parent=self,
                 )
-                self.current_action.action_finished.connect(self._on_action_finished)
+                self.current_action.action_finished.connect(
+                    lambda s, e, o, u=username: self._on_action_finished(s, e, o, u)
+                )
                 self.current_action.start_action()
             else:
-                self._on_action_finished(success, error, stdout)
+                self._on_action_finished(success, error, stdout, username)
         else:
-            self._on_action_finished(success, error, stdout)
+            self._on_action_finished(success, error, stdout, username)
 
-    def _on_action_finished(self, success: bool, _error: str, _stdout: str) -> None:
+    def _on_action_finished(self, success: bool, _error: str, _stdout: str, username: str = "") -> None:
         if success:
             self._load_data()
             self.username_edit.setReadOnly(True)
             self._is_new_user = False
+            if username:
+                for i in range(self.user_list.count()):
+                    item = self.user_list.item(i)
+                    if item and item.text() == username:
+                        self.user_list.setCurrentItem(item)
+                        break

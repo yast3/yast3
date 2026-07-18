@@ -89,6 +89,7 @@ class UsersManager(Gtk.Box):
         grid.attach(Gtk.Label(label=_("Username")), 0, 1, 1, 1)
         self.username_edit = Gtk.Entry()
         self.username_edit.set_editable(False)
+        self.username_edit.connect("changed", self._on_username_changed)
         grid.attach(self.username_edit, 1, 1, 1, 1)
 
         grid.attach(Gtk.Label(label=_("Display Name")), 0, 3, 1, 1)
@@ -253,6 +254,12 @@ class UsersManager(Gtk.Box):
         for cb in self.groups_checkbuttons.values():
             cb.set_active(False)
 
+    def _on_username_changed(self, _entry) -> None:
+        username = self.username_edit.get_text().strip()
+        home_dir = self.home_dir_edit.get_text().strip()
+        if not home_dir or home_dir.startswith("/home/"):
+            self.home_dir_edit.set_text(f"/home/{username}")
+
     def _on_add_user(self, _button) -> None:
         self._is_new_user = True
         self._selected_user = None
@@ -405,13 +412,18 @@ class UsersManager(Gtk.Box):
                 success_output=_("Password set successfully."),
                 parent_window=self.get_root(),
             )
-            action.connect_finished(self._on_action_finished)
+            action.connect_finished(lambda s, e, o, u=username: self._on_action_finished(s, e, o, u))
             action.start_action()
         else:
-            self._on_action_finished(success, error, stdout)
+            self._on_action_finished(success, error, stdout, username)
 
-    def _on_action_finished(self, success: bool, _error: str, _stdout: str) -> None:
+    def _on_action_finished(self, success: bool, _error: str, _stdout: str, username: str = "") -> None:
         if success:
             self._load_data()
             self.username_edit.set_editable(False)
             self._is_new_user = False
+            if username:
+                for row in self.user_list:
+                    if getattr(row, "user_data", None) and row.user_data.username == username:
+                        self.user_list.select_row(row)
+                        break
