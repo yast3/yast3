@@ -23,7 +23,7 @@ from mast.core.users import (
 from mast.gtk4.command.action import CommandAction
 
 
-class GroupsManager(Gtk.Box):
+class GroupManager(Gtk.Box):
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.HORIZONTAL, spacing=16)
         self._groups: list[grp.struct_group] = []

@@ -11,8 +11,8 @@ from PySide6.QtWidgets import (
 )
 
 from mast.core.i18n import _
-from mast.qt6.users.users_manager import UsersManager
-from mast.qt6.users.groups_manager import GroupsManager
+from mast.qt6.users.user_manager import UserManager
+from mast.qt6.users.group_manager import GroupManager
 
 
 class UsersWindow(QMainWindow):
@@ -30,10 +30,10 @@ class UsersWindow(QMainWindow):
         self.tab_widget = QTabWidget()
         layout.addWidget(self.tab_widget)
 
-        self.users_tab = UsersManager()
+        self.users_tab = UserManager()
         self.tab_widget.addTab(self.users_tab, _("Users"))
 
-        self.groups_tab = GroupsManager()
+        self.groups_tab = GroupManager()
         self.tab_widget.addTab(self.groups_tab, _("Groups"))
 
     def closeEvent(self, _event) -> None:

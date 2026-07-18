@@ -25,7 +25,7 @@ from mast.core.users import (
 from mast.gtk4.command.action import CommandAction
 
 
-class UsersManager(Gtk.Box):
+class UserManager(Gtk.Box):
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.HORIZONTAL, spacing=16)
         self._users: list[UserEntry] = []

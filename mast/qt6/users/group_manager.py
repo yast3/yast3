@@ -32,7 +32,7 @@ from mast.core.users import (
 from mast.qt6.command.action import CommandAction
 
 
-class GroupsManager(QWidget):
+class GroupManager(QWidget):
     def __init__(self, parent: QWidget | None = None):
         super().__init__(parent)
         self._groups: list[grp.struct_group] = []

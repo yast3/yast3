@@ -34,7 +34,7 @@ from mast.core.users import (
 from mast.qt6.command.action import CommandAction
 
 
-class UsersManager(QWidget):
+class UserManager(QWidget):
     def __init__(self, parent: QWidget | None = None):
         super().__init__(parent)
         self._users: list[UserEntry] = []
