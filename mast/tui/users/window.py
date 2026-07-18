@@ -189,6 +189,13 @@ class UsersWindow(Screen):
             self._users = list_users()
             self._populate_groups_table()
             self._populate_group_members_table()
+
+            for idx, group in enumerate(self._groups):
+                if group.gr_name == "users":
+                    table = self.query_one("#groups-table", DataTable)
+                    table.move_cursor(row=idx)
+                    self._fill_group_form(group)
+                    break
         except Exception as e:
             self.show_message(_("Failed to load groups: {0}").format(str(e)), error=True)
 

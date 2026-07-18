@@ -153,13 +153,20 @@ class GroupsManager(Gtk.Box):
         system_group_item = self.group_store.append(None, [_("System Groups"), None])
         user_group_item = self.group_store.append(None, [_("User Groups"), None])
 
+        users_iter = None
         for group in self._groups:
             if is_system_group(group):
-                self.group_store.append(system_group_item, [group.gr_name, group])
+                tree_iter = self.group_store.append(system_group_item, [group.gr_name, group])
             else:
-                self.group_store.append(user_group_item, [group.gr_name, group])
+                tree_iter = self.group_store.append(user_group_item, [group.gr_name, group])
+            if group.gr_name == "users":
+                users_iter = tree_iter
 
         self.group_tree.expand_all()
+
+        if users_iter:
+            selection = self.group_tree.get_selection()
+            selection.select_iter(users_iter)
 
     def _populate_members_list(self) -> None:
         for cb in self.members_checkbuttons.values():

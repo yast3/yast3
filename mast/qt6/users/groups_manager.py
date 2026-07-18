@@ -132,9 +132,12 @@ class GroupsManager(QWidget):
         user_group_item.setExpanded(True)
         user_group_item.setFlags(user_group_item.flags() & ~Qt.ItemFlag.ItemIsSelectable)
 
+        users_item = None
         for group in self._groups:
             item = QTreeWidgetItem([group.gr_name])
             item.setData(0, Qt.ItemDataRole.UserRole, group)
+            if group.gr_name == "users":
+                users_item = item
             if is_system_group(group):
                 system_group_item.addChild(item)
             else:
@@ -142,6 +145,9 @@ class GroupsManager(QWidget):
 
         self.group_list.addTopLevelItem(system_group_item)
         self.group_list.addTopLevelItem(user_group_item)
+
+        if users_item:
+            self.group_list.setCurrentItem(users_item)
 
     def _populate_members_list(self) -> None:
         self.members_list.clear()
