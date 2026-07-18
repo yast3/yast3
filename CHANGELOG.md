@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.22 - 2026-07-18
+
+- feat(users): added users module to manage users and groups.
+
 ## 0.0.21 - 2026-07-16
 
 - refactor: rename the project to MaST.
