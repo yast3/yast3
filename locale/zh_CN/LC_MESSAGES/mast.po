@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  mast\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-17 16:13+0000\n"
+"POT-Creation-Date: 2026-07-18 05:32+0000\n"
 "PO-Revision-Date: 2026-06-14 05:40+0000\n"
 "Last-Translator: \n"
 "Language: zh_CN\n"
@@ -232,10 +232,10 @@ msgstr "建议"
 #: mast/gtk4/ssh/hosts_tab.py:195 mast/gtk4/ssh/hosts_tab.py:226
 #: mast/gtk4/ssh/hosts_tab.py:228 mast/gtk4/ssh/keys_generate_dialog.py:110
 #: mast/gtk4/ssh/keys_tab.py:196 mast/gtk4/ssh/keys_tab.py:242
-#: mast/gtk4/users/groups_manager.py:143 mast/gtk4/users/groups_manager.py:255
-#: mast/gtk4/users/groups_manager.py:268 mast/gtk4/users/users_manager.py:167
-#: mast/gtk4/users/users_manager.py:298 mast/gtk4/users/users_manager.py:339
-#: mast/gtk4/users/users_manager.py:353 mast/qt6/cron/cron_edit_dialog.py:111
+#: mast/gtk4/users/groups_manager.py:144 mast/gtk4/users/groups_manager.py:268
+#: mast/gtk4/users/groups_manager.py:281 mast/gtk4/users/users_manager.py:168
+#: mast/gtk4/users/users_manager.py:297 mast/gtk4/users/users_manager.py:338
+#: mast/gtk4/users/users_manager.py:352 mast/qt6/cron/cron_edit_dialog.py:111
 #: mast/qt6/cron/manager.py:232 mast/qt6/datetime/window.py:148
 #: mast/qt6/datetime/window.py:154 mast/qt6/datetime/window.py:166
 #: mast/qt6/datetime/window.py:200 mast/qt6/datetime/window.py:211
@@ -285,10 +285,10 @@ msgstr "建议"
 #: mast/qt6/ssh/keys_generate_dialog.py:195
 #: mast/qt6/ssh/keys_generate_dialog.py:237
 #: mast/qt6/ssh/keys_generate_dialog.py:242 mast/qt6/ssh/keys_tab.py:177
-#: mast/qt6/ssh/keys_tab.py:217 mast/qt6/users/groups_manager.py:123
-#: mast/qt6/users/groups_manager.py:225 mast/qt6/users/users_manager.py:153
-#: mast/qt6/users/users_manager.py:264 mast/qt6/users/users_manager.py:290
-#: mast/qt6/users/users_manager.py:296
+#: mast/qt6/ssh/keys_tab.py:217 mast/qt6/users/groups_manager.py:122
+#: mast/qt6/users/groups_manager.py:235 mast/qt6/users/users_manager.py:152
+#: mast/qt6/users/users_manager.py:268 mast/qt6/users/users_manager.py:294
+#: mast/qt6/users/users_manager.py:300
 msgid "Error"
 msgstr "错误"
 
@@ -328,14 +328,14 @@ msgstr "编辑"
 #: mast/gtk4/snapshots/window.py:66 mast/gtk4/snapshots/window.py:150
 #: mast/gtk4/snapshots/window.py:278 mast/gtk4/ssh/hosts_tab.py:41
 #: mast/gtk4/ssh/keys_tab.py:42 mast/gtk4/users/groups_manager.py:71
-#: mast/gtk4/users/groups_manager.py:236 mast/gtk4/users/users_manager.py:62
-#: mast/gtk4/users/users_manager.py:320 mast/qt6/cron/manager.py:54
+#: mast/gtk4/users/groups_manager.py:249 mast/gtk4/users/users_manager.py:62
+#: mast/gtk4/users/users_manager.py:319 mast/qt6/cron/manager.py:54
 #: mast/qt6/flatpak/remote_manager.py:45 mast/qt6/hosts/window.py:47
 #: mast/qt6/repositories/window.py:56 mast/qt6/snapshots/window.py:63
 #: mast/qt6/snapshots/window.py:203 mast/qt6/ssh/hosts_tab.py:46
 #: mast/qt6/ssh/keys_tab.py:45 mast/qt6/users/groups_manager.py:64
-#: mast/qt6/users/groups_manager.py:212 mast/qt6/users/users_manager.py:65
-#: mast/qt6/users/users_manager.py:277 mast/tui/cron/window.py:81
+#: mast/qt6/users/groups_manager.py:222 mast/qt6/users/users_manager.py:65
+#: mast/qt6/users/users_manager.py:281 mast/tui/cron/window.py:81
 #: mast/tui/hosts/window.py:71 mast/tui/repositories/window.py:72
 #: mast/tui/snapshots/window.py:72 mast/tui/ssh/window.py:261
 #: mast/tui/ssh/window.py:269 mast/tui/users/window.py:106
@@ -347,13 +347,13 @@ msgstr "删除"
 #: mast/gtk4/git/window.py:70 mast/gtk4/hostname/window.py:48
 #: mast/gtk4/hosts/window.py:48 mast/gtk4/languages/settings.py:65
 #: mast/gtk4/proxy/window.py:44 mast/gtk4/ssh/hosts_tab.py:48
-#: mast/gtk4/users/groups_manager.py:120 mast/gtk4/users/groups_manager.py:290
-#: mast/gtk4/users/users_manager.py:143 mast/gtk4/users/users_manager.py:395
+#: mast/gtk4/users/groups_manager.py:120 mast/gtk4/users/groups_manager.py:303
+#: mast/gtk4/users/users_manager.py:144 mast/gtk4/users/users_manager.py:394
 #: mast/qt6/cron/manager.py:61 mast/qt6/datetime/window.py:134
 #: mast/qt6/git/window.py:78 mast/qt6/hostname/window.py:51
 #: mast/qt6/hosts/window.py:53 mast/qt6/languages/settings.py:57
 #: mast/qt6/proxy/window.py:55 mast/qt6/ssh/hosts_tab.py:52
-#: mast/qt6/users/groups_manager.py:107 mast/qt6/users/users_manager.py:137
+#: mast/qt6/users/groups_manager.py:106 mast/qt6/users/users_manager.py:136
 #: mast/tui/cron/window.py:82 mast/tui/datetime/window.py:116
 #: mast/tui/git/window.py:81 mast/tui/hostname/window.py:69
 #: mast/tui/hosts/window.py:72 mast/tui/proxy/window.py:91
@@ -420,7 +420,7 @@ msgstr "请选择要删除的计划任务。"
 #: mast/gtk4/hosts/window.py:228 mast/gtk4/languages/manager.py:159
 #: mast/gtk4/languages/manager.py:193 mast/gtk4/repositories/window.py:324
 #: mast/gtk4/repositories/window.py:363 mast/gtk4/ssh/hosts_tab.py:204
-#: mast/gtk4/users/groups_manager.py:226 mast/gtk4/users/users_manager.py:310
+#: mast/gtk4/users/groups_manager.py:239 mast/gtk4/users/users_manager.py:309
 #: mast/qt6/cron/manager.py:183 mast/qt6/flatpak/package_manager.py:369
 #: mast/qt6/flatpak/remote_manager.py:127 mast/qt6/flatpak/remove_action.py:37
 #: mast/qt6/flatpak/runtime_manager.py:139 mast/qt6/hostname/window.py:109
@@ -428,7 +428,7 @@ msgstr "请选择要删除的计划任务。"
 #: mast/qt6/languages/manager.py:168 mast/qt6/repositories/window.py:269
 #: mast/qt6/repositories/window.py:289 mast/qt6/ssh/hosts_tab.py:181
 #: mast/qt6/ssh/keys_generate_dialog.py:184
-#: mast/qt6/users/groups_manager.py:204 mast/qt6/users/users_manager.py:269
+#: mast/qt6/users/groups_manager.py:214 mast/qt6/users/users_manager.py:273
 msgid "Confirm"
 msgstr "确认"
 
@@ -487,8 +487,8 @@ msgstr "权限被拒绝。需要 root 权限。"
 #: mast/tui/cron/window.py:70 mast/tui/git/window.py:70
 #: mast/tui/services/window.py:95 mast/tui/services/window.py:188
 #: mast/tui/snapshots/window.py:86 mast/tui/ssh/window.py:519
-#: mast/tui/users/window.py:173 mast/tui/users/window.py:226
-#: mast/tui/users/window.py:487
+#: mast/tui/users/window.py:173 mast/tui/users/window.py:233
+#: mast/tui/users/window.py:494
 msgid "User"
 msgstr "用户"
 
@@ -498,7 +498,7 @@ msgstr "用户"
 #: mast/qt6/flatpak/remote_dialog.py:57 mast/qt6/journal/window.py:66
 #: mast/qt6/services/window.py:70 mast/qt6/services/window.py:188
 #: mast/tui/cron/window.py:72 mast/tui/services/window.py:94
-#: mast/tui/services/window.py:188 mast/tui/users/window.py:226
+#: mast/tui/services/window.py:188 mast/tui/users/window.py:233
 msgid "System"
 msgstr "系统"
 
@@ -1322,101 +1322,101 @@ msgstr "卸载"
 #: mast/gtk4/journal/window.py:187 mast/qt6/journal/window.py:115
 #, fuzzy
 msgid "Message"
-msgstr "合并"
+msgstr "消息"
 
 #: mast/gtk4/journal/window.py:203 mast/qt6/journal/window.py:152
 msgid "Max File Size (e.g., 500M, 1G)"
-msgstr ""
+msgstr "最大文件大小（例如：500M, 1G）"
 
 #: mast/gtk4/journal/window.py:205 mast/qt6/journal/window.py:154
 #, fuzzy
 msgid "SystemMaxUse"
-msgstr "系统语言"
+msgstr "SystemMaxUse"
 
 #: mast/gtk4/journal/window.py:209 mast/qt6/journal/window.py:158
 msgid "Max Number of Files"
-msgstr ""
+msgstr "最大文件数量"
 
 #: mast/gtk4/journal/window.py:211 mast/qt6/journal/window.py:160
 #, fuzzy
 msgid "SystemMaxFiles"
-msgstr "系统"
+msgstr "SystemMaxFiles"
 
 #: mast/gtk4/journal/window.py:215 mast/qt6/journal/window.py:164
 #, fuzzy
 msgid "Compress"
-msgstr "核心"
+msgstr "压缩"
 
 #: mast/gtk4/journal/window.py:220 mast/qt6/journal/window.py:169
 msgid "Rate Limit Interval (e.g., 30s)"
-msgstr ""
+msgstr "速率限制间隔（例如：30s）"
 
 #: mast/gtk4/journal/window.py:222 mast/qt6/journal/window.py:171
 msgid "RateLimitInterval"
-msgstr ""
+msgstr "RateLimitInterval"
 
 #: mast/gtk4/journal/window.py:226 mast/qt6/journal/window.py:175
 #, fuzzy
 msgid "Rate Limit Burst"
-msgstr "空闲空间限制"
+msgstr "速率限制突发"
 
 #: mast/gtk4/journal/window.py:228 mast/qt6/journal/window.py:177
 msgid "RateLimitBurst"
-msgstr ""
+msgstr "RateLimitBurst"
 
 #: mast/gtk4/journal/window.py:232 mast/qt6/journal/window.py:181
 #, fuzzy
 msgid "Save Configuration"
-msgstr "快照配置"
+msgstr "保存配置"
 
 #: mast/gtk4/journal/window.py:281 mast/qt6/journal/window.py:208
 #, fuzzy, python-brace-format
 msgid "Failed to load journal: {0}"
-msgstr "加载语言环境失败：{0}"
+msgstr "加载日志失败：{0}"
 
 #: mast/gtk4/journal/window.py:339 mast/qt6/journal/window.py:272
 #, fuzzy, python-brace-format
 msgid "Failed to load configuration: {0}"
-msgstr "加载代理配置失败：{0}"
+msgstr "加载配置失败：{0}"
 
 #: mast/gtk4/journal/window.py:356 mast/qt6/journal/window.py:289
 #, fuzzy
 msgid "Journal configuration saved successfully."
-msgstr "配置保存成功。"
+msgstr "日志配置保存成功。"
 
 #: mast/gtk4/journal/window.py:362 mast/qt6/journal/window.py:295
 #, fuzzy
 msgid "Failed to save journal configuration."
-msgstr "保存 Git 配置失败。"
+msgstr "保存日志配置失败。"
 
 #: mast/gtk4/journal/window.py:368 mast/qt6/journal/window.py:301
 #, fuzzy, python-brace-format
 msgid "Failed to save configuration: {0}"
-msgstr "保存代理配置失败：{0}"
+msgstr "保存配置失败：{0}"
 
 #: mast/gtk4/journal/window.py:377 mast/qt6/journal/window.py:307
 msgid "Clear Journal"
-msgstr ""
+msgstr "清除日志"
 
 #: mast/gtk4/journal/window.py:379 mast/qt6/journal/window.py:308
 #, fuzzy
 msgid "Are you sure you want to clear all journal logs?"
-msgstr "您确定要卸载 Flatpak 吗？"
+msgstr "您确定要清除所有日志吗？"
 
 #: mast/gtk4/journal/window.py:390 mast/qt6/journal/window.py:320
 #, fuzzy
 msgid "Journal cleared successfully."
-msgstr "快照创建成功。"
+msgstr "日志清除成功。"
 
 #: mast/gtk4/journal/window.py:397 mast/qt6/journal/window.py:327
 #, fuzzy
 msgid "Failed to clear journal."
-msgstr "保存 SSH 配置失败。"
+msgstr "清除日志失败。"
 
 #: mast/gtk4/journal/window.py:403 mast/qt6/journal/window.py:333
 #, fuzzy, python-brace-format
 msgid "Failed to clear journal: {0}"
-msgstr "读取配置失败：{0}"
+msgstr "清除日志失败：{0}"
 
 #: mast/gtk4/languages/__init__.py:16 mast/qt6/languages/__init__.py:10
 #: mast/tui/languages/__init__.py:10
@@ -2004,7 +2004,7 @@ msgstr "写入配置失败：{0}"
 
 #: mast/gtk4/snapshots/window.py:62 mast/gtk4/snapshots/window.py:255
 #: mast/qt6/snapshots/window.py:59 mast/qt6/snapshots/window.py:179
-#: mast/qt6/users/groups_manager.py:242 mast/qt6/users/users_manager.py:327
+#: mast/qt6/users/groups_manager.py:253 mast/qt6/users/users_manager.py:331
 #: mast/tui/snapshots/window.py:71
 msgid "Create"
 msgstr "创建"
@@ -2058,7 +2058,7 @@ msgid "Description cannot be empty."
 msgstr "描述不能为空。"
 
 #: mast/gtk4/snapshots/window.py:256 mast/qt6/snapshots/window.py:180
-#: mast/qt6/users/groups_manager.py:243 mast/qt6/users/users_manager.py:328
+#: mast/qt6/users/groups_manager.py:254 mast/qt6/users/users_manager.py:332
 msgid "Creating..."
 msgstr "创建中..."
 
@@ -2077,9 +2077,9 @@ msgstr "快照创建成功。"
 msgid "Please select a snapshot."
 msgstr "请选择一个快照。"
 
-#: mast/gtk4/snapshots/window.py:279 mast/gtk4/users/groups_manager.py:237
-#: mast/gtk4/users/users_manager.py:321 mast/qt6/snapshots/window.py:204
-#: mast/qt6/users/groups_manager.py:213 mast/qt6/users/users_manager.py:278
+#: mast/gtk4/snapshots/window.py:279 mast/gtk4/users/groups_manager.py:250
+#: mast/gtk4/users/users_manager.py:320 mast/qt6/snapshots/window.py:204
+#: mast/qt6/users/groups_manager.py:223 mast/qt6/users/users_manager.py:282
 msgid "Deleting..."
 msgstr "删除中..."
 
@@ -2310,12 +2310,11 @@ msgstr "密钥"
 #: mast/gtk4/users/__init__.py:10 mast/qt6/users/__init__.py:10
 #: mast/tui/users/__init__.py:12
 msgid "Users & Groups"
-msgstr "用户和组管理"
+msgstr "用户和组"
 
 #: mast/gtk4/users/groups_manager.py:93 mast/qt6/users/groups_manager.py:85
-#, fuzzy
 msgid "Group Name"
-msgstr "组名称"
+msgstr "组名"
 
 #: mast/gtk4/users/groups_manager.py:97 mast/gtk4/users/users_manager.py:89
 #: mast/qt6/users/groups_manager.py:90 mast/qt6/users/users_manager.py:91
@@ -2327,68 +2326,66 @@ msgstr "GID"
 msgid "Members"
 msgstr "成员"
 
-#: mast/gtk4/users/groups_manager.py:145 mast/qt6/users/groups_manager.py:123
-#: mast/tui/users/window.py:193
+#: mast/gtk4/users/groups_manager.py:146 mast/qt6/users/groups_manager.py:122
+#: mast/tui/users/window.py:200
 #, fuzzy, python-brace-format
 msgid "Failed to load groups: {0}"
 msgstr "加载语言列表失败：{0}"
 
-#: mast/gtk4/users/groups_manager.py:152 mast/qt6/users/groups_manager.py:128
-#, fuzzy
+#: mast/gtk4/users/groups_manager.py:153 mast/qt6/users/groups_manager.py:127
 msgid "System Groups"
 msgstr "系统组"
 
-#: mast/gtk4/users/groups_manager.py:153 mast/qt6/users/groups_manager.py:132
-#, fuzzy
+#: mast/gtk4/users/groups_manager.py:154 mast/qt6/users/groups_manager.py:131
 msgid "User Groups"
 msgstr "用户组"
 
-#: mast/gtk4/users/groups_manager.py:228 mast/qt6/users/groups_manager.py:205
+#: mast/gtk4/users/groups_manager.py:241 mast/qt6/users/groups_manager.py:215
 #, fuzzy, python-brace-format
 msgid "Are you sure you want to delete group '{0}'?"
 msgstr "您确定要删除远端 '{0}' 吗？"
 
-#: mast/gtk4/users/groups_manager.py:238 mast/qt6/users/groups_manager.py:214
+#: mast/gtk4/users/groups_manager.py:251 mast/qt6/users/groups_manager.py:224
 #, fuzzy
 msgid "Delete Group"
 msgstr "删除"
 
-#: mast/gtk4/users/groups_manager.py:240 mast/qt6/users/groups_manager.py:216
+#: mast/gtk4/users/groups_manager.py:253 mast/qt6/users/groups_manager.py:226
 #, fuzzy, python-brace-format
 msgid "Group '{0}' deleted successfully."
 msgstr "快照 #{0} 删除成功。"
 
-#: mast/gtk4/users/groups_manager.py:257 mast/qt6/users/groups_manager.py:225
+#: mast/gtk4/users/groups_manager.py:270 mast/qt6/users/groups_manager.py:235
 #, fuzzy
 msgid "Group name cannot be empty"
 msgstr "主机名不能为空。"
 
-#: mast/gtk4/users/groups_manager.py:270
+#: mast/gtk4/users/groups_manager.py:283
 msgid ""
 "Group name must start with a lowercase letter and can only contain "
 "lowercase letters, digits, hyphens, and underscores."
 msgstr "组名必须以小写字母开头，只能包含小写字母、数字、连字符和下划线。"
 
-#: mast/gtk4/users/groups_manager.py:282 mast/qt6/users/groups_manager.py:238
+#: mast/gtk4/users/groups_manager.py:295 mast/qt6/users/groups_manager.py:249
 #, fuzzy, python-brace-format
 msgid "Group '{0}' created successfully."
 msgstr "软件源 '{}' 导入成功。"
 
-#: mast/gtk4/users/groups_manager.py:283 mast/qt6/users/groups_manager.py:239
+#: mast/gtk4/users/groups_manager.py:296 mast/qt6/users/groups_manager.py:250
 #, fuzzy
 msgid "Create Group"
 msgstr "创建"
 
-#: mast/gtk4/users/groups_manager.py:286 mast/qt6/users/groups_manager.py:256
+#: mast/gtk4/users/groups_manager.py:299 mast/qt6/users/groups_manager.py:267
 #, fuzzy, python-brace-format
 msgid "Group '{0}' updated successfully."
 msgstr "远端 URL 更新成功。"
 
-#: mast/gtk4/users/groups_manager.py:287 mast/qt6/users/groups_manager.py:257
+#: mast/gtk4/users/groups_manager.py:300 mast/qt6/users/groups_manager.py:268
 msgid "Update Group"
 msgstr "更新组"
 
-#: mast/gtk4/users/groups_manager.py:291 mast/gtk4/users/users_manager.py:396
+#: mast/gtk4/users/groups_manager.py:304 mast/gtk4/users/users_manager.py:395
 #, fuzzy
 msgid "Saving..."
 msgstr "加载中..."
@@ -2404,7 +2401,6 @@ msgid "Username"
 msgstr "用户名"
 
 #: mast/gtk4/users/users_manager.py:99 mast/qt6/users/users_manager.py:101
-#, fuzzy
 msgid "Display Name"
 msgstr "显示名称"
 
@@ -2414,7 +2410,6 @@ msgid "Full name"
 msgstr "全名"
 
 #: mast/gtk4/users/users_manager.py:104 mast/qt6/users/users_manager.py:106
-#, fuzzy
 msgid "Home Directory"
 msgstr "主目录"
 
@@ -2444,111 +2439,108 @@ msgid "Leave empty to skip"
 msgstr "留空跳过"
 
 #: mast/gtk4/users/users_manager.py:124 mast/qt6/users/users_manager.py:126
-#, fuzzy
 msgid "Additional Groups"
 msgstr "附加组"
 
-#: mast/gtk4/users/users_manager.py:169 mast/qt6/users/users_manager.py:153
+#: mast/gtk4/users/users_manager.py:170 mast/qt6/users/users_manager.py:152
 #: mast/tui/users/window.py:183
 #, fuzzy, python-brace-format
 msgid "Failed to load users: {0}"
 msgstr "加载服务失败：{0}"
 
-#: mast/gtk4/users/users_manager.py:300 mast/qt6/users/users_manager.py:264
-#: mast/tui/users/window.py:403
+#: mast/gtk4/users/users_manager.py:299 mast/qt6/users/users_manager.py:268
+#: mast/tui/users/window.py:410
 #, fuzzy
 msgid "This user cannot be deleted."
 msgstr "主机名不能为空。"
 
-#: mast/gtk4/users/users_manager.py:312 mast/qt6/users/users_manager.py:270
+#: mast/gtk4/users/users_manager.py:311 mast/qt6/users/users_manager.py:274
 #, fuzzy, python-brace-format
 msgid "Are you sure you want to delete user '{0}'?"
 msgstr "您确定要删除远端 '{0}' 吗？"
 
-#: mast/gtk4/users/users_manager.py:322 mast/qt6/users/users_manager.py:279
+#: mast/gtk4/users/users_manager.py:321 mast/qt6/users/users_manager.py:283
 #, fuzzy
 msgid "Delete User"
 msgstr "删除"
 
-#: mast/gtk4/users/users_manager.py:324 mast/qt6/users/users_manager.py:281
+#: mast/gtk4/users/users_manager.py:323 mast/qt6/users/users_manager.py:285
 #, fuzzy, python-brace-format
 msgid "User '{0}' deleted successfully."
 msgstr "密钥删除成功。"
 
-#: mast/gtk4/users/users_manager.py:341 mast/qt6/users/users_manager.py:290
+#: mast/gtk4/users/users_manager.py:340 mast/qt6/users/users_manager.py:294
 #, fuzzy
 msgid "Username cannot be empty"
 msgstr "主机名不能为空。"
 
-#: mast/gtk4/users/users_manager.py:355 mast/qt6/users/users_manager.py:297
+#: mast/gtk4/users/users_manager.py:354 mast/qt6/users/users_manager.py:301
 msgid ""
 "Username must start with a lowercase letter and can only contain "
 "lowercase letters, digits, hyphens, and underscores."
 msgstr "用户名必须以小写字母开头，只能包含小写字母、数字、连字符和下划线。"
 
-#: mast/gtk4/users/users_manager.py:380 mast/qt6/users/users_manager.py:323
+#: mast/gtk4/users/users_manager.py:379 mast/qt6/users/users_manager.py:327
 #, fuzzy, python-brace-format
 msgid "User '{0}' created successfully."
 msgstr "服务 '{0}' {1} 成功。"
 
-#: mast/gtk4/users/users_manager.py:381 mast/qt6/users/users_manager.py:324
+#: mast/gtk4/users/users_manager.py:380 mast/qt6/users/users_manager.py:328
 #, fuzzy
 msgid "Create User"
 msgstr "创建"
 
-#: mast/gtk4/users/users_manager.py:391 mast/qt6/users/users_manager.py:347
+#: mast/gtk4/users/users_manager.py:390 mast/qt6/users/users_manager.py:351
 #, fuzzy, python-brace-format
 msgid "User '{0}' updated successfully."
 msgstr "服务 '{0}' {1} 成功。"
 
-#: mast/gtk4/users/users_manager.py:392 mast/qt6/users/users_manager.py:348
+#: mast/gtk4/users/users_manager.py:391 mast/qt6/users/users_manager.py:352
 msgid "Update User"
 msgstr "更新用户"
 
-#: mast/gtk4/users/users_manager.py:409 mast/gtk4/users/users_manager.py:411
-#: mast/qt6/users/users_manager.py:368 mast/qt6/users/users_manager.py:370
+#: mast/gtk4/users/users_manager.py:408 mast/gtk4/users/users_manager.py:410
+#: mast/qt6/users/users_manager.py:372 mast/qt6/users/users_manager.py:374
 msgid "Set Password"
-msgstr ""
+msgstr "设置密码"
 
-#: mast/gtk4/users/users_manager.py:410 mast/qt6/users/users_manager.py:369
+#: mast/gtk4/users/users_manager.py:409 mast/qt6/users/users_manager.py:373
 msgid "Setting password..."
-msgstr ""
+msgstr "正在设置密码..."
 
-#: mast/gtk4/users/users_manager.py:413 mast/qt6/users/users_manager.py:372
-#: mast/tui/users/window.py:454
+#: mast/gtk4/users/users_manager.py:412 mast/qt6/users/users_manager.py:376
+#: mast/tui/users/window.py:461
 #, fuzzy
 msgid "Password set successfully."
-msgstr "SSH 配置保存成功。"
+msgstr "密码设置成功。"
 
 #: mast/gtk4/users/window.py:31 mast/qt6/users/window.py:34
 #: mast/tui/users/window.py:96
-#, fuzzy
 msgid "Users"
 msgstr "用户"
 
 #: mast/gtk4/users/window.py:34 mast/qt6/users/window.py:37
 #: mast/tui/users/window.py:98
-#, fuzzy
 msgid "Groups"
-msgstr "允许组"
+msgstr "组"
 
 #: mast/qt6/about_dialog.py:14 mast/tui/main_window.py:69
 #, fuzzy, python-brace-format
 msgid "Version: {}"
-msgstr "版本"
+msgstr "版本：{}"
 
 #: mast/qt6/about_dialog.py:15 mast/tui/main_window.py:70
 #, fuzzy, python-brace-format
 msgid "License: {}"
-msgstr "时区"
+msgstr "许可证：{}"
 
 #: mast/qt6/about_dialog.py:19 mast/tui/main_window.py:66
 msgid "About MaST"
-msgstr ""
+msgstr "关于 MaST"
 
 #: mast/qt6/main_window.py:61
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 #: mast/qt6/datetime/window.py:154
 #, fuzzy, python-brace-format
@@ -2640,11 +2632,11 @@ msgstr "删除软件源失败：%s"
 #: mast/qt6/repositories/window.py:306 mast/tui/repositories/window.py:179
 #, fuzzy
 msgid "Permission denied."
-msgstr "SSH 权限警告"
+msgstr "权限被拒绝。"
 
 #: mast/qt6/repositories/window.py:308 mast/tui/repositories/window.py:181
 msgid "Failed to obtain root privileges."
-msgstr ""
+msgstr "获取 root 权限失败。"
 
 #: mast/qt6/repositories/window.py:310 mast/tui/repositories/window.py:183
 #, fuzzy
@@ -2710,12 +2702,12 @@ msgstr "读取公钥失败：{0}"
 msgid "Failed to generate SSH key: {0}"
 msgstr "生成 SSH 密钥失败：{0}"
 
-#: mast/qt6/users/groups_manager.py:260 mast/qt6/users/users_manager.py:351
+#: mast/qt6/users/groups_manager.py:271 mast/qt6/users/users_manager.py:355
 #, fuzzy
 msgid "Update"
 msgstr "日期"
 
-#: mast/qt6/users/groups_manager.py:261 mast/qt6/users/users_manager.py:352
+#: mast/qt6/users/groups_manager.py:272 mast/qt6/users/users_manager.py:356
 #, fuzzy
 msgid "Updating..."
 msgstr "删除中..."
@@ -2723,11 +2715,11 @@ msgstr "删除中..."
 #: mast/tui/main_window.py:64
 #, fuzzy
 msgid "License file not found."
-msgstr "语言 '{0}' 未找到。"
+msgstr "许可证文件未找到。"
 
 #: mast/tui/main_window.py:72
 msgid "License Text:"
-msgstr ""
+msgstr "许可证文本："
 
 #: mast/tui/cron/window.py:211
 msgid "Cron job deleted."
@@ -2793,7 +2785,7 @@ msgstr "错误：认证失败或 pkexec 不可用。"
 #: mast/tui/datetime/window.py:266 mast/tui/hostname/window.py:86
 #: mast/tui/hostname/window.py:144 mast/tui/languages/window.py:129
 #: mast/tui/ssh/window.py:415 mast/tui/ssh/window.py:451
-#: mast/tui/users/window.py:510 mast/tui/users/window.py:512
+#: mast/tui/users/window.py:517 mast/tui/users/window.py:519
 #, python-brace-format
 msgid "Error: {0}"
 msgstr "错误：{0}"
@@ -3241,7 +3233,7 @@ msgstr "附加组："
 #: mast/tui/users/window.py:147
 #, fuzzy
 msgid "Group Name:"
-msgstr "组名称："
+msgstr "组名："
 
 #: mast/tui/users/window.py:149
 msgid "Members (use space to toggle):"
@@ -3253,77 +3245,77 @@ msgid "Full Name"
 msgstr "全名"
 
 #: mast/tui/users/window.py:165 mast/tui/users/window.py:169
-#: mast/tui/users/window.py:253 mast/tui/users/window.py:429
+#: mast/tui/users/window.py:260 mast/tui/users/window.py:436
 msgid "Group"
 msgstr "组"
 
-#: mast/tui/users/window.py:165 mast/tui/users/window.py:255
-#: mast/tui/users/window.py:277 mast/tui/users/window.py:325
-#: mast/tui/users/window.py:327 mast/tui/users/window.py:428
+#: mast/tui/users/window.py:165 mast/tui/users/window.py:262
+#: mast/tui/users/window.py:284 mast/tui/users/window.py:332
+#: mast/tui/users/window.py:334 mast/tui/users/window.py:435
 #, fuzzy
 msgid "Selected"
 msgstr "已选"
 
-#: mast/tui/users/window.py:173 mast/tui/users/window.py:287
-#: mast/tui/users/window.py:295 mast/tui/users/window.py:352
-#: mast/tui/users/window.py:354 mast/tui/users/window.py:486
+#: mast/tui/users/window.py:173 mast/tui/users/window.py:294
+#: mast/tui/users/window.py:302 mast/tui/users/window.py:359
+#: mast/tui/users/window.py:361 mast/tui/users/window.py:493
 msgid "Member"
 msgstr "成员"
 
-#: mast/tui/users/window.py:399
+#: mast/tui/users/window.py:406
 #, fuzzy
 msgid "Please select a user to delete."
 msgstr "请选择要删除的密钥。"
 
-#: mast/tui/users/window.py:407
+#: mast/tui/users/window.py:414
 #, fuzzy
 msgid "User deleted successfully."
 msgstr "密钥删除成功。"
 
-#: mast/tui/users/window.py:412
+#: mast/tui/users/window.py:419
 #, fuzzy
 msgid "Username cannot be empty."
 msgstr "主机名不能为空。"
 
-#: mast/tui/users/window.py:416
+#: mast/tui/users/window.py:423
 msgid "Username must start with a lowercase letter."
 msgstr "用户名必须以小写字母开头。"
 
-#: mast/tui/users/window.py:440
+#: mast/tui/users/window.py:447
 #, fuzzy
 msgid "User created successfully."
 msgstr "快照创建成功。"
 
-#: mast/tui/users/window.py:450
+#: mast/tui/users/window.py:457
 #, fuzzy
 msgid "User updated successfully."
 msgstr "远端 URL 更新成功。"
 
-#: mast/tui/users/window.py:467
+#: mast/tui/users/window.py:474
 #, fuzzy
 msgid "Please select a group to delete."
 msgstr "请选择要删除的远端。"
 
-#: mast/tui/users/window.py:471
+#: mast/tui/users/window.py:478
 #, fuzzy
 msgid "Group deleted successfully."
 msgstr "远端删除成功。"
 
-#: mast/tui/users/window.py:476
+#: mast/tui/users/window.py:483
 #, fuzzy
 msgid "Group name cannot be empty."
 msgstr "主机名不能为空。"
 
-#: mast/tui/users/window.py:480
+#: mast/tui/users/window.py:487
 msgid "Group name must start with a lowercase letter."
 msgstr "组名必须以小写字母开头。"
 
-#: mast/tui/users/window.py:491
+#: mast/tui/users/window.py:498
 #, fuzzy
 msgid "Group created successfully."
 msgstr "快照创建成功。"
 
-#: mast/tui/users/window.py:494
+#: mast/tui/users/window.py:501
 #, fuzzy
 msgid "Group updated successfully."
 msgstr "远端 URL 更新成功。"
