@@ -88,15 +88,10 @@ class UsersManager(QWidget):
         self.uid_edit.setReadOnly(True)
         form_layout.addWidget(self.uid_edit, 0, 1)
 
-        form_layout.addWidget(QLabel(_("GID")), 1, 0)
-        self.gid_edit = QLineEdit()
-        self.gid_edit.setReadOnly(True)
-        form_layout.addWidget(self.gid_edit, 1, 1)
-
-        form_layout.addWidget(QLabel(_("Username")), 2, 0)
+        form_layout.addWidget(QLabel(_("Username")), 1, 0)
         self.username_edit = QLineEdit()
         self.username_edit.setReadOnly(True)
-        form_layout.addWidget(self.username_edit, 2, 1)
+        form_layout.addWidget(self.username_edit, 1, 1)
 
         form_layout.addWidget(QLabel(_("Display Name")), 3, 0)
         self.full_name_edit = QLineEdit()
@@ -113,15 +108,15 @@ class UsersManager(QWidget):
         self.shell_edit.setPlaceholderText(_("/bin/bash"))
         form_layout.addWidget(self.shell_edit, 5, 1)
 
-        form_layout.addWidget(QLabel(_("Primary Group")), 6, 0)
-        self.primary_group_combo = QComboBox()
-        form_layout.addWidget(self.primary_group_combo, 6, 1)
-
-        form_layout.addWidget(QLabel(_("Password")), 7, 0)
+        form_layout.addWidget(QLabel(_("Password")), 6, 0)
         self.password_edit = QLineEdit()
         self.password_edit.setEchoMode(QLineEdit.EchoMode.Password)
         self.password_edit.setPlaceholderText(_("Leave empty to skip"))
-        form_layout.addWidget(self.password_edit, 7, 1)
+        form_layout.addWidget(self.password_edit, 6, 1)
+
+        form_layout.addWidget(QLabel(_("Primary Group")), 7, 0)
+        self.primary_group_combo = QComboBox()
+        form_layout.addWidget(self.primary_group_combo, 7, 1)
 
         groups_label = QLabel(_("Additional Groups"))
         groups_label.setAlignment(Qt.AlignmentFlag.AlignTop)
@@ -204,7 +199,6 @@ class UsersManager(QWidget):
         is_root = user.uid == 0
 
         self.uid_edit.setText(str(user.uid))
-        self.gid_edit.setText(str(user.gid))
         self.username_edit.setText(user.username)
         self.full_name_edit.setText(user.full_name)
         self.home_dir_edit.setText(user.home_dir)
@@ -242,7 +236,6 @@ class UsersManager(QWidget):
         self._selected_user = None
         self.user_list.clearSelection()
         self.uid_edit.clear()
-        self.gid_edit.clear()
         self.username_edit.setReadOnly(False)
         self.username_edit.clear()
         self.full_name_edit.clear()

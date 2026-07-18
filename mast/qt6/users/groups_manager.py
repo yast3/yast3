@@ -82,15 +82,15 @@ class GroupsManager(QWidget):
         form_layout = QGridLayout()
         form_layout.setSpacing(8)
 
-        form_layout.addWidget(QLabel(_("Group Name")), 0, 0)
-        self.name_edit = QLineEdit()
-        self.name_edit.setReadOnly(True)
-        form_layout.addWidget(self.name_edit, 0, 1)
-
-        form_layout.addWidget(QLabel(_("GID")), 1, 0)
+        form_layout.addWidget(QLabel(_("GID")), 0, 0)
         self.gid_edit = QLineEdit()
         self.gid_edit.setReadOnly(True)
-        form_layout.addWidget(self.gid_edit, 1, 1)
+        form_layout.addWidget(self.gid_edit, 0, 1)
+
+        form_layout.addWidget(QLabel(_("Group Name")), 1, 0)
+        self.name_edit = QLineEdit()
+        self.name_edit.setReadOnly(True)
+        form_layout.addWidget(self.name_edit, 1, 1)
 
         members_label = QLabel(_("Members"))
         members_label.setAlignment(Qt.AlignmentFlag.AlignTop)

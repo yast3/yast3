@@ -86,15 +86,10 @@ class UsersManager(Gtk.Box):
         self.uid_edit.set_editable(False)
         grid.attach(self.uid_edit, 1, 0, 1, 1)
 
-        grid.attach(Gtk.Label(label=_("GID")), 0, 1, 1, 1)
-        self.gid_edit = Gtk.Entry()
-        self.gid_edit.set_editable(False)
-        grid.attach(self.gid_edit, 1, 1, 1, 1)
-
-        grid.attach(Gtk.Label(label=_("Username")), 0, 2, 1, 1)
+        grid.attach(Gtk.Label(label=_("Username")), 0, 1, 1, 1)
         self.username_edit = Gtk.Entry()
         self.username_edit.set_editable(False)
-        grid.attach(self.username_edit, 1, 2, 1, 1)
+        grid.attach(self.username_edit, 1, 1, 1, 1)
 
         grid.attach(Gtk.Label(label=_("Display Name")), 0, 3, 1, 1)
         self.full_name_edit = Gtk.Entry()
@@ -111,15 +106,15 @@ class UsersManager(Gtk.Box):
         self.shell_edit.set_placeholder_text(_("/bin/bash"))
         grid.attach(self.shell_edit, 1, 5, 1, 1)
 
-        grid.attach(Gtk.Label(label=_("Primary Group")), 0, 6, 1, 1)
-        self.primary_group_combo = Gtk.ComboBoxText()
-        grid.attach(self.primary_group_combo, 1, 6, 1, 1)
-
-        grid.attach(Gtk.Label(label=_("Password")), 0, 7, 1, 1)
+        grid.attach(Gtk.Label(label=_("Password")), 0, 6, 1, 1)
         self.password_edit = Gtk.Entry()
         self.password_edit.set_visibility(False)
         self.password_edit.set_placeholder_text(_("Leave empty to skip"))
-        grid.attach(self.password_edit, 1, 7, 1, 1)
+        grid.attach(self.password_edit, 1, 6, 1, 1)
+
+        grid.attach(Gtk.Label(label=_("Primary Group")), 0, 7, 1, 1)
+        self.primary_group_combo = Gtk.ComboBoxText()
+        grid.attach(self.primary_group_combo, 1, 7, 1, 1)
 
         groups_label = Gtk.Label(label=_("Additional Groups"))
         groups_label.set_valign(Gtk.Align.START)
@@ -227,7 +222,6 @@ class UsersManager(Gtk.Box):
         is_root = user.uid == 0
 
         self.uid_edit.set_text(str(user.uid))
-        self.gid_edit.set_text(str(user.gid))
         self.username_edit.set_text(user.username)
         self.full_name_edit.set_text(user.full_name)
         self.home_dir_edit.set_text(user.home_dir)
@@ -264,7 +258,6 @@ class UsersManager(Gtk.Box):
         self._selected_user = None
         self.user_list.unselect_all()
         self.uid_edit.set_text("")
-        self.gid_edit.set_text("")
         self.username_edit.set_editable(True)
         self.username_edit.set_text("")
         self.full_name_edit.set_text("")

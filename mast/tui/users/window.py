@@ -111,9 +111,6 @@ class UsersWindow(Screen):
                     yield Label(_("UID:"), classes="label-right")
                     yield Input(id="uid-input")
                 with Horizontal():
-                    yield Label(_("GID:"), classes="label-right")
-                    yield Input(id="gid-input")
-                with Horizontal():
                     yield Label(_("Username:"), classes="label-right")
                     yield Input(id="username-input")
                 with Horizontal():
@@ -126,11 +123,11 @@ class UsersWindow(Screen):
                     yield Label(_("Shell:"), classes="label-right")
                     yield Input(id="shell-input", value="/bin/bash")
                 with Horizontal():
-                    yield Label(_("Primary Group:"), classes="label-right")
-                    yield Input(id="primary-group-input")
-                with Horizontal():
                     yield Label(_("Password:"), classes="label-right")
                     yield Input(id="password-input", password=True)
+                with Horizontal():
+                    yield Label(_("Primary Group:"), classes="label-right")
+                    yield Input(id="primary-group-input")
                 with Horizontal():
                     yield Label(_("Additional Groups:"), classes="label-right")
                     yield DataTable(id="user-groups-table")
@@ -143,6 +140,9 @@ class UsersWindow(Screen):
                 yield Button(_("Save"), id="save-group-btn", disabled=True)
             yield DataTable(id="groups-table")
             with Vertical():
+                with Horizontal():
+                    yield Label(_("GID:"), classes="label-right")
+                    yield Input(id="gid-input")
                 with Horizontal():
                     yield Label(_("Group Name:"), classes="label-right")
                     yield Input(id="group-name-input")
@@ -245,8 +245,6 @@ class UsersWindow(Screen):
 
         self.query_one("#uid-input", Input).value = str(user.uid)
         self.query_one("#uid-input", Input).disabled = True
-        self.query_one("#gid-input", Input).value = str(user.gid)
-        self.query_one("#gid-input", Input).disabled = True
         self.query_one("#username-input", Input).value = user.username
         self.query_one("#username-input", Input).disabled = True
         self.query_one("#fullname-input", Input).value = user.full_name
@@ -269,8 +267,6 @@ class UsersWindow(Screen):
     def _clear_user_form(self) -> None:
         self.query_one("#uid-input", Input).value = ""
         self.query_one("#uid-input", Input).disabled = True
-        self.query_one("#gid-input", Input).value = ""
-        self.query_one("#gid-input", Input).disabled = True
         self.query_one("#username-input", Input).value = ""
         self.query_one("#username-input", Input).disabled = False
         self.query_one("#fullname-input", Input).value = ""
@@ -284,6 +280,8 @@ class UsersWindow(Screen):
             groups_table.update_cell(row_key, _("Selected"), "")
 
     def _fill_group_form(self, group: grp.struct_group) -> None:
+        self.query_one("#gid-input", Input).value = str(group.gr_gid)
+        self.query_one("#gid-input", Input).disabled = True
         self.query_one("#group-name-input", Input).value = group.gr_name
         self.query_one("#group-name-input", Input).disabled = True
 
@@ -294,6 +292,8 @@ class UsersWindow(Screen):
             members_table.update_cell(row_key, _("Member"), selected)
 
     def _clear_group_form(self) -> None:
+        self.query_one("#gid-input", Input).value = ""
+        self.query_one("#gid-input", Input).disabled = True
         self.query_one("#group-name-input", Input).value = ""
         self.query_one("#group-name-input", Input).disabled = False
 

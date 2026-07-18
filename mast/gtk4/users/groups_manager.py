@@ -90,13 +90,13 @@ class GroupsManager(Gtk.Box):
         grid.set_margin_top(16)
         grid.set_margin_bottom(16)
 
-        grid.attach(Gtk.Label(label=_("Group Name")), 0, 0, 1, 1)
-        self.group_name_edit = Gtk.Entry()
-        grid.attach(self.group_name_edit, 1, 0, 1, 1)
-
-        grid.attach(Gtk.Label(label=_("GID")), 0, 1, 1, 1)
+        grid.attach(Gtk.Label(label=_("GID")), 0, 0, 1, 1)
         self.gid_label = Gtk.Label(label="")
-        grid.attach(self.gid_label, 1, 1, 1, 1)
+        grid.attach(self.gid_label, 1, 0, 1, 1)
+
+        grid.attach(Gtk.Label(label=_("Group Name")), 0, 1, 1, 1)
+        self.group_name_edit = Gtk.Entry()
+        grid.attach(self.group_name_edit, 1, 1, 1, 1)
 
         members_label = Gtk.Label(label=_("Members"))
         members_label.set_valign(Gtk.Align.START)
