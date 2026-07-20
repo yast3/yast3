@@ -49,3 +49,35 @@ python3 -m mast.qt6
 python3 -m mast.gtk4
 python3 -m mast.tui
 ```
+
+## FAQ
+
+### Distribution support
+
+Currently, it is only tested on openSUSE and SLE. But we plan to support more distributions in the future. Feel free to [open an issue](https://github.com/guoyunhe/mast/issues/new) if you want your distribution supported.
+
+### Why not KDE/GNOME system settings
+
+1. They miss some features that YaST/MaST provides.
+2. Some Linux users don't use GNOME/KDE, they use other desktop environments or window managers that do not provide system settings or with limited features.
+3. YaST/MaST provides TUI interface for server users.
+
+### Why not Cockpit
+
+1. Project scopes are different.
+
+   Cockpit is a server administration tool sponsored by Red Hat, focused on providing a modern-looking and user-friendly interface to manage and administer servers. [Source](https://www.redhat.com/en/blog/intro-cockpit)
+
+   MaST is system setup tool for both desktop and server users.
+
+2. User interfaces are different.
+
+   Cockpit is a web-based interface, which require a web browser.
+
+   MaST is a native application provide both GUI (Qt6 / GTK4) and TUI (Python console).
+
+3. Security levels are different.
+
+   Cockpit is a web-shell exposing 9090 port by default. If you did not enable firewall, it is accessible from the network. (Many VPS providers, e.g. Linode, do not have firewall enabled by default.)
+
+   MaST is a native application exposing no port. It require no additional security measures.
