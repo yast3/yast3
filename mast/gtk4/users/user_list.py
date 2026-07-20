@@ -74,9 +74,8 @@ class UserList(Gtk.Box):
     def _populate_user_tree(self) -> None:
         self.user_store.clear()
 
-        root_item = None
-        local_users_item = self.user_store.append(None, [_("Local Users"), None])
         system_users_item = self.user_store.append(None, [_("System Users"), None])
+        local_users_item = self.user_store.append(None, [_("Local Users"), None])
 
         current_username = None
         try:
@@ -87,8 +86,7 @@ class UserList(Gtk.Box):
         selected_iter = None
         for user in self._users:
             if user.uid == 0:
-                tree_iter = self.user_store.append(None, [user.username, user])
-                root_item = tree_iter
+                tree_iter = self.user_store.prepend(system_users_item, [user.username, user])
             elif user.uid >= 1000:
                 tree_iter = self.user_store.append(local_users_item, [user.username, user])
             else:

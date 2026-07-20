@@ -59,14 +59,13 @@ class UserList(QWidget):
     def _populate_user_tree(self) -> None:
         self.user_tree.clear()
 
-        root_item = None
-        local_users_item = QTreeWidgetItem([_("Local Users")])
-        local_users_item.setExpanded(True)
-        local_users_item.setFlags(local_users_item.flags() & ~Qt.ItemFlag.ItemIsSelectable)
-
         system_users_item = QTreeWidgetItem([_("System Users")])
         system_users_item.setExpanded(True)
         system_users_item.setFlags(system_users_item.flags() & ~Qt.ItemFlag.ItemIsSelectable)
+
+        local_users_item = QTreeWidgetItem([_("Local Users")])
+        local_users_item.setExpanded(True)
+        local_users_item.setFlags(local_users_item.flags() & ~Qt.ItemFlag.ItemIsSelectable)
 
         current_username = None
         try:
@@ -75,25 +74,29 @@ class UserList(QWidget):
         except Exception:
             pass
 
+        system_user_items = []
+        local_user_items = []
         selected_item = None
+
         for user in self._users:
             item = QTreeWidgetItem([user.username])
             item.setData(0, Qt.ItemDataRole.UserRole, user)
 
-            if user.uid == 0:
-                root_item = item
-            elif user.uid >= 1000:
-                local_users_item.addChild(item)
+            if user.uid >= 1000:
+                local_user_items.append(item)
             else:
-                system_users_item.addChild(item)
+                system_user_items.append(item)
 
             if current_username and user.username == current_username:
                 selected_item = item
 
-        if root_item:
-            self.user_tree.addTopLevelItem(root_item)
-        self.user_tree.addTopLevelItem(local_users_item)
+        for item in system_user_items:
+            system_users_item.addChild(item)
+        for item in local_user_items:
+            local_users_item.addChild(item)
+
         self.user_tree.addTopLevelItem(system_users_item)
+        self.user_tree.addTopLevelItem(local_users_item)
 
         if selected_item:
             self.user_tree.setCurrentItem(selected_item)
