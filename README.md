@@ -1,6 +1,6 @@
 # MaST
 
-MaST (**M**aybe **a**nthoer **S**etup **T**ool) is continuous development of YaST with Python & Qt6 / GTK4 / TUI.
+MaST (**M**aybe **a**nthoer **S**etup **T**ool) is continuous development of YaST with Python & Qt6 / GTK4 / TUI. Our mission is to help GNU/Linux users to set up their systems easily without remembering complex commands.
 
 ## Modules
 
