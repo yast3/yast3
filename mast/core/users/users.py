@@ -54,7 +54,7 @@ def list_users() -> list[UserEntry]:
         if username in SYSTEM_USERS:
             continue
 
-        if uid == 0 or uid >= 1000:
+        if uid >= 0:
             groups_result = subprocess.run(
                 ["id", "-nG", username],
                 capture_output=True,
@@ -89,7 +89,9 @@ def list_users() -> list[UserEntry]:
             return (0, "")
         if user.username == current_username:
             return (1, "")
-        return (2, user.username)
+        if user.uid >= 1000:
+            return (2, user.username)
+        return (3, user.username)
 
     users.sort(key=_user_sort_key)
     return users

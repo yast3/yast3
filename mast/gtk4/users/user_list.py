@@ -20,6 +20,7 @@ class UserList(Gtk.Box):
     user_selected = GObject.Signal("user-selected", arg_types=(object,))
     user_added = GObject.Signal("user-added")
     user_deleted = GObject.Signal("user-deleted")
+
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         self._users: list[UserEntry] = []
@@ -27,14 +28,25 @@ class UserList(Gtk.Box):
         self._setup_ui()
 
     def _setup_ui(self) -> None:
-        self.user_list = Gtk.ListBox()
-        self.user_list.set_selection_mode(Gtk.SelectionMode.SINGLE)
-        self.user_list.connect("row-selected", self._on_user_selected)
-        self.user_list.set_margin_start(8)
-        self.user_list.set_margin_top(8)
+        self.user_tree = Gtk.TreeView()
+        self.user_tree.set_headers_visible(False)
+        self.user_tree.get_selection().set_mode(Gtk.SelectionMode.SINGLE)
+        self.user_tree.set_margin_start(8)
+        self.user_tree.set_margin_top(8)
+
+        column = Gtk.TreeViewColumn()
+        renderer = Gtk.CellRendererText()
+        column.pack_start(renderer, True)
+        column.add_attribute(renderer, "text", 0)
+        self.user_tree.append_column(column)
+
+        self.user_store = Gtk.TreeStore(str, object)
+
+        self.user_tree.set_model(self.user_store)
+        self.user_tree.get_selection().connect("changed", self._on_user_selected)
 
         scrolled = Gtk.ScrolledWindow()
-        scrolled.set_child(self.user_list)
+        scrolled.set_child(self.user_tree)
         scrolled.set_vexpand(True)
 
         self.append(scrolled)
@@ -57,11 +69,13 @@ class UserList(Gtk.Box):
 
     def set_users(self, users: list[UserEntry]) -> None:
         self._users = users
-        self._populate_user_list()
+        self._populate_user_tree()
 
-    def _populate_user_list(self) -> None:
-        for row in self.user_list:
-            self.user_list.remove(row)
+    def _populate_user_tree(self) -> None:
+        self.user_store.clear()
+
+        system_users_item = self.user_store.append(None, [_("System Users"), None])
+        local_users_item = self.user_store.append(None, [_("Local Users"), None])
 
         current_username = None
         try:
@@ -69,39 +83,43 @@ class UserList(Gtk.Box):
         except Exception:
             pass
 
-        selected_row = None
-        for row_index, user in enumerate(self._users):
-            list_row = Gtk.ListBoxRow()
-            list_row.set_child(Gtk.Label(label=user.username))
-            list_row.user_data = user
-            self.user_list.append(list_row)
+        selected_iter = None
+        for user in self._users:
+            if user.uid == 0:
+                tree_iter = self.user_store.prepend(system_users_item, [user.username, user])
+            elif user.uid >= 1000:
+                tree_iter = self.user_store.append(local_users_item, [user.username, user])
+            else:
+                tree_iter = self.user_store.append(system_users_item, [user.username, user])
+
             if current_username and user.username == current_username:
-                selected_row = list_row
+                selected_iter = tree_iter
 
-        if selected_row:
-            self.user_list.select_row(selected_row)
+        self.user_tree.expand_all()
 
-    def _on_user_selected(self, _listbox, row: Gtk.ListBoxRow | None) -> None:
-        if row:
-            self._selected_user = getattr(row, "user_data", None)
+        if selected_iter:
+            selection = self.user_tree.get_selection()
+            selection.select_iter(selected_iter)
+
+    def _on_user_selected(self, selection) -> None:
+        model, tree_iter = selection.get_selected()
+        if tree_iter:
+            self._selected_user = model.get_value(tree_iter, 1)
             if self._selected_user:
                 self.delete_btn.set_sensitive(is_user_deletable(self._selected_user))
-                if hasattr(self, 'user_selected'):
-                    self.user_selected.emit(self._selected_user)
+                self.user_selected.emit(self._selected_user)
             else:
                 self.delete_btn.set_sensitive(False)
         else:
             self._selected_user = None
             self.delete_btn.set_sensitive(False)
-            if hasattr(self, 'user_selected'):
-                self.user_selected.emit(None)
+            self.user_selected.emit(None)
 
     def _on_add_user(self, _button) -> None:
-        self.user_list.unselect_all()
+        self.user_tree.get_selection().unselect_all()
         self._selected_user = None
         self.delete_btn.set_sensitive(False)
-        if hasattr(self, 'user_added'):
-            self.user_added.emit()
+        self.user_added.emit()
 
     def _on_delete_user(self, _button) -> None:
         if not self._selected_user:
@@ -153,7 +171,17 @@ class UserList(Gtk.Box):
             self.user_deleted.emit()
 
     def select_user(self, username: str) -> None:
-        for row in self.user_list:
-            if getattr(row, "user_data", None) and row.user_data.username == username:
-                self.user_list.select_row(row)
-                break
+        def find_user(model, tree_iter):
+            while tree_iter:
+                if model[tree_iter][0] == username:
+                    selection = self.user_tree.get_selection()
+                    selection.select_iter(tree_iter)
+                    return True
+                if model.iter_has_child(tree_iter):
+                    child_iter = model.iter_children(tree_iter)
+                    if find_user(model, child_iter):
+                        return True
+                tree_iter = model.iter_next(tree_iter)
+            return False
+
+        find_user(self.user_store, self.user_store.get_iter_first())

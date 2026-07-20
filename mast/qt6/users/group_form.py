@@ -89,8 +89,7 @@ class GroupForm(QWidget):
             checked = user.primary_group == group.gr_name or user.username in group.gr_mem
             item.setCheckState(Qt.CheckState.Checked if checked else Qt.CheckState.Unchecked)
 
-        is_system = is_system_group(group)
-        self.save_btn.setEnabled(not is_system)
+        self.save_btn.setEnabled(True)
 
     def _clear_form(self) -> None:
         self.name_edit.clear()

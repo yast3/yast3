@@ -101,8 +101,7 @@ class GroupForm(Gtk.Box):
             user = next(u for u in self._users if u.username == username)
             cb.set_active(user.primary_group == group.gr_name or user.username in group.gr_mem)
 
-        is_system = is_system_group(group)
-        self.save_btn.set_sensitive(not is_system)
+        self.save_btn.set_sensitive(True)
 
     def _clear_form(self) -> None:
         self.group_name_edit.set_text("")

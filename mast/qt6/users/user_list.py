@@ -5,10 +5,10 @@ from __future__ import annotations
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtWidgets import (
     QHBoxLayout,
-    QListWidget,
-    QListWidgetItem,
     QMessageBox,
     QPushButton,
+    QTreeWidget,
+    QTreeWidgetItem,
     QVBoxLayout,
     QWidget,
 )
@@ -33,10 +33,12 @@ class UserList(QWidget):
         layout = QVBoxLayout(self)
         layout.setSpacing(8)
 
-        self.user_list = QListWidget()
-        self.user_list.setSelectionMode(QListWidget.SelectionMode.SingleSelection)
-        self.user_list.currentItemChanged.connect(self._on_user_selected)
-        layout.addWidget(self.user_list)
+        self.user_tree = QTreeWidget()
+        self.user_tree.setColumnCount(1)
+        self.user_tree.setHeaderHidden(True)
+        self.user_tree.setSelectionMode(QTreeWidget.SelectionMode.SingleSelection)
+        self.user_tree.currentItemChanged.connect(self._on_user_selected)
+        layout.addWidget(self.user_tree)
 
         button_layout = QHBoxLayout()
         self.add_btn = QPushButton(_("Add"))
@@ -52,10 +54,19 @@ class UserList(QWidget):
 
     def set_users(self, users: list[UserEntry]) -> None:
         self._users = users
-        self._populate_user_list()
+        self._populate_user_tree()
 
-    def _populate_user_list(self) -> None:
-        self.user_list.clear()
+    def _populate_user_tree(self) -> None:
+        self.user_tree.clear()
+
+        system_users_item = QTreeWidgetItem([_("System Users")])
+        system_users_item.setExpanded(True)
+        system_users_item.setFlags(system_users_item.flags() & ~Qt.ItemFlag.ItemIsSelectable)
+
+        local_users_item = QTreeWidgetItem([_("Local Users")])
+        local_users_item.setExpanded(True)
+        local_users_item.setFlags(local_users_item.flags() & ~Qt.ItemFlag.ItemIsSelectable)
+
         current_username = None
         try:
             import os
@@ -63,20 +74,36 @@ class UserList(QWidget):
         except Exception:
             pass
 
-        selected_row = -1
-        for row, user in enumerate(self._users):
-            item = QListWidgetItem(user.username)
-            item.setData(Qt.ItemDataRole.UserRole, user)
-            self.user_list.addItem(item)
+        system_user_items = []
+        local_user_items = []
+        selected_item = None
+
+        for user in self._users:
+            item = QTreeWidgetItem([user.username])
+            item.setData(0, Qt.ItemDataRole.UserRole, user)
+
+            if user.uid >= 1000:
+                local_user_items.append(item)
+            else:
+                system_user_items.append(item)
+
             if current_username and user.username == current_username:
-                selected_row = row
+                selected_item = item
 
-        if selected_row >= 0:
-            self.user_list.setCurrentRow(selected_row)
+        for item in system_user_items:
+            system_users_item.addChild(item)
+        for item in local_user_items:
+            local_users_item.addChild(item)
 
-    def _on_user_selected(self, current: QListWidgetItem | None, _previous: QListWidgetItem | None) -> None:
+        self.user_tree.addTopLevelItem(system_users_item)
+        self.user_tree.addTopLevelItem(local_users_item)
+
+        if selected_item:
+            self.user_tree.setCurrentItem(selected_item)
+
+    def _on_user_selected(self, current: QTreeWidgetItem | None, _previous: QTreeWidgetItem | None) -> None:
         if current:
-            self._selected_user = current.data(Qt.ItemDataRole.UserRole)
+            self._selected_user = current.data(0, Qt.ItemDataRole.UserRole)
             if self._selected_user:
                 self.delete_btn.setEnabled(is_user_deletable(self._selected_user))
                 self.user_selected.emit(self._selected_user)
@@ -88,7 +115,7 @@ class UserList(QWidget):
             self.user_selected.emit(None)
 
     def _on_add_user(self) -> None:
-        self.user_list.clearSelection()
+        self.user_tree.clearSelection()
         self._selected_user = None
         self.delete_btn.setEnabled(False)
         self.user_added.emit()
@@ -128,8 +155,14 @@ class UserList(QWidget):
             self.user_deleted.emit()
 
     def select_user(self, username: str) -> None:
-        for i in range(self.user_list.count()):
-            item = self.user_list.item(i)
-            if item and item.text() == username:
-                self.user_list.setCurrentItem(item)
-                break
+        root = self.user_tree.invisibleRootItem()
+        for i in range(root.childCount()):
+            child = root.child(i)
+            if child.text(0) == username:
+                self.user_tree.setCurrentItem(child)
+                return
+            for j in range(child.childCount()):
+                grandchild = child.child(j)
+                if grandchild.text(0) == username:
+                    self.user_tree.setCurrentItem(grandchild)
+                    return

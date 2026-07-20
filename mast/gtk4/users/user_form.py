@@ -42,12 +42,12 @@ class UserForm(Gtk.Box):
 
         grid.attach(Gtk.Label(label=_("UID")), 0, 0, 1, 1)
         self.uid_edit = Gtk.Entry()
-        self.uid_edit.set_editable(False)
+        self.uid_edit.set_sensitive(False)
         grid.attach(self.uid_edit, 1, 0, 1, 1)
 
         grid.attach(Gtk.Label(label=_("Username")), 0, 1, 1, 1)
         self.username_edit = Gtk.Entry()
-        self.username_edit.set_editable(False)
+        self.username_edit.set_sensitive(False)
         self.username_edit.connect("changed", self._on_username_changed)
         grid.attach(self.username_edit, 1, 1, 1, 1)
 
@@ -126,6 +126,7 @@ class UserForm(Gtk.Box):
 
     def _fill_user_form(self, user: UserEntry) -> None:
         is_root = user.uid == 0
+        is_system_user = user.uid > 0 and user.uid < 1000
 
         self.uid_edit.set_text(str(user.uid))
         self.username_edit.set_text(user.username)
@@ -144,11 +145,33 @@ class UserForm(Gtk.Box):
         for group_name, cb in self.groups_checkbuttons.items():
             cb.set_active(group_name in user.groups)
 
-        self.full_name_edit.set_editable(not is_root)
-        self.home_dir_edit.set_editable(not is_root)
-        self.shell_edit.set_editable(not is_root)
-        self.primary_group_combo.set_sensitive(not is_root)
-        self.save_btn.set_sensitive(True)
+        if is_system_user:
+            self.full_name_edit.set_sensitive(False)
+            self.home_dir_edit.set_sensitive(False)
+            self.shell_edit.set_sensitive(False)
+            self.password_edit.set_sensitive(False)
+            self.primary_group_combo.set_sensitive(False)
+            for cb in self.groups_checkbuttons.values():
+                cb.set_sensitive(False)
+            self.save_btn.set_sensitive(False)
+        elif is_root:
+            self.full_name_edit.set_sensitive(False)
+            self.home_dir_edit.set_sensitive(False)
+            self.shell_edit.set_sensitive(False)
+            self.password_edit.set_sensitive(True)
+            self.primary_group_combo.set_sensitive(False)
+            for cb in self.groups_checkbuttons.values():
+                cb.set_sensitive(False)
+            self.save_btn.set_sensitive(True)
+        else:
+            self.full_name_edit.set_sensitive(True)
+            self.home_dir_edit.set_sensitive(True)
+            self.shell_edit.set_sensitive(True)
+            self.password_edit.set_sensitive(True)
+            self.primary_group_combo.set_sensitive(True)
+            for cb in self.groups_checkbuttons.values():
+                cb.set_sensitive(True)
+            self.save_btn.set_sensitive(True)
 
     def _clear_form(self) -> None:
         self.username_edit.set_text("")
@@ -171,11 +194,17 @@ class UserForm(Gtk.Box):
         self._is_new_user = True
         self._selected_user = None
         self.uid_edit.set_text("")
-        self.username_edit.set_editable(True)
+        self.username_edit.set_sensitive(True)
         self.username_edit.set_text("")
         self.full_name_edit.set_text("")
+        self.full_name_edit.set_sensitive(True)
         self.home_dir_edit.set_text("")
+        self.home_dir_edit.set_sensitive(True)
         self.shell_edit.set_text("/bin/bash")
+        self.shell_edit.set_sensitive(True)
+        self.password_edit.set_text("")
+        self.password_edit.set_sensitive(True)
+        self.primary_group_combo.set_sensitive(True)
         model = self.primary_group_combo.get_model()
         for i in range(len(model)):
             if model[i][0] == "users":
@@ -183,9 +212,9 @@ class UserForm(Gtk.Box):
                 break
         else:
             self.primary_group_combo.set_active(0)
-        self.password_edit.set_text("")
         for cb in self.groups_checkbuttons.values():
             cb.set_active(False)
+            cb.set_sensitive(True)
         self.save_btn.set_sensitive(True)
         self.username_edit.grab_focus()
 
@@ -241,16 +270,46 @@ class UserForm(Gtk.Box):
             success_msg = _("User '{0}' created successfully.").format(username)
             dialog_title = _("Create User")
         else:
-            cmd = build_modify_user_command(
-                username=username,
-                full_name=full_name,
-                home_dir=home_dir,
-                shell=shell,
-                groups=selected_groups,
-                primary_group=primary_group,
-            )
-            success_msg = _("User '{0}' updated successfully.").format(username)
-            dialog_title = _("Update User")
+            is_root = self._selected_user and self._selected_user.uid == 0
+            if is_root:
+                if password:
+                    cmd = build_set_password_command(username, password)
+                    success_msg = _("Password set successfully.")
+                    dialog_title = _("Set Password")
+                    action = CommandAction(
+                        text=_("Save"),
+                        running_text=_("Setting password..."),
+                        dialog_title=dialog_title,
+                        command=cmd,
+                        success_output=success_msg,
+                        parent_window=self.get_root(),
+                    )
+                    action.connect_finished(lambda s, e, o, u=username: self._on_action_finished(s, e, o, u))
+                    action.start_action()
+                    return
+                else:
+                    dialog = Gtk.MessageDialog(
+                        transient_for=self.get_root(),
+                        modal=True,
+                        message_type=Gtk.MessageType.WARNING,
+                        buttons=Gtk.ButtonsType.OK,
+                        text=_("Error"),
+                    )
+                    dialog.set_property("secondary-text", _("No changes to save."))
+                    dialog.connect("response", lambda d, r: d.destroy())
+                    dialog.present()
+                    return
+            else:
+                cmd = build_modify_user_command(
+                    username=username,
+                    full_name=full_name,
+                    home_dir=home_dir,
+                    shell=shell,
+                    groups=selected_groups,
+                    primary_group=primary_group,
+                )
+                success_msg = _("User '{0}' updated successfully.").format(username)
+                dialog_title = _("Update User")
 
         action = CommandAction(
             text=_("Save"),

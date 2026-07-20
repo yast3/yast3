@@ -49,12 +49,12 @@ class UserForm(QWidget):
 
         form_layout.addWidget(QLabel(_("UID")), 0, 0)
         self.uid_edit = QLineEdit()
-        self.uid_edit.setReadOnly(True)
+        self.uid_edit.setEnabled(False)
         form_layout.addWidget(self.uid_edit, 0, 1)
 
         form_layout.addWidget(QLabel(_("Username")), 1, 0)
         self.username_edit = QLineEdit()
-        self.username_edit.setReadOnly(True)
+        self.username_edit.setEnabled(False)
         self.username_edit.textChanged.connect(self._on_username_changed)
         form_layout.addWidget(self.username_edit, 1, 1)
 
@@ -118,6 +118,7 @@ class UserForm(QWidget):
 
     def _fill_user_form(self, user: UserEntry) -> None:
         is_root = user.uid == 0
+        is_system_user = user.uid > 0 and user.uid < 1000
 
         self.uid_edit.setText(str(user.uid))
         self.username_edit.setText(user.username)
@@ -137,11 +138,30 @@ class UserForm(QWidget):
                 checked = group_name in user.groups
                 item.setCheckState(Qt.CheckState.Checked if checked else Qt.CheckState.Unchecked)
 
-        self.full_name_edit.setReadOnly(is_root)
-        self.home_dir_edit.setReadOnly(is_root)
-        self.shell_edit.setReadOnly(is_root)
-        self.primary_group_combo.setEnabled(not is_root)
-        self.save_btn.setEnabled(True)
+        if is_system_user:
+            self.full_name_edit.setEnabled(False)
+            self.home_dir_edit.setEnabled(False)
+            self.shell_edit.setEnabled(False)
+            self.password_edit.setEnabled(False)
+            self.primary_group_combo.setEnabled(False)
+            self.groups_list.setEnabled(False)
+            self.save_btn.setEnabled(False)
+        elif is_root:
+            self.full_name_edit.setEnabled(False)
+            self.home_dir_edit.setEnabled(False)
+            self.shell_edit.setEnabled(False)
+            self.password_edit.setEnabled(True)
+            self.primary_group_combo.setEnabled(False)
+            self.groups_list.setEnabled(False)
+            self.save_btn.setEnabled(True)
+        else:
+            self.full_name_edit.setEnabled(True)
+            self.home_dir_edit.setEnabled(True)
+            self.shell_edit.setEnabled(True)
+            self.password_edit.setEnabled(True)
+            self.primary_group_combo.setEnabled(True)
+            self.groups_list.setEnabled(True)
+            self.save_btn.setEnabled(True)
 
     def _clear_form(self) -> None:
         self.username_edit.clear()
@@ -163,17 +183,23 @@ class UserForm(QWidget):
         self._is_new_user = True
         self._selected_user = None
         self.uid_edit.clear()
-        self.username_edit.setReadOnly(False)
+        self.username_edit.setEnabled(True)
         self.username_edit.clear()
         self.full_name_edit.clear()
+        self.full_name_edit.setEnabled(True)
         self.home_dir_edit.clear()
+        self.home_dir_edit.setEnabled(True)
         self.shell_edit.setText("/bin/bash")
+        self.shell_edit.setEnabled(True)
+        self.password_edit.clear()
+        self.password_edit.setEnabled(True)
+        self.primary_group_combo.setEnabled(True)
         index = self.primary_group_combo.findText("users")
         if index >= 0:
             self.primary_group_combo.setCurrentIndex(index)
         else:
             self.primary_group_combo.setCurrentIndex(0)
-        self.password_edit.clear()
+        self.groups_list.setEnabled(True)
         for i in range(self.groups_list.count()):
             self.groups_list.item(i).setCheckState(Qt.CheckState.Unchecked)
         self.save_btn.setEnabled(True)
@@ -218,16 +244,39 @@ class UserForm(QWidget):
             success_msg = _("User '{0}' created successfully.").format(username)
             dialog_title = _("Create User")
         else:
-            cmd = build_modify_user_command(
-                username=username,
-                full_name=full_name,
-                home_dir=home_dir,
-                shell=shell,
-                groups=selected_groups,
-                primary_group=primary_group,
-            )
-            success_msg = _("User '{0}' updated successfully.").format(username)
-            dialog_title = _("Update User")
+            is_root = self._selected_user and self._selected_user.uid == 0
+            if is_root:
+                if password:
+                    cmd = build_set_password_command(username, password)
+                    success_msg = _("Password set successfully.")
+                    dialog_title = _("Set Password")
+                    self.current_action = CommandAction(
+                        text=_("Save"),
+                        running_text=_("Setting password..."),
+                        dialog_title=dialog_title,
+                        command=cmd,
+                        success_output=success_msg,
+                        parent=self,
+                    )
+                    self.current_action.action_finished.connect(
+                        lambda s, e, o, u=username: self._on_action_finished(s, e, o, u)
+                    )
+                    self.current_action.start_action()
+                    return
+                else:
+                    QMessageBox.warning(self, _("Error"), _("No changes to save."))
+                    return
+            else:
+                cmd = build_modify_user_command(
+                    username=username,
+                    full_name=full_name,
+                    home_dir=home_dir,
+                    shell=shell,
+                    groups=selected_groups,
+                    primary_group=primary_group,
+                )
+                success_msg = _("User '{0}' updated successfully.").format(username)
+                dialog_title = _("Update User")
 
         self.current_action = CommandAction(
             text=_("Save"),

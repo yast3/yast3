@@ -2302,6 +2302,20 @@ msgstr ""
 msgid "User Groups"
 msgstr ""
 
+
+
+#: mast/gtk4/users/user_list.py:77 mast/qt6/users/user_list.py:62
+msgid "System Users"
+msgstr "Kerfisnotendur"
+
+#: mast/gtk4/users/user_list.py:78 mast/qt6/users/user_list.py:66
+msgid "Local Users"
+msgstr "Staðbundnir notendur"
+
+#: mast/gtk4/users/user_form.py:298 mast/qt6/users/user_form.py:267
+msgid "No changes to save."
+msgstr "Engar breytingar til að vista."
+
 #: mast/gtk4/users/groups_manager.py:241 mast/qt6/users/groups_manager.py:215
 #, python-brace-format
 msgid "Are you sure you want to delete group '{0}'?"
