@@ -27,7 +27,7 @@ class Module:
         if self.window is None:
             self.window = self._create_window()
             self.window.setWindowTitle(_("{name} — MaST").format(name=self.name))
-            self.window.closed.connect(self._on_window_closed)
+            self.window.destroyed.connect(self._on_window_closed)
         self.window.show()
         self.window.activateWindow()
 
