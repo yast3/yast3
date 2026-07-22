@@ -3,8 +3,9 @@
 import gi
 
 gi.require_version("Gtk", "4.0")
+gi.require_version("GLib", "2.0")
 
-from gi.repository import Gtk
+from gi.repository import Gtk, GLib
 
 from mast.core.i18n import _
 from mast.core.keyboard import (
@@ -70,6 +71,7 @@ class KeyboardWindow(Gtk.ApplicationWindow):
         layouts = get_all_keyboard_layouts()
 
         first_radio = None
+        selected_row = None
 
         for layout in layouts:
             name = get_layout_name(layout.code)
@@ -87,8 +89,6 @@ class KeyboardWindow(Gtk.ApplicationWindow):
             else:
                 radio.set_group(first_radio)
 
-            if layout.code == current:
-                radio.set_active(True)
             radio.connect("toggled", self._on_radio_toggled, layout.code)
             box.append(radio)
 
@@ -104,6 +104,18 @@ class KeyboardWindow(Gtk.ApplicationWindow):
 
             row.set_child(box)
             self.layout_list.append(row)
+
+            if layout.code == current:
+                radio.set_active(True)
+                self.layout_list.select_row(row)
+                selected_row = row
+
+        if selected_row:
+            GLib.idle_add(self._scroll_to_selected_row, selected_row)
+
+    def _scroll_to_selected_row(self, row: Gtk.ListBoxRow) -> bool:
+        row.grab_focus()
+        return False
 
     def _on_radio_toggled(self, radio: Gtk.CheckButton, layout_code: str) -> None:
         if radio.get_active():

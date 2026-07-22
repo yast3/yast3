@@ -10,6 +10,7 @@ from PySide6.QtWidgets import (
     QListWidgetItem,
     QPushButton,
     QMessageBox,
+    QLineEdit,
 )
 
 from mast.core.i18n import _
@@ -41,6 +42,13 @@ class KeyboardWindow(QMainWindow):
         self.layout_list.setSelectionMode(QListWidget.SelectionMode.SingleSelection)
         self.main_layout.addWidget(self.layout_list)
 
+        test_label = QLabel(_("Test Input:"))
+        self.main_layout.addWidget(test_label)
+
+        self.test_input = QLineEdit()
+        self.test_input.setPlaceholderText(_("Type here to test the keyboard layout..."))
+        self.main_layout.addWidget(self.test_input)
+
         button_box = QHBoxLayout()
         button_box.addStretch()
 
@@ -64,9 +72,15 @@ class KeyboardWindow(QMainWindow):
             name = get_layout_name(layout.code)
             item = QListWidgetItem(f"{name} ({layout.code})")
             item.setData(1, layout.code)
-            if layout.code == current:
-                item.setSelected(True)
             self.layout_list.addItem(item)
+
+        for i in range(self.layout_list.count()):
+            item = self.layout_list.item(i)
+            if item and item.data(1) == current:
+                self.layout_list.setCurrentItem(item)
+                item.setSelected(True)
+                self.layout_list.scrollToItem(item)
+                break
 
     def _on_save_clicked(self) -> None:
         selected_item = self.layout_list.currentItem()

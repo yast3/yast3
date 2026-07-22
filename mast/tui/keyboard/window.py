@@ -80,6 +80,7 @@ class KeyboardWindow(Screen):
         self._layout_codes.clear()
 
         layouts = get_all_keyboard_layouts()
+        selected_index = 0
 
         for i, layout in enumerate(layouts):
             name = get_layout_name(layout.code)
@@ -88,7 +89,9 @@ class KeyboardWindow(Screen):
             list_view.append(item)
             self._layout_codes.append(layout.code)
             if layout.code == self._current_layout:
-                list_view.index = i
+                selected_index = i
+
+        list_view.index = selected_index
 
     def show_message(self, message: str, error: bool = False, success: bool = False) -> None:
         """Display a message to the user."""
